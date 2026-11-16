@@ -239,12 +239,13 @@
         "en": "Board of directors",
         "uz": "Direktorlar kengashi"
       },
-      "value": "8",
+      "value": "6",
       "note": {
-        "ru": "по проспекту S-1, председатель — Даниэла Амодей",
-        "en": "per S-1 prospectus, chaired by Daniela Amodei"
+        "ru": "по списку Reuters factbox: шесть директоров, председатель — Даниэла Амодей",
+        "en": "per Reuters factbox listing six directors, chaired by Daniela Amodei",
+        "uz": "Reuters factbox maʼlumotiga koʼra: olti direktor, kengash raisi — Daniela Amodei"
       },
-      "asOf": "2026-09-28",
+      "asOf": "2026-11-10",
       "sources": [
         {
           "title": "Reuters factbox (via Investing.com)",
