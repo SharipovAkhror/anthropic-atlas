@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-16",
+  "generatedAt": "2026-11-16T18:23:16.921Z",
+  "sources": [
+    {
+      "id": "anthropic-sitemap",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "claude-sitemap",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "alignment-sitemap",
+      "ok": false,
+      "error": "HTTP 404"
+    },
+    {
+      "id": "api-release-notes",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "apps-release-notes",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "claude-code-changelog",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "sec-edgar",
+      "ok": false,
+      "error": "HTTP 403"
+    },
+    {
+      "id": "status",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "gnews-anthropic",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "gnews-claude",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "gnews-people",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "gnews-ipo",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "gnews-ru",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-leadership",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-ltbt",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-models",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-deprecations",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-pricing",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    },
+    {
+      "id": "watch-rsp",
+      "ok": true,
+      "baseline": true,
+      "count": 0
+    }
+  ],
+  "items": []
+}

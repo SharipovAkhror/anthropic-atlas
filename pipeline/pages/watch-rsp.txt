@@ -1,0 +1,106 @@
+Anthropic’s Responsible Scaling Policy \ Anthropic
+Skip to main content News Research
+Policy
+Commitments
+Company
+Try Claude
+Anthropic’s Responsible Scaling Policy
+Anticipating and securing against emerging threats that accompany increasingly powerful models
+Last updated Aug 14, 2026
+Read Anthropic's Responsible Scaling Policy
+In September 2023, we released the first version of our Responsible Scaling Policy (RSP). We believe that risk governance in this rapidly evolving domain should be proportional, iterative, and exportable. In that spirit, we have continued to refine the RSP over time and will use this page to inform the public of any developments.
+Current and Prior Versions
+Read the current version of the RSP
+See the pdf
+RSP Noncompliance Reporting and Anti-Retaliation Policy
+Version 3.4 and redline (effective July 8, 2026)
+Version 3.3 and redline (effective May 26, 2026)
+Version 3.2 and redline (effective April 29, 2026)
+Version 3.1 and redline (effective April 2, 2026)
+Version 3.0 (effective February 24, 2026)
+Version 2.2 and redline (effective May 14, 2025)
+Version 2.1 (effective March 31, 2025)
+Version 2.0 (effective October 15, 2024)
+Version 1.0 (effective September 19, 2023)
+Risk Reports
+Redacted Risk Report August 2026
+Redacted Risk Report February 2026
+August 14, 2026
+We shared our August 2026 Risk Report . Our Risk Reports aim to provide a direct, candid, and informative description of how we see the risks of our
+systems and our state of preparedness for them (particularly the catastrophic risks addressed in our Responsible Scaling Policy). It covers the risks of Anthropic's models and actions between our previous February 2026 risk report and the report's coverage date of July 15, as well as our mitigations for those risks and our forward-looking plans in each category.
+July 8, 2026
+May 26, 2026
+This version 3.3 update does the following: 1) revises our threshold for novel chemical/biological weapons production to better track the threat model of concern; 2) refines our approach to off-cycle updates regarding the risks of individual models; and 3) makes minor terminology changes.
+April 29, 2026
+Version 3.2 of our RSP authorizes the LTBT to request external review of Risk Reports, gives the LTBT the power to approve our selection of external reviewers, and formalizes a requirement that we provide the LTBT with regular briefings.
+April 2, 2026
+We have also made two minor updates to the text of the Responsible Scaling Policy, updating it to version 3.1. After we released the v3 update, readers noted two areas on which our language could be clarified. We have therefore made the following updates, neither of which significantly change the substance of the policy:
+We now clarify that, even if not required by the RSP, we remain free to take measures such as pausing the development of our AI systems in any circumstances in which we deem them appropriate. This was true of RSP v3, but it is stated more clearly in the v3.1 update.
+There are also a number of smaller edits for style and clarity elsewhere in the policy.
+As we noted in the post announcing RSP v3 , the policy is a living document. As we learn more about its operation in the real world, we expect to make further changes, all of which will be logged both on this page and in a changelog in the policy document itself.
+March 24, 2026
+We posted an update to our RSP Noncompliance Reporting and Anti-Retaliation Policy, which we released internally in February 2026. It expands reporting channels, introduces a pathway for employees to make informal inquiries about potential RSP violations, and aligns with RSP Version 3.0. The policy document can be found at the link above.
+February 24, 2026
+Version 3.0 is a comprehensive rewrite of the RSP. The reasoning behind the rewrite can be found here .
+This new version of the RSP involves the publication of Frontier Safety Roadmaps with detailed safety goals, and Risk Reports that quantify risk across all our deployed models.
+February 10, 2026
+Our RSP requires that once models cross the AI R&D-4 capability threshold, we develop an affirmative case identifying the most immediate and relevant misalignment risks from models pursuing misaligned goals and explaining how we have mitigated them. Our determination is that Claude Opus 4.6 does not cross this threshold.
+Read the Sabotage Risk Report
+May 14, 2025
+Version 2.2 implements a minor revision, amending a footnote to exclude both sophisticated insiders and state-compromised insiders from the scope of the ASL-3 Security Standard. Previously, only “highly sophisticated state-compromised insiders” were explicitly excluded. For more details, please see the changelog appended to the policy.
+March 31, 2025
+October 15, 2024
+Planned ASL-3 Safeguards
+Deployment Safeguards
+Multi-layered defense-in-depth architecture
+Our deployment safeguards will employ a defense-in-depth strategy with four main layers, each designed to catch potential misuse that might pass through previous barriers. The four layers will be:
+Access controls to tailor safeguards to the deployment context and group of expected users.
+Real-time prompt and completion classifiers and completion interventions for immediate online filtering.
+Asynchronous monitoring classifiers for a more detailed analysis of the completions for threats.
+Post-hoc jailbreak detection with rapid response procedures to quickly address any threats.
+Access controls
+Real-time prompt and completion classifiers
+In order to stay up to date on newly discovered harmful patterns, jailbreaks, and obfuscation techniques, the classifiers will be regularly updated using data from other elements of our deployment safeguards including our asynchronous monitoring system and insights from our incident response protocol, bug bounty program, and internal and external red-teaming efforts.
+Asynchronous monitoring classifiers
+Asynchronous classification will allow us to perform computationally intensive evaluations to provide a deeper level of scrutiny than the real-time classifiers alone, without impacting user-facing latency.
+Post-hoc jailbreak detection
+Our jailbreak rapid response procedures will be designed to identify and mitigate attempts to bypass the sets of safety measures described above.
+Our process for minimizing jailbreak risks will include rapid retraining, validation, and testing of classifiers against newly discovered patterns and real-world scenarios. The effectiveness of jailbreak detection and response will be enhanced by collaboration and information sharing. To this end, we are developing a rapid response process for sharing threat intelligence with relevant partners.
+Ongoing work
+By implementing multiple defense layers, from real-time classifiers to asynchronous monitoring and rapid response systems, we hope to create a deployment safeguards infrastructure that is adaptable to various deployment scenarios.
+Security Safeguards
+Researcher tooling security: Enhance usability and security of research tools by preventing unnecessary access and limiting user privileges to only what is essential. Provide robust, user-friendly tooling without direct access to model weights.
+Software inventory management: Create a comprehensive software inventory list through automated scanning. Implement strict software inventory management to track all software components used in development and deployment. Regularly monitor inventory to effectively manage risks and maintain a secure environment.
+Software supply chain security: Monitor publicly known critical security issues in third-party dependencies. Conduct consistent scanning of all third-party dependencies and maintain a comprehensive vulnerability data repository. Proactively scan all incoming packages to enable download of only secure packages and reduce risk of introducing vulnerabilities.
+Artifact integrity and provenance: Leverage frameworks (e.g., SLSA) to improve security controls for software build and deployment. Require packages to have provenance metadata.
+Hardware procurement: Source employee endpoints directly from vetted manufacturers for secure chain of custody. Maintain a curated list of approved, recommended hardware and peripherals and provide employees with securely sourced peripherals.
+Access control for model weights: Implement multi-party authorization and mandatory code review on production code to remove persistent, high-privilege access to model weights. Grant temporary access and only via the smallest set of necessary permissions to reduce risk of weights exfiltration. Require hardware authentication device prompt, justification and employee approval to grant access.
+Infrastructure policy: Require all new production infrastructure to be defined in Infrastructure As Code (IaC) before promotion to production environments. Require infrastructure changes be reviewed by the Security team.
+Cloud security posture management: Reduce risk of compromise due to cloud misconfiguration by defining and implementing internal standards and best practices. Conduct regular audits of cloud environments and promptly remediate any identified gaps.
+Red teaming and penetration testing: Partner with a diverse range of external red team and penetration testing experts. Simulate sophisticated attacks, including insider threat and software supply chain compromise scenarios, to identify vulnerabilities. Build an in-house security team with wide-ranging expertise, including APT defense, insider risk, incident response, and secure design.
+Centralized log management and analysis: Centralize storage of major security-centric log sources in a SIEM/SOAR platform. Enable manual and automated analysis, log retention, rule creation and execution for detections and response workflows. Implement orchestration and response playbooks for automated alert investigation. Use a casebook workflow for security analysts to manage incidents.
+Access monitoring for critical assets: Conduct manual monitoring of access to model weights and high value IP, including recurring automated detections. Build automated detection across all major log sources for access to critical assets. Leverage additional threat intelligence to continuously improve detections.
+Deception technology: Install and monitor honeypots (including fake model weights) for high precision detection of unauthorized system access. Implement deception technology in a realistic way to trick attackers and gain insights into their tactics.
+Physical security: Conduct regular Technical Surveillance Countermeasures (TSCM) at physical spaces using advanced detection equipment and techniques. Tailor TSCM sweeps to specific events, threats or incidents that may trigger an inspection. Regularly sweep physical premises for intruders and conduct physical security red-teaming
+Planned Capability Assessments
+We plan to publish additional details on our capability assessment methodology in the near future. For information about our past capability assessments, please see our overviews for Claude 3.0 Opus and Claude 3.5 Sonnet .
+Learning from Experience
+We have learned a lot in our first year with the previous RSP in effect, and are using this update as an opportunity to reflect on what has worked well and what makes sense to update in the policy. As part of this, we reviewed how well we adhered to the framework and identified a small number of instances where we fell short of meeting the full letter of its requirements. These areas were:
+Our most recent evaluations were completed 3 days later than the 3-month interval. This delay allowed our teams to refine their capability elicitation, resulting in higher-quality evaluations. To resolve this issue, the new policy clarifies the ambiguous definition of the evaluation interval, and extends the interval to 6 months to avoid lower-quality, rushed elicitation.
+Some of our evaluations lacked some basic elicitation techniques such as best-of-N or chain-of-thought prompting. Our internal Capability Report discloses these limitations, and we believe the risk of substantial under-elicitation is low. We are now systematically tracking these gaps to avoid future under-elicitation.
+In all cases, we found these instances posed minimal risk to the safety of our models. From our review, we learned two valuable lessons to incorporate into our updated framework: we needed to incorporate more flexibility into our policies, and we needed to improve our process for tracking compliance with the RSP.
+Research
+Policy
+Commitments
+Company
+Products
+Models
+Solutions
+Help and security
+Terms and policies
+Our mission
+Anthropic is a Public Benefit Corporation. Our mission is the responsible development and maintenance of advanced AI for the long-term benefit of humanity.
+Log in
+Claude.ai
+Claude console
+© 2026 Anthropic PBC

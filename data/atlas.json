@@ -420,7 +420,7 @@
       },
       "since": "2026-07",
       "influence": 86,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ben_Bernanke_official_portrait.jpg/250px-Ben_Bernanke_official_portrait.jpg",
+      "avatar": "/assets/people/ben-bernanke.jpg",
       "initials": "BB",
       "bio": {
         "ru": "Лауреат Нобелевской премии по экономике (2022), экс-председатель ФРС США. Вошел в LTBT в июле 2026 года."
@@ -431,7 +431,8 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "upload.wikimedia.org"
     },
     {
       "id": "richard-fontaine",
@@ -590,7 +591,11 @@
           "url": "https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Chris_Liddell",
+        "wikidata": "https://www.wikidata.org/wiki/Q5107236"
+      }
     },
     {
       "id": "paul-christiano",
@@ -675,7 +680,7 @@
       "since": "2021-01",
       "influence": 100,
       "hero": true,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg/250px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg",
+      "avatar": "/assets/people/dario-amodei.jpg",
       "initials": "DA",
       "bio": {
         "ru": "Физик (PhD Princeton), экс-VP of Research OpenAI. Основал Anthropic в январе 2021 года. Курирует науку, модели и безопасность."
@@ -686,7 +691,12 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Dario_Amodei",
+        "wikidata": "https://www.wikidata.org/wiki/Q103335665"
+      },
+      "avatarCredit": "upload.wikimedia.org"
     },
     {
       "id": "daniela-amodei",
@@ -707,7 +717,7 @@
       "since": "2021-01",
       "influence": 99,
       "hero": true,
-      "avatar": "https://images.stripeassets.com/fzn2n1nzq965/6L5AJB2usxYVRpHzMXUmiZ/39bc615186aaaf2858ab042d7614e19a/resizedimage.png",
+      "avatar": "/assets/people/daniela-amodei.jpg",
       "initials": "DA",
       "bio": {
         "ru": "Экс-VP Safety & Policy OpenAI и менеджер Stripe. Возглавляет Совет директоров, C-Suite, коммерцию и Anthropic Labs."
@@ -718,7 +728,12 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Daniela_Amodei",
+        "wikidata": "https://www.wikidata.org/wiki/Q119721378"
+      },
+      "avatarCredit": "images.stripeassets.com"
     },
     {
       "id": "cloud-titans",
@@ -814,7 +829,11 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Mariano-Florentino_Cu%C3%A9llar",
+        "wikidata": "https://www.wikidata.org/wiki/Q16213917"
+      }
     },
     {
       "id": "brian-israel",
@@ -926,7 +945,7 @@
       },
       "since": "2021-01",
       "influence": 96,
-      "avatar": "https://techcrunch.com/wp-content/uploads/2025/04/Jared-Kaplan_headshot2.jpg?w=1024",
+      "avatar": "/assets/people/jared-kaplan.jpg",
       "initials": "JK",
       "bio": {
         "ru": "Профессор физики (PhD Harvard), первый автор «Scaling Laws». Возглавляет научное крыло Anthropic."
@@ -937,7 +956,12 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Jared_Kaplan",
+        "wikidata": "https://www.wikidata.org/wiki/Q102649624"
+      },
+      "avatarCredit": "techcrunch.com"
     },
     {
       "id": "sam-mccandlish",
@@ -957,7 +981,7 @@
       },
       "since": "2021-01",
       "influence": 95,
-      "avatar": "https://www.autumn.ai/resources/anthropic/portraits/sam-mccandlish.webp",
+      "avatar": "/assets/people/sam-mccandlish.jpg",
       "initials": "SM",
       "bio": {
         "ru": "Сооснователь Anthropic. Отвечает за обучение крупных моделей: предобучение, продуктивность исследований и инфраструктуру RL."
@@ -968,7 +992,8 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "www.autumn.ai"
     },
     {
       "id": "tom-brown",
@@ -1019,7 +1044,7 @@
       },
       "since": "2021-01",
       "influence": 93,
-      "avatar": "https://img.hghlnd.com/imgix/https://detroitcatholic.nyc3.digitaloceanspaces.com/20260525T0715-MAGNIFICA-HUMANITAS-ANTHROPIC-VATICAN-1820383.JPG?w=800&h=800&fit=crop&crop=faces",
+      "avatar": "/assets/people/chris-olah.jpg",
       "initials": "CO",
       "bio": {
         "ru": "Основоположник механистической интерпретируемости (SAEs, circuit-tracer), сооснователь в Class F."
@@ -1030,7 +1055,12 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Chris_Olah",
+        "wikidata": "https://www.wikidata.org/wiki/Q50358648"
+      },
+      "avatarCredit": "img.hghlnd.com"
     },
     {
       "id": "amanda-askell",
@@ -1050,7 +1080,7 @@
       },
       "since": "2021",
       "influence": 89,
-      "avatar": "https://pub-bcdb3a688294470c8056f904d7e6236b.r2.dev/GPT-3/amanda.jpg",
+      "avatar": "/assets/people/amanda-askell.jpg",
       "initials": "AA",
       "bio": {
         "ru": "Доктор философии NYU. Главный автор обновленной «Конституции Claude» (январь 2026)."
@@ -1061,7 +1091,12 @@
           "url": "https://www.anthropic.com/constitution"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Amanda_Askell",
+        "wikidata": "https://www.wikidata.org/wiki/Q115661373"
+      },
+      "avatarCredit": "pub-bcdb3a688294470c8056f904d7e6236b.r2.dev"
     },
     {
       "id": "jan-leike",
@@ -1081,7 +1116,7 @@
       },
       "since": "2024-05",
       "influence": 90,
-      "avatar": "https://www.autumn.ai/resources/anthropic/portraits/jan-leike.webp",
+      "avatar": "/assets/people/jan-leike.jpg",
       "initials": "JL",
       "bio": {
         "ru": "Экс-соруководитель Superalignment OpenAI. Руководит наукой выравнивания и проектом AAR."
@@ -1092,7 +1127,12 @@
           "url": "https://observer.com/2026/04/anthropic-top-executives-after-labs-launch/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Jan_Leike",
+        "wikidata": "https://www.wikidata.org/wiki/Q123130693"
+      },
+      "avatarCredit": "www.autumn.ai"
     },
     {
       "id": "evan-hubinger",
@@ -1112,7 +1152,7 @@
       },
       "since": "2023-01",
       "influence": 86,
-      "avatar": "https://thumbnails.assets.alphaxiv.org/512/01908384-ec88-7906-92c0-c361e5346f3c.png",
+      "avatar": "/assets/people/evan-hubinger.jpg",
       "initials": "EH",
       "bio": {
         "ru": "Автор исследований «Sleeper Agents» и «Alignment Faking», выявляющих скрытые цели моделей."
@@ -1123,7 +1163,8 @@
           "url": "https://www.alphaxiv.org/zh/@evan-hubinger"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "thumbnails.assets.alphaxiv.org"
     },
     {
       "id": "logan-graham",
@@ -1143,7 +1184,7 @@
       },
       "since": "2022",
       "influence": 86,
-      "avatar": "https://thumbnails.assets.alphaxiv.org/512/018d191a-27a8-75b0-ac99-e2c2fafb0580.png",
+      "avatar": "/assets/people/logan-graham.jpg",
       "initials": "LG",
       "bio": {
         "ru": "Доктор ML Оксфорда. Руководит стресс-тестами катастрофических и киберрисков (Project Glasswing)."
@@ -1154,7 +1195,8 @@
           "url": "https://logangraham.xyz/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "thumbnails.assets.alphaxiv.org"
     },
     {
       "id": "jack-clark",
@@ -1205,7 +1247,7 @@
       },
       "since": "2021-06",
       "influence": 85,
-      "avatar": "https://dganguli.github.io/pweb/dg2.png",
+      "avatar": "/assets/people/deep-ganguli.jpg",
       "initials": "DG",
       "bio": {
         "ru": "Руководит командой Societal Impacts: исследования влияния Claude на общество, включая Clio и Anthropic Economic Index."
@@ -1216,7 +1258,8 @@
           "url": "https://dganguli.github.io/pweb/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "dganguli.github.io"
     },
     {
       "id": "john-schulman",
@@ -1248,7 +1291,11 @@
           "url": "https://techcrunch.com/2025/02/06/openai-co-founder-john-schulman-leaves-anthropic-after-just-five-months/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Schulman",
+        "wikidata": "https://www.wikidata.org/wiki/Q103236782"
+      }
     },
     {
       "id": "ami-vora",
@@ -1268,7 +1315,7 @@
       },
       "since": "2025-12",
       "influence": 92,
-      "avatar": "https://fortune.com/img-assets/wp-content/uploads/2026/11/IMG_0491-e1794334884723.jpg?format=webp&w=1440&quality=75",
+      "avatar": "/assets/people/ami-vora.jpg",
       "initials": "AV",
       "bio": {
         "ru": "Экс-VP WhatsApp (Meta) и экс-CPO Faire. Заняла пост CPO 13 января 2026 года."
@@ -1279,7 +1326,8 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "fortune.com"
     },
     {
       "id": "mike-krieger",
@@ -1310,7 +1358,11 @@
           "url": "https://www.anthropic.com/news/introducing-anthropic-labs"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Mike_Krieger",
+        "wikidata": "https://www.wikidata.org/wiki/Q10329947"
+      }
     },
     {
       "id": "ben-mann",
@@ -1361,7 +1413,7 @@
       },
       "since": "2024-09",
       "influence": 88,
-      "avatar": "https://avatars.githubusercontent.com/u/1761758?v=4",
+      "avatar": "/assets/people/boris-cherny.jpg",
       "initials": "BC",
       "bio": {
         "ru": "Экс-Principal Engineer в Meta, автор книги «Programming TypeScript». Создал агентную среду Claude Code."
@@ -1372,7 +1424,8 @@
           "url": "https://github.com/bcherny"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "avatars.githubusercontent.com"
     },
     {
       "id": "david-soria-parra",
@@ -1392,7 +1445,7 @@
       },
       "since": "2024",
       "influence": 85,
-      "avatar": "https://avatars.githubusercontent.com/u/167242713?v=4",
+      "avatar": "/assets/people/david-soria-parra.jpg",
       "initials": "DP",
       "bio": {
         "ru": "Соавтор Model Context Protocol (MCP), переданного в декабре 2025 года в Linux Foundation (AAIF)."
@@ -1403,7 +1456,8 @@
           "url": "https://www.anthropic.com/news/model-context-protocol"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "avatars.githubusercontent.com"
     },
     {
       "id": "alex-albert",
@@ -1423,7 +1477,7 @@
       },
       "since": "2023-06",
       "influence": 83,
-      "avatar": "https://avatars.githubusercontent.com/u/34638987?v=4",
+      "avatar": "/assets/people/alex-albert.jpg",
       "initials": "AA",
       "bio": {
         "ru": "Первый штатный Prompt Engineer (июнь 2023), с марта 2024 возглавляет Developer Relations."
@@ -1434,7 +1488,8 @@
           "url": "https://ai.engineer/speakers/alex-albert"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "avatars.githubusercontent.com"
     },
     {
       "id": "cat-wu",
@@ -1455,7 +1510,7 @@
       "since": "2024",
       "until": "2026-10",
       "influence": 84,
-      "avatar": "https://avatars.githubusercontent.com/u/6024687?v=4",
+      "avatar": "/assets/people/cat-wu.jpg",
       "initials": "CW",
       "bio": {
         "ru": "Руководила продуктом Claude Code. Покинула Anthropic 30 октября 2026 года и перешла в OpenAI (Core Products), о чём объявлено 5 ноября 2026."
@@ -1470,7 +1525,8 @@
           "url": "https://www.businessinsider.com/cat-wu-joins-openai-from-anthropic-product-lead-coup-2026-11"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "avatars.githubusercontent.com"
     },
     {
       "id": "rahul-patil",
@@ -1490,7 +1546,7 @@
       },
       "since": "2025-10",
       "influence": 92,
-      "avatar": "https://goldhouse.org/wp-content/uploads/2026/04/Gold100_BT_Rahul-Patil.png",
+      "avatar": "/assets/people/rahul-patil.jpg",
       "initials": "RP",
       "bio": {
         "ru": "Экс-CTO Stripe, выпускник ASU. Возглавил технический блок в октябре 2025 года."
@@ -1505,7 +1561,8 @@
           "url": "https://www.anthropic.com/news/rahul-patil-joins-anthropic"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "goldhouse.org"
     },
     {
       "id": "krishna-rao",
@@ -1620,7 +1677,7 @@
       },
       "since": "2025-09",
       "influence": 86,
-      "avatar": "https://lsvp.com/wp-content/uploads/2025/08/250305_Netflix_0347-e1755611424734-590x1024.jpg",
+      "avatar": "/assets/people/vitaly-gudanets.jpg",
       "initials": "VG",
       "bio": {
         "ru": "Экс-CISO Netflix и VP Security в Google. Защищает веса моделей и инфраструктуру."
@@ -1631,7 +1688,8 @@
           "url": "https://nationalcioreview.com/articles-insights/news/anthropic-expands-security-team-with-ciso-hire-from-netflix/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "lsvp.com"
     },
     {
       "id": "jason-clinton",
@@ -1712,7 +1770,7 @@
       },
       "since": "2023",
       "influence": 84,
-      "avatar": "https://brand-innovators.com/wp-content/uploads/2026/03/Jenson-Kate.jpg",
+      "avatar": "/assets/people/kate-jensen.jpg",
       "initials": "KJ",
       "bio": {
         "ru": "Экс-Stripe. Построила первичную систему продаж и облачные альянсы."
@@ -1723,7 +1781,8 @@
           "url": "https://live.skift.com/speaker/kate-jensen/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "avatarCredit": "brand-innovators.com"
     },
     {
       "kind": "person",

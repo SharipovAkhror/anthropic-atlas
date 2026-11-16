@@ -1,0 +1,62 @@
+The Long-Term Benefit Trust \ Anthropic
+Skip to main content News Research
+Policy
+Commitments
+Company
+Try Claude
+The Long-Term Benefit Trust
+Published Sep 19, 2023
+Category Announcements
+Topics Leadership
+Transparency
+Legal guardrails
+Alignment
+See more...
+Related articles
+Announcements
+Oct 21, 2026
+Physicist Christopher Stubbs joins Anthropic's Long-Term Benefit Trust
+View more
+Today we are sharing more details about our new governance structure called the Long-Term Benefit Trust (LTBT) , which we have been developing since the birth of Anthropic. The LTBT is our attempt to fine-tune our corporate governance to address the unique challenges and long-term opportunities we believe transformative AI will present .
+The Trust is an independent body of five financially disinterested members with an authority to select and remove a portion of our Board that will grow over time (ultimately, a majority of our Board). Paired with our Public Benefit Corporation status, the LTBT helps to align our corporate governance with our mission of developing and maintaining advanced AI for the long-term benefit of humanity.
+Corporate Governance Basics
+A corporation is overseen by its board of directors. The board selects and oversees the leadership team (especially the CEO), who in turn hire and manage the employees. The default corporate governance setup makes directors accountable to the stockholders in several ways. For example:
+Directors are elected by, and may be removed by stockholders.
+Directors are legally accountable to stockholders for fulfilling their fiduciary duties.
+Directors are often paid in shares of stock of the corporation, which helps to align their incentives with the financial interests of stockholders.
+Fine-tuning Anthropic ’ s Corporate Governance
+Baseline: Public Benefit Corporation
+LTBT: Basic Structure and Features
+The Class T stock also includes “protective provisions” that require the Trust to receive notice of certain actions that could significantly alter the corporation or its business.
+The Trust is organized as a “purpose trust” under the common law of Delaware, with a purpose that is the same as that of Anthropic. The Trust must use its powers to ensure that Anthropic responsibly balances the financial interests of stockholders with the interests of those affected by Anthropic’s conduct and our public benefit purpose.
+A Different Kind of Stockholder
+A Corporate Governance Experiment
+The Long-Term Benefit Trust is an experiment. Its design is a considered hypothesis, informed by some of the most accomplished corporate governance scholars and practitioners in the nation, who helped our leadership design and “red team” this structure. We’re not yet ready to hold this out as an example to emulate; we are empiricists and want to see how it works.
+Meet the Initial Trustees
+The initial Trustees are:
+Jason Matheny : CEO of the RAND Corporation
+Kanika Bahl : CEO & President of Evidence Action
+Neil Buddy Shah : CEO of the Clinton Health Access Initiative (Chair)
+Paul Christiano : Founder of the Alignment Research Center
+Zach Robinson : Interim CEO of Effective Ventures US
+[1] An earlier version of the Trust, which was then called the “Long-Term Benefit Committee,” was written into our Series A investment documents in 2021, but since the committee was not slated to elect its first director until 2023, we took the intervening time to red-team and improve the legal structure and to carefully consider candidate selection. The current LTBT is the result.
+[2] The Trust structure was designed and “red teamed” with immeasurable assistance by John Morley of Yale Law School , David Berger , Amy Simmerman , and other lawyers from Wilson Sonsini, and by Noah Feldman and Seth Berman from Harvard Law School and Ethical Compass Advisors .
+Footnotes
+Since this page was originally published, there have been several changes to the composition of the Long-Term Benefit Trust.
+As of October 2026, the current Trustees are Neil Buddy Shah (Chair), CEO of the Clinton Health Access Initiative; Richard Fontaine, CEO of the Center for a New American Security; Dr. Ben Bernanke, Distinguished Fellow at the Brookings Institution and former Chair of the Federal Reserve; and Dr. Christopher Stubbs, Samuel C. Moncher Professor of Physics and of Astronomy at Harvard University.
+Previous Trustees, with the dates they stepped down, are Jason Matheny (December 2023), Paul Christiano (April 2024), Kanika Bahl (January 2026), Zach Robinson (January 2026) and Tino Cuéllar, who stepped down in August 2026 to join Anthropic as Chief Global Affairs Officer.
+Research
+Policy
+Commitments
+Company
+Products
+Models
+Solutions
+Help and security
+Terms and policies
+Our mission
+Anthropic is a Public Benefit Corporation. Our mission is the responsible development and maintenance of advanced AI for the long-term benefit of humanity.
+Log in
+Claude.ai
+Claude console
+© 2026 Anthropic PBC
