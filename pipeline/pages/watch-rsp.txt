@@ -1,5 +1,4 @@
 Anthropic’s Responsible Scaling Policy \ Anthropic
-Skip to main content News Research
 Policy
 Commitments
 Company
@@ -37,7 +36,6 @@ April 2, 2026
 We have also made two minor updates to the text of the Responsible Scaling Policy, updating it to version 3.1. After we released the v3 update, readers noted two areas on which our language could be clarified. We have therefore made the following updates, neither of which significantly change the substance of the policy:
 We now clarify that, even if not required by the RSP, we remain free to take measures such as pausing the development of our AI systems in any circumstances in which we deem them appropriate. This was true of RSP v3, but it is stated more clearly in the v3.1 update.
 There are also a number of smaller edits for style and clarity elsewhere in the policy.
-As we noted in the post announcing RSP v3 , the policy is a living document. As we learn more about its operation in the real world, we expect to make further changes, all of which will be logged both on this page and in a changelog in the policy document itself.
 March 24, 2026
 We posted an update to our RSP Noncompliance Reporting and Anti-Retaliation Policy, which we released internally in February 2026. It expands reporting channels, introduces a pathway for employees to make informal inquiries about potential RSP violations, and aligns with RSP Version 3.0. The policy document can be found at the link above.
 February 24, 2026
@@ -100,7 +98,5 @@ Help and security
 Terms and policies
 Our mission
 Anthropic is a Public Benefit Corporation. Our mission is the responsible development and maintenance of advanced AI for the long-term benefit of humanity.
-Log in
 Claude.ai
 Claude console
-© 2026 Anthropic PBC

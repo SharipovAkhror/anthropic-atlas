@@ -1,0 +1,540 @@
+{
+  "date": "2026-11-16",
+  "generatedAt": "2026-11-16T18:35:16.916Z",
+  "headline": {
+    "ru": "Атлас перезапущен: 10 исследователей сверили доску с открытыми источниками",
+    "en": "Atlas relaunched: ten researchers checked the board against public sources"
+  },
+  "summary": {
+    "ru": "Перед IPO (роудшоу стартовал 10 ноября, диапазон $70–78) доска сверена с сайтом Anthropic, документацией Claude, SEC и прессой. Исправлены должности и источники, добавлены новые люди и продукты, отмечены уходы, собрана хроника с августа 2026.",
+    "en": "Ahead of the IPO the board was checked against anthropic.com, Claude docs, SEC filings and press: titles and sources fixed, new people and products added, departures marked, and a timeline since August 2026 compiled."
+  },
+  "news": [
+    "2026-11-12-claude-meetings-beta",
+    "2026-11-12-self-hosted-claude-managed-agents",
+    "2026-11-10-anthropic-launches-roadshow-for-proposed-ipo",
+    "2026-11-10-claude-sheets-and-whiteboards-beta-claude-data",
+    "2026-11-09-claude-fable-52-and-mythos-52-released",
+    "2026-11-06-project-spend-tracking-enterprise-beta",
+    "2026-11-05-personal-finance-beta-us",
+    "2026-11-05-claude-code-product-lead-cat-wu-announces",
+    "2026-11-05-enterprise-security-center-and-admin-controls",
+    "2026-11-05-compliance-api-adds-security-posture-data-ip",
+    "2026-11-02-s-1-amendment-no-1-shows-q3",
+    "2026-11-02-message-threads-beta-in-the-messages-api",
+    "2026-10-28-ai-for-science-expands-to-foundations-and",
+    "2026-10-27-expanding-our-partnership-with-gsa-to-bring",
+    "2026-10-26-anthropic-files-s-1-with-the-sec",
+    "2026-10-23-alignment-assessment-of-the-uk-aisi-cybertesting",
+    "2026-10-22-claude-models-on-google-cloud-anthropic-managed",
+    "2026-10-22-donating-agent-skills-to-the-agentic-ai",
+    "2026-10-22-open-call-for-guest-investigators-in-the",
+    "2026-10-21-claude-duet-research-preview",
+    "2026-10-21-api-version-2026-10-21-with-new",
+    "2026-10-21-physicist-christopher-stubbs-joins-anthropics-long-term",
+    "2026-10-18-investing-in-the-public-benefit",
+    "2026-10-15-an-update-on-independent-evaluators",
+    "2026-10-14-preparing-for-the-2026-us-midterms",
+    "2026-10-14-anthropic-opens-singapore-office-and-signs-mou",
+    "2026-10-12-strengthening-our-defenses-against-distillation-attacks",
+    "2026-10-08-introducing-the-anthropic-cyber-mission",
+    "2026-10-08-building-on-our-commitment-to-american-scientific",
+    "2026-10-08-2026-usage-policy-update",
+    "2026-10-07-monthly-api-credits-included-for-max-and",
+    "2026-10-07-introducing-claude-haiku-55",
+    "2026-10-06-expanding-the-cyber-verification-program",
+    "2026-10-02-anthropic-invests-100-million-to-train-10000",
+    "2026-10-01-barclays-scales-claude-to-upgrade-operations-and",
+    "2026-09-30-reuters-ipo-prospectus-shows-deep-dependence-on",
+    "2026-09-28-introducing-claude-sonnet-55",
+    "2026-09-25-us-appeals-court-upholds-pentagon-exclusion-of",
+    "2026-09-22-introducing-claude-opus-55",
+    "2026-09-21-the-situation-report-claude-supports-ebola-response",
+    "2026-09-18-partnering-with-accenture-on-embedded-evaluation",
+    "2026-09-16-cowork-merged-into-claude-chat",
+    "2026-09-16-claude-design-slides-and-docs-in-every",
+    "2026-09-15-salesforce-in-claude-beta",
+    "2026-09-10-smart-reports-beta-for-enterprise",
+    "2026-09-09-scenarios-for-our-economic-future",
+    "2026-09-07-claude-code-claude-plugin-eval",
+    "2026-09-01-claude-fable-51-and-mythos-51-launched",
+    "2026-08-28-us-judge-blocks-pentagon-supply-chain-risk",
+    "2026-08-28-automated-researchers-reliably-mitigate-alignment-failures",
+    "2026-08-25-elena-leichty-promoted-to-general-counsel-succeeding",
+    "2026-08-25-memory-in-cowork-and-editable-topics",
+    "2026-08-20-python-sdk-v10-released-with-breaking-changes",
+    "2026-08-19-computer-use-tool-out-of-beta-browser",
+    "2026-08-19-agent-skills-and-skills-api-out-of",
+    "2026-08-17-run-rate-revenue-reportedly-passes-65b-before",
+    "2026-08-17-claude-code-design-research-preview",
+    "2026-08-14-august-2026-risk-report-published",
+    "2026-08-06-skill-and-plugin-security-scanning-enterprise-beta",
+    "2026-08-05-claude-opus-41-retired-from-api",
+    "2026-08-04-tino-cuellar-named-chief-global-affairs-officer",
+    "2026-08-03-claude-code-cross-session-messaging-and-auto"
+  ],
+  "added": [
+    {
+      "kind": "person",
+      "id": "elena-leichty",
+      "label": "Elena Leichty — Генеральный юрисконсульт"
+    },
+    {
+      "kind": "person",
+      "id": "jason-matheny",
+      "label": "Jason Matheny — Бывший попечитель LTBT"
+    },
+    {
+      "kind": "person",
+      "id": "john-jumper",
+      "label": "John Jumper — Исследователь (пришёл из Google DeepMind)"
+    },
+    {
+      "kind": "product",
+      "id": "prod-office-apps",
+      "label": "Claude Sheets, Whiteboards, Meetings"
+    },
+    {
+      "kind": "product",
+      "id": "prod-rsp",
+      "label": "Responsible Scaling Policy 3.4"
+    },
+    {
+      "kind": "fact",
+      "id": "ltbt_trustees",
+      "label": "Попечители LTBT: 4 / 5"
+    },
+    {
+      "kind": "fact",
+      "id": "board_size",
+      "label": "Совет директоров: 8"
+    },
+    {
+      "kind": "fact",
+      "id": "q3_revenue",
+      "label": "Выручка Q3 2026: $17.0B"
+    },
+    {
+      "kind": "fact",
+      "id": "ltbt",
+      "label": "Термин: LTBT"
+    },
+    {
+      "kind": "fact",
+      "id": "pbc",
+      "label": "Термин: PBC"
+    },
+    {
+      "kind": "fact",
+      "id": "class-f",
+      "label": "Термин: Class F"
+    },
+    {
+      "kind": "fact",
+      "id": "class-t",
+      "label": "Термин: Class T"
+    },
+    {
+      "kind": "fact",
+      "id": "class-n",
+      "label": "Термин: Class N"
+    },
+    {
+      "kind": "fact",
+      "id": "s-1",
+      "label": "Термин: Form S-1"
+    },
+    {
+      "kind": "fact",
+      "id": "ipo",
+      "label": "Термин: IPO"
+    },
+    {
+      "kind": "fact",
+      "id": "run-rate",
+      "label": "Термин: Run-rate выручка"
+    },
+    {
+      "kind": "fact",
+      "id": "rsp",
+      "label": "Термин: RSP"
+    },
+    {
+      "kind": "fact",
+      "id": "asl",
+      "label": "Термин: ASL"
+    },
+    {
+      "kind": "fact",
+      "id": "constitution",
+      "label": "Термин: Конституция Claude"
+    },
+    {
+      "kind": "fact",
+      "id": "interpretability",
+      "label": "Термин: Интерпретируемость"
+    },
+    {
+      "kind": "fact",
+      "id": "mcp",
+      "label": "Термин: MCP"
+    },
+    {
+      "kind": "fact",
+      "id": "context-window",
+      "label": "Термин: Контекстное окно"
+    },
+    {
+      "kind": "fact",
+      "id": "mtok",
+      "label": "Термин: $ / MTok"
+    },
+    {
+      "kind": "fact",
+      "id": "deprecation",
+      "label": "Термин: Deprecated / Retired"
+    },
+    {
+      "kind": "fact",
+      "id": "agent",
+      "label": "Термин: Агент"
+    }
+  ],
+  "updated": [
+    {
+      "kind": "person",
+      "id": "neil-shah",
+      "label": "Dr. Neil 'Buddy' Shah — Председатель Траста LTBT",
+      "fields": [
+        "bio",
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "ben-bernanke",
+      "label": "Dr. Ben S. Bernanke — Попечитель LTBT (экс-глава ФРС)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "richard-fontaine",
+      "label": "Richard Fontaine — Попечитель LTBT (CEO CNAS)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "christopher-stubbs",
+      "label": "Dr. Christopher Stubbs — Попечитель LTBT (Гарвард)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "vas-narasimhan",
+      "label": "Dr. Vas Narasimhan — Директор Совета (CEO Novartis)",
+      "fields": [
+        "bio",
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "chris-liddell",
+      "label": "Christopher P. Liddell — Спец-директор (ex-CFO Microsoft)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "paul-christiano",
+      "label": "Dr. Paul Christiano — Экс-попечитель LTBT (2023–2024)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "kanika-zach",
+      "label": "Kanika Bahl & Zach Robinson — Экс-попечители LTBT (2023–2026)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "daniela-amodei",
+      "label": "Daniela Amodei — Сооснователь, президент и председатель Совета директоров",
+      "fields": [
+        "role",
+        "initials",
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "cloud-titans",
+      "label": "Amazon & Google — Облачные инвесторы (Class N)",
+      "fields": [
+        "until"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "tino-cuellar",
+      "label": "Mariano-Florentino Cuéllar — Глава глобальных связей (CGAO)",
+      "fields": [
+        "bio",
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "jay-kreps",
+      "label": "Jay Kreps — Экс-директор Совета (Confluent)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "sam-mccandlish",
+      "label": "Sam McCandlish — Сооснователь, главный архитектор",
+      "fields": [
+        "role",
+        "bio",
+        "sources"
+      ],
+      "reason": "должность по странице руководства"
+    },
+    {
+      "kind": "person",
+      "id": "chris-olah",
+      "label": "Chris Olah — Сооснователь, руководитель исследований интерпретируемости",
+      "fields": [
+        "role",
+        "sources"
+      ],
+      "reason": "должность по странице руководства"
+    },
+    {
+      "kind": "person",
+      "id": "jack-clark",
+      "label": "Jack Clark — Сооснователь, глава Public Benefit",
+      "fields": [
+        "role",
+        "bio",
+        "sources"
+      ],
+      "reason": "должность по странице руководства"
+    },
+    {
+      "kind": "person",
+      "id": "deep-ganguli",
+      "label": "Dr. Deep Ganguli — Глава Societal Impacts",
+      "fields": [
+        "bio"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "cat-wu",
+      "label": "Catherine (Cat) Wu — Бывший руководитель продукта Claude Code",
+      "fields": [
+        "role",
+        "bio",
+        "sources"
+      ],
+      "reason": "ушла из Anthropic 30 окт., перешла в OpenAI"
+    },
+    {
+      "kind": "person",
+      "id": "rahul-patil",
+      "label": "Rahul Patil — Технический директор (CTO)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "krishna-rao",
+      "label": "Krishna Rao — Финансовый директор (CFO)",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "jason-clinton",
+      "label": "Jason Clinton — Заместитель CISO",
+      "fields": [
+        "role",
+        "bio"
+      ]
+    },
+    {
+      "kind": "person",
+      "id": "kate-jensen",
+      "label": "Kate Jensen — Глава региона Америка",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-fable-mythos",
+      "label": "Claude Fable 5.2 & Mythos 5.2",
+      "fields": [
+        "metrics",
+        "description",
+        "sources",
+        "children"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-claude-55",
+      "label": "Claude 5.5 (Opus, Sonnet, Haiku)",
+      "fields": [
+        "description",
+        "sources",
+        "children"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-aar-classifiers",
+      "label": "Automated Alignment Researchers",
+      "fields": [
+        "description",
+        "sources"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-clio-glasswing",
+      "label": "Clio & Project Glasswing",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-claude-apps",
+      "label": "Claude.ai, Artifacts & Projects",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-cowork",
+      "label": "Claude Cowork",
+      "fields": [
+        "label",
+        "released",
+        "description",
+        "sources"
+      ],
+      "reason": "Cowork встроен в обычный чат с 16 сентября"
+    },
+    {
+      "kind": "product",
+      "id": "prod-design-science",
+      "label": "Claude Design & Science",
+      "fields": [
+        "name",
+        "released",
+        "description",
+        "sources"
+      ]
+    },
+    {
+      "kind": "product",
+      "id": "prod-enterprise-max",
+      "label": "Тарифы: Pro, Max, Ultra, Team, Enterprise",
+      "fields": [
+        "name",
+        "metrics",
+        "description",
+        "sources"
+      ],
+      "reason": "Max 20x переименован в Ultra"
+    },
+    {
+      "kind": "fact",
+      "id": "ipo_ticker",
+      "label": "Тикер: ANT",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "fact",
+      "id": "ipo_price_range",
+      "label": "Диапазон IPO: $70–78",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "fact",
+      "id": "valuation",
+      "label": "Оценка: до $1.4T",
+      "fields": [
+        "note",
+        "sources"
+      ]
+    },
+    {
+      "kind": "fact",
+      "id": "run_rate_revenue",
+      "label": "Run-rate выручка: $81B",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "fact",
+      "id": "class_f_votes",
+      "label": "Голоса Class F: 50.1%",
+      "fields": [
+        "sources"
+      ]
+    }
+  ],
+  "removed": [
+    {
+      "kind": "product",
+      "id": "prod-claude-45",
+      "label": "Claude 4 & 4.5 / 4.6",
+      "reason": "Opus 4/4.1 выведены, Sonnet 4.5 уходит 30 ноября"
+    },
+    {
+      "kind": "product",
+      "id": "prod-claude-3x",
+      "label": "Claude 3 / 3.5 / 3.7 Sonnet",
+      "reason": "модели выведены из API"
+    },
+    {
+      "kind": "fact",
+      "id": "class_t_board",
+      "label": "Места Совета от LTBT: 4 / 7",
+      "reason": "заменено: формулировка «4 из 7 мест» не подтверждена источниками"
+    }
+  ],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 2,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}

@@ -213,16 +213,16 @@
       ]
     },
     {
-      "id": "class_t_board",
+      "id": "ltbt_trustees",
       "label": {
-        "ru": "Совет от траста LTBT",
-        "en": "Board seats via LTBT",
-        "uz": "LTBT kengash o'rinlari"
+        "ru": "Попечители LTBT",
+        "en": "LTBT trustees",
+        "uz": "LTBT vasiylari"
       },
-      "value": "→ большинство",
+      "value": "4 / 5",
       "note": {
         "ru": "Траст избирает растущую часть Совета, со временем большинство",
-        "en": "Trust elects a growing share of the board, ultimately a majority"
+        "en": "The trust elects a growing share of the board, ultimately a majority"
       },
       "asOf": "2026-10-31",
       "sources": [
@@ -389,7 +389,6 @@
       },
       "since": "2023-09",
       "influence": 95,
-      "avatar": "https://www.clintonhealthaccess.org/wp-content/uploads/2022/06/Buddy-Shah-Headshot-scaled.jpg",
       "initials": "NS",
       "bio": {
         "ru": "CEO Clinton Health Access Initiative. Председатель Long-Term Benefit Trust — независимого органа из пяти членов, который избирает часть Совета директоров; со временем это будет большинство Совета."
@@ -575,7 +574,6 @@
       },
       "since": "2026-04",
       "influence": 85,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Vas_Narasimhan_WEF_2020.jpg/250px-Vas_Narasimhan_WEF_2020.jpg",
       "initials": "VN",
       "bio": {
         "ru": "CEO Novartis. Вошёл в Совет директоров Anthropic в апреле 2026 года."
@@ -685,7 +683,6 @@
       "since": "2023",
       "until": "2026",
       "influence": 75,
-      "avatar": "https://www.evidenceaction.org/wp-content/uploads/2023/03/Kanika-Bahl-Headshot.jpg",
       "initials": "KB",
       "bio": {
         "ru": "Входили в первый состав LTBT с сентября 2023 по январь 2026 года."
@@ -828,7 +825,6 @@
       },
       "since": "2023-05",
       "influence": 87,
-      "avatar": "https://www.sparkcapital.com/wp-content/uploads/2021/09/Yasmin-Razavi-1-800x800.jpg",
       "initials": "YR",
       "bio": {
         "ru": "General Partner фонда Spark Capital. Занимает третье акционерное кресло в Совете директоров."
@@ -970,7 +966,6 @@
       "since": "2024",
       "until": "2026",
       "influence": 77,
-      "avatar": "https://cdn.thenewstack.io/media/2019/04/7f997a54-jay-kreps-confluent.jpg",
       "initials": "JK",
       "bio": {
         "ru": "Соавтор Apache Kafka и CEO Confluent. Член Совета директоров от LTBT в 2024–2026 годах."
@@ -1076,7 +1071,6 @@
       },
       "since": "2021-01",
       "influence": 94,
-      "avatar": "https://specials-images.forbesimg.com/imageserve/65283d8759a29f029f950f49/416x416.jpg",
       "initials": "TB",
       "bio": {
         "ru": "Первый автор статьи GPT-3. Управляет кластерами GPU/TPU и сделками на дата-центры."
@@ -1362,7 +1356,6 @@
       "since": "2024",
       "until": "2025",
       "influence": 78,
-      "avatar": "https://markedium.com/wp-content/uploads/2024/08/John-Schulman.webp",
       "initials": "JS",
       "bio": {
         "ru": "Сооснователь OpenAI, автор PPO. Работал в Anthropic с августа 2024 по февраль 2025 года."
@@ -1469,7 +1462,6 @@
       },
       "since": "2021-01",
       "influence": 89,
-      "avatar": "https://www.contextjamming.com/images/founders/ben-mann.jpg",
       "initials": "BM",
       "bio": {
         "ru": "Соавтор GPT-3, работает с января 2021 (вне Founder LLC по S-1). Соруководит Anthropic Labs."
@@ -1689,7 +1681,6 @@
       },
       "since": "2024-04",
       "influence": 90,
-      "avatar": "https://static.toiimg.com/thumb/msid-110332232,width-400,resizemode-4/110332232.jpg",
       "initials": "KR",
       "bio": {
         "ru": "Экс-Airbnb IPO, первый CFO Anthropic (с апреля 2024). Руководит финансами и выходом на Nasdaq."
@@ -1828,7 +1819,6 @@
       },
       "since": "2023",
       "influence": 82,
-      "avatar": "https://www.sans.org/img/profiles/jason-clinton.jpg",
       "initials": "JC",
       "bio": {
         "ru": "Бывший CISO Anthropic; после прихода Виталия Гуданца остался заместителем CISO."

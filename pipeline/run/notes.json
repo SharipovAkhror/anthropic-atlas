@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-16",
+  "headline": {
+    "ru": "Атлас перезапущен: 10 исследователей сверили доску с открытыми источниками",
+    "en": "Atlas relaunched: ten researchers checked the board against public sources"
+  },
+  "summary": {
+    "ru": "Перед IPO (роудшоу стартовал 10 ноября, диапазон $70–78) доска сверена с сайтом Anthropic, документацией Claude, SEC и прессой. Исправлены должности и источники, добавлены новые люди и продукты, отмечены уходы, собрана хроника с августа 2026.",
+    "en": "Ahead of the IPO the board was checked against anthropic.com, Claude docs, SEC filings and press: titles and sources fixed, new people and products added, departures marked, and a timeline since August 2026 compiled."
+  },
+  "reasons": {
+    "cat-wu": "ушла из Anthropic 30 окт., перешла в OpenAI",
+    "prod-claude-3x": "модели выведены из API",
+    "prod-claude-45": "Opus 4/4.1 выведены, Sonnet 4.5 уходит 30 ноября",
+    "ltbt_trustees": "вместо неподтверждённого «4 из 7 мест»: 4 попечителя из 5 мест, траст избирает растущую часть Совета",
+    "jack-clark": "должность по странице руководства",
+    "chris-olah": "должность по странице руководства",
+    "sam-mccandlish": "должность по странице руководства",
+    "prod-cowork": "Cowork встроен в обычный чат с 16 сентября",
+    "prod-enterprise-max": "Max 20x переименован в Ultra",
+    "class_t_board": "заменено: формулировка «4 из 7 мест» не подтверждена источниками"
+  }
+}

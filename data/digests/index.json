@@ -1,1 +1,17 @@
-{ "digests": [] }
+{
+  "digests": [
+    {
+      "date": "2026-11-16",
+      "headline": {
+        "ru": "Атлас перезапущен: 10 исследователей сверили доску с открытыми источниками",
+        "en": "Atlas relaunched: ten researchers checked the board against public sources"
+      },
+      "counts": {
+        "news": 62,
+        "added": 25,
+        "updated": 34,
+        "removed": 3
+      }
+    }
+  ]
+}

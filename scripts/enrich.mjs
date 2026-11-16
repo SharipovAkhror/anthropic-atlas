@@ -82,6 +82,8 @@ for (const p of atlas.people) {
           break;
         } catch (e) { log.push(`${p.id}: photo failed (${credit}: ${e.message})`); }
       }
+      // never hot-link: an external avatar that could not be saved is dropped (UI falls back to a monogram icon)
+      if (p.avatar?.startsWith("https://")) { delete p.avatar; delete p.avatarCredit; changed++; }
     } else if (p.avatar !== `/${local}`) { p.avatar = `/${local}`; changed++; }
   } catch (e) { log.push(`${p.id}: ${e.message}`); }
   await new Promise(r => setTimeout(r, 150));

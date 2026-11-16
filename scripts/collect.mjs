@@ -104,7 +104,8 @@ const handlers = {
     return [{ url: "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md", title: `Claude Code ${fresh.at(-1).version} → ${fresh[0].version}`, published: DATE, snippet: fresh.map(p => `${p.version}\n${p.body}`).join("\n").slice(0, 2500) }];
   },
   async "page-watch"(src) {
-    const lines = strip(await get(src.url)).filter(l => l.length > 2 && l.length < 400);
+    const NOISE = /cookie|consent|skip to main|accept all|reject all|customi[sz]e|privacy choices|©|copyright|log in|sign up/i;
+    const lines = strip(await get(src.url)).filter(l => l.length > 2 && l.length < 400 && !NOISE.test(l));
     const file = join(ROOT, "pipeline/pages", `${src.id}.txt`);
     const prev = existsSync(file) ? readFileSync(file, "utf8").split("\n") : null;
     writeFileSync(file, lines.join("\n") + "\n");

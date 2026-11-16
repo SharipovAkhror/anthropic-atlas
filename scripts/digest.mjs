@@ -11,7 +11,7 @@ import { execFileSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
 const DATE = args.date || new Date().toISOString().slice(0, 10);
 const BASE = args.base || "HEAD";
@@ -20,10 +20,11 @@ const SITE = "https://athropic-atlas.vercel.app";
 const readNow = rel => JSON.parse(readFileSync(join(ROOT, rel), "utf8"));
 const readBase = rel => { try { return JSON.parse(execFileSync("git", ["show", `${BASE}:${rel}`], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] })); } catch { return null; } };
 const notesPath = join(ROOT, "pipeline/run/notes.json");
-const notes = existsSync(notesPath) ? JSON.parse(readFileSync(notesPath, "utf8")) : {};
+const notesRaw = existsSync(notesPath) ? JSON.parse(readFileSync(notesPath, "utf8")) : {};
+const notes = notesRaw.date === DATE ? notesRaw : {}; // stale notes from a previous day are ignored
 const reasons = notes.reasons || {};
 
-const IGNORED = new Set(["verifiedAt"]);
+const IGNORED = new Set(["verifiedAt", "avatar", "avatarCredit", "links"]); // enrichment and re-verification are not news
 function diff(kind, before = [], after = [], label) {
   const B = new Map(before.map(x => [x.id, x])), A = new Map(after.map(x => [x.id, x]));
   const added = [], updated = [], removed = [], reverified = [];
@@ -31,7 +32,8 @@ function diff(kind, before = [], after = [], label) {
     const b = B.get(id);
     if (!b) { added.push({ kind, id, label: label(a) }); continue; }
     const fields = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(k => !IGNORED.has(k) && JSON.stringify(a[k]) !== JSON.stringify(b[k]));
-    if (b.status === "active" && a.status && a.status !== "active") { removed.push({ kind, id, label: label(a), reason: reasons[id] || `status → ${a.status}` }); continue; }
+    const retiredNow = a.status && a.status !== b.status && (["former", "retired"].includes(a.status) || (b.status === "active" && a.status === "legacy"));
+    if (retiredNow) { removed.push({ kind, id, label: label(a), reason: reasons[id] || `status → ${a.status}` }); continue; }
     if (fields.length) updated.push({ kind, id, label: label(a), fields, ...(reasons[id] ? { reason: reasons[id] } : {}) });
     else if (a.verifiedAt !== b.verifiedAt) reverified.push(id);
   }
@@ -80,9 +82,10 @@ const md = [];
 md.push(`Anthropic Atlas · ${DATE}`);
 md.push(`**${ru(digest.headline)}**`);
 md.push(ru(digest.summary));
-if (topNews.length) { md.push("\nНовости компании:"); for (const e of topNews) md.push(`• ${ru(e.title)} (${e.date}) — ${e.sources[0].url}`); }
-if (nonEventAdded.length) { md.push("\nДобавлено на доску:"); for (const a of nonEventAdded) md.push(`• ${a.label}`); }
-if (updated.length) { md.push("\nОбновлено:"); for (const u of updated) md.push(`• ${u.label} (${u.fields.join(", ")})${u.reason ? ` — ${u.reason}` : ""}`); }
+if (topNews.length) { md.push("\nНовости компании:"); for (const e of topNews.slice(0, 12)) md.push(`• ${ru(e.title)} (${e.date}) — ${e.sources[0].url}`); }
+if (topNews.length > 12) md.push(`…и ещё ${topNews.length - 12} — на доске.`);
+if (nonEventAdded.length) { md.push("\nДобавлено на доску:"); for (const a of nonEventAdded.slice(0, 15)) md.push(`• ${a.label}`); if (nonEventAdded.length > 15) md.push(`…и ещё ${nonEventAdded.length - 15}`); }
+if (updated.length) { md.push("\nОбновлено:"); for (const u of updated.slice(0, 15)) md.push(`• ${u.label} (${u.fields.join(", ")})${u.reason ? ` — ${u.reason}` : ""}`); if (updated.length > 15) md.push(`…и ещё ${updated.length - 15}`); }
 if (removed.length) { md.push("\nУстарело и убрано:"); for (const r of removed) md.push(`• ${r.label} — ${r.reason}`); }
 if (!topNews.length && !nonEventAdded.length && !updated.length && !removed.length) md.push("\nИзменений нет.");
 md.push(`\nПроверено источников: ${digest.stats.sourcesOk}${failedSources.length ? `, недоступны: ${failedSources.join(", ")}` : ""}. Перепроверено записей: ${reverified.length}.`);

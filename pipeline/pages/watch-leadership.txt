@@ -1,5 +1,4 @@
 Company \ Anthropic
-Skip to main content News Research
 Policy
 Commitments
 Company
@@ -66,7 +65,5 @@ Help and security
 Terms and policies
 Our mission
 Anthropic is a Public Benefit Corporation. Our mission is the responsible development and maintenance of advanced AI for the long-term benefit of humanity.
-Log in
 Claude.ai
 Claude console
-© 2026 Anthropic PBC
