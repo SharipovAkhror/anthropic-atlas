@@ -86,10 +86,10 @@
 
   // ---------------------------------------------------------------- islands
   const board = () => $("#board");
-  function island(id, title, { count = "", lead = "", cls = "" } = {}, body = "") {
+  function island(id, title, { count = "", lead = "", cls = "", far = "" } = {}, body = "") {
     const slot = document.createElement("div");
     slot.className = "slot"; slot.dataset.island = id; slot.dataset.title = title;
-    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div></section>`;
+    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div><div class="farsum" aria-hidden="true"><h3>${esc(title)}${count ? ` <span class="num">${esc(count)}</span>` : ""}</h3>${far}</div></section>`;
     board().appendChild(slot);
     return slot.firstElementChild;
   }
@@ -109,7 +109,8 @@
       ["removed", dg.removed.map(a => ({ sign: "−", text: a.label, why: a.reason, ref: `${a.kind}:${a.id}` }))]
     ];
     const past = D.digests.slice(0, 7);
-    const el = island(m.id, tx(m.title), { cls: "today notitle" }, `
+    const el = island(m.id, tx(m.title), { cls: "today notitle", far: `<div class="far-k">${esc(fmtDate(dg.date))}</div><div class="far-h">${esc(tx(dg.headline))}</div>` }, `
+      <div class="mast-m"><b>Anthropic Atlas</b><span>${esc(M("edition"))} · ${esc(fmtDate(dg.date, { day: "numeric", month: "long" }))}</span></div>
       <div class="date">${esc(t("digestFor"))} ${esc(fmtDate(dg.date))}</div>
       <h1>${esc(tx(dg.headline))}</h1>
       <p class="summary">${gloss(tx(dg.summary))}</p>
@@ -129,7 +130,7 @@
   };
 
   R.facts = m => {
-    island(m.id, tx(m.title), {}, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
+    island(m.id, tx(m.title), { far: D.atlas.facts.slice(0, 4).map(f => `<div class="far-v"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></div>`).join("") }, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
   };
 
   R.timeline = m => {
@@ -137,7 +138,7 @@
     const days = [];
     for (const e of evs) { const last = days.at(-1); if (last && last.date === e.date) last.items.push(e); else days.push({ date: e.date, items: [e] }); }
     const thisYear = String(new Date().getFullYear());
-    const el = island(m.id, tx(m.title), { count: String(D.events.length), lead: tx(m.lead) }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => `
+    const el = island(m.id, tx(m.title), { count: String(D.events.length), lead: tx(m.lead), far: D.events.slice(0, 6).map(e => `<div class="far-l">${esc(tx(e.title))}</div>`).join("") }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => `
       <button class="ev" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)}</span></button>`).join("")}`).join("") + (S.allEvents ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${D.events.length}</button>`));
     $("[data-all]", el)?.addEventListener("click", () => { S.allEvents = true; renderAll({ keepCamera: true }); });
   };
@@ -150,7 +151,7 @@
     const fVotes = parseFloat((D.atlas.facts.find(f => f.id === "class_f_votes") || {}).value) || 0;
     const trustees = people.filter(isTrustee), boardP = people.filter(isBoard).sort((a, b) => b.influence - a.influence);
     const former = people.filter(p => ["ltbt", "capital"].includes(p.zone) && p.status === "former" && /Trust|Board|Director/i.test(p.role.en));
-    const el = island(m.id, tx(m.title), { lead: tx(m.lead) }, `
+    const el = island(m.id, tx(m.title), { lead: tx(m.lead), far: `<div class="far-v"><b class="num">${fVotes}%</b><span>Class F</span></div><div class="far-faces">${[...trustees, ...boardP].filter((p, i, a) => a.indexOf(p) === i).map(p => avatar(p)).join("")}</div>` }, `
       <div class="sub-h"><span>${esc(t("votes"))}</span><span class="num">Class F ${fVotes}%</span></div>
       <div class="votes"><i data-w="${fVotes}"></i></div>
       <div class="votes-legend">${(D.atlas.shareClasses || []).map(c => `<div><b>${IDX.has(`term:${c.id}`) ? `<abbr class="g" data-term="${c.id}">${esc(c.name)}</abbr>` : esc(c.name)}</b> · ${esc(tx(c.holder))}. ${gloss(tx(c.control))}.</div>`).join("")}</div>
@@ -165,7 +166,7 @@
       const ps = D.atlas.people.filter(p => p.zone === z.id);
       if (!ps.length) continue;
       const act = ps.filter(p => p.status === "active").sort((a, b) => b.influence - a.influence), fm = ps.filter(p => p.status === "former");
-      island(`zone-${z.id}`, tx(z.label), { count: String(act.length) }, act.map(p => row(p)).join("") + (fm.length ? collapsible(`${t("former")} · ${fm.length}`, fm.map(p => row(p, (p.until || "").slice(0, 4))).join("")) : ""));
+      island(`zone-${z.id}`, tx(z.label), { count: String(act.length), far: `<div class="far-faces">${act.map(p => (p.kind === "group" ? `<span class="av">${initials(p)}</span>` : avatar(p))).join("")}</div>` }, act.map(p => row(p)).join("") + (fm.length ? collapsible(`${t("former")} · ${fm.length}`, fm.map(p => row(p, (p.until || "").slice(0, 4))).join("")) : ""));
     }
   };
 
@@ -174,13 +175,13 @@
     for (const c of D.atlas.clusters) {
       const ps = D.atlas.products.filter(p => p.cluster === c.id).sort((a, b) => order[a.status] - order[b.status] || String(b.released).localeCompare(String(a.released)));
       if (!ps.length) continue;
-      island(`cluster-${c.id}`, tx(c.label), { count: String(ps.length) }, ps.map(p => `<button class="row noav" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span><span class="side">${p.status === "active" ? esc(String(p.released || "").slice(0, 4)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`).join(""));
+      island(`cluster-${c.id}`, tx(c.label), { count: String(ps.length), far: ps.filter(p => p.status !== "retired").slice(0, 5).map(p => `<div class="far-l">${esc(p.name)}</div>`).join("") }, ps.map(p => `<button class="row noav" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span><span class="side">${p.status === "active" ? esc(String(p.released || "").slice(0, 4)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`).join(""));
     }
   };
 
   R.glossary = m => {
     const cats = { governance: 1, finance: 2, safety: 3, models: 4, platform: 5, product: 6 };
-    island(m.id, tx(m.title), { count: String(D.terms.length), lead: tx(m.lead) }, [...D.terms].sort((a, b) => (cats[a.category] || 9) - (cats[b.category] || 9)).map(g => `<button class="term" data-open="term:${g.id}"><b>${esc(g.term)}</b><span>${esc(tx(g.definition))}</span></button>`).join(""));
+    island(m.id, tx(m.title), { count: String(D.terms.length), lead: tx(m.lead), far: `<div class="far-terms">${D.terms.slice(0, 14).map(g => esc(g.term)).join(" · ")}</div>` }, [...D.terms].sort((a, b) => (cats[a.category] || 9) - (cats[b.category] || 9)).map(g => `<button class="term" data-open="term:${g.id}"><b>${esc(g.term)}</b><span>${esc(tx(g.definition))}</span></button>`).join(""));
   };
 
   R.cards = m => { // generic renderer for new topics: any array of {id,name,description,sources}
@@ -263,10 +264,11 @@
     $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
     const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
     $("#sheet").classList.add("on"); $("#scrim").classList.add("on");
+    S.focus = kind === "person" ? id : null; drawLinks();
     if (!fromHash) try { history.replaceState(null, "", `#/${kind}/${id}`); } catch {}
   }
   function closeSheet() {
-    $("#sheet").classList.remove("on"); $("#scrim").classList.remove("on"); S.stack = [];
+    $("#sheet").classList.remove("on"); $("#scrim").classList.remove("on"); S.stack = []; S.focus = null; drawLinks();
     try { history.replaceState(null, "", location.pathname + location.search); } catch {}
   }
   function back() { if (S.stack.length > 1) { S.stack.pop(); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); } else closeSheet(); }
@@ -281,8 +283,67 @@
   }
   const hideTip = () => $("#tip").classList.remove("show");
 
+  // ---------------------------------------------------------------- masthead (newspaper front page)
+  const MAST = {
+    ru: { edition: "Ежедневный выпуск", tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника" },
+    en: { edition: "Daily edition", tag: "Anthropic from public sources: people, power, products, chronicle" },
+    uz: { edition: "Kundalik son", tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika" }
+  };
+  const M = k => MAST[S.lang][k] || MAST.ru[k];
+  function stampText() {
+    const dg = S.digest; if (!dg) return `${t("updated")} ${fmtDate(D.atlas.meta.updatedAt)}`;
+    const when = new Date(dg.generatedAt), days = Math.floor((Date.now() - when) / 864e5);
+    const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
+    return `${t("updated")} ${day} ${t("at")} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}`;
+  }
+  function mastHTML() {
+    const date = S.digest?.date || D.atlas.meta.updatedAt;
+    return `<header class="mast"><div class="mast-top"><span>${esc(M("edition"))} · № ${D.digests.length || 1}</span><span>${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long", year: "numeric" }))}</span><span>${esc(stampText())}</span></div>
+      <h1>Anthropic Atlas</h1><div class="mast-sub"><span>${esc(M("tag"))}</span><a href="https://github.com/SharipovAkhror/athropic-atlas/blob/main/docs/METHODOLOGY.md" target="_blank" rel="noopener">${esc(t("method"))}</a></div></header>`;
+  }
+
+  // ---------------------------------------------------------------- connections between people (desktop board)
+  function drawLinks() {
+    const svg = $("#links"), top = $("#links-top");
+    if (!svg || phone() || !D) return;
+    const focus = S.hover || S.focus;
+    for (const g of [svg, top]) { g.setAttribute("width", BW); g.setAttribute("height", BH); g.setAttribute("viewBox", `0 0 ${BW} ${BH}`); }
+    const vis = id => $$(`.slot [data-open="person:${CSS.escape(id)}"]`).filter(el => !el.closest(".collapse:not(.open)"));
+    const slotBox = new Map();
+    const sb = el => { const s = el.closest(".slot"); if (!slotBox.has(s)) slotBox.set(s, { s, x: parseFloat(s.style.left), y: parseFloat(s.style.top), w: s.offsetWidth, h: s.offsetHeight }); return slotBox.get(s); };
+    let base = "", hot = "", ports = "", hotPorts = "";
+    const rel = new Set();
+    for (const e of D.atlas.edges) {
+      const A = vis(e.from), B = vis(e.to);
+      if (!A.length || !B.length) continue;
+      let best = null;
+      for (const a of A) for (const b of B) { const pa = boxOf(a), pb = boxOf(b), d = Math.hypot(pa.x - pb.x, pa.y - pb.y) + (a.closest(".slot") === b.closest(".slot") ? 400 : 0); if (!best || d < best.d) best = { a, b, pa, pb, d }; }
+      const ia = sb(best.a), ib = sb(best.b);
+      const ya = best.pa.y + best.pa.h / 2, yb = best.pb.y + best.pb.h / 2;
+      let d, xa, xb;
+      if (ia.s === ib.s || Math.abs(ia.x - ib.x) < 2) { // same column: loop out on the left edge
+        xa = ia.x; xb = ib.x; const k = Math.min(GAP * .8, 22 + Math.abs(yb - ya) * .12);
+        d = `M${xa} ${ya}C${xa - k} ${ya} ${xb - k} ${yb} ${xb} ${yb}`;
+      } else {
+        const right = ib.x > ia.x;
+        xa = right ? ia.x + ia.w : ia.x; xb = right ? ib.x : ib.x + ib.w;
+        const mid = (xa + xb) / 2;
+        d = `M${xa} ${ya}C${mid} ${ya} ${mid} ${yb} ${xb} ${yb}`;
+      }
+      const on = focus && (e.from === focus || e.to === focus);
+      const path = `<path class="ln ${e.type}" d="${d}"/>`;
+      const pt = `<circle cx="${xa}" cy="${ya}" r="3.5"/><circle cx="${xb}" cy="${yb}" r="3.5"/>`;
+      if (on) { hot += path; hotPorts += pt; rel.add(e.from); rel.add(e.to); } else { base += path; ports += pt; }
+    }
+    svg.innerHTML = `<g class="${focus ? "dim" : ""}">${base}${ports ? `<g class="pt">${ports}</g>` : ""}</g>`;
+    top.innerHTML = hot ? `<g class="hot">${hot}<g class="pt">${hotPorts}</g></g>` : "";
+    $$(".slot .row.rel").forEach(r => r.classList.remove("rel"));
+    if (focus) rel.forEach(id => vis(id).forEach(r => r.classList.add("rel")));
+  }
+
   // ---------------------------------------------------------------- desktop camera
-  const COL = 360, GAP = 28, PAD = 48;
+  const COL = 360, GAP = 64, PAD = 64;
+  let MH = 0; // masthead height
   const cam = { x: 0, y: 0, s: 1 };
   let BW = 0, BH = 0, boxes = [], anim = 0, inertiaRaf = 0;
   const vw = () => $("#view").clientWidth, vh = () => $("#view").clientHeight;
@@ -291,16 +352,19 @@
     if (phone()) { board().style.width = board().style.height = ""; return; }
     const slots = $$(".slot", board());
     const hs = slots.map(s => s.offsetHeight);
+    const mast = $(".mast", board());
     let best = null;
     for (let n = 3; n <= 8; n++) {
       const cols = new Array(n).fill(0), pos = [];
       hs.forEach(h => { const c = cols.indexOf(Math.min(...cols)); pos.push([c, cols[c]]); cols[c] += h + GAP; });
-      const W = n * COL + (n - 1) * GAP + PAD * 2, H = Math.max(...cols) - GAP + PAD * 2;
+      const W = n * COL + (n - 1) * GAP + PAD * 2, H = Math.max(...cols) - GAP + PAD * 2 + 260;
       const score = Math.abs(Math.log((W / H) / 1.9));
       if (!best || score < best.score) best = { n, pos, W, H, score };
     }
-    boxes = slots.map((s, i) => { const [c, y] = best.pos[i]; const x = PAD + c * (COL + GAP); s.style.left = x + "px"; s.style.top = PAD + y + "px"; return { el: s, x, y: PAD + y, w: COL, h: hs[i] }; });
-    BW = best.W; BH = best.H;
+    if (mast) { mast.style.left = PAD + "px"; mast.style.top = PAD + "px"; mast.style.width = Math.min(best.W - PAD * 2, 3 * COL + 2 * GAP) + "px"; MH = mast.offsetHeight + 56; } else MH = 0;
+    boxes = slots.map((s, i) => { const [c, y] = best.pos[i]; const x = PAD + c * (COL + GAP); s.style.left = x + "px"; s.style.top = PAD + MH + y + "px"; return { el: s, x, y: PAD + MH + y, w: COL, h: hs[i] }; });
+    BW = best.W; BH = best.H - 260 + MH;
+    drawLinks();
     board().style.width = BW + "px"; board().style.height = BH + "px";
     drawMap();
   }
@@ -554,6 +618,7 @@
     renderBar();
     const keepPage = tabsIdx;
     board().innerHTML = "";
+    if (!phone()) board().insertAdjacentHTML("afterbegin", mastHTML() + `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg>`);
     for (const m of D.modules) if (!m.hidden && R[m.renderer]) R[m.renderer](m);
     document.documentElement.lang = S.lang;
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
@@ -582,6 +647,11 @@
       const cr = e.target.closest("[data-crumb]");
       if (cr) { S.stack = S.stack.slice(0, +cr.dataset.crumb + 1); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); return; }
       if (e.target.closest("[data-copy]")) navigator.clipboard?.writeText(location.href).then(() => toast(t("copied"))).catch(() => {});
+    });
+    document.addEventListener("mouseover", e => {
+      if (phone() || $("#view").classList.contains("panning")) return;
+      const r = e.target.closest(".slot [data-open^='person:']"), id = r ? r.dataset.open.slice(7) : null;
+      if (id !== S.hover) { S.hover = id; drawLinks(); }
     });
     document.addEventListener("mouseover", e => { const g = e.target.closest("abbr.g"); if (g && !$("#view").classList.contains("panning")) { const term = IDX.get(`term:${g.dataset.term}`); if (term) showTip(g, term.term, tx(term.definition)); } });
     document.addEventListener("mouseout", e => { if (e.target.closest("abbr.g")) hideTip(); });
