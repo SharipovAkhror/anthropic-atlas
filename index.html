@@ -8,35 +8,34 @@
   <meta property="og:title" content="Anthropic Atlas">
   <meta property="og:description" content="Ежедневный монитор Anthropic: новости, люди, власть, продукты. Обновляется каждое утро.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121210" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1915'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23c8643b'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light only">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d1d1f'/%3E%3Cpath d='M10 23l6-14 6 14M12.6 18h6.8' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" href="/data/atlas.json" as="fetch" crossorigin>
   <link rel="preload" href="/data/events.json" as="fetch" crossorigin>
   <link rel="stylesheet" href="/assets/app.css">
-  <script>try{var t=localStorage.getItem("atlas.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
   <header class="bar" id="bar">
-    <div class="wrap">
-      <a class="brand" href="/" aria-label="Anthropic Atlas"><span class="brand-mark"></span>Anthropic Atlas</a>
-      <button class="pulse" id="pulse" aria-label="Last update"><i></i>…</button>
-      <div class="bar-right">
-        <button class="kbd-hint" id="open-search" aria-label="Search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span><kbd>⌘K</kbd></span></button>
-        <button class="lang" id="lang" aria-label="Language">RU</button>
-      </div>
+    <a class="brand" href="/" aria-label="Anthropic Atlas">Anthropic <span>Atlas</span></a>
+    <div class="bar-mid"><span class="stamp" id="stamp"></span></div>
+    <div class="bar-right">
+      <button class="find" id="open-search" aria-label="Search"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="lbl" id="find-lbl">Поиск</span><kbd>⌘K</kbd></button>
+      <button class="lang" id="lang" aria-label="Language">RU</button>
     </div>
   </header>
-  <nav class="rail" id="rail" aria-label="Sections"></nav>
-  <main id="main"><div class="wrap" style="padding-top:56px"><div class="skeleton"></div></div></main>
-  <div class="wrap"><footer id="foot"></footer></div>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  <main class="view" id="view"><div class="board" id="board"></div></main>
+  <div class="loading" id="loading">…</div>
+  <div class="minimap" id="minimap" aria-hidden="true"><canvas width="304" height="190"></canvas></div>
+  <div class="hint" id="hint"></div>
 
   <div class="scrim" id="scrim"></div>
   <aside class="sheet" id="sheet" aria-modal="true" role="dialog">
-    <div class="sheet-top"><div class="crumbs" id="crumbs"></div><button class="x" id="x" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="sheet-top"><div class="crumbs" id="crumbs"></div><button class="x" id="x" aria-label="Close"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="sheet-body" id="sheet-body"></div>
   </aside>
   <div class="palette-scrim" id="pscrim"></div>
