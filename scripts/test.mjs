@@ -20,7 +20,7 @@ function sandbox() {
   return dir;
 }
 const edit = (dir, rel, fn) => { const p = join(dir, rel); const j = JSON.parse(readFileSync(p, "utf8")); fn(j); writeFileSync(p, JSON.stringify(j, null, 2)); };
-const today = new Date().toISOString().slice(0, 10);
+const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" });
 
 // 1. real data
 ok(node("validate.mjs", ROOT, ["--quiet"]).status === 0, "repository data is valid");

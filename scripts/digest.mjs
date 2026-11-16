@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
-const DATE = args.date || new Date().toISOString().slice(0, 10);
+const DATE = args.date || new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" }); // the board's day is Tashkent's day
 const BASE = args.base || "HEAD";
 const SITE = "https://athropic-atlas.vercel.app";
 
