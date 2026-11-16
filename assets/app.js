@@ -39,7 +39,7 @@
     return `<span class="av ${cls}">${initials(p)}${img}</span>`;
   }
   const glyph = name => esc((name.replace(/^Claude\s+/, "").replace(/[^\p{L}\p{N}]/gu, "") || "··").slice(0, 2));
-  const icon = (p, cls = "") => `<span class="av sq ${cls}">${glyph(p.name)}</span>`;
+  const icon = (p, cls = "") => (p.kind === "group" ? `<span class="av ${cls}">${initials(p)}</span>` : "");
   function toast(msg) { const el = $("#toast"); el.textContent = msg; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 1600); }
 
   // ---------------------------------------------------------------- data
@@ -88,7 +88,7 @@
   const board = () => $("#board");
   function island(id, title, { count = "", lead = "", cls = "" } = {}, body = "") {
     const slot = document.createElement("div");
-    slot.className = "slot"; slot.dataset.island = id;
+    slot.className = "slot"; slot.dataset.island = id; slot.dataset.title = title;
     slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div></section>`;
     board().appendChild(slot);
     return slot.firstElementChild;
@@ -109,11 +109,11 @@
       ["removed", dg.removed.map(a => ({ sign: "−", text: a.label, why: a.reason, ref: `${a.kind}:${a.id}` }))]
     ];
     const past = D.digests.slice(0, 7);
-    const el = island(m.id, tx(m.title), { cls: "today" }, `
+    const el = island(m.id, tx(m.title), { cls: "today notitle" }, `
       <div class="date">${esc(t("digestFor"))} ${esc(fmtDate(dg.date))}</div>
       <h1>${esc(tx(dg.headline))}</h1>
       <p class="summary">${gloss(tx(dg.summary))}</p>
-      <div class="counts">${groups.map(([k, items]) => `<button data-g="${k}" ${items.length ? "" : "disabled"} aria-expanded="false"><b class="num">${items.length}</b><span>${esc(t(k))}</span></button>`).join("")}</div>
+      <div class="counts">${groups.filter(g => g[1].length).map(([k, items]) => `<button data-g="${k}" aria-expanded="false"><b class="num">${items.length}</b> ${esc(t(k))}</button>`).join("")}</div>
       <div class="collapse dg"><div><ul class="dl"></ul></div></div>
       ${past.length > 1 ? `<div class="past"><span>${esc(t("earlier"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
     const panel = $(".dg", el), list = $(".dl", el);
@@ -129,17 +129,16 @@
   };
 
   R.facts = m => {
-    island(m.id, tx(m.title), {}, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="v num">${esc(f.value)}</span><span class="k">${esc(tx(f.label))}</span></button>`).join("")}</div>`);
+    island(m.id, tx(m.title), {}, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
   };
 
   R.timeline = m => {
-    const latest = S.digest?.date;
-    const evs = S.allEvents ? D.events : D.events.slice(0, 16);
+        const evs = S.allEvents ? D.events : D.events.slice(0, 16);
     const days = [];
     for (const e of evs) { const last = days.at(-1); if (last && last.date === e.date) last.items.push(e); else days.push({ date: e.date, items: [e] }); }
     const thisYear = String(new Date().getFullYear());
     const el = island(m.id, tx(m.title), { count: String(D.events.length), lead: tx(m.lead) }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => `
-      <button class="ev" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)} · ${esc(e.sources[0].title)}${e.addedAt === latest ? ` · <span class="new">${esc(t("newBadge"))}</span>` : ""}</span></button>`).join("")}`).join("") + (S.allEvents ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${D.events.length}</button>`));
+      <button class="ev" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)}</span></button>`).join("")}`).join("") + (S.allEvents ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${D.events.length}</button>`));
     $("[data-all]", el)?.addEventListener("click", () => { S.allEvents = true; renderAll({ keepCamera: true }); });
   };
 
@@ -175,7 +174,7 @@
     for (const c of D.atlas.clusters) {
       const ps = D.atlas.products.filter(p => p.cluster === c.id).sort((a, b) => order[a.status] - order[b.status] || String(b.released).localeCompare(String(a.released)));
       if (!ps.length) continue;
-      island(`cluster-${c.id}`, tx(c.label), { count: String(ps.length) }, ps.map(p => `<button class="row" data-open="product:${p.id}">${icon(p)}<span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span><span class="side">${p.status === "active" ? esc(String(p.released || "").slice(0, 4)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`).join(""));
+      island(`cluster-${c.id}`, tx(c.label), { count: String(ps.length) }, ps.map(p => `<button class="row noav" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span><span class="side">${p.status === "active" ? esc(String(p.released || "").slice(0, 4)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`).join(""));
     }
   };
 
@@ -190,7 +189,7 @@
     getJSON(`/data/${file}`).then(d => {
       const items = d[key] || [];
       for (const it of items) IDX.set(`product:${it.id}`, { kind: "product", status: "active", ...it });
-      $(".ib", el).innerHTML = items.map(p => `<button class="row" data-open="product:${p.id}">${icon(p)}<span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span></button>`).join("");
+      $(".ib", el).innerHTML = items.map(p => `<button class="row noav" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span></button>`).join("");
       $(".ih .ic", el).textContent = items.length; relayoutSoon();
     }).catch(() => el.parentElement.remove());
   };
@@ -199,7 +198,7 @@
   function linksHTML(links) {
     if (!links) return "";
     const ks = ["wikipedia", "official", "docs", "github", "site", "linkedin", "x", "wikidata"].filter(k => links[k]);
-    return ks.length ? `<div class="links">${ks.map(k => `<a href="${esc(links[k])}" target="_blank" rel="noopener">${esc(t(k))}</a>`).join("")}</div>` : "";
+    return ks.length ? `<div class="links">${ks.map(k => `<a href="${esc(links[k])}" target="_blank" rel="noopener">${esc(t(k))}</a>`).join("<i>·</i>")}</div>` : "";
   }
   function sourcesHTML(e) {
     if (!e.sources?.length) return "";
@@ -209,7 +208,7 @@
   const eventsHTML = evs => (evs.length ? `<div class="blk"><h4>${esc(t("events"))}</h4>${evs.map(e => `<button class="ev" data-open="event:${e.id}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(fmtDate(e.date))}</span></button>`).join("")}</div>` : "");
   const kv = pairs => { const p = pairs.filter(([, v]) => v); return p.length ? `<dl class="kv">${p.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join("")}</dl>` : ""; };
   function relRow(x, sub) {
-    return `<button class="row" data-open="${ref(x)}:${x.id}">${picOf(x)}<span class="who"><span class="nm">${esc(x.name || x.term || tx(x.title))}</span><span class="rl">${esc(sub || "")}</span></span><span class="chev">›</span></button>`;
+    const pc = picOf(x); return `<button class="row${pc ? "" : " noav"}" data-open="${ref(x)}:${x.id}">${pc}<span class="who"><span class="nm">${esc(x.name || x.term || tx(x.title))}</span><span class="rl">${esc(sub || "")}</span></span><span class="chev">›</span></button>`;
   }
 
   const SHEET = {
@@ -227,7 +226,7 @@
     },
     product(p) {
       const owners = (p.owners || []).map(byId).filter(Boolean);
-      return `<div class="hd">${icon(p, "lg")}<div><h3 data-copy>${esc(p.name)}</h3><div class="sub">${esc(clusterLabel(p.cluster))}${p.status !== "active" ? ` · <span class="st ${p.status}">${esc(t(p.status))}</span>` : ""}</div></div></div>
+      return `<div class="hd"><div><div class="cap">${esc(clusterLabel(p.cluster))}</div><h3 data-copy style="margin-top:2px">${esc(p.name)}</h3>${p.status !== "active" ? `<div class="sub"><span class="st ${p.status}">${esc(t(p.status))}</span></div>` : ""}</div></div>
         <p class="lead">${gloss(tx(p.description))}</p>${linksHTML(p.links)}
         ${kv([[t("released"), esc(fmtDate(p.released))], [t("metrics"), p.metrics ? gloss(p.metrics) : ""]])}
         ${p.children?.length ? `<div class="blk"><h4>${esc(t("children"))}</h4>${p.children.map(c => `<div class="child"><span>${c.docs ? `<a href="${esc(c.docs)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}${c.apiId ? `<br><code>${esc(c.apiId)}</code>` : ""}${c.note ? `<br><span class="cap">${esc(tx(c.note))}</span>` : ""}</span><span class="r">${c.status && c.status !== "active" ? `<span class="st ${c.status}">${esc(t(c.status))}</span><br>` : ""}${esc(fmtDate(c.released, { day: "numeric", month: "short", year: "numeric" }))}</span></div>`).join("")}</div>` : ""}
@@ -260,8 +259,9 @@
     $("#sheet-body").innerHTML = SHEET[kind](e);
     $("#sheet-body").scrollTop = 0;
     const name = x => x.name || x.term || tx(x.title) || tx(x.label);
-    const tail = S.stack.slice(-3);
-    $("#crumbs").innerHTML = tail.length > 1 ? tail.slice(0, -1).map((s, i) => `<button data-crumb="${S.stack.length - tail.length + i}">${esc(name(IDX.get(`${s.kind}:${s.id}`)))}</button><i>›</i>`).join("") : "";
+        const prev = S.stack.length > 1 ? S.stack.at(-2) : null;
+    $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
+    const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
     $("#sheet").classList.add("on"); $("#scrim").classList.add("on");
     if (!fromHash) try { history.replaceState(null, "", `#/${kind}/${id}`); } catch {}
   }
@@ -368,7 +368,9 @@
     const rx = -cam.x / cam.s * kk, ry = -cam.y / cam.s * kk, rw = vw() / cam.s * kk, rh = vh() / cam.s * kk;
     g.strokeStyle = "#0071e3"; g.lineWidth = 2; g.fillStyle = "rgba(0,113,227,.07)";
     g.beginPath(); g.roundRect ? g.roundRect(rx, ry, rw, rh, 4) : g.rect(rx, ry, rw, rh); g.fill(); g.stroke();
-    mm.classList.toggle("on", rw < W - 2 || rh < H - 2 || rx > 1 || ry > 1);
+    const need = rw < W - 2 || rh < H - 2 || rx > 1 || ry > 1;
+    mm.classList.toggle("on", need && innerWidth >= 1100);
+    clearTimeout(drawMap.t); if (need) drawMap.t = setTimeout(() => { if (!mm.matches(":hover")) mm.classList.remove("on"); }, 2600);
     mm._k = kk;
   }
 
@@ -447,7 +449,8 @@
   let tabsIdx = 0;
   function renderTabs() {
     const slots = $$(".slot", board());
-    $("#tabs").innerHTML = slots.map((s, i) => `<button data-i="${i}">${esc($("h2", s).textContent)}</button>`).join("");
+    $("#tabs").innerHTML = slots.map((s, i) => `<button data-i="${i}">${esc(s.dataset.title)}</button>`).join("");
+    $("#maptoggle").onclick = () => (document.body.classList.contains("overview") ? leaveMap(tabsIdx) : enterMap());
     syncTabs(true);
   }
   const step = () => { const s = $(".slot", board()); return s ? s.offsetWidth + 10 : innerWidth; };
@@ -465,6 +468,7 @@
     document.body.classList.add("overview");
     const sw = (innerWidth - 32 - 12) / 2; document.body.style.setProperty("--mini", (sw / (innerWidth - 32)).toFixed(4));
     board().scrollTop = 0;
+    $$(".slot", board()).forEach((s, i) => s.classList.toggle("cur", i === tabsIdx));
   }
   function leaveMap(i) {
     document.body.classList.remove("overview");
@@ -516,12 +520,12 @@
     return [
       ...D.atlas.people.map(p => ({ k: "person", id: p.id, label: p.name, sub: tx(p.role), hay: `${p.name} ${p.role.ru} ${p.role.en} ${tx(p.bio)}`, pic: p.kind === "group" ? icon(p) : avatar(p) })),
       ...D.atlas.products.map(p => ({ k: "product", id: p.id, label: p.name, sub: clusterLabel(p.cluster), hay: `${p.name} ${tx(p.description)} ${(p.children || []).map(c => c.name + " " + (c.apiId || "")).join(" ")}`, pic: icon(p) })),
-      ...D.terms.map(g => ({ k: "term", id: g.id, label: g.term, sub: tx(g.definition).slice(0, 60) + "…", hay: `${g.term} ${(g.aliases || []).join(" ")}`, pic: `<span class="av sq">Aa</span>` })),
-      ...D.events.map(e => ({ k: "event", id: e.id, label: tx(e.title), sub: fmtDate(e.date), hay: `${e.title.ru} ${e.title.en} ${tx(e.summary)}`, pic: `<span class="av sq num">${esc(String(+e.date.slice(8)))}</span>` }))
+      ...D.terms.map(g => ({ k: "term", id: g.id, label: g.term, sub: tx(g.definition).slice(0, 60) + "…", hay: `${g.term} ${(g.aliases || []).join(" ")}`, pic: "" })),
+      ...D.events.map(e => ({ k: "event", id: e.id, label: tx(e.title), sub: fmtDate(e.date), hay: `${e.title.ru} ${e.title.en} ${tx(e.summary)}`, pic: "" }))
     ];
   }
   let PI = [], sel = 0, results = [];
-  function openPalette() { PI = paletteItems(); $("#palette").classList.add("on"); $("#pscrim").classList.add("on"); const i = $("#palette input"); i.placeholder = t("search"); i.value = ""; search(""); setTimeout(() => i.focus(), 20); }
+  function openPalette() { PI = paletteItems(); $("#palette").classList.add("on"); $("#pscrim").classList.add("on"); const i = $("#palette input"); i.placeholder = t("search"); i.value = ""; search(""); i.focus(); }
   function closePalette() { $("#palette").classList.remove("on"); $("#pscrim").classList.remove("on"); $("#palette input").blur(); }
   function search(q) {
     const n = s => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
