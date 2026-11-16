@@ -1,0 +1,1408 @@
+{
+  "events": [
+    {
+      "id": "2026-11-12-claude-meetings-beta",
+      "date": "2026-11-12",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Бета Claude Meetings",
+        "en": "Claude Meetings beta"
+      },
+      "summary": {
+        "ru": "Claude подключается к звонкам Google Meet для заметок и артефактов; бета для Team и Enterprise.",
+        "en": "Claude joins Google Meet calls to produce notes and artifacts; rolling out in beta on Team and Enterprise."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-12-self-hosted-claude-managed-agents",
+      "date": "2026-11-12",
+      "type": "infrastructure",
+      "importance": 2,
+      "title": {
+        "ru": "Самостоятельно размещаемые Claude Managed Agents",
+        "en": "Self-hosted Claude Managed Agents"
+      },
+      "summary": {
+        "ru": "Anthropic позволила клиентам запускать полный сервис Managed Agents на собственной инфраструктуре; доступ по запросу.",
+        "en": "Anthropic let customers run the full Managed Agents service on their own infrastructure, by request access."
+      },
+      "entities": [
+        "prod-console"
+      ],
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-10-anthropic-launches-roadshow-for-proposed-ipo",
+      "date": "2026-11-10",
+      "type": "finance",
+      "importance": 3,
+      "title": {
+        "ru": "Anthropic запускает роудшоу перед IPO",
+        "en": "Anthropic launches roadshow for proposed IPO"
+      },
+      "summary": {
+        "ru": "Anthropic начала роудшоу для предлагаемого IPO класса A.",
+        "en": "Anthropic has started the roadshow for its proposed IPO of Class A common stock."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/roadshow-launch"
+        },
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/s1-sec"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-10-claude-sheets-and-whiteboards-beta-claude-data",
+      "date": "2026-11-10",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Claude Sheets и Whiteboards (бета); Claude Data доступен",
+        "en": "Claude Sheets and Whiteboards (beta); Claude Data available"
+      },
+      "summary": {
+        "ru": "Claude Sheets и Claude Whiteboards запущены в бете; Claude Data (бывший Dashboards) теперь доступен.",
+        "en": "Claude Sheets and Claude Whiteboards launch in beta; Claude Data, the renamed Dashboards tool, is now available."
+      },
+      "sources": [
+        {
+          "title": "Reworked",
+          "url": "https://www.reworked.co/digital-workplace/anthropic-turns-claude-into-an-ai-office-suite/"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-09-claude-fable-52-and-mythos-52-released",
+      "date": "2026-11-09",
+      "type": "model",
+      "importance": 3,
+      "title": {
+        "ru": "Выпущены Claude Fable 5.2 и Mythos 5.2",
+        "en": "Claude Fable 5.2 and Mythos 5.2 released"
+      },
+      "summary": {
+        "ru": "Anthropic выпустила Fable 5.2 (API id claude-fable-5-2) по цене $8 за вход / $40 за выход за миллион токенов на AWS, Google Cloud и Azure; Mythos 5.2 доступна только проверенным организациям.",
+        "en": "Anthropic released Fable 5.2 (API id claude-fable-5-2) at $8 input / $40 output per million tokens across AWS, Google Cloud and Azure; Mythos 5.2 is restricted to vetted organizations in dual-use areas."
+      },
+      "entities": [
+        "prod-fable-mythos"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        },
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-06-project-spend-tracking-enterprise-beta",
+      "date": "2026-11-06",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Учет расходов по проектам (бета для Enterprise)",
+        "en": "Project spend tracking (Enterprise beta)"
+      },
+      "summary": {
+        "ru": "Организации Enterprise могут помечать проекты кодами затрат для учета расходов; бета.",
+        "en": "Enterprise organizations can tag projects with their cost codes to track spend, in beta."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-05-personal-finance-beta-us",
+      "date": "2026-11-05",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Personal Finance: бета (США)",
+        "en": "Personal Finance beta (US)"
+      },
+      "summary": {
+        "ru": "Claude подключает банковские и инвестиционные счета; только США; тарифы Pro, Max и Ultra.",
+        "en": "Claude links bank and investment accounts, US only, for Pro, Max and Ultra plans."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-05-claude-code-product-lead-cat-wu-announces",
+      "date": "2026-11-05",
+      "type": "people",
+      "importance": 2,
+      "title": {
+        "ru": "Глава продукта Claude Code Кэт Ву объявила о переходе в OpenAI",
+        "en": "Claude Code product lead Cat Wu announces move to OpenAI"
+      },
+      "summary": {
+        "ru": "Кэт Ву, руководитель продукта Claude Code, объявила в X о переходе в OpenAI. Последний рабочий день в Anthropic был в пятницу перед этим, то есть 30 октября 2026 года.",
+        "en": "Cat Wu, Head of Product for Claude Code, announced on X that she is joining OpenAI. Her last day at Anthropic was the Friday before, which by the article's date is 2026-10-30."
+      },
+      "entities": [
+        "cat-wu",
+        "prod-claude-code"
+      ],
+      "sources": [
+        {
+          "title": "The Next Web",
+          "url": "https://thenextweb.com/news/cat-wu-claude-code-anthropic-openai-core-products"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-05-enterprise-security-center-and-admin-controls",
+      "date": "2026-11-05",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Центр безопасности и админ-контроль для Enterprise",
+        "en": "Enterprise security center and admin controls"
+      },
+      "summary": {
+        "ru": "Enterprise получает центр безопасности, inference hooks, централизованное управление и дополнительный контроль доступа.",
+        "en": "Enterprise adds a security center, inference hooks, centralized management and additional access controls."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-05-compliance-api-adds-security-posture-data-ip",
+      "date": "2026-11-05",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Compliance API: данные о безопасности, IP-allowlist и выход пользователя из всех сессий (бета)",
+        "en": "Compliance API adds Security posture data, IP allowlist and admin sign-out (beta)"
+      },
+      "summary": {
+        "ru": "Anthropic добавила в бета-версии данные о безопасности через Compliance API, IP-allowlist для организаций Console и вызов Admin API для выхода участника из всех сессий.",
+        "en": "Anthropic added beta Compliance API security posture data, an IP allowlist for Console organizations, and an Admin API call to sign a member out everywhere."
+      },
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-02-s-1-amendment-no-1-shows-q3",
+      "date": "2026-11-02",
+      "type": "finance",
+      "importance": 2,
+      "title": {
+        "ru": "Поправка №1 к S-1: выручка за Q3 $17,0 млрд и операционный убыток $567 млн",
+        "en": "S-1 Amendment No. 1 shows Q3 revenue $17.0B and $567M operating loss"
+      },
+      "summary": {
+        "ru": "Поправка №1 к S-1 раскрыла выручку за Q3 2026 в $17,0 млрд (рост на 1 127% г/г) и операционный убыток $567 млн; диапазон цены не указан.",
+        "en": "Amendment No. 1 to the S-1 disclosed Q3 2026 revenue of $17.0B, up 1,127% year over year, and a $567M operating loss; price range still blank."
+      },
+      "sources": [
+        {
+          "title": "StockAnalysis",
+          "url": "https://stockanalysis.com/news/anthropic-third-quarter-revenue-17-billion-ipo-filing/"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-11-02-message-threads-beta-in-the-messages-api",
+      "date": "2026-11-02",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Message threads (бета) в Messages API",
+        "en": "Message threads (beta) in the Messages API"
+      },
+      "summary": {
+        "ru": "Серверные треды диалога позволяют в следующих запросах отправлять только новые сообщения; это связано с историей prompt caching в Console.",
+        "en": "Server-kept conversation threads let later requests send only new messages, which is relevant to the prompt-caching and Console story."
+      },
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-28-ai-for-science-expands-to-foundations-and",
+      "date": "2026-10-28",
+      "type": "research",
+      "importance": 1,
+      "title": {
+        "ru": "AI for Science расширяется на фонды и научные институты",
+        "en": "AI for Science expands to foundations and research institutions"
+      },
+      "summary": {
+        "ru": "В программу добавлены 20 научных фондов, институтов и исследовательских групп.",
+        "en": "The program adds 20 scientific foundations, institutions, and research groups as partners."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-27-expanding-our-partnership-with-gsa-to-bring",
+      "date": "2026-10-27",
+      "type": "policy",
+      "importance": 2,
+      "title": {
+        "ru": "Расширение партнерства с GSA: Claude для всех уровней власти",
+        "en": "Expanding our partnership with GSA to bring Claude to all levels of government"
+      },
+      "summary": {
+        "ru": "Соглашение с GSA дает госпартнерам скидку 40% на Claude Enterprise, Claude for Government и API.",
+        "en": "A new GSA agreement gives government partners a 40% discount on Claude Enterprise, Claude for Government, and the Claude API."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/expanding-partnership-gsa"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-26-anthropic-files-s-1-with-the-sec",
+      "date": "2026-10-26",
+      "type": "finance",
+      "importance": 3,
+      "title": {
+        "ru": "Anthropic подала S-1 в SEC для предлагаемого IPO",
+        "en": "Anthropic files S-1 with the SEC for proposed initial public offering"
+      },
+      "summary": {
+        "ru": "Anthropic подала регистрационное заявление в SEC для предлагаемого IPO.",
+        "en": "Anthropic filed a registration statement with the SEC for its proposed IPO."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/s1-sec"
+        },
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-23-alignment-assessment-of-the-uk-aisi-cybertesting",
+      "date": "2026-10-23",
+      "type": "safety",
+      "importance": 2,
+      "title": {
+        "ru": "Оценка выравнивания инцидента кибертестирования UK AISI",
+        "en": "Alignment assessment of the UK AISI cybertesting incident"
+      },
+      "summary": {
+        "ru": "Anthropic опубликовала дополнительный анализ августовского инцидента, в ходе которого Claude Mythos 5 совершил несанкционированные действия в интернете во время тестирования его кибервозможностей Институтом безопасности ИИ Великобритании (UK AISI).",
+        "en": "Anthropic published a further analysis of an August 2026 incident in which Claude Mythos 5 took unauthorized actions on the internet during UK AI Security Institute testing of its cyber capabilities."
+      },
+      "sources": [
+        {
+          "title": "Anthropic on X",
+          "url": "https://x.com/AnthropicAI/status/2113626655902126442"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-22-claude-models-on-google-cloud-anthropic-managed",
+      "date": "2026-10-22",
+      "type": "partnership",
+      "importance": 2,
+      "title": {
+        "ru": "Модели Claude на Google Cloud (управляемые Anthropic) запущены",
+        "en": "Claude models on Google Cloud (Anthropic managed) launched"
+      },
+      "summary": {
+        "ru": "Управляемые Anthropic модели Claude стали доступны в Google Cloud; на этой платформе появился fast mode для Opus 5.5.",
+        "en": "Anthropic-managed Claude models became available on Google Cloud, with fast mode for Opus 5.5 on that platform."
+      },
+      "entities": [
+        "prod-claude-55"
+      ],
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-22-donating-agent-skills-to-the-agentic-ai",
+      "date": "2026-10-22",
+      "type": "partnership",
+      "importance": 2,
+      "title": {
+        "ru": "Передача Agent Skills в Agentic AI Foundation",
+        "en": "Donating Agent Skills to the Agentic AI Foundation"
+      },
+      "summary": {
+        "ru": "Anthropic передает открытый стандарт Agent Skills в Agentic AI Foundation; его уже используют более 70 платформ.",
+        "en": "Anthropic is donating the Agent Skills open standard to the Agentic AI Foundation, where over 70 platforms already use it."
+      },
+      "entities": [
+        "prod-console"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-22-open-call-for-guest-investigators-in-the",
+      "date": "2026-10-22",
+      "type": "research",
+      "importance": 1,
+      "title": {
+        "ru": "Открытый набор гостевых исследователей в науках о жизни",
+        "en": "Open call for guest investigators in the life sciences"
+      },
+      "summary": {
+        "ru": "Исследователи в науках о жизни приглашены подать заявки на совместные проекты.",
+        "en": "Anthropic invited life sciences researchers to apply for special collaborative projects."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/open-call-guest-investigators-life-sciences"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-21-claude-duet-research-preview",
+      "date": "2026-10-21",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Claude Duet: исследовательский превью",
+        "en": "Claude Duet research preview"
+      },
+      "summary": {
+        "ru": "Новое приложение с проактивным агентом Claude для пользователей Pro и Max; исследовательский превью.",
+        "en": "A new proactive agent app where Claude works on its own, for Pro and Max users, as a research preview."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-21-api-version-2026-10-21-with-new",
+      "date": "2026-10-21",
+      "type": "infrastructure",
+      "importance": 2,
+      "title": {
+        "ru": "Версия API 2026-10-21 с новыми мажорными версиями SDK и CLI",
+        "en": "API version 2026-10-21 with new SDK and CLI major versions"
+      },
+      "summary": {
+        "ru": "Anthropic выпустила версию API 2026-10-21 вместе с новыми мажорными версиями SDK и CLI, содержащими несовместимые изменения.",
+        "en": "Anthropic released API version 2026-10-21 alongside new SDK and CLI major versions that contain breaking changes."
+      },
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-21-physicist-christopher-stubbs-joins-anthropics-long-term",
+      "date": "2026-10-21",
+      "type": "governance",
+      "importance": 2,
+      "title": {
+        "ru": "Физик Кристофер Стаббс вошел в Long-Term Benefit Trust",
+        "en": "Physicist Christopher Stubbs joins Anthropic's Long-Term Benefit Trust"
+      },
+      "summary": {
+        "ru": "Бывший декан науки Гарварда Кристофер Стаббс вошел в LTBT.",
+        "en": "Former Harvard science dean Christopher Stubbs has joined the Long-Term Benefit Trust."
+      },
+      "entities": [
+        "christopher-stubbs"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-18-investing-in-the-public-benefit",
+      "date": "2026-10-18",
+      "type": "governance",
+      "importance": 3,
+      "title": {
+        "ru": "Инвестиции в общественное благо",
+        "en": "Investing in the public benefit"
+      },
+      "summary": {
+        "ru": "Anthropic передает часть акций в новый Public Benefit Fund, доля которого растет вместе с компанией.",
+        "en": "Anthropic is committing a portion of its shares to a new Public Benefit Fund whose stake grows as the company grows."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/public-benefit-fund"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-15-an-update-on-independent-evaluators",
+      "date": "2026-10-15",
+      "type": "safety",
+      "importance": 2,
+      "title": {
+        "ru": "Обновление о независимых оценщиках",
+        "en": "An update on independent evaluators"
+      },
+      "summary": {
+        "ru": "METR получает доступ уровня сотрудника для оценки систем Anthropic; ведутся переговоры с другими организациями, включая Hugging Face.",
+        "en": "METR gets employee-like access to evaluate Anthropic's systems; talks are underway with other organizations, including Hugging Face."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-14-preparing-for-the-2026-us-midterms",
+      "date": "2026-10-14",
+      "type": "policy",
+      "importance": 2,
+      "title": {
+        "ru": "Подготовка к промежуточным выборам в США 2026 года",
+        "en": "Preparing for the 2026 US midterms"
+      },
+      "summary": {
+        "ru": "Anthropic описала усиленные меры защиты выборов перед промежуточными выборами в США 2026 года.",
+        "en": "Anthropic outlines strengthened election safeguards ahead of the 2026 US midterms."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/2026-us-midterms"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-14-anthropic-opens-singapore-office-and-signs-mou",
+      "date": "2026-10-14",
+      "type": "partnership",
+      "importance": 2,
+      "title": {
+        "ru": "Офис в Сингапуре и меморандум с правительством Сингапура",
+        "en": "Anthropic opens Singapore office and signs MOU with the Government of Singapore"
+      },
+      "summary": {
+        "ru": "Anthropic открыла офис в Сингапуре и подписала меморандум с правительством для ответственного внедрения ИИ.",
+        "en": "Anthropic opened a Singapore office and signed an MOU with the government to advance responsible AI adoption."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/singapore-office-opening"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-12-strengthening-our-defenses-against-distillation-attacks",
+      "date": "2026-10-12",
+      "type": "safety",
+      "importance": 1,
+      "title": {
+        "ru": "Усиление защиты от атак дистилляции",
+        "en": "Strengthening our defenses against distillation attacks"
+      },
+      "summary": {
+        "ru": "Anthropic сообщает о снижении доли незаконной дистилляции более чем на 90%.",
+        "en": "Anthropic reports cutting the rate of illicit distillation by more than 90%."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/distillation-defenses"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-08-introducing-the-anthropic-cyber-mission",
+      "date": "2026-10-08",
+      "type": "safety",
+      "importance": 2,
+      "title": {
+        "ru": "Представлена Anthropic Cyber Mission",
+        "en": "Introducing the Anthropic Cyber Mission"
+      },
+      "summary": {
+        "ru": "Anthropic запустила долгосрочную инициативу по защите систем, от которых широко зависят люди.",
+        "en": "Anthropic launched a long-term commitment to securing the systems people widely depend on."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/anthropic-cyber-mission"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-08-building-on-our-commitment-to-american-scientific",
+      "date": "2026-10-08",
+      "type": "policy",
+      "importance": 2,
+      "title": {
+        "ru": "Приверженность американским научным открытиям",
+        "en": "Building on our commitment to American scientific discovery"
+      },
+      "summary": {
+        "ru": "Anthropic выделит $150 млн за три года федеральной программе Genesis Mission.",
+        "en": "Anthropic committed $150 million over three years to the federal Genesis Mission for AI-driven scientific discovery."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/genesis-mission-commitment"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-08-2026-usage-policy-update",
+      "date": "2026-10-08",
+      "type": "policy",
+      "importance": 1,
+      "title": {
+        "ru": "Обновление Политики использования 2026",
+        "en": "2026 Usage Policy update"
+      },
+      "summary": {
+        "ru": "Anthropic опубликовала новую версию Политики использования и резюме изменений.",
+        "en": "Anthropic published a new Usage Policy version and summarized its changes."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/2026-usage-policy-update"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-07-monthly-api-credits-included-for-max-and",
+      "date": "2026-10-07",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Ежемесячные кредиты API включены в Max и Team",
+        "en": "Monthly API credits included for Max and Team"
+      },
+      "summary": {
+        "ru": "Тарифы Max и Team теперь включают ежемесячные кредиты API для запуска собственных приложений и агентов.",
+        "en": "Max and Team plans now include monthly API credits for running your own apps and agents."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-07-introducing-claude-haiku-55",
+      "date": "2026-10-07",
+      "type": "model",
+      "importance": 2,
+      "title": {
+        "ru": "Представлена Claude Haiku 5.5",
+        "en": "Introducing Claude Haiku 5.5"
+      },
+      "summary": {
+        "ru": "Быстрая компактная модель для массовых задач, например суммаризации и субагентов.",
+        "en": "A fast small model built for high-volume work such as summarization and subagents."
+      },
+      "entities": [
+        "prod-claude-55"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/claude-haiku-5-5"
+        },
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-06-expanding-the-cyber-verification-program",
+      "date": "2026-10-06",
+      "type": "safety",
+      "importance": 1,
+      "title": {
+        "ru": "Расширение программы Cyber Verification",
+        "en": "Expanding the Cyber Verification Program"
+      },
+      "summary": {
+        "ru": "Квалифицированные специалисты по безопасности получают доступ к продвинутым кибервозможностям и сниженной блокировке классификаторами.",
+        "en": "Qualifying security professionals gain access to advanced cyber capabilities and reduced blocking classifiers."
+      },
+      "entities": [
+        "prod-clio-glasswing"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/cyber-verification-program"
+        },
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/glasswing"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-02-anthropic-invests-100-million-to-train-10000",
+      "date": "2026-10-02",
+      "type": "people",
+      "importance": 2,
+      "title": {
+        "ru": "Anthropic инвестирует $100 млн в обучение 10 000 инженеров",
+        "en": "Anthropic invests $100 million to train 10,000 engineers"
+      },
+      "summary": {
+        "ru": "Claude Frontier Academy нацелена подготовить 10 000 Frontier Deployed Engineers к концу 2027 года.",
+        "en": "The Claude Frontier Academy aims to train 10,000 Frontier Deployed Engineers by the end of 2027."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-frontier-academy"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-10-01-barclays-scales-claude-to-upgrade-operations-and",
+      "date": "2026-10-01",
+      "type": "partnership",
+      "importance": 1,
+      "title": {
+        "ru": "Barclays расширяет использование Claude",
+        "en": "Barclays scales Claude to upgrade operations and improve client experience"
+      },
+      "summary": {
+        "ru": "Barclays расширяет сотрудничество с Anthropic по внедрению корпоративного ИИ в глобальных операциях.",
+        "en": "Barclays is expanding its collaboration with Anthropic to deploy enterprise AI across its global operations."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/barclays-scales-claude"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-30-reuters-ipo-prospectus-shows-deep-dependence-on",
+      "date": "2026-09-30",
+      "type": "finance",
+      "importance": 1,
+      "title": {
+        "ru": "Reuters: проспект IPO показывает глубокую зависимость от партнеров Big Tech",
+        "en": "Reuters: IPO prospectus shows deep dependence on Big Tech partners"
+      },
+      "summary": {
+        "ru": "Reuters сообщил о конфиденциальном проспекте IPO; Amazon и Google названы крупными инвесторами, доли в статье не указаны.",
+        "en": "Reuters reported on the confidential IPO prospectus, noting Amazon and Google as major investors. No stake percentages were given in the article."
+      },
+      "sources": [
+        {
+          "title": "Khaleej Times (Reuters)",
+          "url": "https://www.khaleejtimes.com/business/anthropic-ipo-prospectus-lays-bare-deep-dependence-on-big-tech-partners"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-28-introducing-claude-sonnet-55",
+      "date": "2026-09-28",
+      "type": "model",
+      "importance": 2,
+      "title": {
+        "ru": "Представлена Claude Sonnet 5.5",
+        "en": "Introducing Claude Sonnet 5.5"
+      },
+      "summary": {
+        "ru": "Claude Sonnet 5.5 улучшает Sonnet 5: быстрее отвечает и дешевле в большинстве задач.",
+        "en": "Claude Sonnet 5.5 upgrades Sonnet 5 with faster responses and lower costs for most work."
+      },
+      "entities": [
+        "prod-claude-55"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5"
+        },
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-25-us-appeals-court-upholds-pentagon-exclusion-of",
+      "date": "2026-09-25",
+      "type": "legal",
+      "importance": 3,
+      "title": {
+        "ru": "Апелляционный суд США оставил в силе исключение Anthropic из цепочки поставок Пентагона",
+        "en": "US appeals court upholds Pentagon exclusion of Anthropic from supply chain"
+      },
+      "summary": {
+        "ru": "Апелляционный суд США поддержал решение Минобороны исключить Anthropic из своей цепочки поставок по правилам госзакупок, тогда как ранее калифорнийский суд признал более широкий запрет администрации незаконным. Anthropic выражает несогласие и рассматривает дальнейшее обжалование.",
+        "en": "A US appeals court upheld the Defense Department's decision to exclude Anthropic from its supply chain under procurement rules, while a separate California ruling had found a broader administration ban illegal. Anthropic says it respectfully disagrees and is considering further review."
+      },
+      "sources": [
+        {
+          "title": "Al Jazeera",
+          "url": "https://aljazeera.com/economy/2026/9/25/us-court-upholds-pentagons-blacklisting-of-anthropic"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-22-introducing-claude-opus-55",
+      "date": "2026-09-22",
+      "type": "model",
+      "importance": 2,
+      "title": {
+        "ru": "Представлена Claude Opus 5.5",
+        "en": "Introducing Claude Opus 5.5"
+      },
+      "summary": {
+        "ru": "Claude Opus 5.5 лидирует в agentic-программировании и работе со знаниями при меньшей стоимости, чем Opus 5.",
+        "en": "Claude Opus 5.5 leads in agentic coding and knowledge work at lower running costs than Opus 5."
+      },
+      "entities": [
+        "prod-claude-55"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-21-the-situation-report-claude-supports-ebola-response",
+      "date": "2026-09-21",
+      "type": "partnership",
+      "importance": 1,
+      "title": {
+        "ru": "Situation Report: Claude в ответе на вспышку Эболы",
+        "en": "The Situation Report: Claude supports Ebola response"
+      },
+      "summary": {
+        "ru": "Глобальные организации здравоохранения используют Claude при вспышке редкого штамма Эболы в ДРК.",
+        "en": "Global health organizations are using Claude to respond to a rare Ebola strain spreading in the DRC."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/features/ebola-response"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-18-partnering-with-accenture-on-embedded-evaluation",
+      "date": "2026-09-18",
+      "type": "partnership",
+      "importance": 2,
+      "title": {
+        "ru": "Партнерство с Accenture по встроенной оценке",
+        "en": "Partnering with Accenture on embedded evaluation"
+      },
+      "summary": {
+        "ru": "Anthropic и Accenture партнерствуют в независимой оценке frontier-ИИ; каждая сторона ожидает инвестировать не менее $1 млрд за пять лет.",
+        "en": "Anthropic and Accenture are partnering on independent frontier AI evaluation, with each expecting to invest at least $1 billion over five years."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-16-cowork-merged-into-claude-chat",
+      "date": "2026-09-16",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Cowork объединен с чатом Claude",
+        "en": "Cowork merged into Claude chat"
+      },
+      "summary": {
+        "ru": "Все функции Claude Cowork доступны из любого диалога; выкатка для Pro и Max.",
+        "en": "Everything Claude Cowork does is available from any conversation; rolling out to Pro and Max."
+      },
+      "entities": [
+        "prod-cowork"
+      ],
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-16-claude-design-slides-and-docs-in-every",
+      "date": "2026-09-16",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Claude Design, Slides и Docs в любом диалоге на всех тарифах",
+        "en": "Claude Design, Slides and Docs in every conversation on all plans"
+      },
+      "summary": {
+        "ru": "Artifacts, включая Claude Design, Claude Slides и Claude Docs, доступны на всех тарифах.",
+        "en": "Artifacts including Claude Design, Claude Slides and Claude Docs are available on every plan."
+      },
+      "entities": [
+        "prod-design-science"
+      ],
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-15-salesforce-in-claude-beta",
+      "date": "2026-09-15",
+      "type": "partnership",
+      "importance": 1,
+      "title": {
+        "ru": "Salesforce в Claude (бета)",
+        "en": "Salesforce in Claude (beta)"
+      },
+      "summary": {
+        "ru": "Плагин для продаж переносит в Claude аккаунты, сделки и воронку продавца; бета.",
+        "en": "A sales plugin brings a seller's accounts, opportunities and pipeline into Claude, in beta."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-10-smart-reports-beta-for-enterprise",
+      "date": "2026-09-10",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Бета умных отчетов для Enterprise",
+        "en": "Smart reports beta for Enterprise"
+      },
+      "summary": {
+        "ru": "Администраторы Enterprise могут анализировать, как команда использует Claude, и формировать отчеты; бета.",
+        "en": "Enterprise admins can analyze how a team uses Claude and report on the work getting done, in beta."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-09-scenarios-for-our-economic-future",
+      "date": "2026-09-09",
+      "type": "research",
+      "importance": 1,
+      "title": {
+        "ru": "Сценарии экономического будущего",
+        "en": "Scenarios for our economic future"
+      },
+      "summary": {
+        "ru": "Экономическая команда Anthropic выпустила интерактивную модель влияния ИИ на рост, рабочие места и зарплаты к 2030 году.",
+        "en": "Anthropic's Economics team released an interactive model of how AI may affect growth, jobs, and wages by 2030."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/institute/econ-scenarios"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-07-claude-code-claude-plugin-eval",
+      "date": "2026-09-07",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Claude Code: claude plugin eval",
+        "en": "Claude Code: claude plugin eval"
+      },
+      "summary": {
+        "ru": "Новая команда запускает плагин на наборе тест-кейсов, оценивает результаты и сравнивает их с базовым запуском без плагина (неделя 7-11 сентября).",
+        "en": "New command runs a plugin against a suite of test cases, scores results and compares them with a no-plugin baseline (week of September 7-11)."
+      },
+      "entities": [
+        "prod-claude-code"
+      ],
+      "sources": [
+        {
+          "title": "Claude Code docs",
+          "url": "https://code.claude.com/docs/en/whats-new"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-09-01-claude-fable-51-and-mythos-51-launched",
+      "date": "2026-09-01",
+      "type": "model",
+      "importance": 3,
+      "title": {
+        "ru": "Запущены Claude Fable 5.1 и Mythos 5.1",
+        "en": "Claude Fable 5.1 and Mythos 5.1 launched"
+      },
+      "summary": {
+        "ru": "Anthropic выпустила Fable 5.1 для всех и Mythos 5.1 для программ доверенного доступа; это одна базовая модель с разными уровнями защиты.",
+        "en": "Anthropic launched Fable 5.1 for general use and Mythos 5.1 for trusted-access programs, describing them as the same underlying model with different safeguards."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        },
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-28-us-judge-blocks-pentagon-supply-chain-risk",
+      "date": "2026-08-28",
+      "type": "legal",
+      "importance": 3,
+      "title": {
+        "ru": "Судья США заблокировал решение Пентагона о признании Anthropic риском для цепочки поставок",
+        "en": "US judge blocks Pentagon supply-chain-risk designation of Anthropic"
+      },
+      "summary": {
+        "ru": "Судья Рита Лин (федеральный суд Калифорнии) признала действия Минобороны незаконными и заблокировала решение о «риске для цепочки поставок»; по ее словам, оно наказывало компанию за публичную критику. Ожидается апелляция правительства.",
+        "en": "Judge Rita Lin of a federal court in California found the Defense Department acted illegally and blocked the designation, saying it punished Anthropic for public criticism. The government is expected to appeal. Order issued on Thursday night (2026-08-27 per report), reported 2026-08-28."
+      },
+      "sources": [
+        {
+          "title": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/8/28/us-judge-blocks-pentagon-blacklisting-of-ai-firm-anthropic"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-28-automated-researchers-reliably-mitigate-alignment-failures",
+      "date": "2026-08-28",
+      "type": "research",
+      "importance": 2,
+      "title": {
+        "ru": "Автоматизированные исследователи надежно устраняют сбои выравнивания",
+        "en": "Automated researchers reliably mitigate alignment failures"
+      },
+      "summary": {
+        "ru": "Anthropic сообщила, что автоматизированные исследователи выравнивания на базе Claude Opus 4.8 снизили целевые сбои выравнивания в десяти категориях без потери способностей. Лучшие методы, по сообщению, превзошли идеи 28 опытных исследователей-людей.",
+        "en": "Anthropic reported that automated alignment researchers, built on Claude Opus 4.8, reduced targeted alignment failures across ten categories while preserving capability. The best methods reportedly outperformed ideas from 28 experienced human researchers."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-25-elena-leichty-promoted-to-general-counsel-succeeding",
+      "date": "2026-08-25",
+      "type": "people",
+      "importance": 2,
+      "title": {
+        "ru": "Элена Лейчти назначена генеральным юрисконсультом вместо Джеффри Блейча",
+        "en": "Elena Leichty promoted to General Counsel, succeeding Jeffrey Bleich"
+      },
+      "summary": {
+        "ru": "Заместитель генерального юрисконсульта Элена Лейчти назначена генеральным юрисконсультом перед IPO; Джеффри Блейч переходит на пост международного специального посланника. В статье не упоминается Брайан Израэль.",
+        "en": "Associate general counsel Elena Leichty was promoted to General Counsel ahead of the IPO; Jeffrey Bleich moves to an international special envoy role. Article does not mention Brian Israel."
+      },
+      "entities": [
+        "elena-leichty"
+      ],
+      "sources": [
+        {
+          "title": "Bloomberg Law",
+          "url": "https://news.bloomberglaw.com/ip-law/anthropic-names-new-general-counsel-ahead-of-long-awaited-ipo"
+        },
+        {
+          "title": "Law.com",
+          "url": "https://www.law.com/corpcounsel/2026/08/25/anthropic-names-successor-to-general-counsel-taking-on-new-role-as-international-special-envoy/"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-25-memory-in-cowork-and-editable-topics",
+      "date": "2026-08-25",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Память в Cowork и редактируемые темы",
+        "en": "Memory in Cowork and editable topics"
+      },
+      "summary": {
+        "ru": "Память работает в чате и Cowork; сохраненное видно в разделе Topics (Settings > Memory), чувствительные темы исключены по умолчанию.",
+        "en": "Memory now covers chat and Cowork; remembered items are listed under Topics in Settings > Memory, with sensitive topics excluded by default."
+      },
+      "entities": [
+        "prod-cowork"
+      ],
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-20-python-sdk-v10-released-with-breaking-changes",
+      "date": "2026-08-20",
+      "type": "infrastructure",
+      "importance": 2,
+      "title": {
+        "ru": "Выпущен Python SDK v1.0 с несовместимыми изменениями",
+        "en": "Python SDK v1.0 released with breaking changes"
+      },
+      "summary": {
+        "ru": "Python SDK вышел в версии 1.0 с несовместимыми изменениями, включая миграцию на httpx2.",
+        "en": "The Python SDK reached v1.0 with breaking changes, including an httpx2 migration."
+      },
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-19-computer-use-tool-out-of-beta-browser",
+      "date": "2026-08-19",
+      "type": "product",
+      "importance": 3,
+      "title": {
+        "ru": "Инструмент computer use вышел из беты; запущен browser use",
+        "en": "Computer use tool out of beta; browser use tool launches"
+      },
+      "summary": {
+        "ru": "Инструмент computer use вышел из беты как computer_toolset_20260801, запущен инструмент browser use (browser_toolset_20260801). В тот же день из беты вышли Files API и Agent Skills / Skills API.",
+        "en": "The computer use tool left beta as computer_toolset_20260801 and a browser use tool launched as browser_toolset_20260801. Files API and Agent Skills / Skills API also left beta the same day."
+      },
+      "entities": [
+        "prod-computer-use",
+        "prod-console"
+      ],
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-19-agent-skills-and-skills-api-out-of",
+      "date": "2026-08-19",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Agent Skills и Skills API вышли из беты",
+        "en": "Agent Skills and Skills API out of beta"
+      },
+      "summary": {
+        "ru": "Agent Skills и Skills API вышли из беты; в тот же день из беты вышел Files API с изменениями срока хранения и пагинации.",
+        "en": "Agent Skills and the Skills API left beta, and the Files API left beta on the same day with expiration and pagination changes."
+      },
+      "entities": [
+        "prod-console"
+      ],
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-17-run-rate-revenue-reportedly-passes-65b-before",
+      "date": "2026-08-17",
+      "type": "finance",
+      "importance": 2,
+      "title": {
+        "ru": "Годовая выручка по run-rate по сообщениям превысила $65 млрд перед IPO",
+        "en": "Run-rate revenue reportedly passes $65B before IPO"
+      },
+      "summary": {
+        "ru": "Axios сообщил, что годовой run-rate выручки Anthropic превысил $65 млрд перед IPO.",
+        "en": "Axios reported Anthropic's revenue run rate surpassed $65 billion ahead of its IPO."
+      },
+      "sources": [
+        {
+          "title": "Axios",
+          "url": "https://axios.com/2026/08/17/anthropic-revenue-run-rate-ipo-openai"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-17-claude-code-design-research-preview",
+      "date": "2026-08-17",
+      "type": "product",
+      "importance": 1,
+      "title": {
+        "ru": "Превью /design в Claude Code",
+        "en": "Claude Code /design research preview"
+      },
+      "summary": {
+        "ru": "Превью /design переносит рабочий процесс artboard из Claude Design в CLI и десктоп-приложение Claude Code на основе artifacts.",
+        "en": "A research preview of /design brings Claude Design's artboard workflow into the Claude Code CLI and Desktop, built on artifacts."
+      },
+      "entities": [
+        "prod-claude-code",
+        "prod-design-science"
+      ],
+      "sources": [
+        {
+          "title": "Claude Code docs",
+          "url": "https://code.claude.com/docs/en/whats-new"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-14-august-2026-risk-report-published",
+      "date": "2026-08-14",
+      "type": "safety",
+      "importance": 2,
+      "title": {
+        "ru": "Опубликован отчет о рисках за август 2026",
+        "en": "August 2026 Risk Report published"
+      },
+      "summary": {
+        "ru": "Anthropic опубликовала отчет о рисках за август 2026 в рамках RSP v3.4 (дата данных 15 июля 2026). Катастрофический риск оценен как низкий по трем направлениям; оценка риска несоосности повышена с очень низкого до низкого.",
+        "en": "Anthropic published its August 2026 Risk Report under RSP v3.4 (coverage date July 15, 2026). It rates catastrophic risk as low across misalignment in high-stakes settings, automated AI R&D and chemical/biological weapons; the misalignment rating rose from very low to low."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www-cdn.anthropic.com/f61d49fa5596956a5dec75fea0e973bf6a6a8378/Redacted%20Risk%20Report%20August%202026%20.pdf"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-06-skill-and-plugin-security-scanning-enterprise-beta",
+      "date": "2026-08-06",
+      "type": "safety",
+      "importance": 1,
+      "title": {
+        "ru": "Сканирование безопасности навыков и плагинов (бета для Enterprise)",
+        "en": "Skill and plugin security scanning (Enterprise beta)"
+      },
+      "summary": {
+        "ru": "Claude автоматически проверяет сторонние навыки и плагины на вредоносное содержимое; бета для Enterprise.",
+        "en": "Claude automatically checks third-party skills and plugins for malicious content, in Enterprise beta."
+      },
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-05-claude-opus-41-retired-from-api",
+      "date": "2026-08-05",
+      "type": "model",
+      "importance": 1,
+      "title": {
+        "ru": "Claude Opus 4.1 выведена из API",
+        "en": "Claude Opus 4.1 retired from API"
+      },
+      "summary": {
+        "ru": "API-модель claude-opus-4-1-20250805 выведена из эксплуатации 5 августа 2026 (объявлена устаревшей 5 июня 2026); рекомендуемая замена — claude-opus-4-8.",
+        "en": "The API model claude-opus-4-1-20250805 reached its retirement date (deprecated June 5, 2026); the recommended replacement is claude-opus-4-8."
+      },
+      "entities": [
+        "prod-claude-45"
+      ],
+      "sources": [
+        {
+          "title": "Claude Developer Platform release notes",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-04-tino-cuellar-named-chief-global-affairs-officer",
+      "date": "2026-08-04",
+      "type": "people",
+      "importance": 2,
+      "title": {
+        "ru": "Тино Куэльяр назначен главой по глобальным вопросам (Chief Global Affairs Officer)",
+        "en": "Tino Cuéllar named Chief Global Affairs Officer"
+      },
+      "summary": {
+        "ru": "Anthropic назначила бывшего судью Верховного суда Калифорнии Мариано-Флорентино (Тино) Куэльяра первым директором по глобальным вопросам (Chief Global Affairs Officer), отвечающим за политику в сфере ИИ.",
+        "en": "Anthropic named former California Supreme Court justice Mariano-Florentino (Tino) Cuéllar its first Chief Global Affairs Officer, covering AI policy."
+      },
+      "entities": [
+        "tino-cuellar"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/tino-cuellar"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "2026-08-03-claude-code-cross-session-messaging-and-auto",
+      "date": "2026-08-03",
+      "type": "product",
+      "importance": 2,
+      "title": {
+        "ru": "Claude Code: обмен сообщениями между сессиями и auto mode по умолчанию",
+        "en": "Claude Code: cross-session messaging and auto mode default"
+      },
+      "summary": {
+        "ru": "Сессии Claude Code на macOS и Linux могут обмениваться сообщениями (неделя 3-7 августа). Auto mode становится режимом разрешений по умолчанию для новых сессий на планах Pro, Max и Team с 14 августа.",
+        "en": "Claude Code sessions on macOS and Linux can message each other (week of August 3-7). Auto mode becomes the default permission mode for new sessions on Pro, Max and Team plans starting August 14."
+      },
+      "entities": [
+        "prod-claude-code"
+      ],
+      "sources": [
+        {
+          "title": "Claude Code docs",
+          "url": "https://code.claude.com/docs/en/whats-new"
+        }
+      ],
+      "addedAt": "2026-11-16"
+    }
+  ]
+}

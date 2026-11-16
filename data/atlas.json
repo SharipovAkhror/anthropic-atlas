@@ -120,8 +120,8 @@
       "asOf": "2026-11-10",
       "sources": [
         {
-          "title": "SEC EDGAR",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+          "title": "SEC EDGAR: Anthropic, PBC Form S-1",
+          "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm"
         }
       ]
     },
@@ -141,8 +141,12 @@
       "asOf": "2026-11-10",
       "sources": [
         {
-          "title": "SEC EDGAR",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+          "title": "Anthropic: Roadshow launch",
+          "url": "https://www.anthropic.com/news/roadshow-launch"
+        },
+        {
+          "title": "Decrypt",
+          "url": "https://decrypt.co/382939/anthropic-sets-ipo-price-range-at-70-to-78-valuing-company-at-up-to-1-4-trillion"
         }
       ]
     },
@@ -155,15 +159,14 @@
       },
       "value": "до $1.4T",
       "note": {
-        "ru": "fully diluted, верх диапазона",
-        "en": "fully diluted, top of range",
-        "uz": "to'liq suyultirilgan"
+        "ru": "fully diluted по верху диапазона; рыночная $0.92–1.02T",
+        "en": "fully diluted at top of range; market value $0.92–1.02T"
       },
       "asOf": "2026-11-10",
       "sources": [
         {
-          "title": "SEC EDGAR",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+          "title": "Decrypt",
+          "url": "https://decrypt.co/382939/anthropic-sets-ipo-price-range-at-70-to-78-valuing-company-at-up-to-1-4-trillion"
         }
       ]
     },
@@ -183,8 +186,8 @@
       "asOf": "2026-10-31",
       "sources": [
         {
-          "title": "SEC EDGAR",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+          "title": "Anthropic: Roadshow launch",
+          "url": "https://www.anthropic.com/news/roadshow-launch"
         }
       ]
     },
@@ -204,29 +207,68 @@
       "asOf": "2026-11-10",
       "sources": [
         {
-          "title": "SEC EDGAR",
-          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+          "title": "SEC EDGAR: Anthropic, PBC Form S-1",
+          "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm"
         }
       ]
     },
     {
       "id": "class_t_board",
       "label": {
-        "ru": "Места Совета от LTBT",
+        "ru": "Совет от траста LTBT",
         "en": "Board seats via LTBT",
         "uz": "LTBT kengash o'rinlari"
       },
-      "value": "4 / 7",
+      "value": "→ большинство",
       "note": {
-        "ru": "Class T",
-        "en": "Class T",
-        "uz": "Class T"
+        "ru": "Траст избирает растущую часть Совета, со временем большинство",
+        "en": "Trust elects a growing share of the board, ultimately a majority"
       },
-      "asOf": "2026-11-10",
+      "asOf": "2026-10-31",
       "sources": [
         {
-          "title": "Anthropic",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ]
+    },
+    {
+      "id": "board_size",
+      "label": {
+        "ru": "Совет директоров",
+        "en": "Board of directors",
+        "uz": "Direktorlar kengashi"
+      },
+      "value": "8",
+      "note": {
+        "ru": "по проспекту S-1, председатель — Даниэла Амодей",
+        "en": "per S-1 prospectus, chaired by Daniela Amodei"
+      },
+      "asOf": "2026-09-28",
+      "sources": [
+        {
+          "title": "Reuters factbox (via Investing.com)",
+          "url": "https://www.investing.com/news/economy-news/factboxanthropics-filing-for-blockbuster-us-ipo-shows-key-executives-and-board-5015176"
+        }
+      ]
+    },
+    {
+      "id": "q3_revenue",
+      "label": {
+        "ru": "Выручка Q3 2026",
+        "en": "Q3 2026 revenue",
+        "uz": "2026 Q3 tushum"
+      },
+      "value": "$17.0B",
+      "note": {
+        "ru": "S-1/A №1; операционный убыток $567M",
+        "en": "S-1/A No.1; operating loss $567M"
+      },
+      "asOf": "2026-11-02",
+      "sources": [
+        {
+          "title": "StockAnalysis",
+          "url": "https://stockanalysis.com/news/anthropic-third-quarter-revenue-17-billion-ipo-filing/"
         }
       ]
     }
@@ -246,9 +288,9 @@
         "uz": "0%, dividendsiz"
       },
       "control": {
-        "ru": "Избирает 4 из 7 директоров",
-        "en": "Elects 4 of 7 directors",
-        "uz": "7 direktordan 4 tasini saylaydi"
+        "ru": "Избирает растущую часть Совета, со временем большинство",
+        "en": "Elects a growing share of the board, ultimately a majority",
+        "uz": "Kengashning o'sib boruvchi qismini saylaydi"
       }
     },
     {
@@ -350,11 +392,11 @@
       "avatar": "https://www.clintonhealthaccess.org/wp-content/uploads/2022/06/Buddy-Shah-Headshot-scaled.jpg",
       "initials": "NS",
       "bio": {
-        "ru": "CEO Clinton Health Access Initiative (CHAI). Единственный попечитель из первого созыва (сентябрь 2023). Возглавляет LTBT, назначающий 4 из 7 директоров Совета Anthropic."
+        "ru": "CEO Clinton Health Access Initiative. Председатель Long-Term Benefit Trust — независимого органа из пяти членов, который избирает часть Совета директоров; со временем это будет большинство Совета."
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -385,7 +427,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -416,7 +458,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -447,7 +489,11 @@
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Christopher Stubbs joins the LTBT",
+          "url": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust"
+        },
+        {
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -505,12 +551,12 @@
       "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Vas_Narasimhan_WEF_2020.jpg/250px-Vas_Narasimhan_WEF_2020.jpg",
       "initials": "VN",
       "bio": {
-        "ru": "CEO Novartis. Назначен трастом LTBT в Совет директоров 14 апреля 2026 года для надзора за биобезопасностью."
+        "ru": "CEO Novartis. Вошёл в Совет директоров Anthropic в апреле 2026 года."
       },
       "sources": [
         {
-          "title": "IntuitionLabs",
-          "url": "https://intuitionlabs.ai/articles/pharma-ai-governance-novartis-anthropic"
+          "title": "Anthropic: Vas Narasimhan joins the Board",
+          "url": "https://www.anthropic.com/news/narasimhan-board"
         }
       ],
       "verifiedAt": "2026-11-16"
@@ -540,8 +586,8 @@
       },
       "sources": [
         {
-          "title": "Layer3Labs",
-          "url": "https://www.layer3labs.io/guides/anthropic-long-term-benefit-trust"
+          "title": "Anthropic: Chris Liddell appointed to the Board",
+          "url": "https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board"
         }
       ],
       "verifiedAt": "2026-11-16"
@@ -572,7 +618,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -604,7 +650,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic LTBT",
+          "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
@@ -649,9 +695,9 @@
       "zone": "core",
       "status": "active",
       "role": {
-        "ru": "Президент и Председатель Совета",
-        "en": "President & Chair of the Board",
-        "uz": "Prezident va Kengash raisi"
+        "ru": "Сооснователь, президент и председатель Совета директоров",
+        "en": "Co-Founder, President & Chair of the Board",
+        "uz": "Hammuassis, prezident va Direktorlar kengashi raisi"
       },
       "tag": {
         "ru": "Chair & Pres",
@@ -662,14 +708,14 @@
       "influence": 99,
       "hero": true,
       "avatar": "https://images.stripeassets.com/fzn2n1nzq965/6L5AJB2usxYVRpHzMXUmiZ/39bc615186aaaf2858ab042d7614e19a/resizedimage.png",
-      "initials": "DnA",
+      "initials": "DA",
       "bio": {
         "ru": "Экс-VP Safety & Policy OpenAI и менеджер Stripe. Возглавляет Совет директоров, C-Suite, коммерцию и Anthropic Labs."
       },
       "sources": [
         {
-          "title": "The Profile",
-          "url": "https://www.readtheprofile.com/p/most-powerful-people-at-anthropic"
+          "title": "Anthropic: Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
         }
       ],
       "verifiedAt": "2026-11-16"
@@ -691,7 +737,6 @@
         "uz": "0% ovoz"
       },
       "since": "2023",
-      "until": "2026",
       "influence": 89,
       "initials": "AG",
       "bio": {
@@ -757,12 +802,16 @@
       "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mariano-Florentino_Cu%C3%A9llar_2017.jpg/250px-Mariano-Florentino_Cu%C3%A9llar_2017.jpg",
       "initials": "TC",
       "bio": {
-        "ru": "Президент Фонда Карнеги, экс-судья Верховного суда Калифорнии. В августе 2026 перешел из LTBT на пост CGAO."
+        "ru": "Бывший председатель Фонда Карнеги и судья Верховного суда Калифорнии. Был попечителем LTBT, в августе 2026 стал первым Chief Global Affairs Officer Anthropic: политика, международные отношения и работа с правительствами."
       },
       "sources": [
         {
-          "title": "Anthropic News",
+          "title": "Anthropic: Tino Cuéllar",
           "url": "https://www.anthropic.com/news/tino-cuellar"
+        },
+        {
+          "title": "Anthropic: Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
         }
       ],
       "verifiedAt": "2026-11-16"
@@ -853,7 +902,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic News",
+          "title": "Anthropic: Jay Kreps appointed to the Board",
           "url": "https://www.anthropic.com/news/jay-kreps-appointed-to-board-of-directors"
         }
       ],
@@ -897,9 +946,9 @@
       "zone": "science",
       "status": "active",
       "role": {
-        "ru": "Главный архитектор и RSO",
-        "en": "Chief Architect & RSO",
-        "uz": "Bosh arxitektor va RSO"
+        "ru": "Сооснователь, главный архитектор",
+        "en": "Co-Founder & Chief Architect",
+        "uz": "Hammuassis, bosh arxitektor"
       },
       "tag": {
         "ru": "Архитектор & RSO",
@@ -911,12 +960,12 @@
       "avatar": "https://www.autumn.ai/resources/anthropic/portraits/sam-mccandlish.webp",
       "initials": "SM",
       "bio": {
-        "ru": "Сооснователь (Class F), экс-CTO до окт 2025. Главный архитектор моделей и Responsible Scaling Officer."
+        "ru": "Сооснователь Anthropic. Отвечает за обучение крупных моделей: предобучение, продуктивность исследований и инфраструктуру RL."
       },
       "sources": [
         {
-          "title": "Washington Post",
-          "url": "https://www.washingtonpost.com/business/2026/11/05/anthropic-metr-ai-claude-acceleration/863c713e-d943-11f1-930a-e08f8086f5ac_story.html"
+          "title": "Anthropic: Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
         }
       ],
       "verifiedAt": "2026-11-16"
@@ -959,9 +1008,9 @@
       "zone": "science",
       "status": "active",
       "role": {
-        "ru": "Глава интерпретируемости",
-        "en": "Interpretability Lead",
-        "uz": "Neyron shaffoflik rahbari"
+        "ru": "Сооснователь, руководитель исследований интерпретируемости",
+        "en": "Co-Founder & Interpretability Research Lead",
+        "uz": "Hammuassis, interpretatsiya tadqiqotlari rahbari"
       },
       "tag": {
         "ru": "МРТ ИИ · Class F",
@@ -977,7 +1026,7 @@
       },
       "sources": [
         {
-          "title": "Anthropic Leadership",
+          "title": "Anthropic: Leadership",
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
@@ -1114,9 +1163,9 @@
       "zone": "alignment",
       "status": "active",
       "role": {
-        "ru": "Сооснователь, Public Benefit",
-        "en": "Co-Founder, Public Benefit",
-        "uz": "Hammuassis, Public Benefit"
+        "ru": "Сооснователь, глава Public Benefit",
+        "en": "Co-Founder & Head of Public Benefit",
+        "uz": "Hammuassis, Public Benefit rahbari"
       },
       "tag": {
         "ru": "Institute",
@@ -1128,11 +1177,11 @@
       "avatar": "https://jack-clark.net/wp-content/uploads/2021/05/cropped-jack-clark.jpg",
       "initials": "JC",
       "bio": {
-        "ru": "Сооснователь в Class F. Возглавляет The Anthropic Institute, изучающий влияние ИИ на экономику."
+        "ru": "Сооснователь Anthropic. Руководит The Anthropic Institute — аналитическим центром, изучающим влияние передового ИИ на общество. Ранее — директор по политике OpenAI."
       },
       "sources": [
         {
-          "title": "Anthropic Leadership",
+          "title": "Anthropic: Leadership",
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
@@ -1159,7 +1208,7 @@
       "avatar": "https://dganguli.github.io/pweb/dg2.png",
       "initials": "DG",
       "bio": {
-        "ru": "Экс-директор Stanford HAI. Создал систему приватной аналитики Clio и Economic Index."
+        "ru": "Руководит командой Societal Impacts: исследования влияния Claude на общество, включая Clio и Anthropic Economic Index."
       },
       "sources": [
         {
@@ -1394,9 +1443,9 @@
       "zone": "labs",
       "status": "former",
       "role": {
-        "ru": "Экс-лид Claude Code (в OpenAI)",
-        "en": "Former Claude Code Lead",
-        "uz": "Sobiq Claude Code rahbari"
+        "ru": "Бывший руководитель продукта Claude Code",
+        "en": "Former Head of Product, Claude Code",
+        "uz": "Claude Code mahsulot rahbari (sobiq)"
       },
       "tag": {
         "ru": "Экс-лид",
@@ -1409,9 +1458,13 @@
       "avatar": "https://avatars.githubusercontent.com/u/6024687?v=4",
       "initials": "CW",
       "bio": {
-        "ru": "Развивала Claude Code и Cowork до 30 октября 2026 года, затем перешла в OpenAI."
+        "ru": "Руководила продуктом Claude Code. Покинула Anthropic 30 октября 2026 года и перешла в OpenAI (Core Products), о чём объявлено 5 ноября 2026."
       },
       "sources": [
+        {
+          "title": "The Next Web",
+          "url": "https://thenextweb.com/news/cat-wu-claude-code-anthropic-openai-core-products"
+        },
         {
           "title": "Business Insider",
           "url": "https://www.businessinsider.com/cat-wu-joins-openai-from-anthropic-product-lead-coup-2026-11"
@@ -1444,6 +1497,10 @@
       },
       "sources": [
         {
+          "title": "Anthropic: Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        },
+        {
           "title": "Anthropic News",
           "url": "https://www.anthropic.com/news/rahul-patil-joins-anthropic"
         }
@@ -1474,6 +1531,10 @@
         "ru": "Экс-Airbnb IPO, первый CFO Anthropic (с апреля 2024). Руководит финансами и выходом на Nasdaq."
       },
       "sources": [
+        {
+          "title": "Anthropic: Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        },
         {
           "title": "Anthropic News",
           "url": "https://www.anthropic.com/news/krishna-rao-joins-anthropic"
@@ -1579,7 +1640,7 @@
       "zone": "infra",
       "status": "active",
       "role": {
-        "ru": "Заместитель CISO (ex-CISO)",
+        "ru": "Заместитель CISO",
         "en": "Deputy CISO",
         "uz": "CISO o'rinbosari"
       },
@@ -1593,7 +1654,7 @@
       "avatar": "https://www.sans.org/img/profiles/jason-clinton.jpg",
       "initials": "JC",
       "bio": {
-        "ru": "Первый CISO Anthropic (2023–2025), соавтор стандарта защиты весов SL5."
+        "ru": "Бывший CISO Anthropic; после прихода Виталия Гуданца остался заместителем CISO."
       },
       "sources": [
         {
@@ -1658,11 +1719,106 @@
       },
       "sources": [
         {
-          "title": "Brand Innovators",
-          "url": "https://brand-innovators.com/speakers/kate-jensen/"
+          "title": "Skift: Kate Jensen, Anthropic",
+          "url": "https://live.skift.com/speaker/kate-jensen/"
         }
       ],
       "verifiedAt": "2026-11-16"
+    },
+    {
+      "kind": "person",
+      "status": "active",
+      "influence": 40,
+      "verifiedAt": "2026-11-16",
+      "id": "elena-leichty",
+      "name": "Elena Leichty",
+      "zone": "capital",
+      "role": {
+        "ru": "Генеральный юрисконсульт",
+        "en": "General Counsel",
+        "uz": "Bosh yuriskonsult"
+      },
+      "tag": {
+        "ru": "General Counsel",
+        "en": "General Counsel",
+        "uz": "General Counsel"
+      },
+      "since": "2026-08",
+      "initials": "EL",
+      "bio": {
+        "ru": "Повышена с должности заместителя генерального юрисконсульта в августе 2026, сменив Джеффри Блайха, который стал международным специальным посланником."
+      },
+      "sources": [
+        {
+          "title": "Bloomberg Law",
+          "url": "https://news.bloomberglaw.com/ip-law/anthropic-names-new-general-counsel-ahead-of-long-awaited-ipo"
+        },
+        {
+          "title": "ABA Journal",
+          "url": "https://www.abajournal.com/news/article/anthropics-gc-announces-new-role-as-international-special-envoy"
+        }
+      ]
+    },
+    {
+      "kind": "person",
+      "status": "former",
+      "influence": 20,
+      "verifiedAt": "2026-11-16",
+      "id": "jason-matheny",
+      "name": "Jason Matheny",
+      "zone": "ltbt",
+      "role": {
+        "ru": "Бывший попечитель LTBT",
+        "en": "Former LTBT Trustee",
+        "uz": "LTBT sobiq vasiysi"
+      },
+      "tag": {
+        "ru": "LTBT (бывш.)",
+        "en": "Ex-trustee",
+        "uz": "Sobiq vasiy"
+      },
+      "since": "2023-09",
+      "until": "2023-12",
+      "initials": "JM",
+      "bio": {
+        "ru": "CEO RAND Corporation. Один из первых попечителей Long-Term Benefit Trust, вышел в декабре 2023 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic: Long-Term Benefit Trust",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ]
+    },
+    {
+      "kind": "person",
+      "status": "active",
+      "influence": 55,
+      "verifiedAt": "2026-11-16",
+      "id": "john-jumper",
+      "name": "John Jumper",
+      "zone": "science",
+      "role": {
+        "ru": "Исследователь (пришёл из Google DeepMind)",
+        "en": "Researcher (joined from Google DeepMind)",
+        "uz": "Tadqiqotchi (Google DeepMind'dan)"
+      },
+      "tag": {
+        "ru": "Нобелевский лауреат",
+        "en": "Nobel laureate",
+        "uz": "Nobel mukofoti sovrindori"
+      },
+      "since": "2026-06",
+      "initials": "JJ",
+      "bio": {
+        "ru": "Нобелевский лауреат по химии 2024 года, соавтор AlphaFold. В июне 2026 объявил о переходе из Google DeepMind в Anthropic; должность не раскрыта."
+      },
+      "sources": [
+        {
+          "title": "The Next Web",
+          "url": "https://thenextweb.com/news/john-jumper-nobel-deepmind-leaves-anthropic-alphafold"
+        }
+      ]
     }
   ],
   "products": [
@@ -1673,7 +1829,7 @@
       "status": "active",
       "label": "Flagship",
       "released": "2026-11-09",
-      "metrics": "$8 / $40 · 1M ctx",
+      "metrics": "$8 / $40 за 1M ток. · 1M ctx",
       "owners": [
         "dario-amodei",
         "jared-kaplan",
@@ -1681,15 +1837,45 @@
         "tom-brown"
       ],
       "description": {
-        "ru": "Актуальный флагман от 9 ноября 2026 года. Mythos 5.2 доступен партнерам по кибербезопасности."
+        "ru": "Флагман от 9 ноября 2026: Fable 5.2 для сложных рассуждений и долгой агентской работы. Mythos 5.2 — та же модель с другими защитными настройками, доступна доверенным партнёрам по кибербезопасности.",
+        "en": "Flagship released Nov 9, 2026. Fable 5.2 targets demanding reasoning and long-horizon agentic work; Mythos 5.2 is offered to trusted cyber-defense partners."
       },
       "sources": [
         {
-          "title": "Anthropic Models",
+          "title": "Anthropic: Claude Fable 5.2 and Mythos 5.2",
           "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        },
+        {
+          "title": "Claude docs: Models overview",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "docs": "https://platform.claude.com/docs/en/about-claude/models/overview"
+      },
+      "children": [
+        {
+          "name": "Claude Fable 5.2",
+          "apiId": "claude-fable-5-2",
+          "released": "2026-11-09",
+          "status": "active"
+        },
+        {
+          "name": "Claude Mythos 5.2",
+          "released": "2026-11-09",
+          "status": "preview",
+          "note": {
+            "ru": "Ограниченный доступ для партнёров"
+          }
+        },
+        {
+          "name": "Claude Fable 5.1 / Mythos 5.1",
+          "released": "2026-09-01",
+          "status": "legacy"
+        }
+      ]
     },
     {
       "id": "prod-claude-55",
@@ -1706,46 +1892,88 @@
         "jan-leike"
       ],
       "description": {
-        "ru": "Основная линейка осени 2026 с окном 1M токенов и выходом 128K."
+        "ru": "Основная линейка API: Opus 5.5 (22 сен), Sonnet 5.5 (28 сен), Haiku 5.5 (7 окт 2026). У всех контекст 1M токенов и до 128K на выходе.",
+        "en": "Core API lineup: Opus 5.5 (Sep 22), Sonnet 5.5 (Sep 28), Haiku 5.5 (Oct 7, 2026); 1M context, 128K max output."
       },
       "sources": [
         {
-          "title": "Claude Docs",
-          "url": "https://platform.claude.com/docs/en/models/overview"
+          "title": "Claude docs: Models overview",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview"
+        },
+        {
+          "title": "Anthropic: Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "docs": "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "official": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      "children": [
+        {
+          "name": "Claude Opus 5.5",
+          "apiId": "claude-opus-5-5",
+          "released": "2026-09-22",
+          "status": "active",
+          "note": {
+            "ru": "$4 / $20 за 1M токенов"
+          }
+        },
+        {
+          "name": "Claude Sonnet 5.5",
+          "apiId": "claude-sonnet-5-5",
+          "released": "2026-09-28",
+          "status": "active",
+          "note": {
+            "ru": "$2 / $10 за 1M токенов"
+          }
+        },
+        {
+          "name": "Claude Haiku 5.5",
+          "apiId": "claude-haiku-5-5",
+          "released": "2026-10-07",
+          "status": "active",
+          "note": {
+            "ru": "от $0.10 / $0.50 за 1M токенов"
+          }
+        }
+      ]
     },
     {
       "id": "prod-claude-45",
       "name": "Claude 4 & 4.5 / 4.6",
       "cluster": "models",
-      "status": "active",
+      "status": "legacy",
       "label": "ASL-3",
       "released": "2025–2026",
-      "metrics": "SWE-bench 77.2%",
+      "metrics": "Вывод из API 2026",
       "owners": [
         "sam-mccandlish",
         "jared-kaplan",
         "tom-brown"
       ],
       "description": {
-        "ru": "Поколение, впервые прошедшее сертификацию ASL-3."
+        "ru": "Предыдущие поколения. Opus 4 и Sonnet 4 выведены 15.06.2026, Opus 4.1 — 05.08.2026; Sonnet 4.5 устарел и выводится 30.11.2026 (замена — Sonnet 5.5).",
+        "en": "Previous generations. Opus 4/Sonnet 4 retired Jun 15 2026, Opus 4.1 Aug 5 2026; Sonnet 4.5 retires Nov 30 2026."
       },
       "sources": [
         {
-          "title": "Claude Docs",
+          "title": "Claude docs: Model deprecations",
           "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "docs": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+      }
     },
     {
       "id": "prod-claude-3x",
       "name": "Claude 3 / 3.5 / 3.7 Sonnet",
       "cluster": "models",
-      "status": "legacy",
-      "label": "Legacy",
+      "status": "retired",
+      "label": "Retired",
       "released": "2024–2025",
       "metrics": "Extended Thinking",
       "owners": [
@@ -1754,15 +1982,19 @@
         "ben-mann"
       ],
       "description": {
-        "ru": "Исторический фундамент: Artifacts, Computer Use и гибридное мышление."
+        "ru": "Модели Claude 3 / 3.5 / 3.7 выведены из API: Claude 3.5 Sonnet — 28.10.2025, Claude 3.7 Sonnet — 19.02.2026.",
+        "en": "Retired from the API: Claude 3.5 Sonnet (Oct 28 2025), Claude 3.7 Sonnet (Feb 19 2026)."
       },
       "sources": [
         {
-          "title": "Anthropic News",
-          "url": "https://www.anthropic.com/news/claude-3-5-sonnet"
+          "title": "Claude docs: Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "docs": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+      }
     },
     {
       "id": "prod-constitution-character",
@@ -1786,7 +2018,10 @@
           "url": "https://www.anthropic.com/constitution"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/constitution"
+      }
     },
     {
       "id": "prod-aar-classifiers",
@@ -1802,15 +2037,19 @@
         "jared-kaplan"
       ],
       "description": {
-        "ru": "Автономные ИИ-аудиторы выравнивания и защита от джейлбрейков."
+        "ru": "Автоматизированные исследователи выравнивания (AAR): ИИ-агенты, которые изучают литературу, предлагают методы и обучают модели, снижая ошибки выравнивания.",
+        "en": "Automated alignment researchers: agents that review literature, propose methods and train models to reduce alignment failures."
       },
       "sources": [
         {
-          "title": "Alignment Blog",
+          "title": "Anthropic Alignment Science",
           "url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://alignment.anthropic.com/"
+      }
     },
     {
       "id": "prod-sae-circuits",
@@ -1833,7 +2072,10 @@
           "url": "https://arxiv.org/html/2501.16496v1"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/research/team/interpretability"
+      }
     },
     {
       "id": "prod-clio-glasswing",
@@ -1854,11 +2096,18 @@
       },
       "sources": [
         {
+          "title": "Anthropic: Project Glasswing",
+          "url": "https://www.anthropic.com/glasswing"
+        },
+        {
           "title": "Platformer",
           "url": "https://www.platformer.news/how-claude-uses-ai-to-identify-new-threats/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/glasswing"
+      }
     },
     {
       "id": "prod-claude-code",
@@ -1883,7 +2132,12 @@
           "url": "https://github.com/anthropics/claude-code"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://claude.com/product/claude-code",
+        "docs": "https://code.claude.com/docs/en/overview",
+        "github": "https://github.com/anthropics/claude-code"
+      }
     },
     {
       "id": "prod-mcp",
@@ -1907,7 +2161,12 @@
           "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://modelcontextprotocol.io",
+        "docs": "https://modelcontextprotocol.io/docs",
+        "wikipedia": "https://en.wikipedia.org/wiki/Model_Context_Protocol"
+      }
     },
     {
       "id": "prod-computer-use",
@@ -1931,7 +2190,10 @@
           "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "docs": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool"
+      }
     },
     {
       "id": "prod-console",
@@ -1955,7 +2217,11 @@
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "docs": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "official": "https://platform.claude.com"
+      }
     },
     {
       "id": "prod-claude-apps",
@@ -1975,19 +2241,23 @@
       },
       "sources": [
         {
-          "title": "Release Notes",
-          "url": "https://docs.anthropic.com/en/release-notes/claude-apps"
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://claude.ai",
+        "docs": "https://support.claude.com/en/articles/12138966-release-notes"
+      }
     },
     {
       "id": "prod-cowork",
       "name": "Claude Cowork",
       "cluster": "workspace",
       "status": "active",
-      "label": "Work Agent",
-      "released": "2026",
+      "label": "In chat",
+      "released": "2026-01-12",
       "metrics": "Multi-step Tasks",
       "owners": [
         "ami-vora",
@@ -1996,23 +2266,31 @@
         "cat-wu"
       ],
       "description": {
-        "ru": "Агентская среда для бизнес-команд на десктопе, вебе и мобильных."
+        "ru": "Агент для многошаговой работы с файлами и приложениями. Запущен как исследовательская версия 12.01.2026; с 16.09.2026 встроен в обычный чат Claude.",
+        "en": "Agent for multi-step work across files and apps. Research preview Jan 12 2026; merged into Claude chat on Sep 16 2026."
       },
       "sources": [
         {
-          "title": "Anthropic",
-          "url": "https://www.anthropic.com/product/claude-cowork"
+          "title": "Claude: Cowork",
+          "url": "https://claude.com/product/cowork"
+        },
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://claude.com/product/cowork"
+      }
     },
     {
       "id": "prod-design-science",
-      "name": "Claude Design, Science & Sheets",
+      "name": "Claude Design & Science",
       "cluster": "workspace",
       "status": "active",
       "label": "Verticals",
-      "released": "2026",
+      "released": "2026-04-17",
       "metrics": "Design · Science · Sheets",
       "owners": [
         "ami-vora",
@@ -2020,24 +2298,32 @@
         "ben-mann"
       ],
       "description": {
-        "ru": "Специализированные среды от Anthropic Labs для дизайна, науки и таблиц."
+        "ru": "Специализированные среды Anthropic Labs: Claude Design (превью 17.04.2026, с 16.09 доступен во всех чатах) и Claude Science — рабочее место для учёных (бета).",
+        "en": "Anthropic Labs verticals: Claude Design (preview Apr 17 2026) and Claude Science (beta)."
       },
       "sources": [
         {
-          "title": "Anthropic",
+          "title": "Anthropic: Claude Design",
           "url": "https://www.anthropic.com/news/claude-design-anthropic-labs"
+        },
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://claude.com/product/claude-design"
+      }
     },
     {
       "id": "prod-enterprise-max",
-      "name": "Claude for Work & Claude Max",
+      "name": "Тарифы: Pro, Max, Ultra, Team, Enterprise",
       "cluster": "workspace",
       "status": "active",
       "label": "B2B Scale",
       "released": "2024–2026",
-      "metrics": "11,900+ $100K+ accts",
+      "metrics": "Max $100 · Ultra $200 / мес.",
       "owners": [
         "paul-smith",
         "chris-ciauri",
@@ -2045,14 +2331,100 @@
         "ami-vora"
       ],
       "description": {
-        "ru": "Планы Team, Enterprise и Max (80.2% выручки на модели потребления)."
+        "ru": "Потребительские и корпоративные планы. В ноябре 2026 план Max 20x переименован в Ultra ($200/мес.), Max остался за $100/мес.; Team и Enterprise — для организаций.",
+        "en": "Consumer and business plans; in Nov 2026 Max 20x was renamed Ultra ($200/mo), Max stays $100/mo."
       },
       "sources": [
         {
-          "title": "Claude Pricing",
+          "title": "Claude pricing",
           "url": "https://claude.com/pricing"
+        },
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://claude.com/pricing"
+      }
+    },
+    {
+      "id": "prod-office-apps",
+      "name": "Claude Sheets, Whiteboards, Meetings",
+      "cluster": "workspace",
+      "status": "preview",
+      "label": "Beta",
+      "released": "2026-11",
+      "metrics": "Beta · Team & Enterprise",
+      "owners": [
+        "ami-vora"
+      ],
+      "description": {
+        "ru": "Офисные инструменты внутри Claude, ноябрь 2026: таблицы Sheets и доски Whiteboards (бета, 10 ноября), Claude Data, а также Claude Meetings — ассистент в звонках Google Meet (бета, 12 ноября).",
+        "en": "Office tools inside Claude (Nov 2026): Sheets, Whiteboards, Claude Data, and Meetings for Google Meet calls."
+      },
+      "children": [
+        {
+          "name": "Claude Sheets",
+          "released": "2026-11-10",
+          "status": "preview"
+        },
+        {
+          "name": "Claude Whiteboards",
+          "released": "2026-11-10",
+          "status": "preview"
+        },
+        {
+          "name": "Claude Meetings",
+          "released": "2026-11-12",
+          "status": "preview"
+        },
+        {
+          "name": "Claude Duet",
+          "released": "2026-10-21",
+          "status": "preview",
+          "note": {
+            "ru": "Проактивный агент, исследовательская версия"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "links": {
+        "docs": "https://support.claude.com/en/articles/12138966-release-notes"
+      },
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-rsp",
+      "name": "Responsible Scaling Policy 3.4",
+      "cluster": "safety",
+      "status": "active",
+      "label": "RSP",
+      "released": "2026-07-08",
+      "metrics": "ASL · v3.4",
+      "owners": [
+        "jared-kaplan",
+        "sam-mccandlish"
+      ],
+      "description": {
+        "ru": "Политика ответственного масштабирования: уровни безопасности ИИ (ASL) и обязательства перед выпуском всё более сильных моделей. Действующая версия 3.4 вступила в силу 8 июля 2026.",
+        "en": "Anthropic's Responsible Scaling Policy; version 3.4 effective Jul 8, 2026."
+      },
+      "sources": [
+        {
+          "title": "Anthropic: RSP updates",
+          "url": "https://www.anthropic.com/rsp-updates"
+        }
+      ],
+      "links": {
+        "official": "https://www.anthropic.com/responsible-scaling-policy"
+      },
       "verifiedAt": "2026-11-16"
     }
   ],
@@ -2245,6 +2617,11 @@
     {
       "from": "paul-smith",
       "to": "kate-jensen",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "elena-leichty",
       "type": "rep"
     }
   ]

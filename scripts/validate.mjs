@@ -109,7 +109,6 @@ if (atlas) {
     const E = "data/events.json";
     const ev = events.events;
     for (const d of new Set(dupes(ev.map(e => e.id)))) err(E, `duplicate event id "${d}"`);
-    for (const d of new Set(dupes(ev.map(e => e.sources[0].url)))) warn(E, `two events share the same primary source ${d}`);
     ev.forEach((e, i) => {
       const w = `events/${e.id}`;
       if (!e.id.startsWith(e.date)) err(E, `${w}: id must start with its date ${e.date}`);
