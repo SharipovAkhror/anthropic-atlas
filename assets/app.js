@@ -229,7 +229,7 @@
       return `<div class="hd"><div><div class="cap">${esc(clusterLabel(p.cluster))}</div><h3 data-copy style="margin-top:2px">${esc(p.name)}</h3>${p.status !== "active" ? `<div class="sub"><span class="st ${p.status}">${esc(t(p.status))}</span></div>` : ""}</div></div>
         <p class="lead">${gloss(tx(p.description))}</p>${linksHTML(p.links)}
         ${kv([[t("released"), esc(fmtDate(p.released))], [t("metrics"), p.metrics ? gloss(p.metrics) : ""]])}
-        ${p.children?.length ? `<div class="blk"><h4>${esc(t("children"))}</h4>${p.children.map(c => `<div class="child"><span>${c.docs ? `<a href="${esc(c.docs)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}${c.apiId ? `<br><code>${esc(c.apiId)}</code>` : ""}${c.note ? `<br><span class="cap">${esc(tx(c.note))}</span>` : ""}</span><span class="r">${c.status && c.status !== "active" ? `<span class="st ${c.status}">${esc(t(c.status))}</span><br>` : ""}${esc(fmtDate(c.released, { day: "numeric", month: "short", year: "numeric" }))}</span></div>`).join("")}</div>` : ""}
+        ${p.children?.length ? `<div class="blk"><h4>${esc(t("children"))}</h4>${p.children.map(c => `<div class="child"><span>${c.docs ? `<a href="${esc(c.docs)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}${c.apiId ? `<br><code>${esc(c.apiId)}</code>` : ""}${c.note ? `<br><span class="cap">${esc(tx(c.note))}</span>` : ""}</span><span class="r">${c.status && c.status !== "active" ? `<span class="st ${c.status}">${esc(t(c.status))}</span><br>` : ""}${esc(fmtDate(c.released, { day: "numeric", month: "long", year: "numeric" }))}</span></div>`).join("")}</div>` : ""}
         ${owners.length ? `<div class="blk"><h4>${esc(t("owners"))}</h4>${owners.map(x => relRow(x, tx(x.role))).join("")}</div>` : ""}
         ${eventsHTML(relEvents(p.id, p.name.split(/[,&(]/)[0].trim()))}${sourcesHTML(p)}`;
     },
@@ -307,7 +307,7 @@
   let relayoutT = 0;
   function relayoutSoon() { clearTimeout(relayoutT); relayoutT = setTimeout(layout, 480); }
 
-  function apply() {
+  function apply(user = true) {
     if (phone()) return;
     const v = { w: vw(), h: vh() };
     const m = 160; // keep part of the board on screen
@@ -369,7 +369,7 @@
     g.strokeStyle = "#0071e3"; g.lineWidth = 2; g.fillStyle = "rgba(0,113,227,.07)";
     g.beginPath(); g.roundRect ? g.roundRect(rx, ry, rw, rh, 4) : g.rect(rx, ry, rw, rh); g.fill(); g.stroke();
     const need = rw < W - 2 || rh < H - 2 || rx > 1 || ry > 1;
-    mm.classList.toggle("on", need && innerWidth >= 1100);
+    mm.classList.toggle("on", need && innerWidth >= 1100 && !!drawMap.user);
     clearTimeout(drawMap.t); if (need) drawMap.t = setTimeout(() => { if (!mm.matches(":hover")) mm.classList.remove("on"); }, 2600);
     mm._k = kk;
   }
@@ -400,7 +400,7 @@
       }
       if (!drag) return;
       const dx = p.x - drag.sx, dy = p.y - drag.sy;
-      if (!drag.active && Math.hypot(dx, dy) > 5) { drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
+      if (!drag.active && Math.hypot(dx, dy) > 5) { drawMap.user = true; drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
       if (drag.active) {
         cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply();
         const now = performance.now(), dt = Math.max(1, now - last.t);
@@ -415,7 +415,7 @@
       pinch = null; view.classList.remove("panning");
       if (drag?.active && performance.now() - last.t < 90 && !reduced()) {
         let { x: vx, y: vy } = vel;
-        const step = () => { vx *= .94; vy *= .94; cam.x += vx * 16; cam.y += vy * 16; apply(); if (Math.hypot(vx, vy) > .02) inertiaRaf = requestAnimationFrame(step); };
+        drawMap.user = true; const step = () => { vx *= .94; vy *= .94; cam.x += vx * 16; cam.y += vy * 16; apply(); if (Math.hypot(vx, vy) > .02) inertiaRaf = requestAnimationFrame(step); };
         inertiaRaf = requestAnimationFrame(step);
       }
       drag = null;
@@ -430,7 +430,7 @@
     });
     view.addEventListener("wheel", e => {
       if (phone()) return;
-      e.preventDefault(); cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); hideTip();
+      e.preventDefault(); drawMap.user = true; cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); hideTip();
       const p = loc(e);
       if (e.ctrlKey || e.metaKey) zoomAt(cam.s * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0085)), p.x, p.y);
       else { const k = e.deltaMode === 1 ? 32 : 1; cam.x -= (e.shiftKey && !e.deltaX ? e.deltaY : e.deltaX) * k; cam.y -= (e.shiftKey && !e.deltaX ? 0 : e.deltaY) * k; apply(); }
@@ -609,7 +609,7 @@
       else if (e.key === "Escape") { if (sheetOn) back(); else if (document.body.classList.contains("overview")) leaveMap(tabsIdx); }
       else if (e.key === "Backspace" && sheetOn) { e.preventDefault(); back(); }
       else if (e.key.toLowerCase() === "l") cycleLang();
-      else if (!phone() && e.key === "0") fitAll();
+      else if (!phone() && e.key === "0") { drawMap.user = true; fitAll(); }
       else if (!phone() && e.key === "1") startHome();
       else if (!phone() && (e.key === "+" || e.key === "=")) zoomAt(cam.s * 1.25, vw() / 2, vh() / 2, true);
       else if (!phone() && (e.key === "-" || e.key === "_")) zoomAt(cam.s / 1.25, vw() / 2, vh() / 2, true);
