@@ -1,40 +1,41 @@
 {
   "date": "2026-11-16",
-  "generatedAt": "2026-11-16T18:23:16.921Z",
+  "generatedAt": "2026-11-16T18:25:59.682Z",
   "sources": [
     {
       "id": "anthropic-sitemap",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "claude-sitemap",
       "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-alignment",
+      "ok": true,
       "baseline": true,
       "count": 0
     },
     {
-      "id": "alignment-sitemap",
-      "ok": false,
-      "error": "HTTP 404"
-    },
-    {
       "id": "api-release-notes",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "apps-release-notes",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "claude-code-changelog",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
@@ -45,75 +46,106 @@
     {
       "id": "status",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "gnews-anthropic",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "gnews-claude",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "gnews-people",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "gnews-ipo",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "gnews-ru",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "watch-leadership",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "watch-ltbt",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "watch-models",
       "ok": true,
-      "baseline": true,
-      "count": 0
+      "baseline": false,
+      "count": 1
     },
     {
       "id": "watch-deprecations",
       "ok": true,
-      "baseline": true,
-      "count": 0
+      "baseline": false,
+      "count": 1
     },
     {
       "id": "watch-pricing",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
       "id": "watch-rsp",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     }
   ],
-  "items": []
+  "items": [
+    {
+      "id": "c4b8e3d0b6cb",
+      "source": "watch-models",
+      "tier": 1,
+      "kind": "page-watch",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "title": "Page changed: Models overview (API ids, prices)",
+      "published": "2026-11-16",
+      "added": [
+        "Cookie settings",
+        "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy here (opens in new tab) .",
+        "Customize Customize cookie settings Reject Reject all cookies Accept Accept all cookies"
+      ],
+      "removed": []
+    },
+    {
+      "id": "78290477b578",
+      "source": "watch-deprecations",
+      "tier": 1,
+      "kind": "page-watch",
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "title": "Page changed: Model deprecations",
+      "published": "2026-11-16",
+      "added": [
+        "Cookie settings",
+        "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy here (opens in new tab) .",
+        "Customize Customize cookie settings Reject Reject all cookies Accept Accept all cookies"
+      ],
+      "removed": []
+    }
+  ]
 }

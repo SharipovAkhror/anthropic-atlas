@@ -435,9 +435,11 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "upload.wikimedia.org",
+      "avatarCredit": "Wikimedia Commons",
       "links": {
-        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Bernanke",
+        "wikidata": "https://www.wikidata.org/wiki/Q201795"
       }
     },
     {
@@ -458,7 +460,7 @@
       },
       "since": "2025-06",
       "influence": 84,
-      "avatar": "https://s3.us-east-1.amazonaws.com/files.cnas.org/images/_400x400_crop_center-center_82_none/Fontaine_Richard_2019-2.jpg",
+      "avatar": "/assets/people/richard-fontaine.jpg",
       "initials": "RF",
       "bio": {
         "ru": "CEO Center for a New American Security (CNAS), экс-сотрудник СНБ США. Попечитель LTBT с июня 2025 года."
@@ -471,8 +473,11 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
-      }
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust",
+        "wikipedia": "https://en.wikipedia.org/wiki/Richard_Fontaine",
+        "wikidata": "https://www.wikidata.org/wiki/Q115276065"
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "christopher-stubbs",
@@ -492,7 +497,7 @@
       },
       "since": "2026-10",
       "influence": 83,
-      "avatar": "https://physics.harvard.edu/sites/default/files/styles/profile_full/public/stubbs_chris.jpg",
+      "avatar": "/assets/people/christopher-stubbs.jpg",
       "initials": "CS",
       "bio": {
         "ru": "Именной профессор физики Гарварда, советник JASON. Вошел в LTBT 21 октября 2026 года."
@@ -509,8 +514,11 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust"
-      }
+        "official": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust",
+        "wikipedia": "https://en.wikipedia.org/wiki/Christopher_Stubbs",
+        "wikidata": "https://www.wikidata.org/wiki/Q1086984"
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "reed-hastings",
@@ -530,7 +538,7 @@
       },
       "since": "2025-05",
       "influence": 90,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Reed_Hastings_2012.jpg/250px-Reed_Hastings_2012.jpg",
+      "avatar": "/assets/people/reed-hastings.jpg",
       "initials": "RH",
       "bio": {
         "ru": "Сооснователь и экс-CEO Netflix. Назначен трастом LTBT в Совет директоров 28 мая 2025 года."
@@ -543,8 +551,11 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://techcrunch.com/2025/05/28/netflix-co-founder-reed-hastings-joins-anthropics-board/"
-      }
+        "official": "https://techcrunch.com/2025/05/28/netflix-co-founder-reed-hastings-joins-anthropics-board/",
+        "wikipedia": "https://en.wikipedia.org/wiki/Reed_Hastings",
+        "wikidata": "https://www.wikidata.org/wiki/Q7306657"
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "vas-narasimhan",
@@ -598,7 +609,7 @@
       },
       "since": "2026-02",
       "influence": 85,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Chris_Liddell_official_photo.jpg/250px-Chris_Liddell_official_photo.jpg",
+      "avatar": "/assets/people/chris-liddell.jpg",
       "initials": "CL",
       "bio": {
         "ru": "Бывший CFO Microsoft и GM. Назначен 13 февраля 2026 года как Specified Class T Director."
@@ -614,7 +625,8 @@
         "wikipedia": "https://en.wikipedia.org/wiki/Chris_Liddell",
         "wikidata": "https://www.wikidata.org/wiki/Q5107236",
         "official": "https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board"
-      }
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "paul-christiano",
@@ -635,7 +647,7 @@
       "since": "2023",
       "until": "2024",
       "influence": 79,
-      "avatar": "https://matsprogram.org/images/mentors/paul_christiano.jpg",
+      "avatar": "/assets/people/paul-christiano.jpg",
       "initials": "PC",
       "bio": {
         "ru": "Соавтор RLHF, основатель ARC. Входил в первый состав LTBT до перехода в US AISI (NIST)."
@@ -648,8 +660,11 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
-      }
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust",
+        "wikipedia": "https://en.wikipedia.org/wiki/Paul_Christiano",
+        "wikidata": "https://www.wikidata.org/wiki/Q64769299"
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "kanika-zach",
@@ -722,7 +737,7 @@
         "wikidata": "https://www.wikidata.org/wiki/Q103335665",
         "official": "https://www.anthropic.com/company/leadership"
       },
-      "avatarCredit": "upload.wikimedia.org"
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "daniela-amodei",
@@ -847,7 +862,7 @@
       },
       "since": "2026-08",
       "influence": 88,
-      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mariano-Florentino_Cu%C3%A9llar_2017.jpg/250px-Mariano-Florentino_Cu%C3%A9llar_2017.jpg",
+      "avatar": "/assets/people/tino-cuellar.jpg",
       "initials": "TC",
       "bio": {
         "ru": "Бывший председатель Фонда Карнеги и судья Верховного суда Калифорнии. Был попечителем LTBT, в августе 2026 стал первым Chief Global Affairs Officer Anthropic: политика, международные отношения и работа с правительствами."
@@ -867,7 +882,8 @@
         "wikipedia": "https://en.wikipedia.org/wiki/Mariano-Florentino_Cu%C3%A9llar",
         "wikidata": "https://www.wikidata.org/wiki/Q16213917",
         "official": "https://www.anthropic.com/company/leadership"
-      }
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "brian-israel",
@@ -1005,7 +1021,7 @@
         "wikidata": "https://www.wikidata.org/wiki/Q102649624",
         "official": "https://www.anthropic.com/company/leadership"
       },
-      "avatarCredit": "techcrunch.com"
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "sam-mccandlish",
@@ -1273,7 +1289,7 @@
       },
       "since": "2021-01",
       "influence": 93,
-      "avatar": "https://jack-clark.net/wp-content/uploads/2021/05/cropped-jack-clark.jpg",
+      "avatar": "/assets/people/jack-clark.jpg",
       "initials": "JC",
       "bio": {
         "ru": "Сооснователь Anthropic. Руководит The Anthropic Institute — аналитическим центром, изучающим влияние передового ИИ на общество. Ранее — директор по политике OpenAI."
@@ -1286,8 +1302,11 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/company/leadership"
-      }
+        "official": "https://www.anthropic.com/company/leadership",
+        "wikipedia": "https://en.wikipedia.org/wiki/Anthropic",
+        "wikidata": "https://www.wikidata.org/wiki/Q116758847"
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "deep-ganguli",
@@ -1413,7 +1432,7 @@
       },
       "since": "2024-05",
       "influence": 91,
-      "avatar": "https://i0.wp.com/doc.health/wp-content/uploads/2025/04/Kriegers-Leads-Anthropics-AI-Mission.jpg?fit=1920%2C1080&ssl=1",
+      "avatar": "/assets/people/mike-krieger.jpg",
       "initials": "MK",
       "bio": {
         "ru": "Сооснователь Instagram. Был CPO до января 2026, затем возглавил инкубатор Anthropic Labs."
@@ -1429,7 +1448,8 @@
         "wikipedia": "https://en.wikipedia.org/wiki/Mike_Krieger",
         "wikidata": "https://www.wikidata.org/wiki/Q10329947",
         "official": "https://www.anthropic.com/news/introducing-anthropic-labs"
-      }
+      },
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "ben-mann",
@@ -1497,7 +1517,9 @@
       "verifiedAt": "2026-11-16",
       "avatarCredit": "avatars.githubusercontent.com",
       "links": {
-        "github": "https://github.com/bcherny"
+        "github": "https://github.com/bcherny",
+        "wikipedia": "https://en.wikipedia.org/wiki/Boris_Cherny",
+        "wikidata": "https://www.wikidata.org/wiki/Q130788845"
       }
     },
     {
@@ -1958,8 +1980,12 @@
         }
       ],
       "links": {
-        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
-      }
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jason_Gaverick_Matheny",
+        "wikidata": "https://www.wikidata.org/wiki/Q6162551"
+      },
+      "avatar": "/assets/people/jason-matheny.jpg",
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "kind": "person",
