@@ -55,7 +55,7 @@ for (const [name, mutate] of cases) {
     edit(d, "data/events.json", j => { j.events.unshift({ id: `${today}-test-event`, date: today, type: "product", importance: 2, title: { ru: "Тест", en: "Test" }, summary: { ru: "Тест." }, sources: [{ title: "Anthropic", url: "https://www.anthropic.com/news" }], addedAt: today }); });
     let retired;
     edit(d, "data/atlas.json", j => { const p = j.people.find(x => x.status === "active" && x.kind === "person" && x.id !== "dario-amodei"); retired = p.id; p.status = "former"; p.until = today.slice(0, 7); j.people.find(x => x.id === "dario-amodei").bio = { ru: "Изменено." }; });
-    const r = node("digest.mjs", d, [`--date=${today}`]);
+    const r = node("digest.mjs", d, [`--date=${today}`, "--fresh"]);
     const dg = JSON.parse(readFileSync(join(d, `data/digests/${today}.json`), "utf8"));
     ok(r.status === 0, "digest runs");
     ok(dg.news.length === 1 && dg.news[0] === `${today}-test-event`, "digest lists exactly the new event");
@@ -63,6 +63,12 @@ for (const [name, mutate] of cases) {
     ok(dg.updated.length === 1 && dg.updated[0].id === "dario-amodei" && dg.updated[0].fields.includes("bio"), "digest reports the edited field");
     ok(dg.added.length === 0, "digest invents no additions");
     ok(node("validate.mjs", d, ["--quiet"]).status === 0, "data + digest still valid after the run");
+    // second run the same day extends the digest instead of replacing it
+    git("-c", "user.email=t@t", "-c", "user.name=t", "add", "-A"); git("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "run1");
+    edit(d, "data/events.json", j => { j.events.unshift({ id: `${today}-second-event`, date: today, type: "people", importance: 1, title: { ru: "Второе", en: "Second" }, summary: { ru: "Второе." }, sources: [{ title: "Anthropic", url: "https://www.anthropic.com/company" }], addedAt: today }); });
+    node("digest.mjs", d, [`--date=${today}`]);
+    const dg2 = JSON.parse(readFileSync(join(d, `data/digests/${today}.json`), "utf8"));
+    ok(dg2.news.length === 2 && dg2.removed.length === 1 && dg2.updated.length === 1, "same-day re-run keeps earlier findings and adds new ones");
   } finally { rmSync(d, { recursive: true, force: true }); }
 }
 
