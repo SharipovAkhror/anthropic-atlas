@@ -130,7 +130,7 @@
   };
 
   R.facts = m => {
-    island(m.id, tx(m.title), { far: D.atlas.facts.slice(0, 4).map(f => `<div class="far-v"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></div>`).join("") }, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
+    island(m.id, tx(m.title), { far: D.atlas.facts.slice(0, 3).map(f => `<div class="far-v"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></div>`).join("") }, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
   };
 
   R.timeline = m => {
@@ -181,7 +181,7 @@
 
   R.glossary = m => {
     const cats = { governance: 1, finance: 2, safety: 3, models: 4, platform: 5, product: 6 };
-    island(m.id, tx(m.title), { count: String(D.terms.length), lead: tx(m.lead), far: `<div class="far-terms">${D.terms.slice(0, 14).map(g => esc(g.term)).join(" · ")}</div>` }, [...D.terms].sort((a, b) => (cats[a.category] || 9) - (cats[b.category] || 9)).map(g => `<button class="term" data-open="term:${g.id}"><b>${esc(g.term)}</b><span>${esc(tx(g.definition))}</span></button>`).join(""));
+    island(m.id, tx(m.title), { count: String(D.terms.length), lead: tx(m.lead), far: `<div class="far-terms">${D.terms.slice(0, 10).map(g => esc(g.term)).join(" · ")}</div>` }, [...D.terms].sort((a, b) => (cats[a.category] || 9) - (cats[b.category] || 9)).map(g => `<button class="term" data-open="term:${g.id}"><b>${esc(g.term)}</b><span>${esc(tx(g.definition))}</span></button>`).join(""));
   };
 
   R.cards = m => { // generic renderer for new topics: any array of {id,name,description,sources}
@@ -327,15 +327,15 @@
       } else {
         const right = ib.x > ia.x;
         xa = right ? ia.x + ia.w : ia.x; xb = right ? ib.x : ib.x + ib.w;
-        const mid = (xa + xb) / 2;
-        d = `M${xa} ${ya}C${mid} ${ya} ${mid} ${yb} ${xb} ${yb}`;
+        const c1 = xa + (xb - xa) * .38, c2 = xb - (xb - xa) * .38;
+        d = `M${xa} ${ya}C${c1} ${ya} ${c2} ${yb} ${xb} ${yb}`;
       }
       const on = focus && (e.from === focus || e.to === focus);
       const path = `<path class="ln ${e.type}" d="${d}"/>`;
       const pt = `<circle cx="${xa}" cy="${ya}" r="3.5"/><circle cx="${xb}" cy="${yb}" r="3.5"/>`;
       if (on) { hot += path; hotPorts += pt; rel.add(e.from); rel.add(e.to); } else { base += path; ports += pt; }
     }
-    svg.innerHTML = `<g class="${focus ? "dim" : ""}">${base}${ports ? `<g class="pt">${ports}</g>` : ""}</g>`;
+    svg.innerHTML = `<g class="${focus ? "dim" : ""}">${base}</g>`;
     top.innerHTML = hot ? `<g class="hot">${hot}<g class="pt">${hotPorts}</g></g>` : "";
     $$(".slot .row.rel").forEach(r => r.classList.remove("rel"));
     if (focus) rel.forEach(id => vis(id).forEach(r => r.classList.add("rel")));
@@ -377,7 +377,7 @@
     const m = 160; // keep part of the board on screen
     cam.x = clamp(cam.x, m - BW * cam.s, v.w - m); cam.y = clamp(cam.y, m - BH * cam.s, v.h - m);
     board().style.transform = `translate3d(${cam.x}px, ${cam.y}px, 0) scale(${cam.s})`;
-    board().classList.toggle("far", cam.s < .5);
+    board().classList.toggle("far", cam.s < .56);
     drawMap();
   }
   function tween(to, dur = 620) {
