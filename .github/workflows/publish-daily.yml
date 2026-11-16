@@ -1,0 +1,42 @@
+name: Publish daily update
+# The morning Claude run pushes its work to a claude/* branch with a commit message starting "atlas-daily:".
+# This workflow re-validates it and merges it into main (which deploys the site via Vercel).
+# Safety guards: only commits whose message starts with "atlas-daily:" and only changes under data/ and pipeline/.
+on:
+  push:
+    branches: ["claude/**", "atlas/daily-**"]
+permissions:
+  contents: write
+concurrency:
+  group: atlas-main-writer
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: startsWith(github.event.head_commit.message, 'atlas-daily:')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Only data may change
+        run: |
+          git fetch origin main
+          base=$(git merge-base origin/main HEAD)
+          bad=$(git diff --name-only "$base" HEAD | grep -vE '^(data/|pipeline/)' || true)
+          if [ -n "$bad" ]; then echo "Refusing to auto-publish, non-data files changed:"; echo "$bad"; exit 1; fi
+      - name: Validate branch
+        run: node scripts/validate.mjs && node scripts/test.mjs
+      - name: Merge into main
+        run: |
+          git config user.name "atlas-bot"
+          git config user.email "atlas-bot@users.noreply.github.com"
+          git checkout -B main origin/main
+          git merge --no-ff -m "Publish ${GITHUB_REF_NAME}" "${GITHUB_SHA}" || { echo "Merge conflict: leaving branch for review"; exit 1; }
+          node scripts/validate.mjs --quiet
+          git push origin main

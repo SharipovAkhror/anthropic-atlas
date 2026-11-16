@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "archive.schema.json",
+  "title": "Removed or outdated items (data/archive.json)",
+  "type": "object",
+  "required": ["items"],
+  "additionalProperties": false,
+  "properties": {
+    "items": { "type": "array", "items": {
+      "type": "object",
+      "required": ["kind", "id", "label", "removedAt", "reason", "snapshot"],
+      "properties": {
+        "kind": { "enum": ["person", "product", "fact", "event"] },
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "removedAt": { "$ref": "common.schema.json#/definitions/day" },
+        "reason": { "$ref": "common.schema.json#/definitions/i18n" },
+        "sources": { "$ref": "common.schema.json#/definitions/sources" },
+        "snapshot": { "type": "object" }
+      },
+      "additionalProperties": false } }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$comment": "Curated Wikipedia candidates for people whose article does not mention Anthropic. enrich.mjs tries each title in order and accepts the first whose intro contains the 'expect' text (guards against namesakes).",
+  "people": {
+    "ben-bernanke": { "titles": ["Ben_Bernanke"], "expect": "Federal Reserve" },
+    "reed-hastings": { "titles": ["Reed_Hastings"], "expect": "Netflix" },
+    "vas-narasimhan": { "titles": ["Vas_Narasimhan"], "expect": "Novartis" },
+    "paul-christiano": { "titles": ["Paul_Christiano_(researcher)", "Paul_Christiano"], "expect": "alignment" },
+    "jason-matheny": { "titles": ["Jason_Matheny"], "expect": "RAND" },
+    "john-jumper": { "titles": ["John_M._Jumper", "John_Jumper"], "expect": "AlphaFold" },
+    "richard-fontaine": { "titles": ["Richard_Fontaine"], "expect": "Center for a New American Security" },
+    "christopher-stubbs": { "titles": ["Christopher_Stubbs", "Christopher_W._Stubbs"], "expect": "Harvard" },
+    "jay-kreps": { "titles": ["Jay_Kreps"], "expect": "Kafka" },
+    "jack-clark": { "titles": ["Jack_Clark_(AI_policy_expert)", "Jack_Clark_(writer)", "Jack_Clark_(technologist)"], "expect": "Anthropic" },
+    "tom-brown": { "titles": ["Tom_B._Brown", "Tom_Brown_(computer_scientist)"], "expect": "Anthropic" },
+    "neil-shah": { "titles": ["Neil_Buddy_Shah", "Buddy_Shah"], "expect": "Clinton Health" },
+    "ben-mann": { "titles": ["Benjamin_Mann", "Ben_Mann_(engineer)"], "expect": "Anthropic" },
+    "krishna-rao": { "titles": ["Krishna_Rao_(executive)"], "expect": "Anthropic" },
+    "boris-cherny": { "titles": ["Boris_Cherny"], "expect": "Claude Code" },
+    "mike-krieger": { "titles": ["Mike_Krieger"], "expect": "Instagram" },
+    "david-soria-parra": { "titles": ["David_Soria_Parra"], "expect": "Model Context Protocol" },
+    "kanika-zach": { "titles": [], "expect": "" }
+  }
+}

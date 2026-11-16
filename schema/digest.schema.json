@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "digest.schema.json",
+  "title": "Daily digest (data/digests/YYYY-MM-DD.json)",
+  "type": "object",
+  "required": ["date", "generatedAt", "headline", "summary", "news", "added", "updated", "removed", "stats"],
+  "additionalProperties": false,
+  "properties": {
+    "date": { "$ref": "common.schema.json#/definitions/day" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "headline": { "$ref": "common.schema.json#/definitions/i18n" },
+    "summary": { "$ref": "common.schema.json#/definitions/i18n" },
+    "news": { "type": "array", "items": { "type": "string" }, "description": "event ids added in this run" },
+    "added": { "type": "array", "items": { "$ref": "#/definitions/change" } },
+    "updated": { "type": "array", "items": { "$ref": "#/definitions/change" } },
+    "removed": { "type": "array", "items": { "$ref": "#/definitions/change" } },
+    "stats": { "type": "object", "required": ["sourcesOk", "sourcesFailed", "candidates"], "properties": {
+      "sourcesOk": { "type": "integer" }, "sourcesFailed": { "type": "integer" }, "candidates": { "type": "integer" },
+      "failedSources": { "type": "array", "items": { "type": "string" } } }, "additionalProperties": false }
+  },
+  "definitions": {
+    "change": { "type": "object", "required": ["kind", "id", "label"], "properties": {
+      "kind": { "enum": ["person", "product", "fact", "event"] },
+      "id": { "type": "string" }, "label": { "type": "string" },
+      "fields": { "type": "array", "items": { "type": "string" } },
+      "reason": { "type": "string" } }, "additionalProperties": false }
+  }
+}

@@ -1,138 +1,30 @@
 # AGENTS.md — Anthropic Atlas
 
-> **Назначение файла:** Единая техническая спецификация и инструкция для AI-агентов (Claude Code, Cursor, Antigravity, Codex), работающих с проектом **Anthropic Atlas**.
-> **Статус:** Production-ready static web app (Zero-Build Vanilla HTML/CSS/JS).
-
-## 1. О проекте
-
-**Anthropic Atlas** — интерактивная одноэкранная карта (универсальная шпаргалка) корпоративной власти, команды и продуктов Anthropic, синхронизированная с подачей **SEC Form S-1/A-2** (10 ноября 2026) и листингом **Nasdaq (`ANT`)**.
-
-* **Языки интерфейса:** `RU` / `EN` / `UZ` (естественный узбекский: *Obzor*, *Jamoa*, *Mahsulotlar*, *Hokimiyat*).
-
-* **Стек:** Чистый `HTML5` + `Tailwind CSS (CDN)` + `Vanilla JS (ES6+)`. Без сборщиков, `node_modules` и бэкенда.
-
-* **Файлы в корне после деплоя:**
-
-  * `index.html` — всё приложение (из исходного `anthropic_architecture_space.html`).
-
-  * `vercel.json` — конфигурация статики, заголовков безопасности и кеширования.
-
-  * `AGENTS.md` — этот файл.
-
-## 2. \[ONE-TIME BOOTSTRAP — УДАЛИТЬ ЭТОТ РАЗДЕЛ ПОСЛЕ ДЕПЛОЯ\]
-
-> **Инструкция агенту:** Выполни шаги 1–5 по порядку. Как только продакшен-URL на Vercel подтверждён и проверен, **полностью удали весь раздел `## 2. [ONE-TIME BOOTSTRAP ...]`** из `AGENTS.md` (включая этот блок), чтобы файл остался чистой постоянной спецификацией.
-
-1. **Подготовка файлов:**
-
-   * Если в папке лежит `anthropic_architecture_space.html`, переименуй его в `index.html`:
-
-     ```
-     mv anthropic_architecture_space.html index.html
-     
-     ```
-
-   * Проверь наличие `vercel.json` в корне проекта (рядом с `index.html`).
-
-2. **Проверка перед публикацией:**
-
-   * Убедись, что в `<head>` файла `index.html` прописаны `<title>Anthropic Atlas — RU / EN / UZ</title>` и Open Graph теги (`og:title`, `og:description`).
-
-   * Проверь, что все внешние ссылки ведут на официальные источники (`sec.gov`, `ipo.anthropic.com`, `anthropic.com`, `platform.claude.com`).
-
-3. **Деплой на Vercel:**
-
-   * Выполни продакшен-деплой без интерактива:
-
-     ```
-     npx vercel --prod --yes
-     
-     ```
-
-   * Зафиксируй полученный домен (например, `https://anthropic-atlas.vercel.app`) и при необходимости добавь `<meta property="og:url" content="https://<domain>">` в `index.html`, затем повтори `npx vercel --prod --yes`.
-
-4. **Post-Deploy Smoke Check:**
-
-   * Открой или проверь HTTP 200 для:
-
-     * `/` (главная страница, режим `Обзор` / `Fit`)
-
-     * `/#node=dario-amodei&lang=uz` (проверка deep-linking и узбекской локали)
-
-     * `/#node=class-f&lang=en` (проверка фильтра власти и английской локали)
-
-5. **Самоочистка:**
-
-   * После успешного деплоя и проверки удали весь раздел `## 2` из `AGENTS.md` и запиши финальный продакшен-URL в раздел `## 3`.
-
-## 3. Архитектура кода (`index.html`)
-
-Код организован строго в **6 изолированных модулей** внутри `<script>` (порядок сверху вниз):
-
-1. **`I18N`** — словарь интерфейсных строк и заголовков для `ru`, `en`, `uz`.
-
-2. **`DATA`** — единый источник правды:
-
-   * `people[]` — руководители, сооснователи (`Class F`), попечители `LTBT`, Совет директоров, ключевые лиды и alumni. У каждого объекта есть `id`, `name`, `role` (`{ru, en, uz}`), `tag` (`{ru, en, uz}`), `zone`, `startDate`, `powerScore`, `avatar`, `initials`, `bio`, `sourceTitle`, `sourceUrl`.
-
-   * `products[]` — линейка моделей (`Claude Fable 5.2`, `Mythos 5.2`, `Claude 5.5`), агентские инструменты (`Claude Code`, `MCP`, `Computer Use`), приложения (`Cowork`, `Claude Design`, `Claude Science`) и Safety.
-
-   * `edges[]` — направленные связи с типом (`gov` / `rep` / `prod`).
-
-3. **`GRAPH_ENGINE`** — расчёт позиций узлов, кластеров и маршрутизация SVG-кривых Безье без «спагетти».
-
-4. **`VIEWPORT`** — камера бесконечного холста (панорамирование с инерцией, зум колёсиком/пинчем, `Fit` на 1 экран, двойной клик `1:1`).
-
-5. **`RENDERER`** — отрисовка карточек, автоконтрастных монограмм (fallback при ошибке загрузки фото), `IntersectionObserver` для экономии GPU, SVG draw-in анимация.
-
-6. **`INSPECTOR`** — Spotlight-поиск (`/` и `⌘K`), умная пилюля фокуса, боковая карточка деталей, URL hash deep-linking (`#node=...&lang=...`) и режим печати `⌘P` (A3).
-
-## 4. Жёсткие правила дизайна и данных
-
-### Дизайн (Apple Cupertino P3)
-
-* **Никакого «нейрослопа»:** не добавлять лишние бейджи, градиентные фоны, 3D-эффекты, декоративные счётчики и «водяные» подзаголовки.
-
-* **Палитра:** Canvas `#F5F5F7`, карточки `#FFFFFF`, текст `#1D1D1F` / `#6E6E73`, акценты Display P3 (`#0071E3` Blue, `#AF52DE` Purple, `#FF9500` Orange).
-
-* **Верхний док:** строго 4 элемента (Бренд · Сегментный переключатель видов · Язык `RU/EN/UZ` · Поиск `⌘K` + `Fit`). Новые кнопки в док не добавлять.
-
-### Фактчекинг и добавление узлов
-
-* **Правило источника:** любое изменение даты, доли голосов, цены IPO или должности должно иметь валидный `sourceUrl` (SEC EDGAR, `anthropic.com`, `platform.claude.com` или профильная пресса).
-
-* **Актуальная база (ноябрь 2026):**
-
-  * Тикер `ANT` (Nasdaq), диапазон IPO `$70–$78` (оценка до `$1.404T`), прайсинг \~18 ноября, старт торгов \~19 ноября 2026.
-
-  * Run-rate выручка: `~$81B` (октябрь 2026).
-
-  * `Class F` (50.1% голосов): 7 сооснователей в Founder LLC (Ben Mann вне Founder LLC по S-1).
-
-  * `Class T` (LTBT, 0% акций, назначает 4 из 7 директоров): 4 активных попечителя + 1 вакансия.
-
-* **Локализация:** при добавлении новых полей обязательно заполнять все 3 языка (`ru`, `en`, `uz`). В узбекском использовать естественные бизнес-термины, избегая машинного канцелярита.
-
-## 5. Будущее проекта (Roadmap)
-
-### Фаза 1 — Запуск под IPO `ANT` (18–25 ноября 2026)
-
-* Зафиксировать финальную цену размещения и капитализацию первого дня торгов в модуле `DATA`.
-
-* Сгенерировать статичную OG-картинку `og-preview.png` (`1200×630`) для красивых карточек в X, LinkedIn и Telegram.
-
-* Подключить лёгкий Vercel Web Analytics (1 тег `<script>` без cookie-баннеров).
-
-### Фаза 2 — Живой атлас (Post-IPO)
-
-* **Таймлайн эволюции (2021 → 2026 → 2027):** компактный скраббер-ползунок внизу экрана, позволяющий смотреть, как менялся состав Совета, LTBT и линейка Claude по годам.
-
-* **Авто-мониторинг:** периодический скрипт (GitHub Actions), сверяющий `anthropic.com/company/leadership`, новые формы SEC EDGAR (`8-K`, `10-Q`) и `platform.claude.com/docs/en/models/overview`, формирующий PR при изменениях.
-
-### Фаза 3 — Универсальный движок «Atlas Engine»
-
-* Вынести `DATA` и `I18N` во внешний `atlas.config.json`, чтобы на том же 5-модульном движке за 10 минут собирать интерактивные карты:
-
-  * других AI-лабораторий (OpenAI, xAI, DeepMind);
-
-  * реальных B2B/ERP-клиентов (оргструктура + зоны ответственности + продукты на одном экране).
+Static site + daily data pipeline that monitors Anthropic from public sources.
+Production: https://athropic-atlas.vercel.app (Vercel, deploys from `main`).
+
+## Read first
+- `RUNBOOK.md` — the daily update procedure (what the morning model does, step by step).
+- `docs/METHODOLOGY.md` — sources, data model, modularity, pipeline, quality gates.
+
+## Layout
+| Path | What |
+|---|---|
+| `index.html`, `assets/app.css`, `assets/app.js` | the site (no build step; vanilla JS) |
+| `data/` | all content: `atlas.json`, `events.json`, `glossary.json`, `modules.json`, `archive.json`, `digests/` |
+| `schema/` | JSON Schemas for every data file |
+| `sources/sources.json` | source registry (tiers, trusted press, blocked domains) |
+| `sources/wiki-overrides.json` | curated Wikipedia candidates for portraits/links |
+| `scripts/` | `collect` (sources → inbox), `today` (worklist), `validate`, `digest`, `enrich` (photos, Wikipedia), `test` |
+| `pipeline/` | collector state, inbox, watched-page snapshots, run notes (not deployed) |
+| `.github/workflows/` | `collect.yml` (05:40 Tashkent), `publish-daily.yml` (merge daily branch), `validate.yml` (CI) |
+| `.claude/agents/` | `atlas-daily` and ten `researcher-*` roles (Haiku) |
+
+## Rules
+- Every claim needs a source in `sources[]`; tier 1–2 only (see methodology). Never cite news.google.com.
+- Run `node scripts/validate.mjs && node scripts/test.mjs` after any change; CI runs them too.
+- Do not hand-edit `data/digests/*`; `scripts/digest.mjs` generates them from the data diff.
+- Text fields: `ru` required, `en` required for titles/roles/labels, `uz` optional (falls back to ru).
+- Design: neutral surfaces, one accent, few controls. Interactions are hidden and discoverable (hover reveals,
+  click-to-expand, ⌘K search, `L` language, `T` theme, swipe to close). Do not add buttons to the top bar.
+- Local preview: `python3 -m http.server 4173` and open http://localhost:4173.

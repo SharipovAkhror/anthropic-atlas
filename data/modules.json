@@ -1,0 +1,11 @@
+{
+  "modules": [
+    { "id": "today", "renderer": "digest", "title": { "ru": "Сегодня", "en": "Today", "uz": "Bugun" } },
+    { "id": "facts", "renderer": "facts", "source": "atlas.json#facts", "title": { "ru": "Ключевые цифры", "en": "Key numbers", "uz": "Asosiy raqamlar" } },
+    { "id": "feed", "renderer": "timeline", "source": "events.json#events", "title": { "ru": "Хроника", "en": "Timeline", "uz": "Xronika" }, "lead": { "ru": "Всё, что компания объявила и что о ней сообщили, по дням.", "en": "Everything the company announced or was reported, by day." } },
+    { "id": "power", "renderer": "governance", "source": "atlas.json#shareClasses", "title": { "ru": "Власть", "en": "Power", "uz": "Hokimiyat" }, "lead": { "ru": "Кто контролирует компанию: классы акций, траст и совет директоров.", "en": "Who controls the company: share classes, the trust and the board." } },
+    { "id": "people", "renderer": "people", "source": "atlas.json#people", "title": { "ru": "Люди", "en": "People", "uz": "Jamoa" } },
+    { "id": "products", "renderer": "products", "source": "atlas.json#products", "title": { "ru": "Продукты", "en": "Products", "uz": "Mahsulotlar" } },
+    { "id": "glossary", "renderer": "glossary", "source": "glossary.json#terms", "title": { "ru": "Термины", "en": "Glossary", "uz": "Atamalar" }, "lead": { "ru": "Короткие объяснения понятий, которые встречаются на доске.", "en": "Short explanations of terms used on the board." } }
+  ]
+}
