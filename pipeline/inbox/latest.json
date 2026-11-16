@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "generatedAt": "2026-11-16T18:25:59.682Z",
+  "generatedAt": "2026-11-16T18:38:27.377Z",
   "sources": [
     {
       "id": "anthropic-sitemap",
@@ -17,7 +17,7 @@
     {
       "id": "watch-alignment",
       "ok": true,
-      "baseline": true,
+      "baseline": false,
       "count": 0
     },
     {
@@ -53,25 +53,25 @@
       "id": "gnews-anthropic",
       "ok": true,
       "baseline": false,
-      "count": 0
+      "count": 4
     },
     {
       "id": "gnews-claude",
       "ok": true,
       "baseline": false,
-      "count": 0
+      "count": 1
     },
     {
       "id": "gnews-people",
       "ok": true,
       "baseline": false,
-      "count": 0
+      "count": 1
     },
     {
       "id": "gnews-ipo",
       "ok": true,
       "baseline": false,
-      "count": 0
+      "count": 1
     },
     {
       "id": "gnews-ru",
@@ -95,13 +95,13 @@
       "id": "watch-models",
       "ok": true,
       "baseline": false,
-      "count": 1
+      "count": 0
     },
     {
       "id": "watch-deprecations",
       "ok": true,
       "baseline": false,
-      "count": 1
+      "count": 0
     },
     {
       "id": "watch-pricing",
@@ -118,34 +118,81 @@
   ],
   "items": [
     {
-      "id": "c4b8e3d0b6cb",
-      "source": "watch-models",
-      "tier": 1,
-      "kind": "page-watch",
-      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
-      "title": "Page changed: Models overview (API ids, prices)",
-      "published": "2026-11-16",
-      "added": [
-        "Cookie settings",
-        "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy here (opens in new tab) .",
-        "Customize Customize cookie settings Reject Reject all cookies Accept Accept all cookies"
-      ],
-      "removed": []
+      "id": "205634e1a863",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPYVJaM01EbGdwNWJCZENoT21oVnVjcGo4MzJ2ajQ2MG5FWTRaYkJtakZfSnQ2OExsVUphYmlkTlB5NEQ2Q0FJc1Y4UzZnR2luTWhJVjBfeHhMUEtMQmx6VlZPRllPR1Fjd1B4WEFfRVBYVXFxR0NWZG11V1NJaEEzY0RzcElUQklIUkV5Tl9fbDA2S0ZsUElFcFV1WFNSUQ?oc=5",
+      "title": "Amazon’s Big Week: A New James Bond and Anthropic’s IPO - Amazon.com (NASDAQ:AMZN) - Benzinga",
+      "snippet": "Amazon’s Big Week: A New James Bond and Anthropic’s IPO - Amazon.com (NASDAQ:AMZN) Benzinga",
+      "published": "2026-11-16T18:22:57.000Z",
+      "outlet": "Benzinga"
     },
     {
-      "id": "78290477b578",
-      "source": "watch-deprecations",
-      "tier": 1,
-      "kind": "page-watch",
-      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-      "title": "Page changed: Model deprecations",
-      "published": "2026-11-16",
-      "added": [
-        "Cookie settings",
-        "We use cookies to deliver and improve our services, analyze site usage, and if you agree, to customize or personalize your experience and market our services to you. You can read our Cookie Policy here (opens in new tab) .",
-        "Customize Customize cookie settings Reject Reject all cookies Accept Accept all cookies"
-      ],
-      "removed": []
+      "id": "d4cf9b422b8a",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBXdE1QR093RE9fRU1NcWdPeHRvelAtTGZSU2hMWVluNFN3Um1hWmxRXy1oaW96SHllQ0hvbWhUWDBRZTR4UTBDalY0Z1BieUg0X01vR0ZSMEpUYVJQd3psUmktWHNjZjZLVDZKZG43clQ?oc=5",
+      "title": "Anthropic IPO puts Jane Street’s FTX bankruptcy bargain in the spotlight - Crypto Briefing",
+      "snippet": "Anthropic IPO puts Jane Street’s FTX bankruptcy bargain in the spotlight Crypto Briefing",
+      "published": "2026-11-16T18:32:23.000Z",
+      "outlet": "Crypto Briefing"
+    },
+    {
+      "id": "973d6122171e",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlQ5cTZKYVpVRnNZTWJMZDV3MzBTbVZMb1dDVmVuaTdZMDQ3R2NXLU9TZDQyRkJxZFlwcWo2YXU3bzc4RER3VTNnRjRMbUJ1SFpqQWh1NVdtU0pFYXVUcWlKcENNbTlQRWYtZW8zbzNZV1dHeU5sVkU2NG56Z0xGc1FENWlzTXNUUjJRVmtyNF9HVTY5U3JDUS1DeTZpbzZaOGpTNG84QmpjMGhPaWJlYUNlMzVYcEtrVThj?oc=5",
+      "title": "Altimeter Capital to invest $5 billion in Anthropic IPO - report By Investing.com - Investing.com",
+      "snippet": "Altimeter Capital to invest $5 billion in Anthropic IPO - report By Investing.com Investing.com",
+      "published": "2026-11-16T18:18:29.000Z",
+      "outlet": "Investing.com"
+    },
+    {
+      "id": "5aa4ca642469",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOcmFGa2FydnVQNjJuXzdpZHhQQmY5QS1FT001RjJlYU5uTERYTzkxUktWWVl3YlJHR01fMkJ6NUZPT0JEQk5LZHNPUldRNE5PQ01uQlI1LWNUUjFZcGVGb1NwemplcDJHcW9hMTdEYlBRbVRiMzI3TzM0dnlxQkVMQlZZa1ZGZ2FfWkFaMm1OQk5kS1lrSkQ1ek83UHIydUg4?oc=5",
+      "title": "Markets mixed as traders await Nvidia earnings and Anthropic IPO - Yahoo Finance",
+      "snippet": "Markets mixed as traders await Nvidia earnings and Anthropic IPO Yahoo Finance",
+      "published": "2026-11-16T10:08:58.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "1fc70197763c",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPNVJzSHdUYUl4Njh5UW9DOWRXYjMxdGlKSF81V0FtRW5DQWwweWNEMXhsRGlsd1htaG9kc2MxX0VYa1FxOEFtaFNtLTh4TTN0ZWFtcWRuRkk3QjRrMm83OVZ2R2JQc2RadEdLUEVGUjRDVHlBOVoxOHF4T1cyU2RLTGl6U1VxVkVpbVg1Sk82blNFRDgtYnAzWnM3WHdTSTVp?oc=5",
+      "title": "Alibaba unveils new flagship AI model in riposte to US rivals - The Straits Times",
+      "snippet": "Alibaba unveils new flagship AI model in riposte to US rivals The Straits Times",
+      "published": "2026-11-16T03:12:00.000Z",
+      "outlet": "The Straits Times"
+    },
+    {
+      "id": "94d849af890a",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOLWtVMTdDT2ZEUFBXVXZhRVlSUHFHUHVtWFB3UGtpbFdyemxyVXVuSGVSTldMY01OTmtxd0J5M2dyVDhIWWlnMnUtcFJrQ0JRdDRTZGY3eU5TOE1KZ29mX2VoYWN2Z096LXNITFVDV3A2Z29CNHNjV2FyckNycHF5dmNKV3JtUnZnclJJ?oc=5",
+      "title": "Experts Question Anthropic’s IPO Safeguards for Public Benefit - Unite.AI",
+      "snippet": "Experts Question Anthropic’s IPO Safeguards for Public Benefit Unite.AI",
+      "published": "2026-11-16T06:37:03.000Z",
+      "outlet": "Unite.AI"
+    },
+    {
+      "id": "707b89380d59",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOU1JLTDN2TXVLeHdmM2JZUHFNVFNXOFpqaDRGTjZNbmVJMmpydW52TXFGd1ZNTUhBc01uSlYyaEhIVk1PRHFiWFVoV0RfZTFLQlVpYjZtME1lbkIzVDJMdUtQTWpCRHFtMV96RDdxQk1FQmMzczc3VmZISFliRndaR2tyVmF6YUI3Y3ZuQkMxV2N3UEJNU3dSUmZoU2h3RXEtU2swNG1iSnhMeE12SnFwX2gwQXowQ2pHV0I3WHY1aXNUUmNZc2ZnVXBzV3g1YXVlaV9TVWZpeDVGVEdrYmc?oc=5",
+      "title": "Anthropic IPO Draws Strong Demand, But Most Retail Traders Plan To Sit Out, Poll Shows - TradingView",
+      "snippet": "Anthropic IPO Draws Strong Demand, But Most Retail Traders Plan To Sit Out, Poll Shows TradingView",
+      "published": "2026-11-16T14:07:17.000Z",
+      "outlet": "TradingView"
     }
   ]
 }
