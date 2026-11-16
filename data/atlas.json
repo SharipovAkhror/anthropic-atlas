@@ -1,0 +1,2251 @@
+{
+  "meta": {
+    "company": "Anthropic, PBC",
+    "schemaVersion": 2,
+    "updatedAt": "2026-11-16"
+  },
+  "zones": [
+    {
+      "id": "ltbt",
+      "label": {
+        "ru": "Траст LTBT и Совет директоров",
+        "en": "Long-Term Benefit Trust & Board",
+        "uz": "LTBT trasti va Direktorlar kengashi"
+      },
+      "group": "governance"
+    },
+    {
+      "id": "core",
+      "label": {
+        "ru": "Основатели",
+        "en": "Founders",
+        "uz": "Asoschilar"
+      },
+      "group": "governance"
+    },
+    {
+      "id": "capital",
+      "label": {
+        "ru": "Капитал, право и коммуникации",
+        "en": "Capital, legal & comms",
+        "uz": "Kapital, huquq va kommunikatsiya"
+      },
+      "group": "governance"
+    },
+    {
+      "id": "science",
+      "label": {
+        "ru": "Наука, архитектура и compute",
+        "en": "Science, architecture & compute",
+        "uz": "Ilm-fan, arxitektura va compute"
+      },
+      "group": "org"
+    },
+    {
+      "id": "alignment",
+      "label": {
+        "ru": "Alignment, этика и Red Team",
+        "en": "Alignment, ethics & red team",
+        "uz": "Alignment, etika va Red Team"
+      },
+      "group": "org"
+    },
+    {
+      "id": "labs",
+      "label": {
+        "ru": "Продукт, Labs, Claude Code и MCP",
+        "en": "Product, Labs, Claude Code & MCP",
+        "uz": "Mahsulot, Labs, Claude Code va MCP"
+      },
+      "group": "org"
+    },
+    {
+      "id": "infra",
+      "label": {
+        "ru": "Технологии, финансы и продажи",
+        "en": "Technology, finance & sales",
+        "uz": "Texnologiya, moliya va savdo"
+      },
+      "group": "org"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "models",
+      "label": {
+        "ru": "Модели Claude",
+        "en": "Claude models",
+        "uz": "Claude modellari"
+      }
+    },
+    {
+      "id": "agentic",
+      "label": {
+        "ru": "Платформа и агенты",
+        "en": "Platform & agents",
+        "uz": "Platforma va agentlar"
+      }
+    },
+    {
+      "id": "workspace",
+      "label": {
+        "ru": "Приложения и планы",
+        "en": "Apps & plans",
+        "uz": "Ilovalar va tariflar"
+      }
+    },
+    {
+      "id": "safety",
+      "label": {
+        "ru": "Безопасность и исследования",
+        "en": "Safety & research",
+        "uz": "Xavfsizlik va tadqiqotlar"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "id": "ipo_ticker",
+      "label": {
+        "ru": "Тикер",
+        "en": "Ticker",
+        "uz": "Tiker"
+      },
+      "value": "ANT",
+      "note": {
+        "ru": "Nasdaq",
+        "en": "Nasdaq",
+        "uz": "Nasdaq"
+      },
+      "asOf": "2026-11-10",
+      "sources": [
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+        }
+      ]
+    },
+    {
+      "id": "ipo_price_range",
+      "label": {
+        "ru": "Диапазон IPO",
+        "en": "IPO range",
+        "uz": "IPO diapazoni"
+      },
+      "value": "$70–78",
+      "note": {
+        "ru": "825 млн акций Class A",
+        "en": "825M Class A shares",
+        "uz": "825 mln Class A aksiya"
+      },
+      "asOf": "2026-11-10",
+      "sources": [
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "label": {
+        "ru": "Оценка",
+        "en": "Valuation",
+        "uz": "Baholash"
+      },
+      "value": "до $1.4T",
+      "note": {
+        "ru": "fully diluted, верх диапазона",
+        "en": "fully diluted, top of range",
+        "uz": "to'liq suyultirilgan"
+      },
+      "asOf": "2026-11-10",
+      "sources": [
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+        }
+      ]
+    },
+    {
+      "id": "run_rate_revenue",
+      "label": {
+        "ru": "Run-rate выручка",
+        "en": "Run-rate revenue",
+        "uz": "Run-rate tushum"
+      },
+      "value": "$81B",
+      "note": {
+        "ru": "на 31 октября 2026",
+        "en": "as of Oct 31, 2026",
+        "uz": "31-oktabr 2026 holatiga"
+      },
+      "asOf": "2026-10-31",
+      "sources": [
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+        }
+      ]
+    },
+    {
+      "id": "class_f_votes",
+      "label": {
+        "ru": "Голоса Class F",
+        "en": "Class F votes",
+        "uz": "Class F ovozlari"
+      },
+      "value": "50.1%",
+      "note": {
+        "ru": "7 сооснователей, Founder LLC",
+        "en": "7 co-founders via Founder LLC",
+        "uz": "7 hammuassis, Founder LLC"
+      },
+      "asOf": "2026-11-10",
+      "sources": [
+        {
+          "title": "SEC EDGAR",
+          "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic"
+        }
+      ]
+    },
+    {
+      "id": "class_t_board",
+      "label": {
+        "ru": "Места Совета от LTBT",
+        "en": "Board seats via LTBT",
+        "uz": "LTBT kengash o'rinlari"
+      },
+      "value": "4 / 7",
+      "note": {
+        "ru": "Class T",
+        "en": "Class T",
+        "uz": "Class T"
+      },
+      "asOf": "2026-11-10",
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ]
+    }
+  ],
+  "shareClasses": [
+    {
+      "id": "class-t",
+      "name": "Class T",
+      "holder": {
+        "ru": "Long-Term Benefit Trust",
+        "en": "Long-Term Benefit Trust",
+        "uz": "Long-Term Benefit Trust"
+      },
+      "economics": {
+        "ru": "0%, без дивидендов",
+        "en": "0%, no dividends",
+        "uz": "0%, dividendsiz"
+      },
+      "control": {
+        "ru": "Избирает 4 из 7 директоров",
+        "en": "Elects 4 of 7 directors",
+        "uz": "7 direktordan 4 tasini saylaydi"
+      }
+    },
+    {
+      "id": "class-f",
+      "name": "Class F",
+      "holder": {
+        "ru": "7 сооснователей (Founder LLC)",
+        "en": "7 co-founders (Founder LLC)",
+        "uz": "7 hammuassis (Founder LLC)"
+      },
+      "economics": {
+        "ru": "Экономика в Class A",
+        "en": "Economics in Class A",
+        "uz": "Iqtisodiy ulush Class A da"
+      },
+      "control": {
+        "ru": "Фиксированные 50.1% голосов",
+        "en": "Fixed 50.1% of votes",
+        "uz": "Qat'iy 50.1% ovoz"
+      }
+    },
+    {
+      "id": "class-n",
+      "name": "Class N",
+      "holder": {
+        "ru": "Amazon, Google и партнёры",
+        "en": "Amazon, Google & partners",
+        "uz": "Amazon, Google va hamkorlar"
+      },
+      "economics": {
+        "ru": "5.66 млрд акций",
+        "en": "5.66B shares",
+        "uz": "5.66 mlrd aksiya"
+      },
+      "control": {
+        "ru": "Без голоса и мест в Совете",
+        "en": "No votes, no board seats",
+        "uz": "Ovozsiz, kengashda o'rinsiz"
+      }
+    },
+    {
+      "id": "class-e",
+      "name": "Class E",
+      "holder": {
+        "ru": "Сотрудники",
+        "en": "Employees",
+        "uz": "Xodimlar"
+      },
+      "economics": {
+        "ru": "0 акций на IPO",
+        "en": "0 shares at IPO",
+        "uz": "IPO da 0 aksiya"
+      },
+      "control": {
+        "ru": "Голос по спорному директору Class T",
+        "en": "Votes on Specified Class T Director",
+        "uz": "Class T direktori bo'yicha ovoz"
+      }
+    },
+    {
+      "id": "class-a",
+      "name": "Class A",
+      "holder": {
+        "ru": "Публичные инвесторы (ANT)",
+        "en": "Public investors (ANT)",
+        "uz": "Ommaviy investorlar (ANT)"
+      },
+      "economics": {
+        "ru": "7.43 млрд акций после IPO",
+        "en": "7.43B shares post-IPO",
+        "uz": "IPO dan keyin 7.43 mlrd aksiya"
+      },
+      "control": {
+        "ru": "1 голос на акцию, до 49.9%",
+        "en": "1 vote/share, up to 49.9%",
+        "uz": "1 aksiya = 1 ovoz, 49.9% gacha"
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "neil-shah",
+      "name": "Dr. Neil 'Buddy' Shah",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Председатель Траста LTBT",
+        "en": "Chair, Long-Term Benefit Trust",
+        "uz": "LTBT Trasti raisi"
+      },
+      "tag": {
+        "ru": "Глава LTBT",
+        "en": "Trust Chair",
+        "uz": "Trast rahbari"
+      },
+      "since": "2023-09",
+      "influence": 95,
+      "avatar": "https://www.clintonhealthaccess.org/wp-content/uploads/2022/06/Buddy-Shah-Headshot-scaled.jpg",
+      "initials": "NS",
+      "bio": {
+        "ru": "CEO Clinton Health Access Initiative (CHAI). Единственный попечитель из первого созыва (сентябрь 2023). Возглавляет LTBT, назначающий 4 из 7 директоров Совета Anthropic."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "ben-bernanke",
+      "name": "Dr. Ben S. Bernanke",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Попечитель LTBT (экс-глава ФРС)",
+        "en": "LTBT Trustee (Ex-Fed Chair)",
+        "uz": "LTBT vasiysi (sobiq Fed raisi)"
+      },
+      "tag": {
+        "ru": "Нобель",
+        "en": "Nobel Laureate",
+        "uz": "Nobel"
+      },
+      "since": "2026-07",
+      "influence": 86,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ben_Bernanke_official_portrait.jpg/250px-Ben_Bernanke_official_portrait.jpg",
+      "initials": "BB",
+      "bio": {
+        "ru": "Лауреат Нобелевской премии по экономике (2022), экс-председатель ФРС США. Вошел в LTBT в июле 2026 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "richard-fontaine",
+      "name": "Richard Fontaine",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Попечитель LTBT (CEO CNAS)",
+        "en": "LTBT Trustee (CEO, CNAS)",
+        "uz": "LTBT vasiysi (CNAS CEO)"
+      },
+      "tag": {
+        "ru": "Нацбезопасность",
+        "en": "NatSec",
+        "uz": "Xavfsizlik"
+      },
+      "since": "2025-06",
+      "influence": 84,
+      "avatar": "https://s3.us-east-1.amazonaws.com/files.cnas.org/images/_400x400_crop_center-center_82_none/Fontaine_Richard_2019-2.jpg",
+      "initials": "RF",
+      "bio": {
+        "ru": "CEO Center for a New American Security (CNAS), экс-сотрудник СНБ США. Попечитель LTBT с июня 2025 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "christopher-stubbs",
+      "name": "Dr. Christopher Stubbs",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Попечитель LTBT (Гарвард)",
+        "en": "LTBT Trustee (Harvard)",
+        "uz": "LTBT vasiysi (Garvard)"
+      },
+      "tag": {
+        "ru": "Физика",
+        "en": "Physics",
+        "uz": "Fizika"
+      },
+      "since": "2026-10",
+      "influence": 83,
+      "avatar": "https://physics.harvard.edu/sites/default/files/styles/profile_full/public/stubbs_chris.jpg",
+      "initials": "CS",
+      "bio": {
+        "ru": "Именной профессор физики Гарварда, советник JASON. Вошел в LTBT 21 октября 2026 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "reed-hastings",
+      "name": "Reed Hastings",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Директор Совета (Netflix)",
+        "en": "Board Director (Class T)",
+        "uz": "Kengash a'zosi (Netflix)"
+      },
+      "tag": {
+        "ru": "Совет LTBT",
+        "en": "Class T Board",
+        "uz": "Kengash"
+      },
+      "since": "2025-05",
+      "influence": 90,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Reed_Hastings_2012.jpg/250px-Reed_Hastings_2012.jpg",
+      "initials": "RH",
+      "bio": {
+        "ru": "Сооснователь и экс-CEO Netflix. Назначен трастом LTBT в Совет директоров 28 мая 2025 года."
+      },
+      "sources": [
+        {
+          "title": "TechCrunch",
+          "url": "https://techcrunch.com/2025/05/28/netflix-co-founder-reed-hastings-joins-anthropics-board/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "vas-narasimhan",
+      "name": "Dr. Vas Narasimhan",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Директор Совета (CEO Novartis)",
+        "en": "Board Director (Novartis CEO)",
+        "uz": "Kengash a'zosi (Novartis)"
+      },
+      "tag": {
+        "ru": "Био / Фарма",
+        "en": "Bio / Pharma",
+        "uz": "Bio / Farma"
+      },
+      "since": "2026-04",
+      "influence": 85,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Vas_Narasimhan_WEF_2020.jpg/250px-Vas_Narasimhan_WEF_2020.jpg",
+      "initials": "VN",
+      "bio": {
+        "ru": "CEO Novartis. Назначен трастом LTBT в Совет директоров 14 апреля 2026 года для надзора за биобезопасностью."
+      },
+      "sources": [
+        {
+          "title": "IntuitionLabs",
+          "url": "https://intuitionlabs.ai/articles/pharma-ai-governance-novartis-anthropic"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "chris-liddell",
+      "name": "Christopher P. Liddell",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "active",
+      "role": {
+        "ru": "Спец-директор (ex-CFO Microsoft)",
+        "en": "Specified Class T Director",
+        "uz": "Maxsus direktor (ex-Microsoft)"
+      },
+      "tag": {
+        "ru": "Specified T",
+        "en": "Specified T",
+        "uz": "Specified T"
+      },
+      "since": "2026-02",
+      "influence": 85,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Chris_Liddell_official_photo.jpg/250px-Chris_Liddell_official_photo.jpg",
+      "initials": "CL",
+      "bio": {
+        "ru": "Бывший CFO Microsoft и GM. Назначен 13 февраля 2026 года как Specified Class T Director."
+      },
+      "sources": [
+        {
+          "title": "Layer3Labs",
+          "url": "https://www.layer3labs.io/guides/anthropic-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "paul-christiano",
+      "name": "Dr. Paul Christiano",
+      "kind": "person",
+      "zone": "ltbt",
+      "status": "former",
+      "role": {
+        "ru": "Экс-попечитель LTBT (2023–2024)",
+        "en": "Former LTBT Trustee",
+        "uz": "Sobiq LTBT vasiysi"
+      },
+      "tag": {
+        "ru": "Экс-LTBT",
+        "en": "Alumni",
+        "uz": "Sobiq"
+      },
+      "since": "2023",
+      "until": "2024",
+      "influence": 79,
+      "avatar": "https://matsprogram.org/images/mentors/paul_christiano.jpg",
+      "initials": "PC",
+      "bio": {
+        "ru": "Соавтор RLHF, основатель ARC. Входил в первый состав LTBT до перехода в US AISI (NIST)."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "kanika-zach",
+      "name": "Kanika Bahl & Zach Robinson",
+      "kind": "group",
+      "zone": "ltbt",
+      "status": "former",
+      "role": {
+        "ru": "Экс-попечители LTBT (2023–2026)",
+        "en": "Former LTBT Trustees",
+        "uz": "Sobiq LTBT vasiylari"
+      },
+      "tag": {
+        "ru": "Экс-LTBT",
+        "en": "Alumni",
+        "uz": "Sobiq"
+      },
+      "since": "2023",
+      "until": "2026",
+      "influence": 75,
+      "avatar": "https://www.evidenceaction.org/wp-content/uploads/2023/03/Kanika-Bahl-Headshot.jpg",
+      "initials": "KB",
+      "bio": {
+        "ru": "Входили в первый состав LTBT с сентября 2023 по январь 2026 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic LTBT",
+          "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "dario-amodei",
+      "name": "Dario Amodei",
+      "kind": "person",
+      "zone": "core",
+      "status": "active",
+      "role": {
+        "ru": "Генеральный директор (CEO) и сооснователь",
+        "en": "Chief Executive Officer & Co-Founder",
+        "uz": "Bosh direktor (CEO) va hammuassis"
+      },
+      "tag": {
+        "ru": "CEO · Class F",
+        "en": "CEO · Class F",
+        "uz": "CEO · Class F"
+      },
+      "since": "2021-01",
+      "influence": 100,
+      "hero": true,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg/250px-Dario_Amodei_at_TechCrunch_Disrupt_2023_01_%28cropped%29.jpg",
+      "initials": "DA",
+      "bio": {
+        "ru": "Физик (PhD Princeton), экс-VP of Research OpenAI. Основал Anthropic в январе 2021 года. Курирует науку, модели и безопасность."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "daniela-amodei",
+      "name": "Daniela Amodei",
+      "kind": "person",
+      "zone": "core",
+      "status": "active",
+      "role": {
+        "ru": "Президент и Председатель Совета",
+        "en": "President & Chair of the Board",
+        "uz": "Prezident va Kengash raisi"
+      },
+      "tag": {
+        "ru": "Chair & Pres",
+        "en": "Chair & Pres",
+        "uz": "Rais va Prez."
+      },
+      "since": "2021-01",
+      "influence": 99,
+      "hero": true,
+      "avatar": "https://images.stripeassets.com/fzn2n1nzq965/6L5AJB2usxYVRpHzMXUmiZ/39bc615186aaaf2858ab042d7614e19a/resizedimage.png",
+      "initials": "DnA",
+      "bio": {
+        "ru": "Экс-VP Safety & Policy OpenAI и менеджер Stripe. Возглавляет Совет директоров, C-Suite, коммерцию и Anthropic Labs."
+      },
+      "sources": [
+        {
+          "title": "The Profile",
+          "url": "https://www.readtheprofile.com/p/most-powerful-people-at-anthropic"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "cloud-titans",
+      "name": "Amazon & Google",
+      "kind": "group",
+      "zone": "capital",
+      "status": "active",
+      "role": {
+        "ru": "Облачные инвесторы (Class N)",
+        "en": "Non-Voting Cloud Investors",
+        "uz": "Ovozsiz bulut investorlari"
+      },
+      "tag": {
+        "ru": "0% голосов",
+        "en": "0% Votes",
+        "uz": "0% ovoz"
+      },
+      "since": "2023",
+      "until": "2026",
+      "influence": 89,
+      "initials": "AG",
+      "bio": {
+        "ru": "Владеют 5.66 млрд неголосующих акций Class N без мест в Совете, поставляя AWS Bedrock/Trainium и Google TPU."
+      },
+      "sources": [
+        {
+          "title": "Morningstar",
+          "url": "https://www.morningstar.com/stocks/anthropic-after-ipo-who-controls-company"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "yasmin-razavi",
+      "name": "Yasmin Razavi",
+      "kind": "person",
+      "zone": "capital",
+      "status": "active",
+      "role": {
+        "ru": "Директор Совета (Spark Capital)",
+        "en": "Board Director (Spark Capital)",
+        "uz": "Kengash a'zosi (Spark VC)"
+      },
+      "tag": {
+        "ru": "VC в Совете",
+        "en": "VC Board",
+        "uz": "VC Kengash"
+      },
+      "since": "2023-05",
+      "influence": 87,
+      "avatar": "https://www.sparkcapital.com/wp-content/uploads/2021/09/Yasmin-Razavi-1-800x800.jpg",
+      "initials": "YR",
+      "bio": {
+        "ru": "General Partner фонда Spark Capital. Занимает третье акционерное кресло в Совете директоров."
+      },
+      "sources": [
+        {
+          "title": "Reuters S-1",
+          "url": "https://www.investing.com/news/economy-news/factboxanthropics-filing-for-blockbuster-us-ipo-shows-key-executives-and-board-5015176"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "tino-cuellar",
+      "name": "Mariano-Florentino Cuéllar",
+      "kind": "person",
+      "zone": "capital",
+      "status": "active",
+      "role": {
+        "ru": "Глава глобальных связей (CGAO)",
+        "en": "Chief Global Affairs Officer",
+        "uz": "Global aloqalar direktori"
+      },
+      "tag": {
+        "ru": "Дипломатия",
+        "en": "Global Affairs",
+        "uz": "Diplomatiya"
+      },
+      "since": "2026-08",
+      "influence": 88,
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mariano-Florentino_Cu%C3%A9llar_2017.jpg/250px-Mariano-Florentino_Cu%C3%A9llar_2017.jpg",
+      "initials": "TC",
+      "bio": {
+        "ru": "Президент Фонда Карнеги, экс-судья Верховного суда Калифорнии. В августе 2026 перешел из LTBT на пост CGAO."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/tino-cuellar"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "brian-israel",
+      "name": "Brian Israel",
+      "kind": "person",
+      "zone": "capital",
+      "status": "active",
+      "role": {
+        "ru": "Главный юрист (CLO)",
+        "en": "Chief Legal Officer",
+        "uz": "Bosh huquqshunos (CLO)"
+      },
+      "tag": {
+        "ru": "Право & S-1",
+        "en": "Legal & S-1",
+        "uz": "Huquq & S-1"
+      },
+      "since": "2022",
+      "influence": 86,
+      "initials": "BI",
+      "bio": {
+        "ru": "Chief Legal Officer (CLO) с 2022 года, курирует правовую службу и подготовку проспекта IPO S-1."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "sasha-marigny",
+      "name": "Sasha de Marigny",
+      "kind": "person",
+      "zone": "capital",
+      "status": "active",
+      "role": {
+        "ru": "Директор по бренду (CBCO)",
+        "en": "Chief Brand & Comms Officer",
+        "uz": "Brend va PR direktori"
+      },
+      "tag": {
+        "ru": "Бренд и PR",
+        "en": "Brand",
+        "uz": "Brend"
+      },
+      "since": "2023-08",
+      "influence": 82,
+      "initials": "SM",
+      "bio": {
+        "ru": "Присоединилась в августе 2023, в ноябре 2025 назначена Chief Brand & Communications Officer."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "jay-kreps",
+      "name": "Jay Kreps",
+      "kind": "person",
+      "zone": "capital",
+      "status": "former",
+      "role": {
+        "ru": "Экс-директор Совета (Confluent)",
+        "en": "Former Board Director",
+        "uz": "Sobiq Kengash a'zosi"
+      },
+      "tag": {
+        "ru": "Экс-Совет",
+        "en": "Alumni",
+        "uz": "Sobiq"
+      },
+      "since": "2024",
+      "until": "2026",
+      "influence": 77,
+      "avatar": "https://cdn.thenewstack.io/media/2019/04/7f997a54-jay-kreps-confluent.jpg",
+      "initials": "JK",
+      "bio": {
+        "ru": "Соавтор Apache Kafka и CEO Confluent. Член Совета директоров от LTBT в 2024–2026 годах."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/jay-kreps-appointed-to-board-of-directors"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "jared-kaplan",
+      "name": "Jared Kaplan",
+      "kind": "person",
+      "zone": "science",
+      "status": "active",
+      "role": {
+        "ru": "Главный научный директор (CSO)",
+        "en": "Chief Science Officer",
+        "uz": "Bosh ilmiy direktor (CSO)"
+      },
+      "tag": {
+        "ru": "CSO · Class F",
+        "en": "CSO · Class F",
+        "uz": "CSO · Class F"
+      },
+      "since": "2021-01",
+      "influence": 96,
+      "avatar": "https://techcrunch.com/wp-content/uploads/2025/04/Jared-Kaplan_headshot2.jpg?w=1024",
+      "initials": "JK",
+      "bio": {
+        "ru": "Профессор физики (PhD Harvard), первый автор «Scaling Laws». Возглавляет научное крыло Anthropic."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "sam-mccandlish",
+      "name": "Sam McCandlish",
+      "kind": "person",
+      "zone": "science",
+      "status": "active",
+      "role": {
+        "ru": "Главный архитектор и RSO",
+        "en": "Chief Architect & RSO",
+        "uz": "Bosh arxitektor va RSO"
+      },
+      "tag": {
+        "ru": "Архитектор & RSO",
+        "en": "Architect & RSO",
+        "uz": "Arxitektor"
+      },
+      "since": "2021-01",
+      "influence": 95,
+      "avatar": "https://www.autumn.ai/resources/anthropic/portraits/sam-mccandlish.webp",
+      "initials": "SM",
+      "bio": {
+        "ru": "Сооснователь (Class F), экс-CTO до окт 2025. Главный архитектор моделей и Responsible Scaling Officer."
+      },
+      "sources": [
+        {
+          "title": "Washington Post",
+          "url": "https://www.washingtonpost.com/business/2026/11/05/anthropic-metr-ai-claude-acceleration/863c713e-d943-11f1-930a-e08f8086f5ac_story.html"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "tom-brown",
+      "name": "Tom Brown",
+      "kind": "person",
+      "zone": "science",
+      "status": "active",
+      "role": {
+        "ru": "Директор по вычислениям (Compute)",
+        "en": "Chief Compute Officer",
+        "uz": "Hisoblash direktori"
+      },
+      "tag": {
+        "ru": "Compute · Class F",
+        "en": "Compute",
+        "uz": "Compute"
+      },
+      "since": "2021-01",
+      "influence": 94,
+      "avatar": "https://specials-images.forbesimg.com/imageserve/65283d8759a29f029f950f49/416x416.jpg",
+      "initials": "TB",
+      "bio": {
+        "ru": "Первый автор статьи GPT-3. Управляет кластерами GPU/TPU и сделками на дата-центры."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "chris-olah",
+      "name": "Chris Olah",
+      "kind": "person",
+      "zone": "science",
+      "status": "active",
+      "role": {
+        "ru": "Глава интерпретируемости",
+        "en": "Interpretability Lead",
+        "uz": "Neyron shaffoflik rahbari"
+      },
+      "tag": {
+        "ru": "МРТ ИИ · Class F",
+        "en": "Interpretability",
+        "uz": "Shaffoflik"
+      },
+      "since": "2021-01",
+      "influence": 93,
+      "avatar": "https://img.hghlnd.com/imgix/https://detroitcatholic.nyc3.digitaloceanspaces.com/20260525T0715-MAGNIFICA-HUMANITAS-ANTHROPIC-VATICAN-1820383.JPG?w=800&h=800&fit=crop&crop=faces",
+      "initials": "CO",
+      "bio": {
+        "ru": "Основоположник механистической интерпретируемости (SAEs, circuit-tracer), сооснователь в Class F."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "amanda-askell",
+      "name": "Dr. Amanda Askell",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Глава характера и этики Claude",
+        "en": "Character & Alignment Lead",
+        "uz": "Claude xarakteri rahbari"
+      },
+      "tag": {
+        "ru": "Конституция",
+        "en": "Constitution",
+        "uz": "Konstitutsiya"
+      },
+      "since": "2021",
+      "influence": 89,
+      "avatar": "https://pub-bcdb3a688294470c8056f904d7e6236b.r2.dev/GPT-3/amanda.jpg",
+      "initials": "AA",
+      "bio": {
+        "ru": "Доктор философии NYU. Главный автор обновленной «Конституции Claude» (январь 2026)."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Constitution",
+          "url": "https://www.anthropic.com/constitution"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "jan-leike",
+      "name": "Dr. Jan Leike",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Соруководитель Alignment Science",
+        "en": "Alignment Science Co-Lead",
+        "uz": "Alignment Science rahbari"
+      },
+      "tag": {
+        "ru": "Alignment & AAR",
+        "en": "Alignment",
+        "uz": "Alignment"
+      },
+      "since": "2024-05",
+      "influence": 90,
+      "avatar": "https://www.autumn.ai/resources/anthropic/portraits/jan-leike.webp",
+      "initials": "JL",
+      "bio": {
+        "ru": "Экс-соруководитель Superalignment OpenAI. Руководит наукой выравнивания и проектом AAR."
+      },
+      "sources": [
+        {
+          "title": "Observer",
+          "url": "https://observer.com/2026/04/anthropic-top-executives-after-labs-launch/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "evan-hubinger",
+      "name": "Evan Hubinger",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Стресс-тестирование выравнивания",
+        "en": "Alignment Stress-Testing",
+        "uz": "Alignment stress-testi"
+      },
+      "tag": {
+        "ru": "Sleeper Agents",
+        "en": "Stress-Test",
+        "uz": "Stress-test"
+      },
+      "since": "2023-01",
+      "influence": 86,
+      "avatar": "https://thumbnails.assets.alphaxiv.org/512/01908384-ec88-7906-92c0-c361e5346f3c.png",
+      "initials": "EH",
+      "bio": {
+        "ru": "Автор исследований «Sleeper Agents» и «Alignment Faking», выявляющих скрытые цели моделей."
+      },
+      "sources": [
+        {
+          "title": "alphaXiv",
+          "url": "https://www.alphaxiv.org/zh/@evan-hubinger"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "logan-graham",
+      "name": "Dr. Logan Graham",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Глава Frontier Red Team",
+        "en": "Head of Frontier Red Team",
+        "uz": "Frontier Red Team rahbari"
+      },
+      "tag": {
+        "ru": "Glasswing",
+        "en": "Red Team",
+        "uz": "Red Team"
+      },
+      "since": "2022",
+      "influence": 86,
+      "avatar": "https://thumbnails.assets.alphaxiv.org/512/018d191a-27a8-75b0-ac99-e2c2fafb0580.png",
+      "initials": "LG",
+      "bio": {
+        "ru": "Доктор ML Оксфорда. Руководит стресс-тестами катастрофических и киберрисков (Project Glasswing)."
+      },
+      "sources": [
+        {
+          "title": "logangraham.xyz",
+          "url": "https://logangraham.xyz/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "jack-clark",
+      "name": "Jack Clark",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Сооснователь, Public Benefit",
+        "en": "Co-Founder, Public Benefit",
+        "uz": "Hammuassis, Public Benefit"
+      },
+      "tag": {
+        "ru": "Institute",
+        "en": "Institute",
+        "uz": "Institut"
+      },
+      "since": "2021-01",
+      "influence": 93,
+      "avatar": "https://jack-clark.net/wp-content/uploads/2021/05/cropped-jack-clark.jpg",
+      "initials": "JC",
+      "bio": {
+        "ru": "Сооснователь в Class F. Возглавляет The Anthropic Institute, изучающий влияние ИИ на экономику."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "deep-ganguli",
+      "name": "Dr. Deep Ganguli",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "active",
+      "role": {
+        "ru": "Глава Societal Impacts",
+        "en": "Societal Impacts Lead",
+        "uz": "Ijtimoiy ta'sir rahbari"
+      },
+      "tag": {
+        "ru": "Clio",
+        "en": "Clio",
+        "uz": "Clio"
+      },
+      "since": "2021-06",
+      "influence": 85,
+      "avatar": "https://dganguli.github.io/pweb/dg2.png",
+      "initials": "DG",
+      "bio": {
+        "ru": "Экс-директор Stanford HAI. Создал систему приватной аналитики Clio и Economic Index."
+      },
+      "sources": [
+        {
+          "title": "dganguli.github.io",
+          "url": "https://dganguli.github.io/pweb/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "john-schulman",
+      "name": "Dr. John Schulman",
+      "kind": "person",
+      "zone": "alignment",
+      "status": "former",
+      "role": {
+        "ru": "Экс-исследователь RL (2024–2025)",
+        "en": "Former RL Lead",
+        "uz": "Sobiq RL tadqiqotchi"
+      },
+      "tag": {
+        "ru": "Экс-лидер",
+        "en": "Alumni",
+        "uz": "Sobiq"
+      },
+      "since": "2024",
+      "until": "2025",
+      "influence": 78,
+      "avatar": "https://markedium.com/wp-content/uploads/2024/08/John-Schulman.webp",
+      "initials": "JS",
+      "bio": {
+        "ru": "Сооснователь OpenAI, автор PPO. Работал в Anthropic с августа 2024 по февраль 2025 года."
+      },
+      "sources": [
+        {
+          "title": "TechCrunch",
+          "url": "https://techcrunch.com/2025/02/06/openai-co-founder-john-schulman-leaves-anthropic-after-just-five-months/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "ami-vora",
+      "name": "Ami Vora",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Директор по продукту (CPO)",
+        "en": "Chief Product Officer",
+        "uz": "Mahsulot direktori (CPO)"
+      },
+      "tag": {
+        "ru": "CPO",
+        "en": "CPO",
+        "uz": "CPO"
+      },
+      "since": "2025-12",
+      "influence": 92,
+      "avatar": "https://fortune.com/img-assets/wp-content/uploads/2026/11/IMG_0491-e1794334884723.jpg?format=webp&w=1440&quality=75",
+      "initials": "AV",
+      "bio": {
+        "ru": "Экс-VP WhatsApp (Meta) и экс-CPO Faire. Заняла пост CPO 13 января 2026 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "mike-krieger",
+      "name": "Mike Krieger",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Соруководитель Labs (ex-CPO)",
+        "en": "Co-Lead, Anthropic Labs",
+        "uz": "Anthropic Labs rahbari"
+      },
+      "tag": {
+        "ru": "Labs (IG)",
+        "en": "Labs (IG)",
+        "uz": "Labs (IG)"
+      },
+      "since": "2024-05",
+      "influence": 91,
+      "avatar": "https://i0.wp.com/doc.health/wp-content/uploads/2025/04/Kriegers-Leads-Anthropics-AI-Mission.jpg?fit=1920%2C1080&ssl=1",
+      "initials": "MK",
+      "bio": {
+        "ru": "Сооснователь Instagram. Был CPO до января 2026, затем возглавил инкубатор Anthropic Labs."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Labs",
+          "url": "https://www.anthropic.com/news/introducing-anthropic-labs"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "ben-mann",
+      "name": "Benjamin (Ben) Mann",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Соруководитель Anthropic Labs",
+        "en": "Co-Lead, Anthropic Labs",
+        "uz": "Anthropic Labs rahbari"
+      },
+      "tag": {
+        "ru": "Labs Co-Lead",
+        "en": "Labs Co-Lead",
+        "uz": "Labs rahbari"
+      },
+      "since": "2021-01",
+      "influence": 89,
+      "avatar": "https://www.contextjamming.com/images/founders/ben-mann.jpg",
+      "initials": "BM",
+      "bio": {
+        "ru": "Соавтор GPT-3, работает с января 2021 (вне Founder LLC по S-1). Соруководит Anthropic Labs."
+      },
+      "sources": [
+        {
+          "title": "The Next Web",
+          "url": "https://thenextweb.com/news/ben-mann-anthropic-ipo-founder-llc"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "boris-cherny",
+      "name": "Boris Cherny",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Создатель и глава Claude Code",
+        "en": "Creator & Head, Claude Code",
+        "uz": "Claude Code yaratuvchisi"
+      },
+      "tag": {
+        "ru": "Claude Code",
+        "en": "Claude Code",
+        "uz": "Claude Code"
+      },
+      "since": "2024-09",
+      "influence": 88,
+      "avatar": "https://avatars.githubusercontent.com/u/1761758?v=4",
+      "initials": "BC",
+      "bio": {
+        "ru": "Экс-Principal Engineer в Meta, автор книги «Programming TypeScript». Создал агентную среду Claude Code."
+      },
+      "sources": [
+        {
+          "title": "GitHub @bcherny",
+          "url": "https://github.com/bcherny"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "david-soria-parra",
+      "name": "David Soria Parra",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Соавтор и лидер протокола MCP",
+        "en": "Co-Creator, MCP",
+        "uz": "MCP protokoli muallifi"
+      },
+      "tag": {
+        "ru": "Протокол MCP",
+        "en": "MCP",
+        "uz": "MCP"
+      },
+      "since": "2024",
+      "influence": 85,
+      "avatar": "https://avatars.githubusercontent.com/u/167242713?v=4",
+      "initials": "DP",
+      "bio": {
+        "ru": "Соавтор Model Context Protocol (MCP), переданного в декабре 2025 года в Linux Foundation (AAIF)."
+      },
+      "sources": [
+        {
+          "title": "Anthropic MCP",
+          "url": "https://www.anthropic.com/news/model-context-protocol"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "alex-albert",
+      "name": "Alex Albert",
+      "kind": "person",
+      "zone": "labs",
+      "status": "active",
+      "role": {
+        "ru": "Глава Claude Relations (DevRel)",
+        "en": "Head of Claude Relations",
+        "uz": "DevRel rahbari"
+      },
+      "tag": {
+        "ru": "DevRel",
+        "en": "DevRel",
+        "uz": "DevRel"
+      },
+      "since": "2023-06",
+      "influence": 83,
+      "avatar": "https://avatars.githubusercontent.com/u/34638987?v=4",
+      "initials": "AA",
+      "bio": {
+        "ru": "Первый штатный Prompt Engineer (июнь 2023), с марта 2024 возглавляет Developer Relations."
+      },
+      "sources": [
+        {
+          "title": "AI Engineer",
+          "url": "https://ai.engineer/speakers/alex-albert"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "cat-wu",
+      "name": "Catherine (Cat) Wu",
+      "kind": "person",
+      "zone": "labs",
+      "status": "former",
+      "role": {
+        "ru": "Экс-лид Claude Code (в OpenAI)",
+        "en": "Former Claude Code Lead",
+        "uz": "Sobiq Claude Code rahbari"
+      },
+      "tag": {
+        "ru": "Экс-лид",
+        "en": "Alumni",
+        "uz": "Sobiq"
+      },
+      "since": "2024",
+      "until": "2026-10",
+      "influence": 84,
+      "avatar": "https://avatars.githubusercontent.com/u/6024687?v=4",
+      "initials": "CW",
+      "bio": {
+        "ru": "Развивала Claude Code и Cowork до 30 октября 2026 года, затем перешла в OpenAI."
+      },
+      "sources": [
+        {
+          "title": "Business Insider",
+          "url": "https://www.businessinsider.com/cat-wu-joins-openai-from-anthropic-product-lead-coup-2026-11"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "rahul-patil",
+      "name": "Rahul Patil",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Технический директор (CTO)",
+        "en": "Chief Technology Officer",
+        "uz": "Texnik direktor (CTO)"
+      },
+      "tag": {
+        "ru": "CTO",
+        "en": "CTO",
+        "uz": "CTO"
+      },
+      "since": "2025-10",
+      "influence": 92,
+      "avatar": "https://goldhouse.org/wp-content/uploads/2026/04/Gold100_BT_Rahul-Patil.png",
+      "initials": "RP",
+      "bio": {
+        "ru": "Экс-CTO Stripe, выпускник ASU. Возглавил технический блок в октябре 2025 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/rahul-patil-joins-anthropic"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "krishna-rao",
+      "name": "Krishna Rao",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Финансовый директор (CFO)",
+        "en": "Chief Financial Officer",
+        "uz": "Moliya direktori (CFO)"
+      },
+      "tag": {
+        "ru": "CFO · S-1",
+        "en": "CFO · S-1",
+        "uz": "CFO · S-1"
+      },
+      "since": "2024-04",
+      "influence": 90,
+      "avatar": "https://static.toiimg.com/thumb/msid-110332232,width-400,resizemode-4/110332232.jpg",
+      "initials": "KR",
+      "bio": {
+        "ru": "Экс-Airbnb IPO, первый CFO Anthropic (с апреля 2024). Руководит финансами и выходом на Nasdaq."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/krishna-rao-joins-anthropic"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "paul-smith",
+      "name": "Paul Smith",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Коммерческий директор (CCO)",
+        "en": "Chief Commercial Officer",
+        "uz": "Tijorat direktori (CCO)"
+      },
+      "tag": {
+        "ru": "CCO · $81B",
+        "en": "CCO · $81B",
+        "uz": "CCO · $81B"
+      },
+      "since": "2025-08",
+      "influence": 89,
+      "initials": "PS",
+      "bio": {
+        "ru": "Экс-CCO ServiceNow. С августа 2025 года возглавляет глобальные B2B-продажи."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "hannah-pritchett",
+      "name": "Hannah Pritchett",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Директор по персоналу (CPO)",
+        "en": "Chief People Officer",
+        "uz": "Kadrlar direktori"
+      },
+      "tag": {
+        "ru": "Кадры",
+        "en": "People",
+        "uz": "Kadrlar"
+      },
+      "since": "2024",
+      "influence": 84,
+      "initials": "HP",
+      "bio": {
+        "ru": "Chief People Officer, отвечает за наём и культуру растущей компании."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Leadership",
+          "url": "https://www.anthropic.com/company/leadership"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "vitaly-gudanets",
+      "name": "Vitaly Gudanets",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Директор по безопасности (CISO)",
+        "en": "Chief Info Security Officer",
+        "uz": "Axborot xavfsizligi (CISO)"
+      },
+      "tag": {
+        "ru": "CISO",
+        "en": "CISO",
+        "uz": "CISO"
+      },
+      "since": "2025-09",
+      "influence": 86,
+      "avatar": "https://lsvp.com/wp-content/uploads/2025/08/250305_Netflix_0347-e1755611424734-590x1024.jpg",
+      "initials": "VG",
+      "bio": {
+        "ru": "Экс-CISO Netflix и VP Security в Google. Защищает веса моделей и инфраструктуру."
+      },
+      "sources": [
+        {
+          "title": "National CIO Review",
+          "url": "https://nationalcioreview.com/articles-insights/news/anthropic-expands-security-team-with-ciso-hire-from-netflix/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "jason-clinton",
+      "name": "Jason Clinton",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Заместитель CISO (ex-CISO)",
+        "en": "Deputy CISO",
+        "uz": "CISO o'rinbosari"
+      },
+      "tag": {
+        "ru": "Стандарт SL5",
+        "en": "SL5",
+        "uz": "SL5"
+      },
+      "since": "2023",
+      "influence": 82,
+      "avatar": "https://www.sans.org/img/profiles/jason-clinton.jpg",
+      "initials": "JC",
+      "bio": {
+        "ru": "Первый CISO Anthropic (2023–2025), соавтор стандарта защиты весов SL5."
+      },
+      "sources": [
+        {
+          "title": "The Stack",
+          "url": "https://www.thestack.technology/anthropic-new-ciso-claude-cyber-attack/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "chris-ciauri",
+      "name": "Chris Ciauri",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Управляющий директор (Intl)",
+        "en": "MD, International",
+        "uz": "Xalqaro direktor"
+      },
+      "tag": {
+        "ru": "Global GTM",
+        "en": "Intl",
+        "uz": "Xalqaro"
+      },
+      "since": "2025-09",
+      "influence": 84,
+      "initials": "CC",
+      "bio": {
+        "ru": "Managing Director of International с сентября 2025 года."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/anthropic-expands-global-leadership-in-enterprise-ai-naming-chris-ciauri-as-managing-director-of"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "kate-jensen",
+      "name": "Kate Jensen",
+      "kind": "person",
+      "zone": "infra",
+      "status": "active",
+      "role": {
+        "ru": "Глава региона Америка",
+        "en": "Head of Americas",
+        "uz": "Amerika mintaqasi rahbari"
+      },
+      "tag": {
+        "ru": "Америка",
+        "en": "Americas",
+        "uz": "Amerika"
+      },
+      "since": "2023",
+      "influence": 84,
+      "avatar": "https://brand-innovators.com/wp-content/uploads/2026/03/Jenson-Kate.jpg",
+      "initials": "KJ",
+      "bio": {
+        "ru": "Экс-Stripe. Построила первичную систему продаж и облачные альянсы."
+      },
+      "sources": [
+        {
+          "title": "Brand Innovators",
+          "url": "https://brand-innovators.com/speakers/kate-jensen/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-fable-mythos",
+      "name": "Claude Fable 5.2 & Mythos 5.2",
+      "cluster": "models",
+      "status": "active",
+      "label": "Flagship",
+      "released": "2026-11-09",
+      "metrics": "$8 / $40 · 1M ctx",
+      "owners": [
+        "dario-amodei",
+        "jared-kaplan",
+        "sam-mccandlish",
+        "tom-brown"
+      ],
+      "description": {
+        "ru": "Актуальный флагман от 9 ноября 2026 года. Mythos 5.2 доступен партнерам по кибербезопасности."
+      },
+      "sources": [
+        {
+          "title": "Anthropic Models",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-claude-55",
+      "name": "Claude 5.5 (Opus, Sonnet, Haiku)",
+      "cluster": "models",
+      "status": "active",
+      "label": "API Core",
+      "released": "2026-09",
+      "metrics": "Opus $4 · Sonnet $2 · Haiku $0.10",
+      "owners": [
+        "sam-mccandlish",
+        "jared-kaplan",
+        "amanda-askell",
+        "jan-leike"
+      ],
+      "description": {
+        "ru": "Основная линейка осени 2026 с окном 1M токенов и выходом 128K."
+      },
+      "sources": [
+        {
+          "title": "Claude Docs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-claude-45",
+      "name": "Claude 4 & 4.5 / 4.6",
+      "cluster": "models",
+      "status": "active",
+      "label": "ASL-3",
+      "released": "2025–2026",
+      "metrics": "SWE-bench 77.2%",
+      "owners": [
+        "sam-mccandlish",
+        "jared-kaplan",
+        "tom-brown"
+      ],
+      "description": {
+        "ru": "Поколение, впервые прошедшее сертификацию ASL-3."
+      },
+      "sources": [
+        {
+          "title": "Claude Docs",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-claude-3x",
+      "name": "Claude 3 / 3.5 / 3.7 Sonnet",
+      "cluster": "models",
+      "status": "legacy",
+      "label": "Legacy",
+      "released": "2024–2025",
+      "metrics": "Extended Thinking",
+      "owners": [
+        "dario-amodei",
+        "sam-mccandlish",
+        "ben-mann"
+      ],
+      "description": {
+        "ru": "Исторический фундамент: Artifacts, Computer Use и гибридное мышление."
+      },
+      "sources": [
+        {
+          "title": "Anthropic News",
+          "url": "https://www.anthropic.com/news/claude-3-5-sonnet"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-constitution-character",
+      "name": "Claude's Constitution (2026)",
+      "cluster": "safety",
+      "status": "active",
+      "label": "Ethics",
+      "released": "2026-01-21",
+      "metrics": "Character Alignment",
+      "owners": [
+        "amanda-askell",
+        "chris-olah",
+        "jared-kaplan"
+      ],
+      "description": {
+        "ru": "Обновленная Конституция Claude под редакцией Аманды Аскелл."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/constitution"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-aar-classifiers",
+      "name": "Automated Alignment Researchers",
+      "cluster": "safety",
+      "status": "active",
+      "label": "ASL-3",
+      "released": "2025–2026",
+      "metrics": "Constitutional Classifiers",
+      "owners": [
+        "jan-leike",
+        "evan-hubinger",
+        "jared-kaplan"
+      ],
+      "description": {
+        "ru": "Автономные ИИ-аудиторы выравнивания и защита от джейлбрейков."
+      },
+      "sources": [
+        {
+          "title": "Alignment Blog",
+          "url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-sae-circuits",
+      "name": "Sparse Autoencoders & Circuits",
+      "cluster": "safety",
+      "status": "active",
+      "label": "Interpretability",
+      "released": "2024–2025",
+      "metrics": "circuit-tracer",
+      "owners": [
+        "chris-olah",
+        "jared-kaplan"
+      ],
+      "description": {
+        "ru": "Механистическая интерпретируемость внутренних цепей внутри весов."
+      },
+      "sources": [
+        {
+          "title": "arXiv",
+          "url": "https://arxiv.org/html/2501.16496v1"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-clio-glasswing",
+      "name": "Clio & Project Glasswing",
+      "cluster": "safety",
+      "status": "active",
+      "label": "Cyber & Econ",
+      "released": "2024–2026",
+      "metrics": "Privacy Analytics",
+      "owners": [
+        "deep-ganguli",
+        "logan-graham",
+        "jack-clark",
+        "tino-cuellar"
+      ],
+      "description": {
+        "ru": "Приватная аналитика Clio и программа киберзащиты Project Glasswing."
+      },
+      "sources": [
+        {
+          "title": "Platformer",
+          "url": "https://www.platformer.news/how-claude-uses-ai-to-identify-new-threats/"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-claude-code",
+      "name": "Claude Code CLI & Routines",
+      "cluster": "agentic",
+      "status": "active",
+      "label": "CLI Agent",
+      "released": "2025–2026",
+      "metrics": "Autonomous Coding",
+      "owners": [
+        "boris-cherny",
+        "ben-mann",
+        "mike-krieger",
+        "cat-wu"
+      ],
+      "description": {
+        "ru": "Терминальный агент разработки с Plan Mode и параллельными worktrees."
+      },
+      "sources": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/anthropics/claude-code"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-mcp",
+      "name": "Model Context Protocol (MCP)",
+      "cluster": "agentic",
+      "status": "active",
+      "label": "Linux Found.",
+      "released": "2024–2025",
+      "metrics": "AAIF Open Standard",
+      "owners": [
+        "david-soria-parra",
+        "mike-krieger",
+        "alex-albert"
+      ],
+      "description": {
+        "ru": "Открытый протокол интеграции ИИ с базами и ERP (передан в AAIF)."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-computer-use",
+      "name": "Computer Use API & Bun",
+      "cluster": "agentic",
+      "status": "active",
+      "label": "API Tool",
+      "released": "2024–2025",
+      "metrics": "GUI + Bun Runtime",
+      "owners": [
+        "rahul-patil",
+        "ben-mann",
+        "logan-graham"
+      ],
+      "description": {
+        "ru": "Управление курсором и экраном в API плюс приобретенный рантайм Bun."
+      },
+      "sources": [
+        {
+          "title": "Claude Docs",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-console",
+      "name": "Console, Caching & Batch API",
+      "cluster": "agentic",
+      "status": "active",
+      "label": "API Econ",
+      "released": "2024–2026",
+      "metrics": "-90% Cache · -50% Batch",
+      "owners": [
+        "rahul-patil",
+        "alex-albert",
+        "amanda-askell"
+      ],
+      "description": {
+        "ru": "Prompt Caching, пакеты Batch API и серверные цепочки Message Threads."
+      },
+      "sources": [
+        {
+          "title": "Claude Docs",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-claude-apps",
+      "name": "Claude.ai, Artifacts & Projects",
+      "cluster": "workspace",
+      "status": "active",
+      "label": "Consumer",
+      "released": "2023–2024",
+      "metrics": "Web, iOS, Desktop",
+      "owners": [
+        "ami-vora",
+        "mike-krieger",
+        "daniela-amodei"
+      ],
+      "description": {
+        "ru": "Клиентские приложения с холстом Artifacts и командными проектами."
+      },
+      "sources": [
+        {
+          "title": "Release Notes",
+          "url": "https://docs.anthropic.com/en/release-notes/claude-apps"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-cowork",
+      "name": "Claude Cowork",
+      "cluster": "workspace",
+      "status": "active",
+      "label": "Work Agent",
+      "released": "2026",
+      "metrics": "Multi-step Tasks",
+      "owners": [
+        "ami-vora",
+        "mike-krieger",
+        "ben-mann",
+        "cat-wu"
+      ],
+      "description": {
+        "ru": "Агентская среда для бизнес-команд на десктопе, вебе и мобильных."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/product/claude-cowork"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-design-science",
+      "name": "Claude Design, Science & Sheets",
+      "cluster": "workspace",
+      "status": "active",
+      "label": "Verticals",
+      "released": "2026",
+      "metrics": "Design · Science · Sheets",
+      "owners": [
+        "ami-vora",
+        "mike-krieger",
+        "ben-mann"
+      ],
+      "description": {
+        "ru": "Специализированные среды от Anthropic Labs для дизайна, науки и таблиц."
+      },
+      "sources": [
+        {
+          "title": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-design-anthropic-labs"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    },
+    {
+      "id": "prod-enterprise-max",
+      "name": "Claude for Work & Claude Max",
+      "cluster": "workspace",
+      "status": "active",
+      "label": "B2B Scale",
+      "released": "2024–2026",
+      "metrics": "11,900+ $100K+ accts",
+      "owners": [
+        "paul-smith",
+        "chris-ciauri",
+        "kate-jensen",
+        "ami-vora"
+      ],
+      "description": {
+        "ru": "Планы Team, Enterprise и Max (80.2% выручки на модели потребления)."
+      },
+      "sources": [
+        {
+          "title": "Claude Pricing",
+          "url": "https://claude.com/pricing"
+        }
+      ],
+      "verifiedAt": "2026-11-16"
+    }
+  ],
+  "edges": [
+    {
+      "from": "neil-shah",
+      "to": "reed-hastings",
+      "type": "gov"
+    },
+    {
+      "from": "neil-shah",
+      "to": "vas-narasimhan",
+      "type": "gov"
+    },
+    {
+      "from": "neil-shah",
+      "to": "chris-liddell",
+      "type": "gov"
+    },
+    {
+      "from": "ben-bernanke",
+      "to": "reed-hastings",
+      "type": "gov"
+    },
+    {
+      "from": "richard-fontaine",
+      "to": "vas-narasimhan",
+      "type": "gov"
+    },
+    {
+      "from": "christopher-stubbs",
+      "to": "chris-liddell",
+      "type": "gov"
+    },
+    {
+      "from": "yasmin-razavi",
+      "to": "dario-amodei",
+      "type": "gov"
+    },
+    {
+      "from": "yasmin-razavi",
+      "to": "daniela-amodei",
+      "type": "gov"
+    },
+    {
+      "from": "cloud-titans",
+      "to": "tom-brown",
+      "type": "gov"
+    },
+    {
+      "from": "reed-hastings",
+      "to": "dario-amodei",
+      "type": "gov"
+    },
+    {
+      "from": "dario-amodei",
+      "to": "jared-kaplan",
+      "type": "rep"
+    },
+    {
+      "from": "dario-amodei",
+      "to": "sam-mccandlish",
+      "type": "rep"
+    },
+    {
+      "from": "dario-amodei",
+      "to": "tom-brown",
+      "type": "rep"
+    },
+    {
+      "from": "dario-amodei",
+      "to": "chris-olah",
+      "type": "rep"
+    },
+    {
+      "from": "dario-amodei",
+      "to": "jack-clark",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "ami-vora",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "rahul-patil",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "krishna-rao",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "paul-smith",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "hannah-pritchett",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "mike-krieger",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "ben-mann",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "tino-cuellar",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "brian-israel",
+      "type": "rep"
+    },
+    {
+      "from": "daniela-amodei",
+      "to": "sasha-marigny",
+      "type": "rep"
+    },
+    {
+      "from": "jared-kaplan",
+      "to": "jan-leike",
+      "type": "rep"
+    },
+    {
+      "from": "jared-kaplan",
+      "to": "evan-hubinger",
+      "type": "rep"
+    },
+    {
+      "from": "jared-kaplan",
+      "to": "amanda-askell",
+      "type": "rep"
+    },
+    {
+      "from": "jared-kaplan",
+      "to": "logan-graham",
+      "type": "rep"
+    },
+    {
+      "from": "jack-clark",
+      "to": "deep-ganguli",
+      "type": "rep"
+    },
+    {
+      "from": "rahul-patil",
+      "to": "vitaly-gudanets",
+      "type": "rep"
+    },
+    {
+      "from": "vitaly-gudanets",
+      "to": "jason-clinton",
+      "type": "rep"
+    },
+    {
+      "from": "ami-vora",
+      "to": "boris-cherny",
+      "type": "rep"
+    },
+    {
+      "from": "ben-mann",
+      "to": "boris-cherny",
+      "type": "rep"
+    },
+    {
+      "from": "ami-vora",
+      "to": "alex-albert",
+      "type": "rep"
+    },
+    {
+      "from": "mike-krieger",
+      "to": "david-soria-parra",
+      "type": "rep"
+    },
+    {
+      "from": "paul-smith",
+      "to": "chris-ciauri",
+      "type": "rep"
+    },
+    {
+      "from": "paul-smith",
+      "to": "kate-jensen",
+      "type": "rep"
+    }
+  ]
+}

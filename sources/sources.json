@@ -1,0 +1,27 @@
+{
+  "$comment": "Source registry for the daily collector (scripts/collect.mjs). tier 1 = primary (company, regulator), 2 = major press, 3 = aggregator/discovery only (never cite tier 3 as the only source). Add a source = add an object here; no code change needed for kinds: sitemap, rss, dated-headings, changelog-md, page-watch.",
+  "userAgent": "AnthropicAtlasBot/1.0 (+https://github.com/SharipovAkhror/athropic-atlas)",
+  "sources": [
+    { "id": "anthropic-sitemap", "name": "anthropic.com (news, research, company pages)", "tier": 1, "kind": "sitemap", "url": "https://www.anthropic.com/sitemap.xml", "include": ["/news/", "/research/", "/engineering/", "/economic-index", "/claude-", "/company", "/transparency"] },
+    { "id": "claude-sitemap", "name": "claude.com (product pages, blog)", "tier": 1, "kind": "sitemap", "url": "https://claude.com/sitemap.xml", "include": ["/blog/", "/product/", "/solutions/", "/claude-for", "/pricing", "/connectors"] },
+    { "id": "alignment-sitemap", "name": "alignment.anthropic.com", "tier": 1, "kind": "sitemap", "url": "https://alignment.anthropic.com/sitemap.xml", "include": ["/20"] },
+    { "id": "api-release-notes", "name": "Claude Developer Platform release notes", "tier": 1, "kind": "dated-headings", "url": "https://platform.claude.com/docs/en/release-notes/overview" },
+    { "id": "apps-release-notes", "name": "Claude apps release notes", "tier": 1, "kind": "dated-headings", "url": "https://support.claude.com/en/articles/12138966-release-notes" },
+    { "id": "claude-code-changelog", "name": "Claude Code CHANGELOG", "tier": 1, "kind": "changelog-md", "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md" },
+    { "id": "sec-edgar", "name": "SEC EDGAR filings (Anthropic)", "tier": 1, "kind": "rss", "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic&type=&dateb=&owner=include&count=40&output=atom", "maxAgeDays": 10 },
+    { "id": "status", "name": "Claude status incidents", "tier": 1, "kind": "rss", "url": "https://status.claude.com/history.rss", "maxAgeDays": 2, "importanceHint": 1 },
+    { "id": "gnews-anthropic", "name": "Google News: Anthropic", "tier": 3, "kind": "rss", "url": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=en-US&gl=US&ceid=US:en", "maxAgeDays": 2, "max": 40 },
+    { "id": "gnews-claude", "name": "Google News: Claude AI", "tier": 3, "kind": "rss", "url": "https://news.google.com/rss/search?q=%22Claude%22+Anthropic+model+OR+launch+OR+release+when:2d&hl=en-US&gl=US&ceid=US:en", "maxAgeDays": 2, "max": 25 },
+    { "id": "gnews-people", "name": "Google News: Anthropic people moves", "tier": 3, "kind": "rss", "url": "https://news.google.com/rss/search?q=Anthropic+(joins+OR+leaves+OR+hires+OR+appoints+OR+board)+when:3d&hl=en-US&gl=US&ceid=US:en", "maxAgeDays": 3, "max": 20 },
+    { "id": "gnews-ipo", "name": "Google News: Anthropic IPO / ANT", "tier": 3, "kind": "rss", "url": "https://news.google.com/rss/search?q=Anthropic+(IPO+OR+Nasdaq+OR+ANT+OR+shares+OR+valuation)+when:2d&hl=en-US&gl=US&ceid=US:en", "maxAgeDays": 2, "max": 20 },
+    { "id": "gnews-ru", "name": "Google News (RU): Anthropic", "tier": 3, "kind": "rss", "url": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=ru&gl=RU&ceid=RU:ru", "maxAgeDays": 2, "max": 15 },
+    { "id": "watch-leadership", "name": "Leadership page", "tier": 1, "kind": "page-watch", "url": "https://www.anthropic.com/company" },
+    { "id": "watch-ltbt", "name": "Long-Term Benefit Trust page", "tier": 1, "kind": "page-watch", "url": "https://www.anthropic.com/news/the-long-term-benefit-trust" },
+    { "id": "watch-models", "name": "Models overview (API ids, prices)", "tier": 1, "kind": "page-watch", "url": "https://platform.claude.com/docs/en/about-claude/models/overview" },
+    { "id": "watch-deprecations", "name": "Model deprecations", "tier": 1, "kind": "page-watch", "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations" },
+    { "id": "watch-pricing", "name": "Plans and pricing", "tier": 1, "kind": "page-watch", "url": "https://claude.com/pricing" },
+    { "id": "watch-rsp", "name": "Responsible Scaling Policy", "tier": 1, "kind": "page-watch", "url": "https://www.anthropic.com/responsible-scaling-policy" }
+  ],
+  "trustedPress": ["reuters.com", "bloomberg.com", "ft.com", "wsj.com", "nytimes.com", "cnbc.com", "theinformation.com", "techcrunch.com", "theverge.com", "axios.com", "apnews.com", "washingtonpost.com", "businessinsider.com", "semafor.com", "fortune.com", "wired.com", "arstechnica.com", "theguardian.com", "economist.com", "law.com", "sec.gov"],
+  "blockedDomains": ["layer3labs.io", "intuitionlabs.ai", "readtheprofile.com", "brand-innovators.com", "medium.com", "quora.com", "reddit.com"]
+}

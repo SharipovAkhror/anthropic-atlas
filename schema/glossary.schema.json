@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "glossary.schema.json",
+  "title": "Glossary of terms (data/glossary.json)",
+  "type": "object",
+  "required": ["terms"],
+  "additionalProperties": false,
+  "properties": {
+    "terms": { "type": "array", "items": {
+      "type": "object",
+      "required": ["id", "term", "definition", "sources"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/definitions/id" },
+        "term": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "category": { "enum": ["governance", "finance", "models", "safety", "product", "platform"] },
+        "definition": { "$ref": "common.schema.json#/definitions/i18nFull" },
+        "links": { "$ref": "common.schema.json#/definitions/links" },
+        "sources": { "$ref": "common.schema.json#/definitions/sources" }
+      },
+      "additionalProperties": false } }
+  }
+}

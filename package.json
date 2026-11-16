@@ -1,0 +1,19 @@
+{
+  "name": "anthropic-atlas",
+  "private": true,
+  "type": "module",
+  "description": "Anthropic Atlas: a daily-updated public-source monitor of Anthropic.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "collect": "node scripts/collect.mjs",
+    "digest": "node scripts/digest.mjs",
+    "check": "node scripts/validate.mjs && node scripts/test.mjs",
+    "test": "node scripts/test.mjs",
+    "serve": "npx --yes serve@14.2.4 -l 4173 ."
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
+  }
+}
