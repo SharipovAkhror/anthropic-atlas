@@ -78,6 +78,24 @@ const digest = {
   stats: { sourcesOk: inbox.sources.filter(s => s.ok).length, sourcesFailed: failedSources.length, candidates: inbox.items.length, ...(failedSources.length ? { failedSources } : {}) }
 };
 
+// A second run on the same day (re-run, or a late-evening run followed by the morning run) extends the
+// existing digest instead of replacing it, so nothing reported earlier that day is lost.
+const prevPath = join(ROOT, `data/digests/${DATE}.json`);
+if (existsSync(prevPath) && !args.fresh) {
+  const prev = JSON.parse(readFileSync(prevPath, "utf8"));
+  const union = (a, b) => { const m = new Map(a.map(x => [`${x.kind}:${x.id}`, x])); for (const x of b) m.set(`${x.kind}:${x.id}`, x); return [...m.values()]; };
+  digest.news = [...new Set([...prev.news, ...digest.news])].filter(id => evById.has(id));
+  digest.added = union(prev.added, digest.added);
+  digest.updated = union(prev.updated, digest.updated).filter(u => !digest.added.some(a => a.id === u.id));
+  digest.removed = union(prev.removed, digest.removed);
+  if (!notes.headline) { digest.headline = prev.headline; digest.summary = prev.summary; }
+  newEvents.splice(0, newEvents.length, ...digest.news);
+  nonEventAdded.splice(0, nonEventAdded.length, ...digest.added);
+  updated.splice(0, updated.length, ...digest.updated);
+  removed.splice(0, removed.length, ...digest.removed);
+  topNews.splice(0, topNews.length, ...newEvents.map(id => evById.get(id)).sort((a, b) => b.importance - a.importance || b.date.localeCompare(a.date)));
+}
+
 const md = [];
 md.push(`Anthropic Atlas · ${DATE}`);
 md.push(`**${ru(digest.headline)}**`);
