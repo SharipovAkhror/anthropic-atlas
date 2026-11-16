@@ -400,7 +400,10 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "id": "ben-bernanke",
@@ -432,7 +435,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "upload.wikimedia.org"
+      "avatarCredit": "upload.wikimedia.org",
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "id": "richard-fontaine",
@@ -463,7 +469,10 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "id": "christopher-stubbs",
@@ -498,7 +507,10 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust"
+      }
     },
     {
       "id": "reed-hastings",
@@ -529,7 +541,10 @@
           "url": "https://techcrunch.com/2025/05/28/netflix-co-founder-reed-hastings-joins-anthropics-board/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://techcrunch.com/2025/05/28/netflix-co-founder-reed-hastings-joins-anthropics-board/"
+      }
     },
     {
       "id": "vas-narasimhan",
@@ -560,7 +575,10 @@
           "url": "https://www.anthropic.com/news/narasimhan-board"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/narasimhan-board"
+      }
     },
     {
       "id": "chris-liddell",
@@ -594,7 +612,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Chris_Liddell",
-        "wikidata": "https://www.wikidata.org/wiki/Q5107236"
+        "wikidata": "https://www.wikidata.org/wiki/Q5107236",
+        "official": "https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board"
       }
     },
     {
@@ -627,7 +646,10 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "id": "kanika-zach",
@@ -659,7 +681,10 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "id": "dario-amodei",
@@ -694,7 +719,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Dario_Amodei",
-        "wikidata": "https://www.wikidata.org/wiki/Q103335665"
+        "wikidata": "https://www.wikidata.org/wiki/Q103335665",
+        "official": "https://www.anthropic.com/company/leadership"
       },
       "avatarCredit": "upload.wikimedia.org"
     },
@@ -731,7 +757,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Daniela_Amodei",
-        "wikidata": "https://www.wikidata.org/wiki/Q119721378"
+        "wikidata": "https://www.wikidata.org/wiki/Q119721378",
+        "official": "https://www.anthropic.com/company/leadership"
       },
       "avatarCredit": "images.stripeassets.com"
     },
@@ -763,7 +790,10 @@
           "url": "https://www.morningstar.com/stocks/anthropic-after-ipo-who-controls-company"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.morningstar.com/stocks/anthropic-after-ipo-who-controls-company"
+      }
     },
     {
       "id": "yasmin-razavi",
@@ -794,7 +824,10 @@
           "url": "https://www.investing.com/news/economy-news/factboxanthropics-filing-for-blockbuster-us-ipo-shows-key-executives-and-board-5015176"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.investing.com/news/economy-news/factboxanthropics-filing-for-blockbuster-us-ipo-shows-key-executives-and-board-5015176"
+      }
     },
     {
       "id": "tino-cuellar",
@@ -832,7 +865,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Mariano-Florentino_Cu%C3%A9llar",
-        "wikidata": "https://www.wikidata.org/wiki/Q16213917"
+        "wikidata": "https://www.wikidata.org/wiki/Q16213917",
+        "official": "https://www.anthropic.com/company/leadership"
       }
     },
     {
@@ -863,7 +897,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "sasha-marigny",
@@ -893,7 +930,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "jay-kreps",
@@ -925,7 +965,10 @@
           "url": "https://www.anthropic.com/news/jay-kreps-appointed-to-board-of-directors"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/jay-kreps-appointed-to-board-of-directors"
+      }
     },
     {
       "id": "jared-kaplan",
@@ -959,7 +1002,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Jared_Kaplan",
-        "wikidata": "https://www.wikidata.org/wiki/Q102649624"
+        "wikidata": "https://www.wikidata.org/wiki/Q102649624",
+        "official": "https://www.anthropic.com/company/leadership"
       },
       "avatarCredit": "techcrunch.com"
     },
@@ -993,7 +1037,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "www.autumn.ai"
+      "avatarCredit": "www.autumn.ai",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "tom-brown",
@@ -1024,7 +1071,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "chris-olah",
@@ -1058,7 +1108,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Chris_Olah",
-        "wikidata": "https://www.wikidata.org/wiki/Q50358648"
+        "wikidata": "https://www.wikidata.org/wiki/Q50358648",
+        "official": "https://www.anthropic.com/company/leadership"
       },
       "avatarCredit": "img.hghlnd.com"
     },
@@ -1164,7 +1215,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "thumbnails.assets.alphaxiv.org"
+      "avatarCredit": "thumbnails.assets.alphaxiv.org",
+      "links": {
+        "official": "https://www.alphaxiv.org/zh/@evan-hubinger"
+      }
     },
     {
       "id": "logan-graham",
@@ -1196,7 +1250,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "thumbnails.assets.alphaxiv.org"
+      "avatarCredit": "thumbnails.assets.alphaxiv.org",
+      "links": {
+        "site": "https://logangraham.xyz/"
+      }
     },
     {
       "id": "jack-clark",
@@ -1227,7 +1284,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "deep-ganguli",
@@ -1259,7 +1319,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "dganguli.github.io"
+      "avatarCredit": "dganguli.github.io",
+      "links": {
+        "site": "https://dganguli.github.io/pweb/"
+      }
     },
     {
       "id": "john-schulman",
@@ -1327,7 +1390,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "fortune.com"
+      "avatarCredit": "fortune.com",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "mike-krieger",
@@ -1361,7 +1427,8 @@
       "verifiedAt": "2026-11-16",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Mike_Krieger",
-        "wikidata": "https://www.wikidata.org/wiki/Q10329947"
+        "wikidata": "https://www.wikidata.org/wiki/Q10329947",
+        "official": "https://www.anthropic.com/news/introducing-anthropic-labs"
       }
     },
     {
@@ -1393,7 +1460,10 @@
           "url": "https://thenextweb.com/news/ben-mann-anthropic-ipo-founder-llc"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://thenextweb.com/news/ben-mann-anthropic-ipo-founder-llc"
+      }
     },
     {
       "id": "boris-cherny",
@@ -1425,7 +1495,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "avatars.githubusercontent.com"
+      "avatarCredit": "avatars.githubusercontent.com",
+      "links": {
+        "github": "https://github.com/bcherny"
+      }
     },
     {
       "id": "david-soria-parra",
@@ -1457,7 +1530,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "avatars.githubusercontent.com"
+      "avatarCredit": "avatars.githubusercontent.com",
+      "links": {
+        "official": "https://www.anthropic.com/news/model-context-protocol"
+      }
     },
     {
       "id": "alex-albert",
@@ -1489,7 +1565,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "avatars.githubusercontent.com"
+      "avatarCredit": "avatars.githubusercontent.com",
+      "links": {
+        "official": "https://ai.engineer/speakers/alex-albert"
+      }
     },
     {
       "id": "cat-wu",
@@ -1526,7 +1605,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "avatars.githubusercontent.com"
+      "avatarCredit": "avatars.githubusercontent.com",
+      "links": {
+        "official": "https://thenextweb.com/news/cat-wu-claude-code-anthropic-openai-core-products"
+      }
     },
     {
       "id": "rahul-patil",
@@ -1562,7 +1644,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "goldhouse.org"
+      "avatarCredit": "goldhouse.org",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "krishna-rao",
@@ -1597,7 +1682,10 @@
           "url": "https://www.anthropic.com/news/krishna-rao-joins-anthropic"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "paul-smith",
@@ -1627,7 +1715,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "hannah-pritchett",
@@ -1657,7 +1748,10 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/company/leadership"
+      }
     },
     {
       "id": "vitaly-gudanets",
@@ -1689,7 +1783,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "lsvp.com"
+      "avatarCredit": "lsvp.com",
+      "links": {
+        "official": "https://nationalcioreview.com/articles-insights/news/anthropic-expands-security-team-with-ciso-hire-from-netflix/"
+      }
     },
     {
       "id": "jason-clinton",
@@ -1720,7 +1817,10 @@
           "url": "https://www.thestack.technology/anthropic-new-ciso-claude-cyber-attack/"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.thestack.technology/anthropic-new-ciso-claude-cyber-attack/"
+      }
     },
     {
       "id": "chris-ciauri",
@@ -1750,7 +1850,10 @@
           "url": "https://www.anthropic.com/news/anthropic-expands-global-leadership-in-enterprise-ai-naming-chris-ciauri-as-managing-director-of"
         }
       ],
-      "verifiedAt": "2026-11-16"
+      "verifiedAt": "2026-11-16",
+      "links": {
+        "official": "https://www.anthropic.com/news/anthropic-expands-global-leadership-in-enterprise-ai-naming-chris-ciauri-as-managing-director-of"
+      }
     },
     {
       "id": "kate-jensen",
@@ -1782,7 +1885,10 @@
         }
       ],
       "verifiedAt": "2026-11-16",
-      "avatarCredit": "brand-innovators.com"
+      "avatarCredit": "brand-innovators.com",
+      "links": {
+        "official": "https://live.skift.com/speaker/kate-jensen/"
+      }
     },
     {
       "kind": "person",
@@ -1816,7 +1922,10 @@
           "title": "ABA Journal",
           "url": "https://www.abajournal.com/news/article/anthropics-gc-announces-new-role-as-international-special-envoy"
         }
-      ]
+      ],
+      "links": {
+        "official": "https://news.bloomberglaw.com/ip-law/anthropic-names-new-general-counsel-ahead-of-long-awaited-ipo"
+      }
     },
     {
       "kind": "person",
@@ -1847,7 +1956,10 @@
           "title": "Anthropic: Long-Term Benefit Trust",
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
-      ]
+      ],
+      "links": {
+        "official": "https://www.anthropic.com/news/the-long-term-benefit-trust"
+      }
     },
     {
       "kind": "person",
@@ -1877,7 +1989,10 @@
           "title": "The Next Web",
           "url": "https://thenextweb.com/news/john-jumper-nobel-deepmind-leaves-anthropic-alphafold"
         }
-      ]
+      ],
+      "links": {
+        "official": "https://thenextweb.com/news/john-jumper-nobel-deepmind-leaves-anthropic-alphafold"
+      }
     }
   ],
   "products": [

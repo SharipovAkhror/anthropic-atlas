@@ -82,7 +82,7 @@ if (atlas) {
     if (p.status === "active" && p.until) err(F, `${w}: active person must not have "until"`);
     if (p.verifiedAt > TODAY) err(F, `${w}: verifiedAt in the future`);
     if (days(p.verifiedAt, TODAY) > STALE_DAYS) warn(F, `${w}: not re-verified for ${days(p.verifiedAt, TODAY)} days`);
-    if (p.kind === "person" && !p.links?.wikipedia && !p.links?.official && !p.links?.linkedin && !p.links?.site) warn(F, `${w}: no reference link (wikipedia/official/linkedin/site)`);
+    if (p.kind === "person" && !p.links?.wikipedia && !p.links?.official && !p.links?.linkedin && !p.links?.site && !p.links?.github) warn(F, `${w}: no reference link (wikipedia/official/linkedin/site/github)`);
     checkSources(F, w, p.sources);
   }
   for (const p of atlas.products) {

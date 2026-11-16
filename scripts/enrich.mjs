@@ -31,12 +31,18 @@ async function bytes(url) {
   if (!type.startsWith("image/")) throw new Error(`not an image (${type})`);
   return Buffer.from(await r.arrayBuffer());
 }
+const overrides = JSON.parse(readFileSync(join(ROOT, "sources/wiki-overrides.json"), "utf8")).people;
 const cleanName = n => n.replace(/^(Dr\.|Prof\.)\s*/i, "").replace(/\s*'[^']+'\s*/g, " ").replace(/\s*\([^)]*\)/g, "").replace(/\s+/g, " ").trim();
 
 async function findWiki(person) {
   if (person.links?.wikipedia) {
     const title = decodeURIComponent(person.links.wikipedia.split("/wiki/")[1] || "");
     return title ? json(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`).catch(() => null) : null;
+  }
+  const o = overrides[person.id];
+  for (const t of o?.titles || []) {
+    const sum = await json(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(t)}`).catch(() => null);
+    if (sum && sum.type !== "disambiguation" && (sum.extract || "").includes(o.expect)) return sum;
   }
   const q = encodeURIComponent(`"${cleanName(person.name)}" Anthropic`);
   const s = await json(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${q}&srlimit=5&format=json`);
@@ -61,9 +67,10 @@ for (const p of atlas.people) {
       if (!p.links.wikidata && wiki.wikibase_item) { p.links.wikidata = `https://www.wikidata.org/wiki/${wiki.wikibase_item}`; changed++; }
     }
     const local = `assets/people/${p.id}.jpg`;
-    if (!existsSync(join(ROOT, local)) || args.has("--force-images")) {
+    const preferWiki = wiki?.thumbnail?.source && p.avatarCredit !== "Wikimedia Commons" && !args.has("--keep-images");
+    if (!existsSync(join(ROOT, local)) || args.has("--force-images") || preferWiki) {
       const candidates = [];
-      if (wiki?.thumbnail?.source) candidates.push([wiki.thumbnail.source.replace(/\/\d+px-/, "/320px-"), "Wikimedia Commons"]);
+      if (wiki?.thumbnail?.source) candidates.push([wiki.thumbnail.source, "Wikimedia Commons"]);
       if (p.avatar?.startsWith("https://")) candidates.push([`https://images.weserv.nl/?url=${encodeURIComponent(p.avatar)}&w=320&h=320&fit=cover&output=jpg`, new URL(p.avatar).hostname]);
       for (const [url, credit] of candidates) {
         try {
