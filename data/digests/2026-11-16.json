@@ -1,13 +1,13 @@
 {
   "date": "2026-11-16",
-  "generatedAt": "2026-11-16T18:35:16.916Z",
+  "generatedAt": "2026-11-16T19:06:11.883Z",
   "headline": {
-    "ru": "Атлас перезапущен: 10 исследователей сверили доску с открытыми источниками",
-    "en": "Atlas relaunched: ten researchers checked the board against public sources"
+    "ru": "Без новых событий: проверены кандидаты и восемь записей доски",
+    "en": "No new events: candidates checked and board entries re-verified"
   },
   "summary": {
-    "ru": "Перед IPO (роудшоу стартовал 10 ноября, диапазон $70–78) доска сверена с сайтом Anthropic, документацией Claude, SEC и прессой. Исправлены должности и источники, добавлены новые люди и продукты, отмечены уходы, собрана хроника с августа 2026.",
-    "en": "Ahead of the IPO the board was checked against anthropic.com, Claude docs, SEC filings and press: titles and sources fixed, new people and products added, departures marked, and a timeline since August 2026 compiled."
+    "ru": "Семь кандидатов из Google News проверены: это аналитика, сводки рынка, новости о других компаниях или непроверенный отчёт (инвестиция Altimeter на $5 млрд в IPO не подтверждена открытым источником), поэтому событий не добавлено. Сверены страница руководства, пресс-релиз роудшоу, страница Long-Term Benefit Trust, исследование по автоматизированным исследователям выравнивания, release notes Claude и факторбокс Reuters. Исправлено число директоров: в источнике указаны шесть, а не восемь.",
+    "en": "Seven Google News candidates were checked: they are analysis, market roundups, news about other companies, or an unconfirmed report (a $5B Altimeter investment in the IPO was not confirmed by an opened source), so no events were added. Checked against the leadership page, the roadshow release, the Long-Term Benefit Trust page, the automated alignment researchers post, Claude release notes and the Reuters factbox. Board size corrected: the cited source lists six directors, not eight."
   },
   "news": [
     "2026-11-12-claude-meetings-beta",
@@ -532,7 +532,7 @@
   "stats": {
     "sourcesOk": 18,
     "sourcesFailed": 1,
-    "candidates": 2,
+    "candidates": 7,
     "failedSources": [
       "sec-edgar"
     ]
