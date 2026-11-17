@@ -14,6 +14,9 @@ jobs:
   collect:
     runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
     timeout-minutes: 25
+    env:
+      TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,6 +32,8 @@ jobs:
         run: node scripts/library.mjs || { git checkout -- data/library.json; echo "library failed, keeping the previous catalog"; }
       - name: Enrich people (Wikipedia links, portraits)
         run: node scripts/enrich.mjs || echo "enrich failed, continuing"
+      - name: Daily digest from the data diff and the new official posts (no model)
+        run: node scripts/digest.mjs || echo "digest failed, publishing data without it"
       - name: Validate and nothing lost (a bad catalog is dropped, the rest is kept)
         run: |
           node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD && exit 0
@@ -46,6 +51,11 @@ jobs:
           git config user.email "atlas-bot@users.noreply.github.com"
           git add pipeline data assets/people
           git diff --cached --quiet && exit 0
-          git commit -m "collect: inbox $(date -u +%F)"
+          git commit -m "collect: $(TZ=Asia/Tashkent date +%F) catalog, inbox and digest"
           for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
           exit 1
+      - name: Send the digest to Telegram (only if the repository has TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID secrets)
+        if: ${{ env.TG_TOKEN != '' && env.TG_CHAT != '' }}
+        run: |
+          [ -s pipeline/run/digest.md ] || exit 0
+          curl -fsS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=$(head -c 3900 pipeline/run/digest.md)" --data-urlencode "disable_web_page_preview=true" > /dev/null || echo "telegram failed"

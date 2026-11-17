@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "generatedAt": "2026-11-17T02:09:10.153Z",
+  "generatedAt": "2026-11-17T15:36:33.161Z",
   "headline": {
     "ru": "Без новых событий: кандидаты отсеяны, семь записей перепроверены",
     "en": "No new events: candidates discarded, seven board entries re-verified"
@@ -10,13 +10,14 @@
     "en": "Seven Google News candidates (tier 3 leads) were discarded as analysis, market roundups, other-company news, a poll, or an unconfirmed Altimeter $5B IPO report. Opened and checked the leadership page, roadshow release ($70–78, 825M Class A), LTBT page, alignment research post, Claude release notes, and the Hubinger and Mann profiles."
   },
   "news": [],
+  "library": [],
   "added": [],
   "updated": [],
   "removed": [],
   "stats": {
     "sourcesOk": 18,
     "sourcesFailed": 1,
-    "candidates": 7,
+    "candidates": 90,
     "failedSources": [
       "sec-edgar"
     ]

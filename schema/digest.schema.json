@@ -11,6 +11,7 @@
     "headline": { "$ref": "common.schema.json#/definitions/i18n" },
     "summary": { "$ref": "common.schema.json#/definitions/i18n" },
     "news": { "type": "array", "items": { "type": "string" }, "description": "event ids added in this run" },
+    "library": { "type": "array", "items": { "type": "string" }, "description": "library item ids first seen or published on this day (no model involved)" },
     "added": { "type": "array", "items": { "$ref": "#/definitions/change" } },
     "updated": { "type": "array", "items": { "$ref": "#/definitions/change" } },
     "removed": { "type": "array", "items": { "$ref": "#/definitions/change" } },

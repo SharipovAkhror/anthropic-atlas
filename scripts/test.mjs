@@ -89,5 +89,22 @@ for (const [name, mutate] of cases) {
   } finally { rmSync(d, { recursive: true, force: true }); }
 }
 
+// 5. autonomy: a day with only new official posts (no model, no events) still gets a real digest and feed
+{
+  const d = sandbox();
+  try {
+    const git = (...a) => execFileSync("git", a, { cwd: d, stdio: "ignore" });
+    git("init", "-q"); git("-c", "user.email=t@t", "-c", "user.name=t", "add", "-A"); git("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "base");
+    let id;
+    edit(d, "data/library.json", j => { const it = j.items.find(i => i.section === "news" && !i.gone); it.added = today; it.date = today; id = it.id; });
+    const r = node("digest.mjs", d, [`--date=${today}`, "--fresh"]);
+    const dg = JSON.parse(readFileSync(join(d, `data/digests/${today}.json`), "utf8"));
+    ok(r.status === 0 && dg.library.includes(id), "digest lists the new official post without a model");
+    ok(dg.headline.ru !== "Без существенных новостей", "digest headline names the new post");
+    ok(/<rss/.test(readFileSync(join(d, "data/feed.xml"), "utf8")), "RSS feed is written");
+    ok(node("validate.mjs", d, ["--quiet"]).status === 0, "autonomous digest is valid");
+  } finally { rmSync(d, { recursive: true, force: true }); }
+}
+
 console.log(failed ? `\n${failed} test(s) FAILED` : "\nall tests passed");
 process.exit(failed ? 1 : 0);

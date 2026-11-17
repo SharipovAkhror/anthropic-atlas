@@ -64,14 +64,26 @@ const inbox = existsSync(inboxPath) ? JSON.parse(readFileSync(inboxPath, "utf8")
 const failedSources = inbox.sources.filter(s => !s.ok).map(s => s.id);
 
 const evById = new Map(evNow.map(e => [e.id, e]));
+// New public materials from the library catalog (scripts/library.mjs, no model), with the Russian card when one exists.
+const libPath = join(ROOT, "data/library.json");
+const libCat = existsSync(libPath) ? JSON.parse(readFileSync(libPath, "utf8")) : { items: [] };
+const libNotesPath = join(ROOT, "data/library-notes.json");
+const cards = existsSync(libNotesPath) ? JSON.parse(readFileSync(libNotesPath, "utf8")).notes || {} : {};
+const libTitle = i => cards[i.id]?.t || i.title;
+const fresh = libCat.items.filter(i => !i.gone && (i.added === DATE || i.date === DATE));
+const freshNews = fresh.filter(i => i.section === "news").sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 const topNews = newEvents.map(id => evById.get(id)).sort((a, b) => b.importance - a.importance || b.date.localeCompare(a.date));
-const autoHeadline = topNews.length ? ru(topNews[0].title) : "Без существенных новостей";
+const autoHeadline = topNews.length ? ru(topNews[0].title) : freshNews.length ? libTitle(freshNews[0]) : fresh.length ? `Новое у Anthropic: ${fresh.length} ${fresh.length % 10 === 1 && fresh.length % 100 !== 11 ? "материал" : [2, 3, 4].includes(fresh.length % 10) && ![12, 13, 14].includes(fresh.length % 100) ? "материала" : "материалов"}` : "Без существенных новостей";
+const autoSummary = topNews.length ? `Новых событий: ${topNews.length}. Добавлено: ${nonEventAdded.length}, изменено: ${updated.length}, убрано как устаревшее: ${removed.length}.`
+  : freshNews.length ? (cards[freshNews[0].id]?.s || freshNews[0].desc || "Новая публикация Anthropic.") + (fresh.length > 1 ? ` Всего новых материалов за день: ${fresh.length}.` : "")
+  : fresh.length ? `Anthropic опубликовала новые материалы: ${fresh.slice(0, 3).map(libTitle).join("; ")}.` : "Новых публикаций нет; данные перепроверены по первоисточникам.";
 const digest = {
   date: DATE,
   generatedAt: new Date().toISOString(),
   headline: notes.headline || { ru: autoHeadline },
-  summary: notes.summary || { ru: topNews.length ? `Новых событий: ${topNews.length}. Добавлено: ${nonEventAdded.length}, изменено: ${updated.length}, убрано как устаревшее: ${removed.length}.` : "Источники проверены, изменений в данных нет." },
+  summary: notes.summary || { ru: autoSummary },
   news: newEvents,
+  library: fresh.map(i => i.id),
   added: nonEventAdded,
   updated,
   removed,
@@ -88,7 +100,9 @@ if (existsSync(prevPath) && !args.fresh) {
   digest.added = union(prev.added, digest.added);
   digest.updated = union(prev.updated, digest.updated).filter(u => !digest.added.some(a => a.id === u.id));
   digest.removed = union(prev.removed, digest.removed);
-  if (!notes.headline) { digest.headline = prev.headline; digest.summary = prev.summary; }
+  digest.library = [...new Set([...(prev.library || []), ...digest.library])];
+  // keep an earlier hand-written headline; replace an automatic "nothing happened" one when something did happen
+  if (!notes.headline && !(ru(prev.headline) === "Без существенных новостей" && (topNews.length || fresh.length))) { digest.headline = prev.headline; digest.summary = prev.summary; }
   newEvents.splice(0, newEvents.length, ...digest.news);
   nonEventAdded.splice(0, nonEventAdded.length, ...digest.added);
   updated.splice(0, updated.length, ...digest.updated);
@@ -106,15 +120,7 @@ if (nonEventAdded.length) { md.push("\nДобавлено на доску:"); fo
 if (updated.length) { md.push("\nОбновлено:"); for (const u of updated.slice(0, 15)) md.push(`• ${u.label} (${u.fields.join(", ")})${u.reason ? ` — ${u.reason}` : ""}`); if (updated.length > 15) md.push(`…и ещё ${updated.length - 15}`); }
 if (removed.length) { md.push("\nУстарело и убрано:"); for (const r of removed) md.push(`• ${r.label} — ${r.reason}`); }
 if (!topNews.length && !nonEventAdded.length && !updated.length && !removed.length) md.push("\nИзменений нет.");
-// New public materials from the library catalog (scripts/library.mjs), with the Russian card title when one exists.
-const libPath = join(ROOT, "data/library.json");
-if (existsSync(libPath)) {
-  const lib = JSON.parse(readFileSync(libPath, "utf8"));
-  const notesPath = join(ROOT, "data/library-notes.json");
-  const cards = existsSync(notesPath) ? JSON.parse(readFileSync(notesPath, "utf8")).notes || {} : {};
-  const fresh = lib.items.filter(i => !i.gone && (i.added === DATE || i.date === DATE));
-  if (fresh.length) { md.push(`\nНовое в библиотеке (${fresh.length}):`); for (const i of fresh.slice(0, 10)) md.push(`• ${cards[i.id]?.t || i.title} — ${i.url}`); if (fresh.length > 10) md.push(`…и ещё ${fresh.length - 10} — на доске.`); }
-}
+if (fresh.length) { md.push(`\nНовое в библиотеке (${fresh.length}):`); for (const i of fresh.slice(0, 10)) md.push(`• ${libTitle(i)} — ${i.url}`); if (fresh.length > 10) md.push(`…и ещё ${fresh.length - 10} — на доске.`); }
 md.push(`\nПроверено источников: ${digest.stats.sourcesOk}${failedSources.length ? `, недоступны: ${failedSources.join(", ")}` : ""}. Перепроверено записей: ${reverified.length}.`);
 md.push(`Доска: ${SITE}`);
 const text = md.join("\n");
@@ -125,10 +131,21 @@ if (!args["print-only"]) {
   writeFileSync(join(ROOT, `data/digests/${DATE}.json`), JSON.stringify(digest, null, 2) + "\n");
   const idxPath = join(ROOT, "data/digests/index.json");
   const idx = existsSync(idxPath) ? JSON.parse(readFileSync(idxPath, "utf8")) : { digests: [] };
-  idx.digests = [{ date: DATE, headline: digest.headline, counts: { news: newEvents.length, added: nonEventAdded.length, updated: updated.length, removed: removed.length } }, ...idx.digests.filter(d => d.date !== DATE)].sort((a, b) => b.date.localeCompare(a.date));
+  idx.digests = [{ date: DATE, headline: digest.headline, counts: { news: newEvents.length, added: nonEventAdded.length, updated: updated.length, removed: removed.length, library: digest.library.length } }, ...idx.digests.filter(d => d.date !== DATE)].sort((a, b) => b.date.localeCompare(a.date));
   writeFileSync(idxPath, JSON.stringify(idx, null, 2) + "\n");
   atlasNow.meta.updatedAt = DATE;
   writeFileSync(join(ROOT, "data/atlas.json"), JSON.stringify(atlasNow, null, 2) + "\n");
   writeFileSync(join(ROOT, "pipeline/run/digest.md"), text + "\n");
+  writeFeed(idx);
 }
 console.log(text);
+
+// RSS feed of the daily digests: anyone can subscribe for free, no account, no bot, no model.
+function writeFeed(idx) {
+  const x = s => String(s ?? "").replace(/[<>&'"]/g, c => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" }[c]));
+  const items = idx.digests.slice(0, 30).map(d => {
+    let body = ""; try { const dj = JSON.parse(readFileSync(join(ROOT, `data/digests/${d.date}.json`), "utf8")); body = ru(dj.summary); } catch {}
+    return `<item><title>${x(d.date)} · ${x(ru(d.headline))}</title><link>${SITE}/</link><guid isPermaLink="false">atlas-digest-${x(d.date)}</guid><pubDate>${new Date(d.date + "T07:00:00+05:00").toUTCString()}</pubDate><description>${x(body)}</description></item>`;
+  }).join("\n");
+  writeFileSync(join(ROOT, "data/feed.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Anthropic Atlas</title><link>${SITE}/</link><description>Ежедневная сводка об Anthropic по открытым источникам</description><language>ru</language>\n${items}\n</channel></rss>\n`);
+}
