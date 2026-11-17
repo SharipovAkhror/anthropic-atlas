@@ -383,7 +383,7 @@
     uz: { tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika va u nashr etgan hamma narsa", lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", quiet: "Bugun yangi voqealar yo‘q. Ma’lumotlar birlamchi manbalar bo‘yicha qayta tekshirildi.", digests: "Xulosalar" }
   };
   const M = k => MAST[S.lang][k] || MAST.ru[k];
-  const METHOD_URL = "https://github.com/SharipovAkhror/athropic-atlas/blob/main/docs/METHODOLOGY.md";
+  const METHOD_URL = "https://github.com/SharipovAkhror/anthropic-atlas/blob/main/docs/METHODOLOGY.md";
   function stampText() {
     const dg = S.digest; if (!dg) return `${t("updated")} ${fmtDate(D.atlas.meta.updatedAt)}`;
     const when = new Date(dg.generatedAt), days = Math.floor((Date.now() - when) / 864e5);

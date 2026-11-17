@@ -1,6 +1,6 @@
 {
   "$comment": "Source registry for the daily collector (scripts/collect.mjs). tier 1 = primary (company, regulator), 2 = major press, 3 = aggregator/discovery only (never cite tier 3 as the only source). Add a source = add an object here; no code change needed for kinds: sitemap, rss, dated-headings, changelog-md, page-watch.",
-  "userAgent": "AnthropicAtlasBot/1.0 (https://github.com/SharipovAkhror/athropic-atlas; atlas-bot@users.noreply.github.com)",
+  "userAgent": "AnthropicAtlasBot/1.0 (https://github.com/SharipovAkhror/anthropic-atlas; atlas-bot@users.noreply.github.com)",
   "sources": [
     {
       "id": "anthropic-sitemap",
