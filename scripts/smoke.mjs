@@ -17,6 +17,9 @@ const require = createRequire(import.meta.url);
 let pw;
 try { pw = require("playwright"); } catch { pw = require(join(execSync("npm root -g").toString().trim(), "playwright")); }
 
+// the local server sends the production Content-Security-Policy, so a page the CSP would break fails here first
+let CSP = "";
+try { CSP = JSON.parse(await readFile(join(ROOT, "vercel.json"), "utf8")).headers.flatMap(h => h.headers).find(h => h.key === "Content-Security-Policy")?.value || ""; } catch {}
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp" };
 async function serve() {
   const srv = createServer(async (req, res) => {
@@ -24,7 +27,7 @@ async function serve() {
     if (p.endsWith("/")) p += "index.html";
     const file = normalize(join(ROOT, p));
     if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
-    try { const b = await readFile(file); res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream" }).end(b); }
+    try { const b = await readFile(file); res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream", ...(CSP ? { "content-security-policy": CSP } : {}) }).end(b); }
     catch { res.writeHead(404).end("not found"); }
   });
   await new Promise(r => srv.listen(0, "127.0.0.1", r));
@@ -107,7 +110,7 @@ try {
   await shot(ph, "phone-home");
   ok(perrs.length === 0, `phone: no page errors${perrs.length ? ": " + perrs.slice(0, 3).join(" | ") : ""}`);
 } catch (e) { ok(false, `smoke run crashed: ${e.message}`); }
-finally { await browser.close(); local?.srv.close(); }
+finally { await browser.close(); if (local) local.srv.close(); }
 
 console.log(failed ? `\n${failed} smoke check(s) FAILED on ${BASE}` : `\nall smoke checks passed on ${BASE}`);
 process.exit(failed ? 1 : 0);
