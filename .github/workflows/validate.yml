@@ -7,7 +7,7 @@ on:
   pull_request:
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
