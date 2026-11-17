@@ -24,7 +24,6 @@ summaries, people and facts, Russian library cards. If it stops, nothing breaks;
 **Telegram (optional).** Add repository secrets `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`; the morning digest is then sent there.
 
 - How it works and how to extend it: [docs/METHODOLOGY.md](docs/METHODOLOGY.md). Daily procedure: [RUNBOOK.md](RUNBOOK.md).
-- How it works and how to extend it: [docs/METHODOLOGY.md](docs/METHODOLOGY.md). Daily procedure: [RUNBOOK.md](RUNBOOK.md).
 
 ```bash
 npm ci
