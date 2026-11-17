@@ -83,17 +83,17 @@ function classifyClaude(path) {
 const SOURCES = [
   { id: "anthropic", min: 300, async run() {
       const xml = await get("https://www.anthropic.com/sitemap.xml");
-      let eng = new Set(), teams = {};
-      try { eng = new Set([...(await get("https://www.anthropic.com/engineering")).matchAll(/href="\/research\/([a-z0-9-]+)"/gi)].map(m => m[1].toLowerCase())); } catch {}
+      let eng = new Set(), teams = {}, engOk = false, teamsOk = true;
+      try { eng = new Set([...(await get("https://www.anthropic.com/engineering")).matchAll(/href="\/research\/([a-z0-9-]+)"/gi)].map(m => m[1].toLowerCase())); engOk = eng.size > 5; } catch {}
       for (const t of ["interpretability", "alignment", "societal-impacts", "frontier-red-team", "economics"]) {
-        try { for (const m of (await get(`https://www.anthropic.com/research/team/${t}`)).matchAll(/href="\/research\/([a-z0-9-]+)"/gi)) (teams[m[1].toLowerCase()] ||= []).includes(t) || teams[m[1].toLowerCase()].push(t); } catch {}
+        try { for (const m of (await get(`https://www.anthropic.com/research/team/${t}`)).matchAll(/href="\/research\/([a-z0-9-]+)"/gi)) (teams[m[1].toLowerCase()] ||= []).includes(t) || teams[m[1].toLowerCase()].push(t); } catch { teamsOk = false; }
       }
       return locs(xml).map(({ loc, lastmod }) => {
         const path = new URL(loc).pathname.replace(/\/$/, "");
         let section = classifyAnthropic(path);
         const slug = path.split("/").pop().toLowerCase();
         if (section === "research" && eng.has(slug)) section = "engineering";
-        return section && { url: norm(loc), section, lastmod, team: teams[slug] };
+        return section && { url: norm(loc), section, lastmod, team: teams[slug], keepSection: !engOk && section === "research", keepTeam: !teamsOk };
       }).filter(Boolean);
   } },
   { id: "claude", min: 300, async run() {
@@ -119,9 +119,11 @@ function llms(txt, section) {
 
 async function meta(url) {
   const html = await get(url, 2);
-  const m = n => decode((html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${n}["'][^>]*content=["']([^"']*)`, "i")) || html.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]*(?:property|name)=["']${n}["']`, "i")) || [])[1]);
+  if (/just a moment|access denied|attention required|page not found/i.test((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "")) throw new Error("challenge or error page");
+  const m = n => decode((html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${n}["'][^>]*content=(["'])(.*?)\\1`, "i")) || [])[2] || (html.match(new RegExp(`<meta[^>]+content=(["'])(.*?)\\1[^>]*(?:property|name)=["']${n}["']`, "i")) || [])[2]);
   const title = (m("og:title") || decode((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1])).replace(/\s*[|\\–—-]\s*(Anthropic|Claude)\s*$/i, "").slice(0, 220);
   const date = (m("article:published_time") || (html.match(/"datePublished"\s*:\s*"([^"]+)"/) || [])[1] || "").slice(0, 10) || null;
+  if (!title) throw new Error("no title");
   return { title, desc: (m("og:description") || m("description")).slice(0, 420), date };
 }
 
@@ -138,17 +140,17 @@ async function main() {
     try { rows = args.offline ? [] : await src.run(); } catch (e) { report.sources[src.id] = `error: ${e.message}`; continue; }
     const before = prev.items.filter(it => it.src === src.id && !it.gone).length;
     // A source that suddenly shrinks is broken (blocked, redesigned), not emptied: keep the old items.
-    if (rows.length < src.min || (before > 50 && rows.length < before * 0.7)) { report.sources[src.id] = `suspicious: ${rows.length} rows (had ${before}), kept previous`; continue; }
+    if (rows.length < src.min || (before > 50 && rows.length < before * 0.9)) { report.sources[src.id] = `suspicious: ${rows.length} rows (had ${before}), kept previous`; continue; }
     report.sources[src.id] = rows.length; sourceOk.add(src.id);
     for (const r of rows) {
       seenNow.add(r.url);
       const old = byUrl.get(r.url);
       const it = old || { id: sha(r.url), url: r.url, src: src.id, added: prev.items.length ? TODAY : null };
-      it.section = r.section; it.src = src.id;
+      it.section = r.keepSection && old ? old.section : r.section; it.src = src.id;
       if (r.title) it.title = r.title;
       if (r.desc) it.desc = r.desc;
       if (r.group) it.group = r.group;
-      if (r.team?.length) it.team = r.team; else delete it.team;
+      if (!r.keepTeam) { if (r.team?.length) it.team = r.team; else delete it.team; }
       if (r.lastmod) it.lastmod = r.lastmod;
       delete it.gone;
       if (!old) { byUrl.set(r.url, it); report.added.push(r.url); }
@@ -159,7 +161,9 @@ async function main() {
   // Page metadata only for items that lack it (new or never fetched), newest-first by lastmod, capped per run.
   const need = [...byUrl.values()].filter(it => !it.gone && !it.metaAt && (it.src === "anthropic" || it.src === "claude"))
     .sort((a, b) => String(b.lastmod).localeCompare(String(a.lastmod))).slice(0, MAX_FETCH);
+  const deadline = Date.now() + 6 * 60e3; // the collector has a time budget; unfinished items are fetched tomorrow
   await pool(need, 8, async it => {
+    if (Date.now() > deadline) return;
     try { const m = await meta(it.url); if (m.title) it.title = m.title; if (m.desc) it.desc = m.desc; if (m.date) it.date = m.date; it.metaAt = TODAY; report.fetched++; }
     catch { report.fetchFailed++; }
   });

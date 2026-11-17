@@ -77,7 +77,7 @@ If still correct → set `verifiedAt` to DATE. If not → fix it (step 4). If th
   "reasons":  { "<entity id>": "почему изменено или убрано (по-русски, коротко)" }
 }
 ```
-If nothing happened: headline "Без существенных новостей", summary says which sources were checked.
+If nothing happened: headline "Без существенных новостей", summary is one plain sentence for a reader (for example "Новых событий нет; цифры IPO и состав руководства перепроверены по первоисточникам"). Never mention pipeline internals (candidates, leads, levels, Google News, "отсеяны"). The site then leads with the latest real event instead of this headline.
 
 ## 6b. Library cards (Russian summaries for new public materials)
 The 05:40 job keeps `data/library.json` (every public Anthropic page: research, engineering, news, guides, docs…)

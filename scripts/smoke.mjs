@@ -34,6 +34,7 @@ async function serve() {
 let failed = 0;
 const ok = (cond, name) => { console.log(`${cond ? "pass" : "FAIL"}  ${name}`); if (!cond) failed++; };
 
+setTimeout(() => { console.log("FAIL  smoke run took longer than 3 minutes"); process.exit(2); }, 180000).unref();
 const local = !args.url && (await serve());
 const BASE = args.url || local.url;
 const browser = await pw.chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
@@ -51,15 +52,21 @@ try {
   // laptop
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   const errs = await prep(page);
-  await page.goto(BASE + "/", { waitUntil: "load" });
+  const resp = await page.goto(BASE + "/", { waitUntil: "load" });
+  ok(resp && resp.status() === 200, `laptop: page answers 200 (${resp?.status()})`);
+  const libN = await page.evaluate(() => fetch("/data/library.json").then(r => r.json()).then(j => j.items.filter(i => !i.gone).length).catch(() => 0));
+  ok(libN > 500, `laptop: library data loads (${libN} live items)`);
   await page.waitForSelector(".slot", { timeout: 15000 });
-  await page.waitForSelector('[data-island="lib-shelves"]', { timeout: 15000 }).catch(() => {});
+  await page.waitForSelector('[data-island="lib-shelves"]', { timeout: 15000 });
   await page.waitForTimeout(600);
   const islands = await page.$$eval(".slot", s => s.map(x => x.dataset.island));
   ok(islands.length >= 10, `laptop: ${islands.length} islands on the board`);
-  ok(islands.includes("today"), "laptop: today's digest is on the board");
+  ok(islands.includes("today") || await page.$(".hero .quiet") !== null, "laptop: today is on the page (digest card, or the quiet-day note)");
   ok(islands.includes("lib-shelves") && islands.includes("lib-start"), "laptop: library islands are on the board");
-  ok(await page.$(".mast h1") !== null, "laptop: masthead rendered");
+  ok(await page.$(".hero h1") !== null, "laptop: hero headline rendered");
+  const clipped = await page.evaluate(() => [...document.querySelectorAll(".slot")].filter(s => { const r = s.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth + 1; }).map(s => s.dataset.island));
+  ok(!clipped.length, `laptop: no card is cut by the window edge${clipped.length ? " (" + clipped.join(", ") + ")" : ""}`);
+  ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), "laptop: no horizontal overflow");
   await shot(page, "laptop-home");
   await page.click('[data-open="shelf:engineering"]');
   await page.waitForSelector("#sheet.on .shelf-list .row", { timeout: 5000 }).catch(() => {});
@@ -95,6 +102,8 @@ try {
   ok(await ph.$$eval("#tabs button", b => b.length) >= 8, "phone: section tabs rendered");
   const overflow = await ph.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
   ok(!overflow, "phone: no horizontal page overflow");
+  const wide = await ph.evaluate(() => [...document.querySelectorAll(".slot")].filter(s => s.getBoundingClientRect().width > innerWidth).map(s => s.dataset.island));
+  ok(!wide.length, `phone: every card fits the screen${wide.length ? " (too wide: " + wide.join(", ") + ")" : ""}`);
   await shot(ph, "phone-home");
   ok(perrs.length === 0, `phone: no page errors${perrs.length ? ": " + perrs.slice(0, 3).join(" | ") : ""}`);
 } catch (e) { ok(false, `smoke run crashed: ${e.message}`); }

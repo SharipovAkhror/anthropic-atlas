@@ -2,8 +2,10 @@
 // The only way the morning model touches data/library-notes.json (2000+ cards, too big to edit by hand safely).
 //   node scripts/library-notes.mjs --todo [--limit=40]   prints a TSV of catalog items without a Russian card
 //   node scripts/library-notes.mjs --add=/tmp/cards.json  merges {"<id>": {"t","s","w"?,"d"?}} after cleaning
+//   add --replace to overwrite existing cards (fact fixes); without it existing cards are kept. At most 150 cards per run.
 // Cards for unknown ids are dropped, lengths are clipped, audiences outside the allowed list are removed.
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, renameSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -11,7 +13,9 @@ const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.ur
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
 const lib = JSON.parse(readFileSync(join(ROOT, "data/library.json"), "utf8"));
 const P = join(ROOT, "data/library-notes.json");
-const notes = existsSync(P) ? JSON.parse(readFileSync(P, "utf8")) : { notes: {}, paths: [] };
+const raw = existsSync(P) ? readFileSync(P, "utf8") : null;
+const notes = raw ? JSON.parse(raw) : { notes: {}, paths: [] };
+notes.notes ||= {}; notes.paths ||= [];
 const byId = new Map(lib.items.map(i => [i.id, i]));
 const AUD = new Set(["learners", "developers", "researchers", "business", "policy", "everyone"]);
 const NO_ACTION = new Set(["news", "research", "customers", "events", "talks"]);
@@ -23,15 +27,20 @@ if (args.todo) {
   for (const i of todo) console.log([i.id, i.section, i.title, (i.desc || "").replace(/\s+/g, " "), i.url].join("\t"));
 } else if (args.add) {
   const add = JSON.parse(readFileSync(args.add, "utf8"));
-  let n = 0, skipped = 0;
-  for (const [id, c] of Object.entries(add)) {
+  let n = 0, skipped = 0, kept = 0;
+  const entries = Object.entries(add);
+  if (entries.length > 150) { console.error(`refusing ${entries.length} cards in one run (limit 150); split the batch`); process.exit(1); }
+  for (const [id, c] of entries) {
     const it = byId.get(id);
     if (!it || !c?.t || !c?.s) { skipped++; continue; }
+    if (notes.notes[id] && !args.replace) { kept++; continue; }
     const card = { t: clean(c.t).slice(0, 140), s: clean(c.s).slice(0, 320) };
-    const w = (c.w || []).filter(x => AUD.has(x)).slice(0, 3); if (w.length) card.w = w;
+    const w = (Array.isArray(c.w) ? c.w : []).filter(x => AUD.has(x)).slice(0, 3); if (w.length) card.w = w;
     if (c.d && !NO_ACTION.has(it.section)) card.d = clean(c.d).slice(0, 140);
     notes.notes[id] = card; n++;
   }
-  writeFileSync(P, JSON.stringify(notes) + "\n");
-  console.log(`added ${n} card(s), skipped ${skipped}`);
+  writeFileSync(P + ".tmp", JSON.stringify(notes) + "\n"); renameSync(P + ".tmp", P);
+  const v = spawnSync(process.execPath, [join(dirname(fileURLToPath(import.meta.url)), "validate.mjs"), "--quiet"], { env: { ...process.env, ATLAS_ROOT: ROOT }, encoding: "utf8" });
+  if (v.status !== 0) { if (raw) writeFileSync(P, raw); console.error(v.stdout + v.stderr + "\nvalidation failed: data/library-notes.json restored"); process.exit(1); }
+  console.log(`added ${n} card(s), kept ${kept} existing (use --replace to overwrite), skipped ${skipped}`);
 } else { console.log("usage: --todo [--limit=40] | --add=<cards.json>"); process.exit(1); }

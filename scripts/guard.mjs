@@ -15,6 +15,8 @@ const BASE = args.base || "origin/main";
 const MAX_REMOVED = +(args["max-removed"] ?? 3);
 
 const cur = rel => { const p = join(ROOT, rel); return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null; };
+try { execFileSync("git", ["rev-parse", "--verify", `${BASE}^{commit}`], { cwd: ROOT, stdio: "ignore" }); }
+catch { console.log(`ERROR base ref ${BASE} does not exist (shallow clone or typo); refusing to pass blind`); process.exit(1); }
 const old = rel => { try { return JSON.parse(execFileSync("git", ["show", `${BASE}:${rel}`], { cwd: ROOT, encoding: "utf8", maxBuffer: 64e6, stdio: ["ignore", "pipe", "ignore"] })); } catch { return null; } };
 
 const errors = [];
@@ -25,7 +27,9 @@ const RULES = [
   ["data/atlas.json", j => j.facts.map(f => f.id), "facts"],
   ["data/events.json", j => j.events.map(e => e.id), "events"],
   ["data/glossary.json", j => j.terms.map(t => t.id), "terms"],
-  ["data/library.json", j => j.items.map(i => i.id), "library items"]
+  ["data/library.json", j => j.items.map(i => i.id), "library items"],
+  ["data/library-notes.json", j => Object.keys(j.notes || {}), "library cards"],
+  ["data/library-notes.json", j => (j.paths || []).map(p => p.id), "reading paths"]
 ];
 let compared = 0;
 for (const [rel, ids, label] of RULES) {
@@ -43,12 +47,13 @@ if (la && lb) {
   const liveA = la.items.filter(i => !i.gone).length, liveB = lb.items.filter(i => !i.gone).length;
   if (liveB < liveA * 0.9) errors.push(`data/library.json: live items fell from ${liveA} to ${liveB} (more than 10%)`);
 }
-for (const rel of ["data/atlas.json", "data/events.json", "data/glossary.json", "data/library.json"]) {
+for (const rel of ["data/atlas.json", "data/events.json", "data/glossary.json", "data/library.json", "data/library-notes.json"]) {
   const a = old(rel); const p = join(ROOT, rel);
   if (!a || !existsSync(p)) continue;
   const before = JSON.stringify(a).length, after = JSON.stringify(cur(rel)).length;
   if (after < before * 0.8) errors.push(`${rel}: shrank by ${Math.round(100 - after / before * 100)}% compared with ${BASE}`);
 }
+if (!compared && !args["allow-empty"]) errors.push(`nothing was compared against ${BASE}; pass --allow-empty only for a brand-new repository`);
 for (const e of errors) console.log(`ERROR ${e}`);
 console.log(errors.length ? `\nGUARD FAILED against ${BASE}` : `GUARD OK against ${BASE} (${compared} record sets compared)`);
 process.exit(errors.length ? 1 : 0);

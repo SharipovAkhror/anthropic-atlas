@@ -11,18 +11,19 @@ Production: https://anthropic-atlas.vercel.app (Vercel, deploys from `main`).
 | Path | What |
 |---|---|
 | `index.html`, `assets/app.css`, `assets/app.js` | the site (no build step; vanilla JS) |
-| `data/` | all content: `atlas.json`, `events.json`, `glossary.json`, `modules.json`, `archive.json`, `digests/` |
+| `data/` | all content: `atlas.json`, `events.json`, `glossary.json`, `modules.json`, `archive.json`, `digests/`, `library.json` (catalog of every public Anthropic page, generated), `library-notes.json` (Russian cards and reading paths) |
 | `schema/` | JSON Schemas for every data file |
 | `sources/sources.json` | source registry (tiers, trusted press, blocked domains) |
 | `sources/wiki-overrides.json` | curated Wikipedia candidates for portraits/links |
-| `scripts/` | `collect` (sources → inbox), `today` (worklist), `validate`, `digest`, `enrich` (photos, Wikipedia), `test` |
+| `scripts/` | `collect` (sources → inbox), `library` (catalog, no model), `library-notes` (add cards), `today` (worklist), `validate`, `guard` (no data loss), `smoke` (real browser), `digest`, `enrich` (photos, Wikipedia), `test`, `hooks/` (Claude Code hooks) |
 | `pipeline/` | collector state, inbox, watched-page snapshots, run notes (not deployed) |
-| `.github/workflows/` | `collect.yml` (05:40 Tashkent), `publish-daily.yml` (merge daily branch), `validate.yml` (CI) |
+| `.github/workflows/` | `collect.yml` (05:40 Tashkent: news inbox + library catalog), `publish-daily.yml` (merge daily branch), `validate.yml` (CI), `health.yml` (hourly production check, auto-revert of a broken data commit) |
 | `.claude/agents/` | `atlas-daily` and ten `researcher-*` roles (Haiku) |
 
 ## Rules
+- Read `REVIEW.md`: the blocking rules every change must pass, and which script enforces each.
 - Every claim needs a source in `sources[]`; tier 1–2 only (see methodology). Never cite news.google.com.
-- Run `node scripts/validate.mjs && node scripts/test.mjs` after any change; CI runs them too.
+- Run `npm run check` (validate + tests + guard) and `node scripts/smoke.mjs` after any change; CI runs them too.
 - Do not hand-edit `data/digests/*`; `scripts/digest.mjs` generates them from the data diff.
 - Text fields: `ru` required, `en` required for titles/roles/labels, `uz` optional (falls back to ru).
 - Design: neutral surfaces, one accent, few controls. Interactions are hidden and discoverable (hover reveals,

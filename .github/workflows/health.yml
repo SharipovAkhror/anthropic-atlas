@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 5
+          fetch-depth: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -29,20 +29,29 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Check production
         id: check
+        timeout-minutes: 10
         run: |
           node scripts/smoke.mjs --url=https://anthropic-atlas.vercel.app && exit 0
           sleep 120
           node scripts/smoke.mjs --url=https://anthropic-atlas.vercel.app && exit 0
+          # Unreachable is a hosting problem, not bad data: report it, never revert for it.
+          curl -fsS -o /dev/null https://anthropic-atlas.vercel.app/data/atlas.json || { echo "site unreachable"; exit 1; }
           echo "broken=1" >> "$GITHUB_OUTPUT"
       - name: Roll back a broken data update
         if: steps.check.outputs.broken == '1'
         run: |
-          files=$(git diff --name-only HEAD~1 HEAD)
+          if git log -1 --format=%s | grep -q '^health: revert'; then echo "Already reverted once and still broken; a person has to look."; exit 1; fi
+          files=$(git diff --no-renames --name-only HEAD~1 HEAD)
           echo "$files"
           if echo "$files" | grep -qvE '^(data/|pipeline/)'; then echo "Latest commit touches code; not reverting automatically."; exit 1; fi
+          # Prove the data is the cause: this commit must fail locally and its parent must pass.
+          if node scripts/smoke.mjs; then echo "HEAD passes locally; the problem is elsewhere. Not reverting."; exit 1; fi
+          git checkout -q HEAD~1 -- data pipeline
+          if ! node scripts/smoke.mjs; then echo "The previous version fails too. Not reverting."; git checkout -q HEAD -- data pipeline; exit 1; fi
+          git checkout -q HEAD -- data pipeline
           git config user.name "atlas-bot"
           git config user.email "atlas-bot@users.noreply.github.com"
-          git revert --no-edit HEAD
+          if [ "$(git rev-list --parents -n1 HEAD | wc -w)" -gt 2 ]; then git revert -m 1 --no-edit HEAD; else git revert --no-edit HEAD; fi
           git commit --amend -m "health: revert $(git log -1 --format=%h HEAD~1), production smoke test failed twice"
-          git push origin HEAD:main
+          for i in 1 2 3; do git push origin HEAD:main && exit 1; git pull --rebase origin main; done
           exit 1

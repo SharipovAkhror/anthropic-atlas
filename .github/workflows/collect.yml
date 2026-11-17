@@ -24,14 +24,18 @@ jobs:
       - name: Collect new items
         run: node scripts/collect.mjs
       - name: Library catalog (every public Anthropic page, no model)
-        run: node scripts/library.mjs || echo "library failed, keeping the previous catalog"
+        timeout-minutes: 8
+        continue-on-error: true
+        run: node scripts/library.mjs || { git checkout -- data/library.json; echo "library failed, keeping the previous catalog"; }
       - name: Enrich people (Wikipedia links, portraits)
         run: node scripts/enrich.mjs || echo "enrich failed, continuing"
-      - name: Validate
-        run: node scripts/validate.mjs --quiet
-      - name: Nothing lost
-        run: node scripts/guard.mjs --base=HEAD
+      - name: Validate and nothing lost (a bad catalog is dropped, the rest is kept)
+        run: |
+          node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD && exit 0
+          git checkout -- data/library.json
+          node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD
       - name: Browser smoke test
+        timeout-minutes: 8
         run: |
           npm i --no-save playwright@1.55.0
           npx playwright install --with-deps chromium

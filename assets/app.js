@@ -89,7 +89,7 @@
   function island(id, title, { count = "", lead = "", cls = "", far = "" } = {}, body = "") {
     const slot = document.createElement("div");
     slot.className = "slot"; slot.dataset.island = id; slot.dataset.title = title;
-    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div><div class="farsum" aria-hidden="true"><h3>${esc(title)}${count ? ` <span class="num">${esc(count)}</span>` : ""}</h3>${far}</div></section>`;
+    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div></section>`;
     board().appendChild(slot);
     return slot.firstElementChild;
   }
@@ -97,6 +97,15 @@
   const collapsible = (label, inner) => `<button class="more" aria-expanded="false">${esc(label)}</button><div class="collapse"><div>${inner}</div></div>`;
 
   const R = {};
+  function leadStory() {
+    const dg = S.digest;
+    if (dg && dg.news.length) return { k: `${t("digestFor")} ${fmtDate(dg.date)}`, h: tx(dg.headline), s: tx(dg.summary) };
+    const evs = [...D.events].sort((a, b) => b.date.localeCompare(a.date));
+    if (!evs.length) return { k: "", h: dg ? tx(dg.headline) : M("tag"), s: dg ? tx(dg.summary) : "" };
+    const lim = new Date(new Date(evs[0].date).getTime() - 7 * 864e5).toISOString().slice(0, 10);
+    const e = evs.filter(x => x.date >= lim).sort((a, b) => (b.importance || 0) - (a.importance || 0) || b.date.localeCompare(a.date))[0];
+    return { k: `${M("latest")} · ${fmtDate(e.date, { day: "numeric", month: "long" })}`, h: tx(e.title), s: tx(e.summary), ref: `event:${e.id}`, quiet: !!dg };
+  }
 
   R.digest = m => {
     const dg = S.digest;
@@ -108,12 +117,12 @@
       ["updatedN", dg.updated.map(a => ({ sign: "", text: a.label, why: a.reason || (a.fields || []).join(", "), ref: `${a.kind}:${a.id}` }))],
       ["removed", dg.removed.map(a => ({ sign: "−", text: a.label, why: a.reason, ref: `${a.kind}:${a.id}` }))]
     ];
-    const past = D.digests.slice(0, 7);
+    const past = D.digests.slice(0, 7), lead = leadStory();
+    if (!phone() && !groups.some(g => g[1].length)) return; // desktop: the hero already says it; an empty card is noise
     const el = island(m.id, tx(m.title), { cls: "today notitle", far: `<div class="far-k">${esc(fmtDate(dg.date))}</div><div class="far-h">${esc(tx(dg.headline))}</div>` }, `
-      <div class="mast-m"><b>Anthropic Atlas</b><span>${esc(M("edition"))} · ${esc(fmtDate(dg.date, { day: "numeric", month: "long" }))}</span></div>
-      <div class="date">${esc(t("digestFor"))} ${esc(fmtDate(dg.date))}</div>
-      <h1>${esc(tx(dg.headline))}</h1>
-      <p class="summary">${gloss(tx(dg.summary))}</p>
+      <div class="date">${esc(lead.k)}</div>
+      <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
+      <p class="summary">${gloss(lead.s)}</p>${lead.quiet ? `<p class="quiet">${esc(M("quiet"))}</p>` : ""}
       <div class="counts">${groups.filter(g => g[1].length).map(([k, items]) => `<button data-g="${k}" aria-expanded="false"><b class="num">${items.length}</b> ${esc(t(k))}</button>`).join("")}</div>
       <div class="collapse dg"><div><ul class="dl"></ul></div></div>
       ${past.length > 1 ? `<div class="past"><span>${esc(t("earlier"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
@@ -126,7 +135,7 @@
       list.innerHTML = groups.find(g => g[0] === b.dataset.g)[1].map(i => `<li><span class="sign">${i.sign}</span><span><a href="#" data-open="${esc(i.ref)}">${esc(i.text)}</a>${i.why ? ` <span class="why">— ${esc(i.why)}</span>` : ""}</span></li>`).join("");
       panel.classList.add("open"); relayoutSoon();
     }));
-    $$(".past button", el).forEach(b => b.addEventListener("click", async () => { S.digest = await getJSON(`/data/digests/${b.dataset.d}.json`); renderAll(); }));
+
   };
 
   R.facts = m => {
@@ -239,7 +248,7 @@
     // 3. the shelves: every section, its size and its latest title
     const secs = LIB.sections.map(s => ({ s, list: LIB.items.filter(i => i.section === s.id) })).filter(x => x.list.length);
     island("lib-shelves", L("shelves"), { count: String(LIB.items.length), far: `<div class="far-v"><b class="num">${LIB.items.length}</b><span>${esc(L("items"))}</span></div>` },
-      secs.map(({ s, list }) => { const top = [...list].sort((a, b) => libDate(b).localeCompare(libDate(a)))[0]; return `<button class="row noav shelf" data-open="shelf:${s.id}"><span class="who"><span class="nm">${esc(tx(s))}</span><span class="rl">${esc(libT(top))}</span></span><span class="side num">${list.length}</span></button>`; }).join(""));
+      secs.map(({ s, list }) => { const top = [...list].sort((a, b) => libDate(b).localeCompare(libDate(a)))[0]; return `<button class="row noav shelf" data-open="shelf:${s.id}"><span class="who"><span class="nm">${esc(tx(s))}</span><span class="rl">${libDate(top) && !/^docs-/.test(s.id) ? `${esc(shortDate(libDate(top)))} · ` : ""}${esc(libT(top))}</span></span><span class="side num">${list.length}</span></button>`; }).join(""));
   };
 
   // shelf sheet: search + audience filter + list; long lists grow in pages of 60
@@ -284,15 +293,15 @@
       return `<div class="hd"><div><div class="cap">${esc(secName(i.section))}${d ? ` · ${esc(fmtDate(d))}` : ""}</div><h3 data-copy style="margin-top:4px">${esc(libT(i))}</h3>${n?.t && n.t !== i.title ? `<div class="sub">${esc(i.title)}</div>` : ""}</div></div>
         ${libS(i) ? `<p class="lead">${gloss(libS(i))}</p>` : ""}
         ${n?.d ? `<div class="todo"><span>${esc(L("todo"))}</span>${esc(n.d)}</div>` : ""}
-        ${kv([[L("who"), esc(libW(i).map(audName).join(", "))], [L("source"), esc(host2(i.url))]])}
-        <a class="go" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(L("open"))}<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 2h6v6M10 2 2 10"/></svg></a>
+        <a class="go" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(L("open"))}<span>${esc(host2(i.url))}</span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 2h6v6M10 2 2 10"/></svg></a>
+        ${kv([[L("who"), esc(libW(i).map(audName).join(", "))]])}
         ${sib.length ? `<div class="blk"><h4>${esc(L("inShelf"))}</h4>${sib.map(x => libRow(x, undefined, /^docs-/.test(x.section) ? "" : shortDate(libDate(x)))).join("")}</div>` : ""}`;
     },
     shelf(s) {
       const list = LIB.items.filter(i => i.section === s.id);
       const auds = Object.keys(L("aud")).filter(w => list.some(i => libW(i).includes(w)));
-      return `<div class="hd"><div><div class="cap">${esc(L("shelves"))}</div><h3 data-copy style="margin-top:4px">${esc(tx(s))}</h3><div class="sub">${list.length} ${esc(L("items"))}</div></div></div>
-        <div class="shelf-tools"><input class="sf" type="search" autocomplete="off" spellcheck="false" placeholder="${esc(L("filter"))}" value="${esc(SH.q)}">${auds.length > 1 ? `<div class="chips">${["all", ...auds].map(w => `<button data-aud="${w}" aria-pressed="${SH.aud === w}">${esc(w === "all" ? L("all") : audName(w))}</button>`).join("")}</div>` : ""}</div>
+      return `<div class="hd"><div><div class="cap">${esc(L("shelves"))} · <span class="num">${list.length}</span></div><h3 data-copy style="margin-top:4px">${esc(tx(s))}</h3></div></div>
+        <div class="shelf-tools">${list.length > 12 ? `<input class="sf" type="search" autocomplete="off" spellcheck="false" placeholder="${esc(L("filter"))}" value="${esc(SH.q)}">` : ""}${auds.length > 1 && list.length > 8 ? `<div class="chips">${["all", ...auds].map(w => `<button data-aud="${w}" aria-pressed="${SH.aud === w}">${esc(w === "all" ? L("all") : audName(w))}</button>`).join("")}</div>` : ""}</div>
         <div class="shelf-list" data-shelf="${esc(s.id)}"></div>`;
     },
     person(p) {
@@ -367,23 +376,30 @@
   }
   const hideTip = () => $("#tip").classList.remove("show");
 
-  // ---------------------------------------------------------------- masthead (newspaper front page)
+  // ---------------------------------------------------------------- hero (desktop): today in one glance
   const MAST = {
-    ru: { edition: "Ежедневный выпуск", tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника и всё, что она публикует" },
-    en: { edition: "Daily edition", tag: "Anthropic from public sources: people, power, products, chronicle and everything it publishes" },
-    uz: { edition: "Kundalik son", tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika va u nashr etgan hamma narsa" }
+    ru: { tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника и всё, что она публикует", lib: "Библиотека", method: "Как мы проверяем", latest: "Последнее событие", quiet: "За сегодня новых событий нет. Данные перепроверены по первоисточникам.", digests: "Сводки" },
+    en: { tag: "Anthropic from public sources: people, power, products, chronicle and everything it publishes", lib: "Library", method: "How we verify", latest: "Latest event", quiet: "No new events today. Records were re-checked against primary sources.", digests: "Digests" },
+    uz: { tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika va u nashr etgan hamma narsa", lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", quiet: "Bugun yangi voqealar yo‘q. Ma’lumotlar birlamchi manbalar bo‘yicha qayta tekshirildi.", digests: "Xulosalar" }
   };
   const M = k => MAST[S.lang][k] || MAST.ru[k];
+  const METHOD_URL = "https://github.com/SharipovAkhror/athropic-atlas/blob/main/docs/METHODOLOGY.md";
   function stampText() {
     const dg = S.digest; if (!dg) return `${t("updated")} ${fmtDate(D.atlas.meta.updatedAt)}`;
     const when = new Date(dg.generatedAt), days = Math.floor((Date.now() - when) / 864e5);
     const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
     return `${t("updated")} ${day} ${t("at")} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}`;
   }
-  function mastHTML() {
-    const date = S.digest?.date || D.atlas.meta.updatedAt;
-    return `<header class="mast"><div class="mast-top"><span>${esc(M("edition"))} · № ${D.digests.length || 1}</span><span>${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long", year: "numeric" }))}</span><span>${esc(stampText())}</span></div>
-      <h1>Anthropic Atlas</h1><div class="mast-sub"><span>${esc(M("tag"))}</span><a href="https://github.com/SharipovAkhror/athropic-atlas/blob/main/docs/METHODOLOGY.md" target="_blank" rel="noopener">${esc(t("method"))}</a></div></header>`;
+  function heroHTML() {
+    const dg = S.digest, date = dg?.date || D.atlas.meta.updatedAt;
+    const facts = D.atlas.facts.slice(0, 4), lead = leadStory(), past = D.digests.slice(0, 7);
+    return `<div class="hero-k">${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long" }))}<span>${esc(stampText())}</span></div>
+      ${lead.k ? `<div class="hero-e">${esc(lead.k)}</div>` : ""}
+      <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
+      ${lead.s ? `<p class="hero-s">${gloss(lead.s)}</p>` : ""}
+      ${lead.quiet ? `<p class="quiet">${esc(M("quiet"))}</p>` : ""}
+      ${facts.length ? `<div class="stats">${facts.map(f => `<button class="stat" data-open="fact:${f.id}"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></button>`).join("")}</div>` : ""}
+      <div class="hero-l">${LIB ? `<button data-jump="lib-shelves">${esc(M("lib"))} <span class="num">${LIB.items.length}</span></button>` : ""}<a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(M("method"))}</a>${past.length > 1 ? `<span class="past-h">${esc(M("digests"))}: ${past.map(h => `<button data-d="${h.date}" class="${h.date === dg?.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</span>` : ""}</div>`;
   }
 
   // ---------------------------------------------------------------- connections between people (desktop board)
@@ -425,172 +441,35 @@
     if (focus) rel.forEach(id => vis(id).forEach(r => r.classList.add("rel")));
   }
 
-  // ---------------------------------------------------------------- desktop camera
-  const COL = 360, GAP = 64, PAD = 64;
-  let MH = 0; // masthead height
-  const cam = { x: 0, y: 0, s: 1 };
-  let BW = 0, BH = 0, boxes = [], anim = 0, inertiaRaf = 0;
-  const vw = () => $("#view").clientWidth, vh = () => $("#view").clientHeight;
-
+  // ---------------------------------------------------------------- desktop: responsive masonry, ordinary scrolling
+  // Columns follow the window: as many columns of 330px or more as fit, gaps grow on wide screens. Nothing is ever cut.
+  let GAP = 24, BW = 0, BH = 0;
+  const vh = () => $("#view").clientHeight;
   function layout() {
-    if (phone()) { board().style.width = board().style.height = ""; return; }
-    const slots = $$(".slot", board());
-    const hs = slots.map(s => s.offsetHeight);
-    const mast = $(".mast", board());
-    let best = null;
-    for (let n = 3; n <= 8; n++) {
-      const cols = new Array(n).fill(0), pos = [];
-      hs.forEach(h => { const c = cols.indexOf(Math.min(...cols)); pos.push([c, cols[c]]); cols[c] += h + GAP; });
-      const W = n * COL + (n - 1) * GAP + PAD * 2, H = Math.max(...cols) - GAP + PAD * 2 + 260;
-      const score = Math.abs(Math.log((W / H) / 1.9));
-      if (!best || score < best.score) best = { n, pos, W, H, score };
-    }
-    if (mast) { mast.style.left = PAD + "px"; mast.style.top = PAD + "px"; mast.style.width = Math.min(best.W - PAD * 2, 3 * COL + 2 * GAP) + "px"; MH = mast.offsetHeight + 56; } else MH = 0;
-    boxes = slots.map((s, i) => { const [c, y] = best.pos[i]; const x = PAD + c * (COL + GAP); s.style.left = x + "px"; s.style.top = PAD + MH + y + "px"; return { el: s, x, y: PAD + MH + y, w: COL, h: hs[i] }; });
-    BW = best.W; BH = best.H - 260 + MH;
+    const b = board();
+    const slots = $$(".slot", b);
+    if (phone()) { b.style.height = ""; slots.forEach(s => { s.style.left = s.style.top = s.style.width = ""; }); return; }
+    const W = b.clientWidth;
+    GAP = W >= 1800 ? 32 : W >= 1200 ? 24 : 20;
+    const n = clamp(Math.floor((W + GAP) / (330 + GAP)), 1, 6);
+    const col = (W - GAP * (n - 1)) / n;
+    slots.forEach(s => { s.style.width = col + "px"; });
+    const hs = slots.map(s => s.offsetHeight), cols = new Array(n).fill(0);
+    slots.forEach((s, i) => { const c = cols.indexOf(Math.min(...cols)); s.style.left = c * (col + GAP) + "px"; s.style.top = cols[c] + "px"; cols[c] += hs[i] + GAP; });
+    BW = W; BH = Math.max(0, Math.max(...cols) - GAP);
+    b.style.height = BH + "px";
     drawLinks();
-    board().style.width = BW + "px"; board().style.height = BH + "px";
-    drawMap();
   }
   let relayoutT = 0;
-  function relayoutSoon() { clearTimeout(relayoutT); relayoutT = setTimeout(layout, 480); }
-
-  function apply(user = true) {
-    if (phone()) return;
-    const v = { w: vw(), h: vh() };
-    const m = 160; // keep part of the board on screen
-    cam.x = clamp(cam.x, m - BW * cam.s, v.w - m); cam.y = clamp(cam.y, m - BH * cam.s, v.h - m);
-    board().style.transform = `translate3d(${cam.x}px, ${cam.y}px, 0) scale(${cam.s})`;
-    board().classList.toggle("far", cam.s < .56);
-    drawMap();
-  }
-  function tween(to, dur = 620) {
-    cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf);
-    if (reduced()) { Object.assign(cam, to); apply(); return; }
-    const from = { ...cam }, t0 = performance.now();
-    const step = now => {
-      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 4);
-      cam.x = from.x + (to.x - from.x) * e; cam.y = from.y + (to.y - from.y) * e; cam.s = from.s + (to.s - from.s) * e;
-      apply(); if (k < 1) anim = requestAnimationFrame(step);
-    };
-    anim = requestAnimationFrame(step);
-  }
-  function zoomAt(ns, px, py, animate = false) {
-    ns = clamp(ns, .18, 2.2);
-    const bx = (px - cam.x) / cam.s, by = (py - cam.y) / cam.s;
-    const to = { s: ns, x: px - bx * ns, y: py - by * ns };
-    animate ? tween(to, 380) : (Object.assign(cam, to), apply());
-  }
-  const sheetW = () => ($("#sheet").classList.contains("on") ? $("#sheet").offsetWidth + 24 : 0);
-  function fitAll(animate = true) {
-    const w = vw(), h = vh(), s = clamp(Math.min((w - 48) / BW, (h - 48) / BH), .18, 1);
-    const to = { s, x: (w - BW * s) / 2, y: Math.max(12, (h - BH * s) / 2) };
-    animate ? tween(to) : (Object.assign(cam, to), apply());
-  }
+  function relayoutSoon(ms = 480) { clearTimeout(relayoutT); relayoutT = setTimeout(layout, ms); }
   function boxOf(el) { // board coordinates of any element inside the board
     let x = 0, y = 0, n = el;
     while (n && n !== board()) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
     return { x, y, w: el.offsetWidth, h: el.offsetHeight };
   }
-  function focusIsland(slot, animate = true) {
-    const b = boxOf(slot), w = vw() - sheetW(), h = vh();
-    const s = clamp(Math.min((w - 96) / b.w, (h - 64) / b.h), .85, 1.2);
-    const to = { s, x: (w - b.w * s) / 2 - b.x * s, y: b.h * s + 64 < h ? (h - b.h * s) / 2 - b.y * s : 32 - b.y * s };
-    animate ? tween(to) : (Object.assign(cam, to), apply());
-  }
-  function focusEl(el) {
-    const b = boxOf(el), w = vw() - sheetW(), h = vh(), s = Math.max(cam.s, 1);
-    tween({ s, x: w / 2 - (b.x + b.w / 2) * s, y: h * .42 - (b.y + b.h / 2) * s });
-  }
-
-  function drawMap() {
-    const mm = $("#minimap"), cv = $("canvas", mm);
-    if (!BW || phone()) return;
-    const W = 304, k = W / BW, H = Math.round(Math.min(220, BH * k));
-    const kk = Math.min(k, H / BH);
-    if (cv.height !== H) { cv.height = H; cv.style.height = H / 2 + "px"; }
-    const g = cv.getContext("2d");
-    g.clearRect(0, 0, W, H);
-    g.fillStyle = "rgba(0,0,0,.13)";
-    for (const b of boxes) { g.beginPath(); g.roundRect ? g.roundRect(b.x * kk, b.y * kk, b.w * kk, b.h * kk, 3) : g.rect(b.x * kk, b.y * kk, b.w * kk, b.h * kk); g.fill(); }
-    const rx = -cam.x / cam.s * kk, ry = -cam.y / cam.s * kk, rw = vw() / cam.s * kk, rh = vh() / cam.s * kk;
-    g.strokeStyle = "#0071e3"; g.lineWidth = 2; g.fillStyle = "rgba(0,113,227,.07)";
-    g.beginPath(); g.roundRect ? g.roundRect(rx, ry, rw, rh, 4) : g.rect(rx, ry, rw, rh); g.fill(); g.stroke();
-    const need = rw < W - 2 || rh < H - 2 || rx > 1 || ry > 1;
-    mm.classList.toggle("on", need && innerWidth >= 1100 && !!drawMap.user);
-    clearTimeout(drawMap.t); if (need) drawMap.t = setTimeout(() => { if (!mm.matches(":hover")) mm.classList.remove("on"); }, 2600);
-    mm._k = kk;
-  }
-
-  function bindCanvas() {
-    const view = $("#view");
-    const ptrs = new Map();
-    let drag = null, pinch = null, moved = false, vel = { x: 0, y: 0 }, last = null;
-    const loc = e => { const r = view.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-    view.addEventListener("pointerdown", e => {
-      if (phone() || (e.pointerType === "mouse" && e.button !== 0)) return;
-      cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf);
-      ptrs.set(e.pointerId, loc(e));
-      if (ptrs.size === 1) { const p = loc(e); drag = { sx: p.x, sy: p.y, cx: cam.x, cy: cam.y, active: false }; moved = false; vel = { x: 0, y: 0 }; last = { ...p, t: performance.now() }; }
-      if (ptrs.size === 2) {
-        const [a, b] = [...ptrs.values()];
-        pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: cam.s, bx: ((a.x + b.x) / 2 - cam.x) / cam.s, by: ((a.y + b.y) / 2 - cam.y) / cam.s };
-        moved = true; for (const id of ptrs.keys()) try { view.setPointerCapture(id); } catch {}
-      }
-    });
-    view.addEventListener("pointermove", e => {
-      if (!ptrs.has(e.pointerId)) return;
-      const p = loc(e); ptrs.set(e.pointerId, p);
-      if (pinch && ptrs.size >= 2) {
-        const [a, b] = [...ptrs.values()], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-        cam.s = clamp(pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d, .18, 2.2);
-        cam.x = mx - pinch.bx * cam.s; cam.y = my - pinch.by * cam.s; apply(); return;
-      }
-      if (!drag) return;
-      const dx = p.x - drag.sx, dy = p.y - drag.sy;
-      if (!drag.active && Math.hypot(dx, dy) > 5) { drawMap.user = true; drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
-      if (drag.active) {
-        cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply();
-        const now = performance.now(), dt = Math.max(1, now - last.t);
-        vel = { x: .75 * ((p.x - last.x) / dt) + .25 * vel.x, y: .75 * ((p.y - last.y) / dt) + .25 * vel.y }; last = { ...p, t: now };
-      }
-    });
-    const end = e => {
-      if (!ptrs.has(e.pointerId)) return;
-      ptrs.delete(e.pointerId);
-      if (ptrs.size === 1 && pinch) { pinch = null; const [p] = [...ptrs.values()]; drag = { sx: p.x, sy: p.y, cx: cam.x, cy: cam.y, active: true }; last = { ...p, t: performance.now() }; vel = { x: 0, y: 0 }; return; }
-      if (ptrs.size) return;
-      pinch = null; view.classList.remove("panning");
-      if (drag?.active && performance.now() - last.t < 90 && !reduced()) {
-        let { x: vx, y: vy } = vel;
-        drawMap.user = true; const step = () => { vx *= .94; vy *= .94; cam.x += vx * 16; cam.y += vy * 16; apply(); if (Math.hypot(vx, vy) > .02) inertiaRaf = requestAnimationFrame(step); };
-        inertiaRaf = requestAnimationFrame(step);
-      }
-      drag = null;
-    };
-    view.addEventListener("pointerup", end); view.addEventListener("pointercancel", end);
-    view.addEventListener("click", e => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; return; }
-      if (!phone() && board().classList.contains("far")) { const s = e.target.closest(".slot"); if (s) { e.stopPropagation(); e.preventDefault(); focusIsland(s); } } }, true);
-    view.addEventListener("dblclick", e => {
-      if (phone()) return;
-      const s = e.target.closest(".slot");
-      if (s && !e.target.closest("[data-open],a,button")) focusIsland(s); else if (!s) fitAll();
-    });
-    view.addEventListener("wheel", e => {
-      if (phone()) return;
-      e.preventDefault(); drawMap.user = true; cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); hideTip();
-      const p = loc(e);
-      if (e.ctrlKey || e.metaKey) zoomAt(cam.s * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0085)), p.x, p.y);
-      else { const k = e.deltaMode === 1 ? 32 : 1; cam.x -= (e.shiftKey && !e.deltaX ? e.deltaY : e.deltaX) * k; cam.y -= (e.shiftKey && !e.deltaX ? 0 : e.deltaY) * k; apply(); }
-    }, { passive: false });
-    let gs = 1; // Safari trackpad pinch
-    view.addEventListener("gesturestart", e => { e.preventDefault(); gs = cam.s; });
-    view.addEventListener("gesturechange", e => { if (phone()) return; e.preventDefault(); const p = loc(e); zoomAt(gs * e.scale, p.x, p.y); });
-    $("#minimap").addEventListener("click", e => {
-      const r = $("#minimap canvas").getBoundingClientRect(), k = $("#minimap")._k / 2;
-      const bx = (e.clientX - r.left) / k, by = (e.clientY - r.top) / k;
-      tween({ s: cam.s, x: vw() / 2 - bx * cam.s, y: vh() / 2 - by * cam.s });
-    });
+  function scrollToEl(el, at = .3) {
+    const v = $("#view"), r = el.getBoundingClientRect(), vr = v.getBoundingClientRect();
+    v.scrollTo({ top: Math.max(0, v.scrollTop + r.top - vr.top - vh() * at), behavior: reduced() ? "auto" : "smooth" });
   }
 
   // ---------------------------------------------------------------- phone: cards + map
@@ -658,7 +537,7 @@
       const isl = slot.firstElementChild; isl.scrollTo({ top: Math.max(0, el.offsetTop - 120) });
     } else {
       const c = el.closest(".collapse"); if (c && !c.classList.contains("open")) { c.classList.add("open"); relayoutSoon(); }
-      focusEl(el);
+      setTimeout(() => scrollToEl(el), 40);
     }
     el.classList.remove("hl"); void el.offsetWidth; el.classList.add("hl");
   }
@@ -698,29 +577,20 @@
     if (!dg) { el.innerHTML = `${esc(t("updated"))} ${esc(fmtDate(D.atlas.meta.updatedAt))}`; return; }
     const when = new Date(dg.generatedAt), days = Math.floor((Date.now() - when) / 864e5);
     const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
-    el.innerHTML = `${esc(t("updated"))} <b>${esc(day)} ${esc(t("at"))} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}</b> · <a href="https://github.com/SharipovAkhror/athropic-atlas/blob/main/docs/METHODOLOGY.md" target="_blank" rel="noopener">${esc(t("method"))}</a>`;
+    el.innerHTML = `${esc(t("updated"))} <b>${esc(day)} ${esc(t("at"))} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}</b> · <a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(t("method"))}</a>`;
   }
   function renderAll({ keepCamera = false } = {}) {
     renderBar();
     const keepPage = tabsIdx;
     board().innerHTML = "";
-    if (!phone()) board().insertAdjacentHTML("afterbegin", mastHTML() + `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg>`);
+    $("#hero").innerHTML = phone() ? "" : heroHTML();
+    if (!phone()) board().insertAdjacentHTML("afterbegin", `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg>`);
     for (const m of D.modules) if (!m.hidden && R[m.renderer]) R[m.renderer](m);
     document.documentElement.lang = S.lang;
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
     if (phone()) { renderTabs(); if (keepCamera) goPage(keepPage, false); }
-    else { layout(); if (!keepCamera) startCamera(); else apply(); }
+    else { layout(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
   }
-  function startCamera() {
-    const w = vw();
-    const home = { s: w >= 1180 ? 1 : clamp(w / (COL * 3 + GAP * 2 + PAD * 2), .7, 1), x: 0, y: 0 };
-    home.x = BW * home.s < w ? (w - BW * home.s) / 2 : 0;
-    let first = false; try { first = !sessionStorage.getItem("atlas.intro"); sessionStorage.setItem("atlas.intro", "1"); } catch {}
-    if (first && !reduced() && !location.hash) { fitAll(false); setTimeout(() => tween(home, 1100), 650); }
-    else { Object.assign(cam, home); apply(); }
-    if (!store.get("atlas.hint")) { const h = $("#hint"); h.textContent = t("hint"); setTimeout(() => h.classList.add("on"), 1900); setTimeout(() => h.classList.remove("on"), 7000); store.set("atlas.hint", "1"); }
-  }
-
   // ---------------------------------------------------------------- events
   function bind() {
     document.addEventListener("click", e => {
@@ -731,15 +601,19 @@
       const more = e.target.closest(".more[aria-expanded]");
       if (more) { const c = more.nextElementSibling; const open = !c.classList.contains("open"); c.classList.toggle("open", open); more.setAttribute("aria-expanded", open); relayoutSoon(); return; }
       const cr = e.target.closest("[data-crumb]");
+      const dd = e.target.closest("[data-d]");
+      if (dd) { getJSON(`/data/digests/${dd.dataset.d}.json`).then(x => { S.digest = x; renderAll({ keepCamera: true }); }).catch(() => {}); return; }
+      const j = e.target.closest("[data-jump]");
+      if (j) { const sl = $(`.slot[data-island="${j.dataset.jump}"]`); if (sl) scrollToEl(sl, .08); return; }
       if (cr) { S.stack = S.stack.slice(0, +cr.dataset.crumb + 1); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); return; }
       if (e.target.closest("[data-copy]")) navigator.clipboard?.writeText(location.href).then(() => toast(t("copied"))).catch(() => {});
     });
     document.addEventListener("mouseover", e => {
-      if (phone() || $("#view").classList.contains("panning")) return;
+      if (phone()) return;
       const r = e.target.closest(".slot [data-open^='person:']"), id = r ? r.dataset.open.slice(7) : null;
       if (id !== S.hover) { S.hover = id; drawLinks(); }
     });
-    document.addEventListener("mouseover", e => { const g = e.target.closest("abbr.g"); if (g && !$("#view").classList.contains("panning")) { const term = IDX.get(`term:${g.dataset.term}`); if (term) showTip(g, term.term, tx(term.definition)); } });
+    document.addEventListener("mouseover", e => { const g = e.target.closest("abbr.g"); if (g) { const term = IDX.get(`term:${g.dataset.term}`); if (term) showTip(g, term.term, tx(term.definition)); } });
     document.addEventListener("mouseout", e => { if (e.target.closest("abbr.g")) hideTip(); });
     $("#sheet-body").addEventListener("input", e => { if (e.target.matches(".sf")) { SH.q = e.target.value; SH.lim = 60; fillShelf(); } });
     $("#sheet-body").addEventListener("click", e => {
@@ -770,22 +644,16 @@
       else if (e.key === "Escape") { if (sheetOn) back(); else if (document.body.classList.contains("overview")) leaveMap(tabsIdx); }
       else if (e.key === "Backspace" && sheetOn) { e.preventDefault(); back(); }
       else if (e.key.toLowerCase() === "l") cycleLang();
-      else if (!phone() && e.key === "0") { drawMap.user = true; fitAll(); }
-      else if (!phone() && e.key === "1") startHome();
-      else if (!phone() && (e.key === "+" || e.key === "=")) zoomAt(cam.s * 1.25, vw() / 2, vh() / 2, true);
-      else if (!phone() && (e.key === "-" || e.key === "_")) zoomAt(cam.s / 1.25, vw() / 2, vh() / 2, true);
-      else if (!phone() && e.key.startsWith("Arrow") && !sheetOn) { const d = 140; tween({ s: cam.s, x: cam.x + (e.key === "ArrowLeft" ? d : e.key === "ArrowRight" ? -d : 0), y: cam.y + (e.key === "ArrowUp" ? d : e.key === "ArrowDown" ? -d : 0) }, 260); }
     });
     addEventListener("hashchange", fromHash);
     let wasPhone = phone();
-    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) apply(); });
+    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) relayoutSoon(120); });
     // swipe the sheet away (down on phones, right elsewhere)
     const sh = $("#sheet"); let sx = 0, sy = 0, dx = 0, dy = 0, dragging = false;
     sh.addEventListener("touchstart", e => { if ($("#sheet-body").scrollTop > 0 && phone()) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; dragging = true; dx = dy = 0; }, { passive: true });
     sh.addEventListener("touchmove", e => { if (!dragging) return; dx = e.touches[0].clientX - sx; dy = e.touches[0].clientY - sy; const d = phone() ? Math.max(0, dy) : Math.max(0, dx); if (d > 6) { sh.style.transition = "none"; sh.style.transform = phone() ? `translateY(${d}px)` : `translateX(${d}px)`; } }, { passive: true });
     sh.addEventListener("touchend", () => { if (!dragging) return; dragging = false; sh.style.transition = ""; sh.style.transform = ""; if ((phone() ? dy : dx) > 90) closeSheet(); });
   }
-  function startHome() { const w = vw(); const s = w >= 1180 ? 1 : clamp(w / (COL * 3 + GAP * 2 + PAD * 2), .7, 1); tween({ s, x: BW * s < w ? (w - BW * s) / 2 : 0, y: 0 }); }
   function cycleLang() {
     S.lang = LANGS[(LANGS.indexOf(S.lang) + 1) % LANGS.length]; store.set("atlas.lang", S.lang);
     const st = S.stack.slice(); renderAll({ keepCamera: true });
@@ -798,7 +666,14 @@
 
   // ---------------------------------------------------------------- boot
   const qlang = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qlang)) S.lang = qlang;
-  load().then(() => { buildGloss(); bind(); bindCanvas(); bindPhone(); renderAll(); fromHash(); $("#loading").remove(); loadLibrary().then(() => { const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } else fromHash(); }).catch(e => console.warn("library", e)); document.fonts?.ready.then(() => !phone() && layout()); })
-    .catch(err => { $("#loading").textContent = `Не удалось загрузить данные. ${err.message}`; console.error(err); });
-  window.ATLAS = { get data() { return D; }, openEntity, cam, fitAll };
+  // The library is part of the first screen: wait for it briefly, never longer than 2.5 s.
+  load().then(async () => {
+    buildGloss(); bind(); bindPhone();
+    const lib = loadLibrary().then(() => true, e => { console.warn("library", e); return false; });
+    const early = await Promise.race([lib, new Promise(r => setTimeout(() => r(null), 2500))]);
+    renderAll(); fromHash(); $("#loading").remove();
+    if (early === null) lib.then(ok => { if (!ok) return; const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } });
+    document.fonts?.ready.then(() => !phone() && layout());
+  }).catch(err => { $("#loading").textContent = `Не удалось загрузить данные. ${err.message}`; console.error(err); });
+  window.ATLAS = { get data() { return D; }, openEntity };
 })();
