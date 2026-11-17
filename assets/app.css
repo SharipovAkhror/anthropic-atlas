@@ -53,9 +53,11 @@ h1, h2, h3, h4, p { margin: 0; }
 .lang:hover { background: rgba(0, 0, 0, .05); color: var(--ink); }
 
 /* ---------- the page (desktop, tablet): a hero, then cards in as many columns as fit ---------- */
-.view { position: fixed; inset: var(--bar-h) 0 0 0; overflow-y: auto; overflow-x: hidden; padding: 0 var(--gut) 96px; scroll-behavior: auto; overscroll-behavior-y: contain; }
-.hero, .board { max-width: 1760px; margin: 0 auto; }
-.board { position: relative; }
+/* desktop and tablet: an open space. The board is moved and scaled by the camera (app.js). */
+.view { position: fixed; inset: var(--bar-h) 0 0 0; overflow: hidden; touch-action: none; overscroll-behavior: none; }
+.view.panning, .view.panning * { cursor: grabbing !important; }
+.board { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; padding-bottom: 0; }
+.hero { position: absolute; left: 0; top: 0; }
 .slot { position: absolute; left: 0; top: 0; width: 360px; transition: top .45s var(--spring), left .45s var(--spring); }
 .board.intro .slot { animation: card-in .8s var(--spring) both; animation-delay: calc(var(--i, 0) * 45ms + 120ms); }
 @keyframes card-in { from { opacity: 0; transform: translateY(18px); } }
@@ -66,8 +68,30 @@ h1, h2, h3, h4, p { margin: 0; }
 .ih .ic { font-size: 13px; color: var(--ink-4); white-space: nowrap; }
 .lead-txt { padding: 0 var(--pad) 12px; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
 
+/* zoomed out: every card keeps its place, its content fades and a screen-sized label names it */
+.flabel { position: absolute; left: 0; right: 0; top: 0; padding: calc(14px * var(--inv, 1)) calc(16px * var(--inv, 1)); display: flex; flex-direction: column; gap: calc(4px * var(--inv, 1)); opacity: 0; pointer-events: none; transition: opacity .3s var(--ease); }
+.flabel b { font-size: min(calc(17px * var(--inv, 1)), calc(var(--colw, 360px) / 8.5)); line-height: 1.12; font-weight: 600; letter-spacing: -.02em; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.flabel span { font-size: min(calc(13px * var(--inv, 1)), calc(var(--colw, 360px) / 12)); color: var(--ink-4); }
+.board.far .flabel { opacity: 1; }
+.board.far .island > .ih, .board.far .island > .ib, .board.far .island > .lead-txt { opacity: .14; transition: opacity .3s var(--ease); }
+.board.far .island { cursor: zoom-in; }
+.board.far .island:hover { box-shadow: 0 0 0 calc(2px * var(--inv, 1)) var(--blue); }
+.board.far .hero h1 { opacity: 1; }
+.board.far .wires { opacity: 0; }
+.island > .ih, .island > .ib, .island > .lead-txt { transition: opacity .3s var(--ease); }
+
+/* zoom control, minimap, first-visit hint */
+.zoom { position: fixed; z-index: 40; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 2px; padding: 4px; border-radius: 14px; background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--float-shadow); }
+.zoom button { width: 34px; height: 30px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-2); transition: background .2s var(--ease); }
+.zoom button:hover { background: rgba(0, 0, 0, .06); }
+.minimap { position: fixed; z-index: 40; right: 20px; bottom: 64px; width: 150px; border-radius: 14px; background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--float-shadow); padding: 8px; opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity .4s var(--ease), transform .4s var(--ease); cursor: pointer; }
+.minimap.on { opacity: 1; transform: none; pointer-events: auto; }
+.minimap canvas { display: block; width: 100%; }
+.hint { position: fixed; z-index: 40; left: 50%; bottom: 24px; transform: translate(-50%, 10px); padding: 9px 16px; border-radius: 20px; background: rgba(29, 29, 31, .86); color: #fff; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.hint.on { opacity: 1; transform: translate(-50%, 0); }
+
 /* hero: the date, today's headline, the key numbers */
-.hero { padding: clamp(36px, 6vh, 72px) 0 clamp(28px, 4vh, 44px); animation: card-in .9s var(--spring) both; }
+.hero { padding: clamp(36px, 6vh, 72px) 0 clamp(28px, 4vh, 44px); animation: card-in .9s var(--spring) both; user-select: text; -webkit-user-select: text; }
 .hero-k { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; font-weight: 500; color: var(--ink-3); }
 .hero-k::first-letter { text-transform: uppercase; }
 .hero-k span { font-weight: 400; color: var(--ink-4); }
@@ -281,9 +305,10 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
   .maptoggle { display: grid; place-items: center; position: fixed; z-index: 46; top: var(--bar-h); right: 4px; width: 44px; height: 42px; color: var(--ink-4); transition: color .2s; }
   .maptoggle:active { color: var(--ink); }
   body.overview .maptoggle { z-index: 55; color: var(--blue); top: 0; height: var(--bar-h); right: 84px; }
-  .view { top: calc(var(--bar-h) + 42px); padding: 0; overflow: hidden; touch-action: pan-x pan-y; }
+  .view { top: calc(var(--bar-h) + 42px); overflow: hidden; touch-action: pan-x pan-y; }
+  .zoom, .minimap, .hint, .flabel { display: none !important; }
   .hero { display: none; }
-  .board { max-width: none; margin: 0; }
+  .board { max-width: none; margin: 0; will-change: auto; }
   .board.intro .slot { animation: none; }
   .notitle .ih { display: none; }
   .today .date, .today h1, .today .summary { display: block; }
@@ -322,7 +347,7 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
-@media print { .bar, .sheet, .scrim, .palette, .tabs { display: none !important; } body { overflow: visible; } }
+@media print { .bar, .sheet, .scrim, .palette, .tabs, .zoom, .minimap, .hint { display: none !important; } body { overflow: visible; } }
 
 /* ---------------------------------------------------------------- library */
 .seg[role="tablist"] { display: flex; flex-wrap: wrap; gap: 6px; height: auto; margin: 2px var(--pad) 12px; padding: 0; border-radius: 0; background: none; }

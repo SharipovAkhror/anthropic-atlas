@@ -8,9 +8,9 @@
 
   // ---------------------------------------------------------------- i18n
   const UI = {
-    ru: { updated: "Обновлено", today: "сегодня", yesterday: "вчера", at: "в", news: "новости", added: "добавлено", updatedN: "изменено", removed: "убрано", find: "Поиск", search: "Люди, продукты, события, термины", nothing: "Ничего не найдено", former: "Бывшие", trust: "Траст LTBT", board: "Совет директоров", votes: "Голоса акционеров", status: "Статус", since: "В компании с", until: "До", zone: "Направление", released: "Выпуск", metrics: "Ключевое", owners: "Ответственные", children: "Состав", related: "Связи", events: "События", sources: "Источники", verified: "Проверено", wikipedia: "Википедия", official: "Официально", docs: "Документация", wikidata: "Wikidata", github: "GitHub", site: "Сайт", linkedin: "LinkedIn", x: "X", reports: "Подчиняется", manages: "Руководит", oversees: "Под надзором", oversightBy: "Надзор: совет или траст", products: "Продукты", active: "работает", preview: "превью", legacy: "предыдущее", retired: "выведен", deprecated: "устарел", formerS: "бывший сотрудник", activeP: "в компании", copied: "Ссылка скопирована", asOf: "На дату", digestFor: "Сводка за", aliases: "Также", seeAlso: "Где встречается", newBadge: "новое", earlier: "Ранее", showAll: "Показать все", hint: "Перетаскивайте доску · двойной щелчок приближает · 0 показывает всё", noDigest: "Сводки пока нет", footer: "Открытые источники, обновление каждое утро", method: "Методология", repo: "GitHub", types: { model: "Модели", product: "Продукты", people: "Люди", governance: "Управление", finance: "Финансы", policy: "Политика", research: "Исследования", safety: "Безопасность", partnership: "Партнёрства", legal: "Право", infrastructure: "Платформа" } },
-    en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · double-click to zoom · 0 shows everything", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
-    uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Doskani suring · ikki marta bosish yaqinlashtiradi · 0 hammasini ko'rsatadi", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
+    ru: { updated: "Обновлено", today: "сегодня", yesterday: "вчера", at: "в", news: "новости", added: "добавлено", updatedN: "изменено", removed: "убрано", find: "Поиск", search: "Люди, продукты, события, термины", nothing: "Ничего не найдено", former: "Бывшие", trust: "Траст LTBT", board: "Совет директоров", votes: "Голоса акционеров", status: "Статус", since: "В компании с", until: "До", zone: "Направление", released: "Выпуск", metrics: "Ключевое", owners: "Ответственные", children: "Состав", related: "Связи", events: "События", sources: "Источники", verified: "Проверено", wikipedia: "Википедия", official: "Официально", docs: "Документация", wikidata: "Wikidata", github: "GitHub", site: "Сайт", linkedin: "LinkedIn", x: "X", reports: "Подчиняется", manages: "Руководит", oversees: "Под надзором", oversightBy: "Надзор: совет или траст", products: "Продукты", active: "работает", preview: "превью", legacy: "предыдущее", retired: "выведен", deprecated: "устарел", formerS: "бывший сотрудник", activeP: "в компании", copied: "Ссылка скопирована", asOf: "На дату", digestFor: "Сводка за", aliases: "Также", seeAlso: "Где встречается", newBadge: "новое", earlier: "Ранее", showAll: "Показать все", hint: "Перетаскивайте пространство · щипок или Ctrl + колесо отдаляет · 0 показывает всё", noDigest: "Сводки пока нет", footer: "Открытые источники, обновление каждое утро", method: "Методология", repo: "GitHub", types: { model: "Модели", product: "Продукты", people: "Люди", governance: "Управление", finance: "Финансы", policy: "Политика", research: "Исследования", safety: "Безопасность", partnership: "Партнёрства", legal: "Право", infrastructure: "Платформа" } },
+    en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · pinch or Ctrl + wheel to zoom · 0 shows everything", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
+    uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Maydonni suring · chimdish yoki Ctrl + g‘ildirak uzoqlashtiradi · 0 hammasini ko‘rsatadi", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
   };
   const LANGS = ["ru", "en", "uz"];
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
@@ -89,7 +89,7 @@
   function island(id, title, { count = "", lead = "", cls = "", far = "" } = {}, body = "") {
     const slot = document.createElement("div");
     slot.className = "slot"; slot.dataset.island = id; slot.dataset.title = title;
-    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div></section>`;
+    slot.innerHTML = `<section class="island ${cls}" id="i-${esc(id)}" aria-label="${esc(title)}" data-title="${esc(title)}"><header class="ih"><h2>${esc(title)}</h2><span class="ic num">${esc(count)}</span></header>${lead ? `<p class="lead-txt">${gloss(lead)}</p>` : ""}<div class="ib">${body}</div><div class="flabel" aria-hidden="true"><b>${esc(title)}</b>${count ? `<span class="num">${esc(count)}</span>` : ""}</div></section>`;
     board().appendChild(slot);
     return slot.firstElementChild;
   }
@@ -441,24 +441,40 @@
     if (focus) rel.forEach(id => vis(id).forEach(r => r.classList.add("rel")));
   }
 
-  // ---------------------------------------------------------------- desktop: responsive masonry, ordinary scrolling
-  // Columns follow the window: as many columns of 330px or more as fit, gaps grow on wide screens. Nothing is ever cut.
-  let GAP = 24, BW = 0, BH = 0;
-  const vh = () => $("#view").clientHeight;
+  // ---------------------------------------------------------------- desktop: an open space you can move and zoom
+  // At 100% it reads like a page: the hero, then cards in as many columns as fit the window. Drag, scroll or use
+  // the trackpad to move; pinch, Ctrl/⌘ + wheel or + and − to zoom; 0 shows everything, 1 returns home.
+  // Zoomed out, the real cards stay in place and each one carries a readable label sized for the screen.
+  let GAP = 24, BW = 0, BH = 0, COLW = 360, HOME = { x: 0, y: 0, s: 1 }, MODE = "page", switching = false;
+  const cam = { x: 0, y: 0, s: 1 };
+  let anim = 0, inertiaRaf = 0;
+  const vw = () => $("#view").clientWidth, vh = () => $("#view").clientHeight;
+  const FAR = .52;
   function layout() {
     const b = board();
-    const slots = $$(".slot", b);
-    if (phone()) { b.style.height = ""; slots.forEach(s => { s.style.left = s.style.top = s.style.width = ""; }); return; }
-    const W = b.clientWidth;
+    const slots = $$(".slot", b), hero = $(".hero", b);
+    if (phone()) { b.style.height = b.style.width = ""; slots.forEach(s => { s.style.left = s.style.top = s.style.width = ""; }); return; }
+    const gut = clamp(vw() * .036, 20, 72);
+    const W = Math.min(1760, vw() - gut * 2);
     GAP = W >= 1800 ? 32 : W >= 1200 ? 24 : 20;
     const n = clamp(Math.floor((W + GAP) / (330 + GAP)), 1, 6);
-    const col = (W - GAP * (n - 1)) / n;
-    slots.forEach(s => { s.style.width = col + "px"; });
-    const hs = slots.map(s => s.offsetHeight), cols = new Array(n).fill(0);
-    slots.forEach((s, i) => { const c = cols.indexOf(Math.min(...cols)); s.style.left = c * (col + GAP) + "px"; s.style.top = cols[c] + "px"; cols[c] += hs[i] + GAP; });
-    BW = W; BH = Math.max(0, Math.max(...cols) - GAP);
-    b.style.height = BH + "px";
-    drawLinks();
+    COLW = (W - GAP * (n - 1)) / n;
+    b.style.setProperty("--colw", COLW + "px");
+    let top = 0;
+    if (hero) { hero.style.width = W + "px"; top = hero.offsetHeight; }
+    slots.forEach(s => { s.style.width = COLW + "px"; });
+    const hs = slots.map(s => s.offsetHeight);
+    const pack = k => { const cols = new Array(k).fill(top), pos = hs.map(h => { const c = cols.indexOf(Math.min(...cols)); const p = [c, cols[c]]; cols[c] += h + GAP; return p; }); return { k, pos, W: k * COLW + (k - 1) * GAP, H: Math.max(top, Math.max(...cols) - GAP) }; };
+    let L = pack(n);
+    HOME = { s: 1, x: Math.round((vw() - L.W) / 2), y: 0 };
+    if (MODE === "map") { // zoomed out: spread the same cards into a wider grid that fills the screen's shape
+      const target = vw() / vh();
+      for (let k = n + 1; k <= 14; k++) { const c = pack(k); if (Math.abs(Math.log(c.W / c.H / target)) < Math.abs(Math.log(L.W / L.H / target))) L = c; }
+    }
+    slots.forEach((s, i) => { s.style.left = L.pos[i][0] * (COLW + GAP) + "px"; s.style.top = L.pos[i][1] + "px"; });
+    BW = L.W; BH = L.H;
+    b.style.width = BW + "px"; b.style.height = BH + "px";
+    drawLinks(); drawMap();
   }
   let relayoutT = 0;
   function relayoutSoon(ms = 480) { clearTimeout(relayoutT); relayoutT = setTimeout(layout, ms); }
@@ -467,9 +483,167 @@
     while (n && n !== board()) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
     return { x, y, w: el.offsetWidth, h: el.offsetHeight };
   }
-  function scrollToEl(el, at = .3) {
-    const v = $("#view"), r = el.getBoundingClientRect(), vr = v.getBoundingClientRect();
-    v.scrollTo({ top: Math.max(0, v.scrollTop + r.top - vr.top - vh() * at), behavior: reduced() ? "auto" : "smooth" });
+  function setMode(m) {
+    if (m === MODE || phone() || switching) return;
+    switching = true;
+    const cx = vw() / 2, cy = vh() / 2;
+    let anchor = null, best = Infinity;
+    for (const sl of $$(".slot", board())) { const x = cam.x + (parseFloat(sl.style.left) + sl.offsetWidth / 2) * cam.s, y = cam.y + (parseFloat(sl.style.top) + sl.offsetHeight / 2) * cam.s, d = Math.hypot(x - cx, y - cy); if (d < best) { best = d; anchor = { sl, x: cam.x + parseFloat(sl.style.left) * cam.s, y: cam.y + parseFloat(sl.style.top) * cam.s }; } }
+    MODE = m; layout();
+    if (anchor) { cam.x = anchor.x - parseFloat(anchor.sl.style.left) * cam.s; cam.y = anchor.y - parseFloat(anchor.sl.style.top) * cam.s; }
+    switching = false;
+  }
+  function apply() {
+    if (phone()) return;
+    if (!switching && !tweening) { if (cam.s < FAR && MODE === "page") setMode("map"); else if (cam.s >= FAR + .1 && MODE === "map") setMode("page"); }
+    const w = vw(), h = vh(), m = 120; // some of the board always stays on screen
+    cam.x = clamp(cam.x, Math.min(m - BW * cam.s, (w - BW * cam.s) / 2), Math.max(w - m, (w - BW * cam.s) / 2));
+    cam.y = clamp(cam.y, Math.min(m - BH * cam.s, (h - BH * cam.s) / 2), Math.max(h * .5, (h - BH * cam.s) / 2));
+    const b = board();
+    b.style.transform = `translate3d(${cam.x}px, ${cam.y}px, 0) scale(${cam.s})`;
+    b.style.setProperty("--inv", 1 / cam.s);
+    b.classList.toggle("far", cam.s < FAR);
+    drawMap();
+  }
+  let tweening = false;
+  function tween(to, dur = 560) {
+    cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf);
+    if (reduced()) { Object.assign(cam, to); apply(); return; }
+    tweening = true;
+    const from = { ...cam }, t0 = performance.now();
+    const step = now => {
+      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 4);
+      cam.x = from.x + (to.x - from.x) * e; cam.y = from.y + (to.y - from.y) * e; cam.s = from.s + (to.s - from.s) * e;
+      if (k >= 1) tweening = false;
+      apply(); if (k < 1) anim = requestAnimationFrame(step);
+    };
+    anim = requestAnimationFrame(step);
+  }
+  // never smaller than a bit past "everything on screen": further out there is nothing left to see
+  const minScale = () => clamp(Math.min(vw() / BW, vh() / BH) * .7, .06, .5);
+  function zoomAt(ns, px, py, animate = false) {
+    ns = clamp(ns, minScale(), 2.5);
+    const bx = (px - cam.x) / cam.s, by = (py - cam.y) / cam.s;
+    const to = { s: ns, x: px - bx * ns, y: py - by * ns };
+    animate ? tween(to, 320) : (Object.assign(cam, to), apply());
+  }
+  const sheetW = () => ($("#sheet").classList.contains("on") ? $("#sheet").offsetWidth + 24 : 0);
+  function fitAll(animate = true) {
+    setMode("map");
+    const w = vw(), h = vh(), s = clamp(Math.min((w - 64) / BW, (h - 64) / BH), .08, 1);
+    const to = { s, x: (w - BW * s) / 2, y: Math.max(24, (h - BH * s) / 2) };
+    animate ? tween(to, 700) : (Object.assign(cam, to), apply());
+  }
+  function goHome(animate = true) { setMode("page"); animate ? tween({ ...HOME }) : (Object.assign(cam, HOME), apply()); }
+  function focusIsland(slot, animate = true) {
+    setMode("page");
+    const b = boxOf(slot), w = vw() - sheetW(), h = vh();
+    const s = clamp(Math.min((w - 96) / b.w, (h - 64) / b.h), .9, 1.25);
+    const to = { s, x: (w - b.w * s) / 2 - b.x * s, y: b.h * s + 64 < h ? (h - b.h * s) / 2 - b.y * s : 40 - b.y * s };
+    animate ? tween(to) : (Object.assign(cam, to), apply());
+  }
+  function focusEl(el) {
+    setMode("page");
+    const b = boxOf(el), w = vw() - sheetW(), h = vh(), s = Math.max(cam.s, 1);
+    tween({ s, x: w / 2 - (b.x + b.w / 2) * s, y: h * .38 - (b.y + b.h / 2) * s });
+  }
+  // minimap: appears while you move, fades when you stop
+  function drawMap() {
+    const mm = $("#minimap"); if (!mm || !BW || phone()) return;
+    const cv = $("canvas", mm), W = 300, k = W / BW, H = Math.round(Math.min(240, BH * k)), kk = Math.min(k, H / BH);
+    if (cv.height !== H) { cv.height = H; cv.style.height = H / 2 + "px"; }
+    const g = cv.getContext("2d");
+    g.clearRect(0, 0, W, H); g.fillStyle = "rgba(0,0,0,.12)";
+    for (const sl of $$(".slot", board())) { const x = parseFloat(sl.style.left) * kk, y = parseFloat(sl.style.top) * kk; g.beginPath(); g.roundRect ? g.roundRect(x, y, sl.offsetWidth * kk, sl.offsetHeight * kk, 3) : g.rect(x, y, sl.offsetWidth * kk, sl.offsetHeight * kk); g.fill(); }
+    const rx = -cam.x / cam.s * kk, ry = -cam.y / cam.s * kk, rw = vw() / cam.s * kk, rh = vh() / cam.s * kk;
+    g.strokeStyle = "#0071e3"; g.lineWidth = 2; g.fillStyle = "rgba(0,113,227,.07)";
+    g.beginPath(); g.roundRect ? g.roundRect(rx, ry, rw, rh, 4) : g.rect(rx, ry, rw, rh); g.fill(); g.stroke();
+    mm._k = kk;
+    if (!drawMap.user) return;
+    mm.classList.add("on"); clearTimeout(drawMap.t);
+    drawMap.t = setTimeout(() => { if (!mm.matches(":hover")) mm.classList.remove("on"); }, 1800);
+  }
+  function bindCanvas() {
+    const view = $("#view");
+    const ptrs = new Map();
+    let drag = null, pinch = null, moved = false, vel = { x: 0, y: 0 }, last = null;
+    const loc = e => { const r = view.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+    const interactive = t => t.closest("input, textarea, select, a[href]:not([href='#'])");
+    view.addEventListener("pointerdown", e => {
+      if (phone() || (e.pointerType === "mouse" && e.button !== 0) || interactive(e.target)) return;
+      cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); tweening = false;
+      ptrs.set(e.pointerId, loc(e));
+      if (ptrs.size === 1) { const p = loc(e); drag = { sx: p.x, sy: p.y, cx: cam.x, cy: cam.y, active: false }; moved = false; vel = { x: 0, y: 0 }; last = { ...p, t: performance.now() }; }
+      if (ptrs.size === 2) {
+        const [a, b] = [...ptrs.values()];
+        pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, s: cam.s, bx: ((a.x + b.x) / 2 - cam.x) / cam.s, by: ((a.y + b.y) / 2 - cam.y) / cam.s };
+        moved = true; for (const id of ptrs.keys()) try { view.setPointerCapture(id); } catch {}
+      }
+    });
+    view.addEventListener("pointermove", e => {
+      if (!ptrs.has(e.pointerId)) return;
+      const p = loc(e); ptrs.set(e.pointerId, p);
+      if (pinch && ptrs.size >= 2) {
+        const [a, b] = [...ptrs.values()], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+        cam.s = clamp(pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d, minScale(), 2.5);
+        cam.x = mx - pinch.bx * cam.s; cam.y = my - pinch.by * cam.s; drawMap.user = true; apply(); return;
+      }
+      if (!drag) return;
+      const dx = p.x - drag.sx, dy = p.y - drag.sy;
+      if (!drag.active && Math.hypot(dx, dy) > 6) { drawMap.user = true; drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
+      if (drag.active) {
+        cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply();
+        const now = performance.now(), dt = Math.max(1, now - last.t);
+        vel = { x: .75 * ((p.x - last.x) / dt) + .25 * vel.x, y: .75 * ((p.y - last.y) / dt) + .25 * vel.y }; last = { ...p, t: now };
+      }
+    });
+    const end = e => {
+      if (!ptrs.has(e.pointerId)) return;
+      ptrs.delete(e.pointerId);
+      if (ptrs.size === 1 && pinch) { pinch = null; const [p] = [...ptrs.values()]; drag = { sx: p.x, sy: p.y, cx: cam.x, cy: cam.y, active: true }; last = { ...p, t: performance.now() }; vel = { x: 0, y: 0 }; return; }
+      if (ptrs.size) return;
+      pinch = null; view.classList.remove("panning");
+      if (drag?.active && performance.now() - last.t < 90 && !reduced()) {
+        let { x: vx, y: vy } = vel;
+        const step = () => { vx *= .94; vy *= .94; cam.x += vx * 16; cam.y += vy * 16; apply(); if (Math.hypot(vx, vy) > .02) inertiaRaf = requestAnimationFrame(step); };
+        inertiaRaf = requestAnimationFrame(step);
+      }
+      drag = null;
+    };
+    view.addEventListener("pointerup", end); view.addEventListener("pointercancel", end);
+    // a drag is not a click; when zoomed out, a click on a card flies to it
+    view.addEventListener("click", e => {
+      if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; return; }
+      if (!phone() && cam.s < FAR) { const sl = e.target.closest(".slot"); if (sl) { e.stopPropagation(); e.preventDefault(); focusIsland(sl); } }
+    }, true);
+    view.addEventListener("dblclick", e => {
+      if (phone() || e.target.closest("[data-open],a,button,input")) return;
+      const sl = e.target.closest(".slot");
+      if (sl) focusIsland(sl); else if (cam.s < .9) goHome(); else fitAll();
+    });
+    view.addEventListener("wheel", e => {
+      if (phone()) return;
+      if (e.target.closest("#sheet, #palette")) return;
+      e.preventDefault(); drawMap.user = true; cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); tweening = false; hideTip();
+      const p = loc(e);
+      if (e.ctrlKey || e.metaKey) zoomAt(cam.s * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0085)), p.x, p.y);
+      else { const k = e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? vh() : 1; cam.x -= (e.shiftKey && !e.deltaX ? e.deltaY : e.deltaX) * k; cam.y -= (e.shiftKey && !e.deltaX ? 0 : e.deltaY) * k; apply(); }
+    }, { passive: false });
+    let gs = 1; // Safari trackpad pinch
+    view.addEventListener("gesturestart", e => { e.preventDefault(); gs = cam.s; });
+    view.addEventListener("gesturechange", e => { if (phone()) return; e.preventDefault(); const p = loc(e); drawMap.user = true; zoomAt(gs * e.scale, p.x, p.y); });
+    $("#minimap").addEventListener("click", e => {
+      const r = $("#minimap canvas").getBoundingClientRect(), k = $("#minimap")._k / 2;
+      const bx = (e.clientX - r.left) / k, by = (e.clientY - r.top) / k;
+      tween({ s: cam.s, x: vw() / 2 - bx * cam.s, y: vh() / 2 - by * cam.s });
+    });
+    // the zoom control: always visible, three quiet buttons
+    $("#zoom").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return; drawMap.user = true;
+      if (b.dataset.z === "in") zoomAt(cam.s * 1.4, vw() / 2, vh() / 2, true);
+      else if (b.dataset.z === "out") zoomAt(cam.s / 1.4, vw() / 2, vh() / 2, true);
+      else (cam.s < .9 ? goHome() : fitAll());
+    });
   }
 
   // ---------------------------------------------------------------- phone: cards + map
@@ -537,7 +711,7 @@
       const isl = slot.firstElementChild; isl.scrollTo({ top: Math.max(0, el.offsetTop - 120) });
     } else {
       const c = el.closest(".collapse"); if (c && !c.classList.contains("open")) { c.classList.add("open"); relayoutSoon(); }
-      setTimeout(() => scrollToEl(el), 40);
+      setTimeout(() => focusEl(el), 40);
     }
     el.classList.remove("hl"); void el.offsetWidth; el.classList.add("hl");
   }
@@ -583,14 +757,20 @@
     renderBar();
     const keepPage = tabsIdx;
     board().innerHTML = "";
-    $("#hero").innerHTML = phone() ? "" : heroHTML();
-    if (!phone()) board().insertAdjacentHTML("afterbegin", `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg>`);
+    if (!phone()) board().insertAdjacentHTML("afterbegin", `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg><section class="hero" aria-label="Today">${heroHTML()}</section>`);
     for (const m of D.modules) if (!m.hidden && R[m.renderer]) R[m.renderer](m);
     document.documentElement.lang = S.lang;
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
     if (phone()) { renderTabs(); if (keepCamera) goPage(keepPage, false); }
-    else { layout(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
+    else { layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
   }
+  function startCamera() {
+    let first = false; try { first = !sessionStorage.getItem("atlas.intro"); sessionStorage.setItem("atlas.intro", "1"); } catch {}
+    // the first visit opens on the whole space for a moment, then settles on the page: it shows that the space exists
+    if (first && !reduced() && !location.hash) { fitAll(false); setTimeout(() => goHome(), 900); } else goHome(false);
+    if (!store.get("atlas.hint")) { const h = $("#hint"); h.textContent = t("hint"); setTimeout(() => h.classList.add("on"), 2200); setTimeout(() => h.classList.remove("on"), 8000); store.set("atlas.hint", "1"); }
+  }
+
   // ---------------------------------------------------------------- events
   function bind() {
     document.addEventListener("click", e => {
@@ -604,12 +784,12 @@
       const dd = e.target.closest("[data-d]");
       if (dd) { getJSON(`/data/digests/${dd.dataset.d}.json`).then(x => { S.digest = x; renderAll({ keepCamera: true }); }).catch(() => {}); return; }
       const j = e.target.closest("[data-jump]");
-      if (j) { const sl = $(`.slot[data-island="${j.dataset.jump}"]`); if (sl) scrollToEl(sl, .08); return; }
+      if (j) { const sl = $(`.slot[data-island="${j.dataset.jump}"]`); if (sl) focusIsland(sl); return; }
       if (cr) { S.stack = S.stack.slice(0, +cr.dataset.crumb + 1); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); return; }
       if (e.target.closest("[data-copy]")) navigator.clipboard?.writeText(location.href).then(() => toast(t("copied"))).catch(() => {});
     });
     document.addEventListener("mouseover", e => {
-      if (phone()) return;
+      if (phone() || $("#view").classList.contains("panning")) return;
       const r = e.target.closest(".slot [data-open^='person:']"), id = r ? r.dataset.open.slice(7) : null;
       if (id !== S.hover) { S.hover = id; drawLinks(); }
     });
@@ -644,10 +824,16 @@
       else if (e.key === "Escape") { if (sheetOn) back(); else if (document.body.classList.contains("overview")) leaveMap(tabsIdx); }
       else if (e.key === "Backspace" && sheetOn) { e.preventDefault(); back(); }
       else if (e.key.toLowerCase() === "l") cycleLang();
+      else if (!phone() && e.key === "0") { drawMap.user = true; fitAll(); }
+      else if (!phone() && e.key === "1") goHome();
+      else if (!phone() && (e.key === "+" || e.key === "=")) zoomAt(cam.s * 1.3, vw() / 2, vh() / 2, true);
+      else if (!phone() && (e.key === "-" || e.key === "_")) zoomAt(cam.s / 1.3, vw() / 2, vh() / 2, true);
+      else if (!phone() && e.key.startsWith("Arrow") && !sheetOn) { e.preventDefault(); const d = 160; tween({ s: cam.s, x: cam.x + (e.key === "ArrowLeft" ? d : e.key === "ArrowRight" ? -d : 0), y: cam.y + (e.key === "ArrowUp" ? d : e.key === "ArrowDown" ? -d : 0) }, 240); }
+      else if (!phone() && (e.key === " " || e.key === "PageDown" || e.key === "PageUp") && !sheetOn) { e.preventDefault(); tween({ s: cam.s, x: cam.x, y: cam.y + (e.key === "PageUp" || e.shiftKey ? 1 : -1) * vh() * .85 }, 380); }
     });
     addEventListener("hashchange", fromHash);
     let wasPhone = phone();
-    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) relayoutSoon(120); });
+    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) { layout(); apply(); } });
     // swipe the sheet away (down on phones, right elsewhere)
     const sh = $("#sheet"); let sx = 0, sy = 0, dx = 0, dy = 0, dragging = false;
     sh.addEventListener("touchstart", e => { if ($("#sheet-body").scrollTop > 0 && phone()) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; dragging = true; dx = dy = 0; }, { passive: true });
@@ -668,12 +854,12 @@
   const qlang = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qlang)) S.lang = qlang;
   // The library is part of the first screen: wait for it briefly, never longer than 2.5 s.
   load().then(async () => {
-    buildGloss(); bind(); bindPhone();
+    buildGloss(); bind(); bindCanvas(); bindPhone();
     const lib = loadLibrary().then(() => true, e => { console.warn("library", e); return false; });
     const early = await Promise.race([lib, new Promise(r => setTimeout(() => r(null), 2500))]);
     renderAll(); fromHash(); $("#loading").remove();
     if (early === null) lib.then(ok => { if (!ok) return; const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } });
     document.fonts?.ready.then(() => !phone() && layout());
   }).catch(err => { $("#loading").textContent = `Не удалось загрузить данные. ${err.message}`; console.error(err); });
-  window.ATLAS = { get data() { return D; }, openEntity };
+  window.ATLAS = { get data() { return D; }, openEntity, cam, fitAll, goHome };
 })();
