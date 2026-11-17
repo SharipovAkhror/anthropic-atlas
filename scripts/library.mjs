@@ -7,7 +7,7 @@
 // block this script: if they are missing, the site shows the original description.
 // Safety: an item that disappears from its source is kept and marked `gone`, never deleted,
 // and the run refuses to write if a source suddenly returns far fewer items than before.
-// Sources: anthropic.com and claude.com sitemaps, Claude Code / API / MCP llms.txt, Anthropic Academy (Skilljar)
+// Sources: anthropic.com and claude.com sitemaps (+ the system-cards and transparency pages), Claude Code / API / MCP llms.txt, Anthropic Academy (Skilljar)
 // and the courses repo, the Claude Cookbook registry, the Alignment Science blog, Transformer Circuits, the Help Center.
 // (red.anthropic.com redirects to anthropic.com/research/team/frontier-red-team, already covered by the sitemap.)
 // Usage: node scripts/library.mjs [--max=400] [--dry] [--offline] [--only=help,cookbook]
@@ -36,6 +36,7 @@ export const SECTIONS = [
   { id: "docs-code", ru: "Документация Claude Code", en: "Claude Code docs", uz: "Claude Code hujjatlari" },
   { id: "docs-api", ru: "Документация API", en: "API docs", uz: "API hujjatlari" },
   { id: "events", ru: "События", en: "Events", uz: "Tadbirlar" },
+  { id: "legal", ru: "Условия и право", en: "Terms & legal", uz: "Shartlar va huquq" },
   { id: "courses", ru: "Курсы и Академия", en: "Courses & Academy", uz: "Kurslar va Akademiya" },
   { id: "cookbook", ru: "Рецепты кода (Cookbook)", en: "Claude Cookbook", uz: "Kod retseptlari (Cookbook)" },
   { id: "help", ru: "Справочный центр", en: "Help Center", uz: "Yordam markazi" },
@@ -45,13 +46,21 @@ export const SECTIONS = [
 export const WHO = {
   research: ["researchers"], engineering: ["developers"], news: ["everyone"], policy: ["policy", "researchers"],
   institute: ["policy", "business"], models: ["everyone"], guides: ["learners", "business"], talks: ["learners", "developers"],
-  customers: ["business"], "docs-code": ["developers"], "docs-api": ["developers"], events: ["everyone"],
+  customers: ["business"], "docs-code": ["developers"], "docs-api": ["developers"], events: ["everyone"], legal: ["business", "everyone"],
   courses: ["learners", "developers"], cookbook: ["developers"], help: ["everyone"], "docs-mcp": ["developers"]
 };
 
 const sha = s => createHash("sha1").update(s).digest("hex").slice(0, 10);
-const decode = s => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).trim();
+const decode = s => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#(\d+);|&#x([0-9a-f]+);/gi, (_, d, h) => { const n = d ? +d : parseInt(h, 16); return n > 0 && n <= 0x10FFFF && (n < 0xD800 || n > 0xDFFF) ? String.fromCodePoint(n) : ""; })
+  .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "").trim();
 const norm = u => u.replace(/\.md$/, "").replace(/\/$/, "").replace(/^http:/, "https:");
+// Only https links on Anthropic's own hosts (and the anthropics GitHub org) become library items.
+const HOSTS = new Set(["www.anthropic.com", "claude.com", "code.claude.com", "docs.claude.com", "platform.claude.com", "support.claude.com", "academy.claude.com", "anthropic.skilljar.com", "alignment.anthropic.com", "transformer-circuits.pub", "red.anthropic.com", "modelcontextprotocol.io", "assets.claude.com", "www-cdn.anthropic.com", "github.com", "raw.githubusercontent.com"]);
+export const keep = u => { try { const x = new URL(u); return x.protocol === "https:" && !x.username && !x.password && !x.port && HOSTS.has(x.host) && (!/github/.test(x.host) || /^\/anthropics\//.test(x.pathname)); } catch { return false; } };
+const pathOf = u => { try { return new URL(u).pathname.replace(/\/$/, ""); } catch { return null; } };
+// Page titles carry site suffixes ("| Claude by Anthropic"); customer stories end in "<Product> case study".
+export const cleanTitle = t => String(t || "").replace(/\s*[|\\–—-]\s*(Claude by Anthropic|Anthropic|Claude)\s*$/i, "").replace(/\s+Claude(?: Platform \(API\)| [A-Z][\w-]*(?: [A-Z][\w-]*)?)? case study$/, "").trim();
+const GENERIC_DESC = /^Anthropic is an AI safety and research company/i;
 const slugTitle = u => { const s = decodeURIComponent(new URL(u).pathname.split("/").filter(Boolean).pop() || ""); return s.replace(/[-_]+/g, " ").replace(/^./, c => c.toUpperCase()); };
 
 async function get(url, tries = 3) {
@@ -71,8 +80,14 @@ const locs = xml => [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({ loc
 const POLICY = /^\/(responsible-scaling-policy|constitution|transparency|system-cards|policy|coordinated-vulnerability-disclosure|responsible-disclosure-policy|threat-intelligence|news\/claudes-constitution)/;
 function classifyAnthropic(path) {
   if (/^\/research\/team\//.test(path) || path === "/research" || path === "/news" || path === "/engineering") return null;
-  if (path.startsWith("/research/")) return "research";
-  if (path.startsWith("/news/")) return "news";
+  const slug = path.split("/").pop();
+  if (path.startsWith("/research/")) return /economic-index|labor-market|economic/.test(slug) ? "institute" : "research";
+  if (path.startsWith("/news/")) {
+    if (/^claude-(opus|sonnet|haiku|fable|mythos)/.test(slug)) return "models";
+    if (/responsible-scaling|constitution|usage-polic|safeguards|endors|policy|disclosure|threat/.test(slug)) return "policy";
+    return "news";
+  }
+  if (/^\/legal\/./.test(path)) return "legal";
   if (path.startsWith("/events/")) return "events";
   if (/^\/(institute\/|economic-index|economic-futures\/)/.test(path)) return "institute";
   if (POLICY.test(path)) return "policy";
@@ -97,34 +112,33 @@ const SOURCES = [
         try { for (const m of (await get(`https://www.anthropic.com/research/team/${t}`)).matchAll(/href="\/research\/([a-z0-9-]+)"/gi)) (teams[m[1].toLowerCase()] ||= []).includes(t) || teams[m[1].toLowerCase()].push(t); } catch { teamsOk = false; }
       }
       return locs(xml).map(({ loc, lastmod }) => {
-        const path = new URL(loc).pathname.replace(/\/$/, "");
+        const path = keep(norm(loc || "")) && pathOf(loc);
+        if (!path) return null;
         let section = classifyAnthropic(path);
         const slug = path.split("/").pop().toLowerCase();
         if (section === "research" && eng.has(slug)) section = "engineering";
-        return section && { url: norm(loc), section, lastmod, team: teams[slug], keepSection: !engOk && section === "research", keepTeam: !teamsOk };
+        return section && { url: norm(loc), section, lastmod, team: teams[slug], keepSection: !engOk && (section === "research" || section === "engineering"), keepTeam: !teamsOk };
       }).filter(Boolean);
   } },
   { id: "claude", min: 300, async run() {
       const xml = await get("https://claude.com/sitemap.xml");
-      return locs(xml).map(({ loc, lastmod }) => { const s = classifyClaude(new URL(loc).pathname.replace(/\/$/, "")); return s && { url: norm(loc), section: s, lastmod }; }).filter(Boolean);
+      return locs(xml).map(({ loc, lastmod }) => { const path = keep(norm(loc || "")) && pathOf(loc); const s = path && classifyClaude(path); return s && { url: norm(loc), section: s, lastmod }; }).filter(Boolean);
   } },
   { id: "docs-code", min: 100, async run() { return llms(await get("https://code.claude.com/docs/llms.txt"), "docs-code"); } },
   { id: "docs-api", min: 100, async run() { return llms(await get("https://docs.claude.com/llms.txt"), "docs-api"); } },
-  // Anthropic Academy (Skilljar catalog) + the open courses repo on GitHub.
-  { id: "courses", min: 8, async run() {
-      const out = [];
-      let academyOk = false, ghOk = false;
-      try {
-        const rows = skilljar(await get("https://anthropic.skilljar.com/"));
-        out.push(...rows); academyOk = rows.length >= 5;
-      } catch {}
-      try {
-        const rows = githubCourses(await get("https://raw.githubusercontent.com/anthropics/courses/master/README.md"));
-        out.push(...rows); ghOk = rows.length >= 3;
-      } catch {}
-      // Half a source must not mark the other half `gone`: both halves or nothing.
-      if (!academyOk || !ghOk) throw new Error(`partial: academy ${academyOk}, github ${ghOk}`);
-      return out;
+  // Anthropic Academy (Skilljar catalog) and the open courses repo on GitHub: two sources, one "courses" shelf,
+  // so that one of them failing never marks the other's items `gone`.
+  // anthropic.com/learn redirects to academy.claude.com; the old Skilljar host is the fallback.
+  { id: "academy", min: 8, async run() {
+      let rows = [];
+      try { rows = academy(await get("https://academy.claude.com/courses"), "https://academy.claude.com/"); } catch {}
+      if (rows.length < 8) { try { const old = academy(await get("https://anthropic.skilljar.com/"), "https://anthropic.skilljar.com/"); if (old.length > rows.length) rows = old; } catch {} }
+      return rows;
+  } },
+  { id: "courses", min: 3, async run() { return githubCourses(await get("https://raw.githubusercontent.com/anthropics/courses/master/README.md")); } },
+  { id: "cards", min: 5, async run() {
+      const [sc, tr] = await Promise.all([get("https://www.anthropic.com/system-cards"), get("https://www.anthropic.com/transparency").catch(() => "")]);
+      return [...cards(sc, "system-cards"), ...cards(tr, "transparency")];
   } },
   // Claude Cookbook: registry.yaml is the machine-readable list behind the cookbook site (title, description, date, categories).
   { id: "cookbook", min: 30, async run() { return cookbook(await get("https://raw.githubusercontent.com/anthropics/claude-cookbooks/main/registry.yaml")); } },
@@ -188,18 +202,62 @@ export function monthIndex(html, base, { section, team }) {
   return out;
 }
 
-// Skilljar catalog: course cards are links to /<course-slug> (class "coursebox-container" on the live site).
-export function skilljar(html) {
-  const out = [], seen = new Set();
-  for (const m of String(html).matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+// Academy catalog. academy.claude.com: links to /courses/<slug> under section headings ("Start your journey").
+// Skilljar (anthropic.skilljar.com): links to /<slug> with class "coursebox-container".
+export function academy(html, base) {
+  const host = new URL(base).host, out = [], seen = new Set();
+  let group = "";
+  for (const m of String(html).matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>|<(h[1-4])\b[^>]*>([\s\S]*?)<\/\3>/gi)) {
+    if (m[3]) { const g = strip(m[4]); if (g && g.length < 80) group = g; continue; }
     const attrs = m[1], href = (attrs.match(/href=["']([^"']+)["']/i) || [])[1];
-    if (!href || !/coursebox|course-card|catalog-item/i.test(attrs + m[2].slice(0, 400))) continue;
-    let u; try { u = new URL(decode(href), "https://anthropic.skilljar.com/"); } catch { continue; }
-    if (u.host !== "anthropic.skilljar.com" || !/^\/[a-z0-9][a-z0-9-]*\/?$/i.test(u.pathname) || /^\/(auth|accounts|page|catalog|search|login|signup)\b/i.test(u.pathname)) continue;
+    if (!href) continue;
+    let u; try { u = new URL(decode(href), base); } catch { continue; }
+    if (u.host !== host) continue;
+    const isCourse = /^\/courses\/[a-z0-9][a-z0-9-]*\/?$/i.test(u.pathname)
+      || (/coursebox|course-card|catalog-item/i.test(attrs + m[2].slice(0, 400)) && /^\/[a-z0-9][a-z0-9-]*\/?$/i.test(u.pathname) && !/^\/(auth|accounts|page|catalog|search|login|signup|courses)\b/i.test(u.pathname));
+    if (!isCourse) continue;
     const url = norm(u.origin + u.pathname);
     const { title, desc } = card(m[2]);
     if (!title || seen.has(url)) continue;
-    seen.add(url); out.push({ url, section: "courses", title, desc, group: "Anthropic Academy" });
+    seen.add(url); out.push({ url, section: "courses", title, desc, group: host === "academy.claude.com" && group ? `Academy: ${group}` : "Anthropic Academy" });
+  }
+  return out;
+}
+export const skilljar = html => academy(html, "https://anthropic.skilljar.com/");
+
+// System cards and transparency hub pages (not all of them are in the sitemap).
+// /system-cards: HTML cards (/claude-…-system-card) and older PDFs on assets.claude.com; /transparency: /transparency/<page>.
+export function cards(html, page) {
+  const out = [], seen = new Set(), rowInfo = new Map();
+  // /system-cards is a table: model name | month | "Read system card" link. Rows give the real title and date.
+  for (let row of String(html).split(/role=["']row["']/).slice(1)) {
+    row = row.replace(/^[^<>]*>/, ""); // the rest of the opening tag
+    const href = (row.match(/<a\b[^>]*href=["']([^"']+)["']/i) || [])[1];
+    const cells = row.split(/<\/?(?:p|div)\b[^>]*>/i).map(strip).filter(Boolean);
+    if (!href || !cells.length) continue;
+    const mon = cells.map(c => c.toLowerCase().match(new RegExp(`^(${MONTHS.join("|")})\\s+(\\d{4})$`))).find(Boolean);
+    rowInfo.set(decode(href), { title: cells[0], date: mon ? `${mon[2]}-${String(MONTHS.indexOf(mon[1]) + 1).padStart(2, "0")}-01` : null });
+  }
+  for (const m of String(html).matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+    const href = (m[1].match(/href=["']([^"']+)["']/i) || [])[1];
+    if (!href) continue;
+    let u; try { u = new URL(decode(href), "https://www.anthropic.com/"); } catch { continue; }
+    if (u.protocol === "http:") u.protocol = "https:";
+    if (u.host === "anthropic.com") u.host = "www.anthropic.com";
+    u.hash = ""; u.search = "";
+    const path = u.pathname.replace(/\/$/, "");
+    let section = null;
+    if (u.host === "www.anthropic.com" && /^\/claude-[a-z0-9-]*system-card$/.test(path)) section = "models";
+    else if (page === "system-cards" && /^(assets\.claude\.com|www-cdn\.anthropic\.com)$/.test(u.host) && /\.pdf$/i.test(path)) section = "models";
+    else if (u.host === "www.anthropic.com" && /^\/transparency\/[a-z0-9-]+$/.test(path)) section = "policy";
+    if (!section) continue;
+    const url = norm(u.origin + path);
+    if (seen.has(url) || !keep(url)) continue;
+    const info = rowInfo.get(decode(href));
+    let title = info?.title || card(m[2]).title.replace(/^\d{1,2}\s*(?=[A-Z])/, "").replace(/^See\s+/i, "");
+    if (!title || /^(read |see |learn more|pdf$)|^(the )?system card$/i.test(title)) { if (/\.pdf$/i.test(path)) continue; title = slugTitle(url).replace(/ system card$/i, ""); }
+    if (section === "models" && !/system card/i.test(title)) title += " system card";
+    seen.add(url); out.push({ url, section, title: clip(title, 220), date: notFuture(info?.date), group: section === "models" ? "System cards" : "Transparency hub" });
   }
   return out;
 }
@@ -208,7 +266,7 @@ export function skilljar(html) {
 export function githubCourses(md) {
   const out = [];
   for (const m of String(md).matchAll(/^\s*\d+\.\s+\[([^\]]+)\]\(\.\/([A-Za-z0-9_-]+)\/?[^)]*\)\s*[-–—:]?\s*(.*)$/gm))
-    out.push({ url: `https://github.com/anthropics/courses/tree/master/${m[2]}`, section: "courses", title: m[1].trim(), desc: clip(m[3].replace(/\[\[[^\]]*\]\([^)]*\)\]/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim(), 420), group: "GitHub: anthropics/courses" });
+    out.push({ url: `https://github.com/anthropics/courses/tree/master/${m[2]}`, section: "courses", title: m[1].trim(), desc: clip(m[3].replace(/^./, c => c.toUpperCase()).replace(/\[\[[^\]]*\]\([^)]*\)\]/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim(), 420), group: "GitHub: anthropics/courses" });
   return out;
 }
 
@@ -294,11 +352,19 @@ function llms(txt, section) {
 async function meta(url) {
   const html = await get(url, 2);
   if (/just a moment|access denied|attention required|page not found/i.test((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "")) throw new Error("challenge or error page");
-  const m = n => decode((html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${n}["'][^>]*content=(["'])(.*?)\\1`, "i")) || [])[2] || (html.match(new RegExp(`<meta[^>]+content=(["'])(.*?)\\1[^>]*(?:property|name)=["']${n}["']`, "i")) || [])[2]);
-  const title = (m("og:title") || decode((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1])).replace(/\s*[|\\–—-]\s*(Anthropic|Claude)\s*$/i, "").slice(0, 220);
+  // One linear pass over <meta> tags (a backtracking regex per key hung for minutes on ~1 MB legal pages).
+  const metas = new Map();
+  for (const [tag] of html.matchAll(/<meta\b[^>]{0,4000}>/gi)) {
+    const attr = k => (tag.match(new RegExp(`\\s${k}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i")) || []).slice(1).find(v => v != null);
+    const key = (attr("property") || attr("name") || "").toLowerCase(), content = attr("content");
+    if (key && content != null && !metas.has(key)) metas.set(key, content);
+  }
+  const m = n => decode(metas.get(n) || "");
+  const title = (m("og:title") || decode((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1])).replace(/\s*[|\\–—-]\s*(Claude by Anthropic|Anthropic|Claude)\s*$/i, "").slice(0, 220);
   const date = (m("article:published_time") || (html.match(/"datePublished"\s*:\s*"([^"]+)"/) || [])[1] || "").slice(0, 10) || null;
   if (!title) throw new Error("no title");
-  return { title, desc: (m("og:description") || m("description")).slice(0, 420), date };
+  const desc = m("og:description") || m("description");
+  return { title, desc: GENERIC_DESC.test(desc) ? "" : desc.slice(0, 420), date };
 }
 
 async function pool(items, n, fn) { let i = 0; await Promise.all(Array.from({ length: n }, async () => { while (i < items.length) { const k = i++; await fn(items[k], k); } })); }
@@ -321,7 +387,9 @@ async function main() {
     // so hundreds of old help articles do not flood "New in the library".
     const known = prev.items.some(it => it.src === src.id);
     for (const r of rows) {
-      if (seenNow.has(r.url)) continue; // listed twice (or by an earlier source): the first one wins
+      if (!keep(r.url) || seenNow.has(r.url)) continue; // off-site link, or listed twice: the first one wins
+      const owner = byUrl.get(r.url)?.src;
+      if (owner && owner !== src.id) continue; // an item belongs to the source that found it first
       seenNow.add(r.url);
       const old = byUrl.get(r.url);
       const it = old || { id: sha(r.url), url: r.url, src: src.id, added: prev.items.length && known ? TODAY : null };
@@ -347,7 +415,11 @@ async function main() {
     try { const m = await meta(it.url); if (m.title) it.title = m.title; if (m.desc) it.desc = m.desc; if (m.date) it.date = m.date; it.metaAt = TODAY; report.fetched++; }
     catch { report.fetchFailed++; }
   });
-  for (const it of byUrl.values()) if (!it.title) it.title = slugTitle(it.url);
+  for (const it of byUrl.values()) {
+    if (it.title) it.title = cleanTitle(it.title);
+    if (!it.title) it.title = slugTitle(it.url);
+    if (GENERIC_DESC.test(it.desc || "")) delete it.desc;
+  }
 
   const items = [...byUrl.values()].sort((a, b) => String(b.date || b.added || "").localeCompare(String(a.date || a.added || "")) || a.url.localeCompare(b.url))
     .map(({ id, url, src, section, title, desc, date, added, lastmod, group, team, gone, metaAt }) => Object.fromEntries(Object.entries({ id, url, src, section, title, desc, date, added, lastmod, group, team, gone, metaAt }).filter(([, v]) => v != null && v !== "")));

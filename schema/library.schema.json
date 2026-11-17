@@ -16,7 +16,7 @@
       "properties": {
         "id": { "type": "string", "pattern": "^[0-9a-f]{10}$" },
         "url": { "type": "string", "pattern": "^https://" },
-        "src": { "enum": ["anthropic", "claude", "docs-code", "docs-api", "courses", "cookbook", "alignment", "circuits", "help", "docs-mcp"] },
+        "src": { "enum": ["anthropic", "claude", "docs-code", "docs-api", "academy", "courses", "cards", "cookbook", "alignment", "circuits", "help", "docs-mcp"] },
         "section": { "type": "string" },
         "title": { "type": "string", "minLength": 1, "maxLength": 240 },
         "desc": { "type": "string", "maxLength": 600 },
