@@ -2,7 +2,7 @@
   "meta": {
     "company": "Anthropic, PBC",
     "schemaVersion": 2,
-    "updatedAt": "2026-11-16"
+    "updatedAt": "2026-11-17"
   },
   "zones": [
     {
@@ -471,7 +471,7 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "official": "https://www.anthropic.com/news/the-long-term-benefit-trust",
         "wikipedia": "https://en.wikipedia.org/wiki/Richard_Fontaine",
@@ -729,7 +729,7 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Dario_Amodei",
         "wikidata": "https://www.wikidata.org/wiki/Q103335665",
@@ -1225,7 +1225,7 @@
           "url": "https://www.alphaxiv.org/zh/@evan-hubinger"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "avatarCredit": "thumbnails.assets.alphaxiv.org",
       "links": {
         "official": "https://www.alphaxiv.org/zh/@evan-hubinger"
@@ -1473,7 +1473,7 @@
           "url": "https://thenextweb.com/news/ben-mann-anthropic-ipo-founder-llc"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "official": "https://thenextweb.com/news/ben-mann-anthropic-ipo-founder-llc"
       }
@@ -1729,7 +1729,7 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "official": "https://www.anthropic.com/company/leadership"
       }
@@ -2237,7 +2237,7 @@
           "url": "https://alignment.anthropic.com/2026/automated-alignment-researchers/"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "official": "https://alignment.anthropic.com/"
       }
@@ -2436,7 +2436,7 @@
           "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-17",
       "links": {
         "official": "https://claude.ai",
         "docs": "https://support.claude.com/en/articles/12138966-release-notes"

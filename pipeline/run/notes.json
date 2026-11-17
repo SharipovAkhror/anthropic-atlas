@@ -1,14 +1,12 @@
 {
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "headline": {
-    "ru": "Без новых событий: проверены кандидаты и восемь записей доски",
-    "en": "No new events: candidates checked and board entries re-verified"
+    "ru": "Без новых событий: кандидаты отсеяны, семь записей перепроверены",
+    "en": "No new events: candidates discarded, seven board entries re-verified"
   },
   "summary": {
-    "ru": "Семь кандидатов из Google News проверены: это аналитика, сводки рынка, новости о других компаниях или непроверенный отчёт (инвестиция Altimeter на $5 млрд в IPO не подтверждена открытым источником), поэтому событий не добавлено. Сверены страница руководства, пресс-релиз роудшоу, страница Long-Term Benefit Trust, исследование по автоматизированным исследователям выравнивания, release notes Claude и факторбокс Reuters. Исправлено число директоров: в источнике указаны шесть, а не восемь.",
-    "en": "Seven Google News candidates were checked: they are analysis, market roundups, news about other companies, or an unconfirmed report (a $5B Altimeter investment in the IPO was not confirmed by an opened source), so no events were added. Checked against the leadership page, the roadshow release, the Long-Term Benefit Trust page, the automated alignment researchers post, Claude release notes and the Reuters factbox. Board size corrected: the cited source lists six directors, not eight."
+    "ru": "Семь кандидатов Google News (лиды уровня 3) отсеяны: аналитика, рыночные сводки, новости о других компаниях, опрос и не подтверждённый отчёт об инвестиции Altimeter в IPO. Открыты и сверены страница руководства, пресс-релиз роудшоу (диапазон $70–78, 825 млн акций Class A), страница LTBT, исследование по выравниванию, release notes Claude, профили Хабингера и Манна.",
+    "en": "Seven Google News candidates (tier 3 leads) were discarded as analysis, market roundups, other-company news, a poll, or an unconfirmed Altimeter $5B IPO report. Opened and checked the leadership page, roadshow release ($70–78, 825M Class A), LTBT page, alignment research post, Claude release notes, and the Hubinger and Mann profiles."
   },
-  "reasons": {
-    "board_size": "в источнике (Reuters factbox, 10 ноября) шесть директоров, а не восемь; прежнее значение не подтверждено"
-  }
+  "reasons": {}
 }
