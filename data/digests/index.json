@@ -1,6 +1,19 @@
 {
   "digests": [
     {
+      "date": "2026-11-17",
+      "headline": {
+        "ru": "Без новых событий: кандидаты отсеяны, семь записей перепроверены",
+        "en": "No new events: candidates discarded, seven board entries re-verified"
+      },
+      "counts": {
+        "news": 0,
+        "added": 0,
+        "updated": 0,
+        "removed": 0
+      }
+    },
+    {
       "date": "2026-11-16",
       "headline": {
         "ru": "Без новых событий: проверены кандидаты и восемь записей доски",
