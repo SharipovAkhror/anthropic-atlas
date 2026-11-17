@@ -30,6 +30,15 @@
       }
     },
     {
+      "id": "library",
+      "renderer": "library",
+      "title": {
+        "ru": "Библиотека",
+        "en": "Library",
+        "uz": "Kutubxona"
+      }
+    },
+    {
       "id": "power",
       "renderer": "governance",
       "source": "atlas.json#shareClasses",

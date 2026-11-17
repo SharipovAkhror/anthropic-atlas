@@ -5,4 +5,4 @@ Anthropic Atlas · 2026-11-17
 Изменений нет.
 
 Проверено источников: 18, недоступны: sec-edgar. Перепроверено записей: 7.
-Доска: https://athropic-atlas.vercel.app
+Доска: https://anthropic-atlas.vercel.app

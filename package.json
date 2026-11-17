@@ -3,14 +3,19 @@
   "private": true,
   "type": "module",
   "description": "Anthropic Atlas: a daily-updated public-source monitor of Anthropic.",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "collect": "node scripts/collect.mjs",
     "digest": "node scripts/digest.mjs",
-    "check": "node scripts/validate.mjs && node scripts/test.mjs",
+    "check": "node scripts/validate.mjs && node scripts/test.mjs && node scripts/guard.mjs",
     "test": "node scripts/test.mjs",
-    "serve": "npx --yes serve@14.2.4 -l 4173 ."
+    "serve": "npx --yes serve@14.2.4 -l 4173 .",
+    "library": "node scripts/library.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "guard": "node scripts/guard.mjs"
   },
   "devDependencies": {
     "ajv": "8.17.1",

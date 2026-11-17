@@ -1,14 +1,18 @@
 name: Validate
+# Every push to main and every pull request: schema + integrity, regression tests, mass-deletion guard,
+# and a real browser opening the site on a laptop and a phone.
 on:
   push:
     branches: [main]
   pull_request:
 jobs:
   validate:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -16,3 +20,11 @@ jobs:
       - run: npm ci
       - run: node scripts/validate.mjs
       - run: node scripts/test.mjs
+      - name: Nothing lost
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then node scripts/guard.mjs --base=origin/${{ github.base_ref }}; else node scripts/guard.mjs --base=HEAD~1; fi
+      - name: Browser smoke test
+        run: |
+          npm i --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node scripts/smoke.mjs

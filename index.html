@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" href="/data/atlas.json" as="fetch" crossorigin>
   <link rel="preload" href="/data/events.json" as="fetch" crossorigin>
-  <link rel="stylesheet" href="/assets/app.css?v=20261116b">
+  <link rel="stylesheet" href="/assets/app.css?v=20261117a">
 </head>
 <body>
   <header class="bar" id="bar">
@@ -29,10 +29,8 @@
   </header>
   <nav class="tabs" id="tabs" aria-label="Sections"></nav>
   <button class="maptoggle" id="maptoggle" aria-label="Map"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><rect x="1" y="1" width="7" height="7" rx="2"/><rect x="10" y="1" width="7" height="7" rx="2"/><rect x="1" y="10" width="7" height="7" rx="2"/><rect x="10" y="10" width="7" height="7" rx="2"/></svg></button>
-  <main class="view" id="view"><div class="board" id="board"></div></main>
+  <main class="view" id="view"><section class="hero" id="hero" aria-label="Today"></section><div class="board" id="board"></div></main>
   <div class="loading" id="loading">…</div>
-  <div class="minimap" id="minimap" aria-hidden="true"><canvas width="304" height="190"></canvas></div>
-  <div class="hint" id="hint"></div>
 
   <div class="scrim" id="scrim"></div>
   <aside class="sheet" id="sheet" aria-modal="true" role="dialog">
@@ -43,6 +41,6 @@
   <div class="palette" id="palette" role="dialog" aria-label="Search"><input type="text" autocomplete="off" spellcheck="false"><ul></ul></div>
   <div class="tip" id="tip" role="tooltip"></div>
   <div class="toast" id="toast" role="status"></div>
-  <script src="/assets/app.js?v=20261116b" defer></script>
+  <script src="/assets/app.js?v=20261117a" defer></script>
 </body>
 </html>

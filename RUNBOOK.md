@@ -77,13 +77,28 @@ If still correct → set `verifiedAt` to DATE. If not → fix it (step 4). If th
   "reasons":  { "<entity id>": "почему изменено или убрано (по-русски, коротко)" }
 }
 ```
-If nothing happened: headline "Без существенных новостей", summary says which sources were checked.
+If nothing happened: headline "Без существенных новостей", summary is one plain sentence for a reader (for example "Новых событий нет; цифры IPO и состав руководства перепроверены по первоисточникам"). Never mention pipeline internals (candidates, leads, levels, Google News, "отсеяны"). The site then leads with the latest real event instead of this headline.
+
+## 6b. Library cards (Russian summaries for new public materials)
+The 05:40 job keeps `data/library.json` (every public Anthropic page: research, engineering, news, guides, docs…)
+up to date by itself. Your only job here is to write short Russian cards for items that have none yet:
+```bash
+node scripts/library-notes.mjs --todo --limit=40      # TSV: id, section, title, description, url
+```
+Write `/tmp/cards.json` as `{"<id>": {"t": "Русский заголовок", "s": "1–2 предложения, только факты из описания", "w": ["developers"], "d": "Необязательный практический шаг"}}`
+(`w` from: learners, developers, researchers, business, policy, everyone; `d` only for practical guides and docs), then:
+```bash
+node scripts/library-notes.mjs --add=/tmp/cards.json
+```
+Never edit `data/library.json` or `data/library-notes.json` directly. If you skip this step, the site shows the
+original English description; nothing breaks.
 
 ## 7. Check and build (must all pass)
 ```bash
 node scripts/validate.mjs      # fix every ERROR and run again until "OK"
 node scripts/digest.mjs        # builds data/digests/DATE.json from the actual diff and prints the Russian digest
 node scripts/validate.mjs && node scripts/test.mjs
+node scripts/guard.mjs         # fails if records disappeared without going through data/archive.json
 ```
 `digest.mjs` decides what was added/updated/removed by comparing with the last commit, so the report always
 matches the data. Do not edit `data/digests/*` by hand.
