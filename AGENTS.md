@@ -1,7 +1,7 @@
 # AGENTS.md — Anthropic Atlas
 
 Static site + daily data pipeline that monitors Anthropic from public sources.
-Production: https://athropic-atlas.vercel.app (Vercel, deploys from `main`).
+Production: https://anthropic-atlas.vercel.app (Vercel, deploys from `main`).
 
 ## Read first
 - `RUNBOOK.md` — the daily update procedure (what the morning model does, step by step).

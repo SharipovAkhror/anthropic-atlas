@@ -39,7 +39,12 @@ const cases = [
   ["http (not https) source", d => edit(d, "data/atlas.json", j => { j.people[0].sources = [{ title: "x", url: "http://example.com" }]; })],
   ["edge to missing node", d => edit(d, "data/atlas.json", j => { j.edges.push({ from: "dario-amodei", to: "ghost", type: "rep" }); })],
   ["unknown field (typo)", d => edit(d, "data/atlas.json", j => { j.people[0].rol = "x"; })],
-  ["broken JSON", d => writeFileSync(join(d, "data/events.json"), "{ \"events\": [ ")]
+  ["broken JSON", d => writeFileSync(join(d, "data/events.json"), "{ \"events\": [ ")],
+  ["library item dated in the future", d => edit(d, "data/library.json", j => { j.items[0].date = "2999-01-01"; })],
+  ["library duplicate url", d => edit(d, "data/library.json", j => { j.items[1].url = j.items[0].url; })],
+  ["library emptied by a broken source", d => edit(d, "data/library.json", j => { j.items = j.items.slice(0, 50); })],
+  ["library card with an unknown audience", d => edit(d, "data/library-notes.json", j => { const k = Object.keys(j.notes)[0]; j.notes[k].w = ["aliens"]; })],
+  ["reading path pointing at a missing item", d => edit(d, "data/library-notes.json", j => { j.paths[0].items[0].id = "0000000000"; })]
 ];
 for (const [name, mutate] of cases) {
   const d = sandbox();
@@ -69,6 +74,18 @@ for (const [name, mutate] of cases) {
     node("digest.mjs", d, [`--date=${today}`]);
     const dg2 = JSON.parse(readFileSync(join(d, `data/digests/${today}.json`), "utf8"));
     ok(dg2.news.length === 2 && dg2.removed.length === 1 && dg2.updated.length === 1, "same-day re-run keeps earlier findings and adds new ones");
+  } finally { rmSync(d, { recursive: true, force: true }); }
+}
+
+// 4. mass-deletion guard: a commit that drops records is refused
+{
+  const d = sandbox();
+  try {
+    const git = (...a) => execFileSync("git", a, { cwd: d, stdio: "ignore" });
+    git("init", "-q"); git("-c", "user.email=t@t", "-c", "user.name=t", "add", "-A"); git("-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "base");
+    ok(node("guard.mjs", d, ["--base=HEAD"]).status === 0, "guard passes when nothing was removed");
+    edit(d, "data/events.json", j => { j.events = j.events.slice(10); });
+    ok(node("guard.mjs", d, ["--base=HEAD"]).status === 1, "guard refuses ten events removed without archiving");
   } finally { rmSync(d, { recursive: true, force: true }); }
 }
 

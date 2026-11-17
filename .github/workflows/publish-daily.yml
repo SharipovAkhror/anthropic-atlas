@@ -14,7 +14,7 @@ jobs:
   publish:
     if: startsWith(github.event.head_commit.message, 'atlas-daily:')
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,6 +32,13 @@ jobs:
           if [ -n "$bad" ]; then echo "Refusing to auto-publish, non-data files changed:"; echo "$bad"; exit 1; fi
       - name: Validate branch
         run: node scripts/validate.mjs && node scripts/test.mjs
+      - name: Nothing lost
+        run: node scripts/guard.mjs --base=origin/main
+      - name: Browser smoke test
+        run: |
+          npm i --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node scripts/smoke.mjs
       - name: Merge into main
         run: |
           git config user.name "atlas-bot"

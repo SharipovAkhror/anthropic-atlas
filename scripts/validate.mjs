@@ -44,6 +44,8 @@ const events = check("data/events.json", "events.schema.json");
 const archive = check("data/archive.json", "archive.schema.json");
 const glossary = check("data/glossary.json", "glossary.schema.json");
 const modules = check("data/modules.json", "modules.schema.json");
+const library = existsSync(join(ROOT, "data/library.json")) ? check("data/library.json", "library.schema.json") : null;
+const libNotes = existsSync(join(ROOT, "data/library-notes.json")) ? check("data/library-notes.json", "library-notes.schema.json") : null;
 const sourcesReg = load("sources/sources.json");
 const digestDir = join(ROOT, "data/digests");
 const digestFiles = existsSync(digestDir) ? readdirSync(digestDir).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)) : [];
@@ -142,6 +144,24 @@ if (modules) {
     if (d && key && !Array.isArray(d[key])) err("data/modules.json", `${m.id}: source ${m.source} is not an array`);
   }
 }
+if (library) {
+  const L = "data/library.json";
+  const secIds = new Set(library.sections.map(s => s.id));
+  for (const d of new Set(dupes(library.items.map(i => i.id)))) err(L, `duplicate item id "${d}"`);
+  for (const d of new Set(dupes(library.items.map(i => i.url)))) err(L, `duplicate url "${d}"`);
+  for (const i of library.items) {
+    if (!secIds.has(i.section)) err(L, `${i.id}: unknown section "${i.section}"`);
+    if (i.date > TODAY) err(L, `${i.id}: date in the future`);
+  }
+  const live = library.items.filter(i => !i.gone).length;
+  if (live < 500) err(L, `only ${live} live items: the catalog looks broken (expected well over 1000)`);
+  if (libNotes) {
+    const ids = new Set(library.items.map(i => i.id));
+    const orphans = Object.keys(libNotes.notes).filter(k => !ids.has(k));
+    if (orphans.length) warn("data/library-notes.json", `${orphans.length} note(s) for items not in the catalog`);
+    for (const p of libNotes.paths) for (const x of p.items) if (!ids.has(x.id)) err("data/library-notes.json", `path ${p.id}: item "${x.id}" not in the catalog`);
+  }
+}
 if (digestIndex) {
   const listed = new Set((digestIndex.digests || []).map(d => d.date));
   for (const f of digestFiles) if (!listed.has(f.slice(0, 10))) err("data/digests/index.json", `digest ${f} missing from index`);
@@ -153,7 +173,7 @@ report();
 function report() {
   if (!args.quiet) for (const w of warnings) console.log(`warn  ${w}`);
   for (const e of errors) console.log(`ERROR ${e}`);
-  const counts = atlas ? `${atlas.people.length} people, ${atlas.products.length} products, ${events?.events.length ?? 0} events, ${glossary?.terms.length ?? 0} terms` : "";
+  const counts = atlas ? `${atlas.people.length} people, ${atlas.products.length} products, ${events?.events.length ?? 0} events, ${glossary?.terms.length ?? 0} terms, ${library?.items.filter(i => !i.gone).length ?? 0} library items` : "";
   console.log(errors.length ? `\nFAILED: ${errors.length} error(s), ${warnings.length} warning(s). ${counts}` : `\nOK: 0 errors, ${warnings.length} warning(s). ${counts}`);
   process.exit(errors.length ? 1 : 0);
 }

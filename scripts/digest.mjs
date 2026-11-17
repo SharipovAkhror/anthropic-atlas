@@ -15,7 +15,7 @@ const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.ur
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
 const DATE = args.date || new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" }); // the board's day is Tashkent's day
 const BASE = args.base || "HEAD";
-const SITE = "https://athropic-atlas.vercel.app";
+const SITE = "https://anthropic-atlas.vercel.app";
 
 const readNow = rel => JSON.parse(readFileSync(join(ROOT, rel), "utf8"));
 const readBase = rel => { try { return JSON.parse(execFileSync("git", ["show", `${BASE}:${rel}`], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] })); } catch { return null; } };
@@ -106,6 +106,15 @@ if (nonEventAdded.length) { md.push("\nДобавлено на доску:"); fo
 if (updated.length) { md.push("\nОбновлено:"); for (const u of updated.slice(0, 15)) md.push(`• ${u.label} (${u.fields.join(", ")})${u.reason ? ` — ${u.reason}` : ""}`); if (updated.length > 15) md.push(`…и ещё ${updated.length - 15}`); }
 if (removed.length) { md.push("\nУстарело и убрано:"); for (const r of removed) md.push(`• ${r.label} — ${r.reason}`); }
 if (!topNews.length && !nonEventAdded.length && !updated.length && !removed.length) md.push("\nИзменений нет.");
+// New public materials from the library catalog (scripts/library.mjs), with the Russian card title when one exists.
+const libPath = join(ROOT, "data/library.json");
+if (existsSync(libPath)) {
+  const lib = JSON.parse(readFileSync(libPath, "utf8"));
+  const notesPath = join(ROOT, "data/library-notes.json");
+  const cards = existsSync(notesPath) ? JSON.parse(readFileSync(notesPath, "utf8")).notes || {} : {};
+  const fresh = lib.items.filter(i => !i.gone && (i.added === DATE || i.date === DATE));
+  if (fresh.length) { md.push(`\nНовое в библиотеке (${fresh.length}):`); for (const i of fresh.slice(0, 10)) md.push(`• ${cards[i.id]?.t || i.title} — ${i.url}`); if (fresh.length > 10) md.push(`…и ещё ${fresh.length - 10} — на доске.`); }
+}
 md.push(`\nПроверено источников: ${digest.stats.sourcesOk}${failedSources.length ? `, недоступны: ${failedSources.join(", ")}` : ""}. Перепроверено записей: ${reverified.length}.`);
 md.push(`Доска: ${SITE}`);
 const text = md.join("\n");

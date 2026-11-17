@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "library.schema.json",
+  "title": "Library catalog (data/library.json), written by scripts/library.mjs only",
+  "type": "object",
+  "required": ["updated", "sections", "who", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "updated": { "type": "string", "format": "date" },
+    "sections": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["id", "ru", "en"], "properties": { "id": { "type": "string" }, "ru": { "type": "string" }, "en": { "type": "string" }, "uz": { "type": "string" } }, "additionalProperties": false } },
+    "who": { "type": "object", "additionalProperties": { "type": "array", "items": { "$ref": "#/definitions/audience" } } },
+    "items": { "type": "array", "items": {
+      "type": "object",
+      "required": ["id", "url", "src", "section", "title"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[0-9a-f]{10}$" },
+        "url": { "type": "string", "pattern": "^https://" },
+        "src": { "enum": ["anthropic", "claude", "docs-code", "docs-api"] },
+        "section": { "type": "string" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "desc": { "type": "string", "maxLength": 600 },
+        "date": { "type": "string", "format": "date" },
+        "added": { "type": "string", "format": "date" },
+        "lastmod": { "type": "string", "format": "date" },
+        "group": { "type": "string" },
+        "team": { "type": "array", "items": { "type": "string" } },
+        "gone": { "type": "string", "format": "date" },
+        "metaAt": { "type": "string", "format": "date" }
+      } } }
+  },
+  "definitions": { "audience": { "enum": ["learners", "developers", "researchers", "business", "policy", "everyone"] } }
+}

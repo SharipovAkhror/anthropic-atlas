@@ -195,6 +195,72 @@
     }).catch(() => el.parentElement.remove());
   };
 
+  // ---------------------------------------------------------------- library: everything Anthropic publishes
+  // data/library.json (catalog, written by scripts/library.mjs, no model) + data/library-notes.json (Russian cards
+  // and reading paths, optional). Loaded after the board is on screen; the board never waits for it.
+  const LT = {
+    ru: { start: "С чего начать", fresh: "Новое в библиотеке", shelves: "Библиотека", who: "Кому полезно", todo: "Что сделать", open: "Читать оригинал", all: "Все", more: "Показать ещё", filter: "Найти в разделе", items: "материалов", source: "Источник", inShelf: "Ещё в разделе", aud: { learners: "Изучающим ИИ", developers: "Разработчикам", researchers: "Исследователям", business: "Бизнесу", policy: "Политикам и журналистам", everyone: "Всем" } },
+    en: { start: "Start here", fresh: "New in the library", shelves: "Library", who: "Useful for", todo: "What to do", open: "Read the original", all: "All", more: "Show more", filter: "Search this section", items: "items", source: "Source", inShelf: "More in this section", aud: { learners: "Learning AI", developers: "Developers", researchers: "Researchers", business: "Business", policy: "Policy and press", everyone: "Everyone" } },
+    uz: { start: "Nimadan boshlash", fresh: "Kutubxonada yangi", shelves: "Kutubxona", who: "Kimga foydali", todo: "Nima qilish kerak", open: "Asl manbani o‘qish", all: "Hammasi", more: "Yana ko‘rsatish", filter: "Bo‘limda qidirish", items: "material", source: "Manba", inShelf: "Bo‘limda yana", aud: { learners: "AI o‘rganuvchilarga", developers: "Dasturchilarga", researchers: "Tadqiqotchilarga", business: "Biznesga", policy: "Siyosatchilar va jurnalistlarga", everyone: "Hammaga" } }
+  };
+  const L = k => (LT[S.lang] || LT.ru)[k] ?? LT.ru[k];
+  const audName = w => L("aud")[w] || w;
+  let LIB = null;
+  async function loadLibrary() {
+    const [lib, notes] = await Promise.all([getJSON("/data/library.json"), getJSON("/data/library-notes.json").catch(() => null)]);
+    const items = (lib.items || []).filter(i => !i.gone);
+    LIB = { sections: lib.sections, who: lib.who || {}, items, notes: notes?.notes || {}, paths: notes?.paths || [] };
+    for (const i of items) IDX.set(`lib:${i.id}`, { kind: "lib", ...i });
+    for (const s of lib.sections) IDX.set(`shelf:${s.id}`, { kind: "shelf", ...s, name: s.ru });
+  }
+  const note = i => (S.lang !== "en" ? LIB.notes[i.id] : null);
+  const libT = i => note(i)?.t || i.title;
+  const libS = i => note(i)?.s || i.desc || "";
+  const libW = i => LIB.notes[i.id]?.w || LIB.who[i.section] || [];
+  const libDate = i => i.date || i.added || "";
+  const secName = id => tx(LIB.sections.find(s => s.id === id));
+  const host2 = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; } };
+  const shortDate = d => (d ? fmtDate(d, { day: "numeric", month: "short", year: d.slice(0, 4) === String(new Date().getFullYear()) ? undefined : "numeric" }) : "");
+  const libRow = (i, sub, side) => `<button class="row noav lib" data-open="lib:${i.id}"><span class="who"><span class="nm">${esc(libT(i))}</span><span class="rl">${esc(sub ?? libS(i))}</span></span>${side ? `<span class="side num">${esc(side)}</span>` : ""}</button>`;
+  const freshItems = () => LIB.items.filter(i => libDate(i) && !/^docs-/.test(i.section)).sort((a, b) => libDate(b).localeCompare(libDate(a)));
+
+  R.library = () => {
+    if (!LIB) return;
+    // 1. reading paths: one quiet switch, one list
+    if (LIB.paths.length) {
+      const pid = LIB.paths.some(p => p.id === S.libPath) ? S.libPath : LIB.paths[0].id;
+      const body = () => { const p = LIB.paths.find(x => x.id === (S.libPath || pid)); return `<div class="seg" role="tablist">${LIB.paths.map(x => `<button role="tab" data-path="${x.id}" aria-selected="${x.id === p.id}">${esc(tx(x))}</button>`).join("")}</div><ol class="path">${p.items.map(x => IDX.get(`lib:${x.id}`)).filter(Boolean).map((i, n) => `<li>${libRow(i, (S.lang !== "en" && p.items[n] && p.items.find(y => y.id === i.id)?.why) || secName(i.section))}</li>`).join("")}</ol>`; };
+      const el = island("lib-start", L("start"), { far: LIB.paths.map(p => `<div class="far-l">${esc(tx(p))}</div>`).join("") }, body());
+      el.addEventListener("click", e => { const b = e.target.closest("[data-path]"); if (!b) return; S.libPath = b.dataset.path; $(".ib", el).innerHTML = body(); relayoutSoon(); });
+    }
+    // 2. what is new
+    const fresh = freshItems().slice(0, 8);
+    island("lib-new", L("fresh"), { far: fresh.slice(0, 5).map(i => `<div class="far-l">${esc(libT(i))}</div>`).join("") }, fresh.map(i => libRow(i, `${secName(i.section)} · ${shortDate(libDate(i))}`)).join(""));
+    // 3. the shelves: every section, its size and its latest title
+    const secs = LIB.sections.map(s => ({ s, list: LIB.items.filter(i => i.section === s.id) })).filter(x => x.list.length);
+    island("lib-shelves", L("shelves"), { count: String(LIB.items.length), far: `<div class="far-v"><b class="num">${LIB.items.length}</b><span>${esc(L("items"))}</span></div>` },
+      secs.map(({ s, list }) => { const top = [...list].sort((a, b) => libDate(b).localeCompare(libDate(a)))[0]; return `<button class="row noav shelf" data-open="shelf:${s.id}"><span class="who"><span class="nm">${esc(tx(s))}</span><span class="rl">${esc(libT(top))}</span></span><span class="side num">${list.length}</span></button>`; }).join(""));
+  };
+
+  // shelf sheet: search + audience filter + list; long lists grow in pages of 60
+  const SH = { q: "", aud: "all", lim: 60 };
+  function fillShelf() {
+    const host = $("#sheet-body .shelf-list"); if (!host) return;
+    const sec = host.dataset.shelf;
+    const n = s => s.toLowerCase();
+    const words = n(SH.q).split(/\s+/).filter(Boolean);
+    let list = LIB.items.filter(i => i.section === sec && (SH.aud === "all" || libW(i).includes(SH.aud)) && (!words.length || words.every(w => n(`${libT(i)} ${i.title} ${libS(i)} ${i.desc || ""} ${i.group || ""}`).includes(w))));
+    const docs = /^docs-/.test(sec);
+    if (!docs) list.sort((a, b) => libDate(b).localeCompare(libDate(a)));
+    const shown = list.slice(0, SH.lim);
+    let html = "", g = null;
+    for (const i of shown) {
+      if (docs && i.group !== g) { g = i.group; html += `<div class="day-h">${esc(g || "")}</div>`; }
+      html += libRow(i, undefined, docs ? "" : shortDate(libDate(i)));
+    }
+    host.innerHTML = (html || `<div class="empty">${esc(t("nothing"))}</div>`) + (list.length > SH.lim ? `<button class="more" data-lim>${esc(L("more"))} · ${list.length - SH.lim}</button>` : "");
+  }
+
   // ---------------------------------------------------------------- sheet (one template for every entity kind)
   function linksHTML(links) {
     if (!links) return "";
@@ -213,6 +279,22 @@
   }
 
   const SHEET = {
+    lib(i) {
+      const n = note(i), d = libDate(i), sib = LIB.items.filter(x => x.section === i.section && x.id !== i.id && (/^docs-/.test(i.section) ? x.group === i.group : true)).sort((a, b) => libDate(b).localeCompare(libDate(a))).slice(0, 4);
+      return `<div class="hd"><div><div class="cap">${esc(secName(i.section))}${d ? ` · ${esc(fmtDate(d))}` : ""}</div><h3 data-copy style="margin-top:4px">${esc(libT(i))}</h3>${n?.t && n.t !== i.title ? `<div class="sub">${esc(i.title)}</div>` : ""}</div></div>
+        ${libS(i) ? `<p class="lead">${gloss(libS(i))}</p>` : ""}
+        ${n?.d ? `<div class="todo"><span>${esc(L("todo"))}</span>${esc(n.d)}</div>` : ""}
+        ${kv([[L("who"), esc(libW(i).map(audName).join(", "))], [L("source"), esc(host2(i.url))]])}
+        <a class="go" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(L("open"))}<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 2h6v6M10 2 2 10"/></svg></a>
+        ${sib.length ? `<div class="blk"><h4>${esc(L("inShelf"))}</h4>${sib.map(x => libRow(x, undefined, /^docs-/.test(x.section) ? "" : shortDate(libDate(x)))).join("")}</div>` : ""}`;
+    },
+    shelf(s) {
+      const list = LIB.items.filter(i => i.section === s.id);
+      const auds = Object.keys(L("aud")).filter(w => list.some(i => libW(i).includes(w)));
+      return `<div class="hd"><div><div class="cap">${esc(L("shelves"))}</div><h3 data-copy style="margin-top:4px">${esc(tx(s))}</h3><div class="sub">${list.length} ${esc(L("items"))}</div></div></div>
+        <div class="shelf-tools"><input class="sf" type="search" autocomplete="off" spellcheck="false" placeholder="${esc(L("filter"))}" value="${esc(SH.q)}">${auds.length > 1 ? `<div class="chips">${["all", ...auds].map(w => `<button data-aud="${w}" aria-pressed="${SH.aud === w}">${esc(w === "all" ? L("all") : audName(w))}</button>`).join("")}</div>` : ""}</div>
+        <div class="shelf-list" data-shelf="${esc(s.id)}"></div>`;
+    },
     person(p) {
       const up = D.atlas.edges.filter(e => e.to === p.id).map(e => [e, byId(e.from)]).filter(x => x[1]);
       const down = D.atlas.edges.filter(e => e.from === p.id).map(e => [e, byId(e.to)]).filter(x => x[1]);
@@ -257,9 +339,11 @@
     const e = IDX.get(`${kind}:${id}`);
     if (!e) return;
     if (push && (!S.stack.length || S.stack.at(-1).id !== id)) S.stack.push({ kind, id });
+    if (kind === "shelf" && push) Object.assign(SH, { q: "", aud: "all", lim: 60 });
     $("#sheet-body").innerHTML = SHEET[kind](e);
+    if (kind === "shelf") fillShelf();
     $("#sheet-body").scrollTop = 0;
-    const name = x => x.name || x.term || tx(x.title) || tx(x.label);
+    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "shelf" ? tx(x) : x.name || x.term || tx(x.title) || tx(x.label));
         const prev = S.stack.length > 1 ? S.stack.at(-2) : null;
     $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
     const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
@@ -285,9 +369,9 @@
 
   // ---------------------------------------------------------------- masthead (newspaper front page)
   const MAST = {
-    ru: { edition: "Ежедневный выпуск", tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника" },
-    en: { edition: "Daily edition", tag: "Anthropic from public sources: people, power, products, chronicle" },
-    uz: { edition: "Kundalik son", tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika" }
+    ru: { edition: "Ежедневный выпуск", tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника и всё, что она публикует" },
+    en: { edition: "Daily edition", tag: "Anthropic from public sources: people, power, products, chronicle and everything it publishes" },
+    uz: { edition: "Kundalik son", tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika va u nashr etgan hamma narsa" }
   };
   const M = k => MAST[S.lang][k] || MAST.ru[k];
   function stampText() {
@@ -585,7 +669,9 @@
       ...D.atlas.people.map(p => ({ k: "person", id: p.id, label: p.name, sub: tx(p.role), hay: `${p.name} ${p.role.ru} ${p.role.en} ${tx(p.bio)}`, pic: p.kind === "group" ? icon(p) : avatar(p) })),
       ...D.atlas.products.map(p => ({ k: "product", id: p.id, label: p.name, sub: clusterLabel(p.cluster), hay: `${p.name} ${tx(p.description)} ${(p.children || []).map(c => c.name + " " + (c.apiId || "")).join(" ")}`, pic: icon(p) })),
       ...D.terms.map(g => ({ k: "term", id: g.id, label: g.term, sub: tx(g.definition).slice(0, 60) + "…", hay: `${g.term} ${(g.aliases || []).join(" ")}`, pic: "" })),
-      ...D.events.map(e => ({ k: "event", id: e.id, label: tx(e.title), sub: fmtDate(e.date), hay: `${e.title.ru} ${e.title.en} ${tx(e.summary)}`, pic: "" }))
+      ...D.events.map(e => ({ k: "event", id: e.id, label: tx(e.title), sub: fmtDate(e.date), hay: `${e.title.ru} ${e.title.en} ${tx(e.summary)}`, pic: "" })),
+      ...(LIB ? LIB.sections.map(s => ({ k: "shelf", id: s.id, label: tx(s), sub: L("shelves"), hay: `${s.ru} ${s.en} ${L("shelves")}`, pic: "" })) : []),
+      ...(LIB ? LIB.items.map(i => ({ k: "lib", id: i.id, label: libT(i), sub: `${secName(i.section)} · ${host2(i.url)}`, hay: `${libT(i)} ${i.title} ${libS(i)} ${i.desc || ""} ${i.group || ""}`, pic: "" })) : [])
     ];
   }
   let PI = [], sel = 0, results = [];
@@ -594,7 +680,7 @@
   function search(q) {
     const n = s => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
     const words = n(q).split(/\s+/).filter(Boolean);
-    results = (words.length ? PI.map(it => { const h = n(it.hay), l = n(it.label); if (!words.every(w => h.includes(w))) return null; return [it, (l.startsWith(words[0]) ? 0 : l.includes(words[0]) ? 1 : 2) + (it.k === "event" ? .5 : 0)]; }).filter(Boolean).sort((a, b) => a[1] - b[1]).map(x => x[0]) : PI.filter(i => i.k !== "event").slice(0, 10)).slice(0, 40);
+    results = (words.length ? PI.map(it => { const h = n(it.hay), l = n(it.label); if (!words.every(w => h.includes(w))) return null; return [it, (l.startsWith(words[0]) ? 0 : l.includes(words[0]) ? 1 : 2) + (it.k === "event" ? .5 : it.k === "lib" ? .7 : 0)]; }).filter(Boolean).sort((a, b) => a[1] - b[1]).map(x => x[0]) : PI.filter(i => i.k !== "event" && i.k !== "lib").slice(0, 10)).slice(0, 40);
     sel = 0; drawResults();
   }
   function drawResults() {
@@ -655,6 +741,11 @@
     });
     document.addEventListener("mouseover", e => { const g = e.target.closest("abbr.g"); if (g && !$("#view").classList.contains("panning")) { const term = IDX.get(`term:${g.dataset.term}`); if (term) showTip(g, term.term, tx(term.definition)); } });
     document.addEventListener("mouseout", e => { if (e.target.closest("abbr.g")) hideTip(); });
+    $("#sheet-body").addEventListener("input", e => { if (e.target.matches(".sf")) { SH.q = e.target.value; SH.lim = 60; fillShelf(); } });
+    $("#sheet-body").addEventListener("click", e => {
+      const a = e.target.closest("[data-aud]"); if (a) { SH.aud = a.dataset.aud; SH.lim = 60; $$("[data-aud]", $("#sheet-body")).forEach(b => b.setAttribute("aria-pressed", b === a)); fillShelf(); return; }
+      if (e.target.closest("[data-lim]")) { SH.lim += 60; fillShelf(); }
+    });
     $("#scrim").addEventListener("click", closeSheet);
     $("#x").addEventListener("click", closeSheet);
     $("#pscrim").addEventListener("click", closePalette);
@@ -701,13 +792,13 @@
     if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false }); }
   }
   function fromHash() {
-    const m = location.hash.match(/^#\/(person|product|event|term|fact)\/(.+)$/);
+    const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf)\/(.+)$/);
     if (m) { S.stack = []; const id = decodeURIComponent(m[2]); openEntity(m[1], id, { fromHash: true }); setTimeout(() => reveal(m[1], id), 120); }
   }
 
   // ---------------------------------------------------------------- boot
   const qlang = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qlang)) S.lang = qlang;
-  load().then(() => { buildGloss(); bind(); bindCanvas(); bindPhone(); renderAll(); fromHash(); $("#loading").remove(); document.fonts?.ready.then(() => !phone() && layout()); })
+  load().then(() => { buildGloss(); bind(); bindCanvas(); bindPhone(); renderAll(); fromHash(); $("#loading").remove(); loadLibrary().then(() => { const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } else fromHash(); }).catch(e => console.warn("library", e)); document.fonts?.ready.then(() => !phone() && layout()); })
     .catch(err => { $("#loading").textContent = `Не удалось загрузить данные. ${err.message}`; console.error(err); });
   window.ATLAS = { get data() { return D; }, openEntity, cam, fitAll };
 })();
