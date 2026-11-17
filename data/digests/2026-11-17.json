@@ -1,13 +1,13 @@
 {
   "date": "2026-11-17",
-  "generatedAt": "2026-11-17T15:36:33.161Z",
+  "generatedAt": "2026-11-17T15:36:41.169Z",
   "headline": {
-    "ru": "Без новых событий: кандидаты отсеяны, семь записей перепроверены",
-    "en": "No new events: candidates discarded, seven board entries re-verified"
+    "ru": "Без существенных новостей",
+    "en": "No significant news"
   },
   "summary": {
-    "ru": "Семь кандидатов Google News (лиды уровня 3) отсеяны: аналитика, рыночные сводки, новости о других компаниях, опрос и не подтверждённый отчёт об инвестиции Altimeter в IPO. Открыты и сверены страница руководства, пресс-релиз роудшоу (диапазон $70–78, 825 млн акций Class A), страница LTBT, исследование по выравниванию, release notes Claude, профили Хабингера и Манна.",
-    "en": "Seven Google News candidates (tier 3 leads) were discarded as analysis, market roundups, other-company news, a poll, or an unconfirmed Altimeter $5B IPO report. Opened and checked the leadership page, roadshow release ($70–78, 825M Class A), LTBT page, alignment research post, Claude release notes, and the Hubinger and Mann profiles."
+    "ru": "Новых событий нет; цифры IPO, состав руководства и траст LTBT перепроверены по первоисточникам.",
+    "en": "No new events; IPO figures, leadership and the LTBT were re-checked against primary sources."
   },
   "news": [],
   "library": [],
