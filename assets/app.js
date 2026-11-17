@@ -5,12 +5,13 @@
    Every entity, at any depth, opens in the same sheet template. */
 (() => {
   "use strict";
+  if (!Array.prototype.at) Object.defineProperty(Array.prototype, "at", { value(i) { i = Math.trunc(i) || 0; return this[i < 0 ? this.length + i : i]; } });
 
   // ---------------------------------------------------------------- i18n
   const UI = {
-    ru: { updated: "Обновлено", today: "сегодня", yesterday: "вчера", at: "в", news: "новости", added: "добавлено", updatedN: "изменено", libN: "в библиотеке", removed: "убрано", find: "Поиск", search: "Люди, продукты, события, термины", nothing: "Ничего не найдено", former: "Бывшие", trust: "Траст LTBT", board: "Совет директоров", votes: "Голоса акционеров", status: "Статус", since: "В компании с", until: "До", zone: "Направление", released: "Выпуск", metrics: "Ключевое", owners: "Ответственные", children: "Состав", related: "Связи", events: "События", sources: "Источники", verified: "Проверено", wikipedia: "Википедия", official: "Официально", docs: "Документация", wikidata: "Wikidata", github: "GitHub", site: "Сайт", linkedin: "LinkedIn", x: "X", reports: "Подчиняется", manages: "Руководит", oversees: "Под надзором", oversightBy: "Надзор: совет или траст", products: "Продукты", active: "работает", preview: "превью", legacy: "предыдущее", retired: "выведен", deprecated: "устарел", formerS: "бывший сотрудник", activeP: "в компании", copied: "Ссылка скопирована", asOf: "На дату", digestFor: "Сводка за", aliases: "Также", seeAlso: "Где встречается", newBadge: "новое", earlier: "Ранее", showAll: "Показать все", hint: "Перетаскивайте пространство · щипок или Ctrl + колесо отдаляет · 0 показывает всё", noDigest: "Сводки пока нет", footer: "Открытые источники, обновление каждое утро", method: "Методология", repo: "GitHub", types: { model: "Модели", product: "Продукты", people: "Люди", governance: "Управление", finance: "Финансы", policy: "Политика", research: "Исследования", safety: "Безопасность", partnership: "Партнёрства", legal: "Право", infrastructure: "Платформа" } },
-    en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", libN: "in the library", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · pinch or Ctrl + wheel to zoom · 0 shows everything", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
-    uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", libN: "kutubxonada", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Maydonni suring · chimdish yoki Ctrl + g‘ildirak uzoqlashtiradi · 0 hammasini ko‘rsatadi", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
+    ru: { updated: "Обновлено", today: "сегодня", yesterday: "вчера", at: "в", news: "новости", added: "добавлено", updatedN: "изменено", libN: "в библиотеке", removed: "убрано", find: "Поиск", search: "Люди, продукты, события, термины", nothing: "Ничего не найдено", former: "Бывшие", trust: "Траст LTBT", board: "Совет директоров", votes: "Голоса акционеров", status: "Статус", since: "В компании с", until: "До", zone: "Направление", released: "Выпуск", metrics: "Ключевое", owners: "Ответственные", children: "Состав", related: "Связи", events: "События", sources: "Источники", verified: "Проверено", wikipedia: "Википедия", official: "Официально", docs: "Документация", wikidata: "Wikidata", github: "GitHub", site: "Сайт", linkedin: "LinkedIn", x: "X", reports: "Подчиняется", manages: "Руководит", oversees: "Под надзором", oversightBy: "Надзор: совет или траст", products: "Продукты", active: "работает", preview: "превью", legacy: "предыдущее", retired: "выведен", deprecated: "устарел", formerS: "бывший сотрудник", activeP: "в компании", copied: "Ссылка скопирована", asOf: "На дату", digestFor: "Сводка за", aliases: "Также", seeAlso: "Где встречается", newBadge: "новое", earlier: "Ранее", showAll: "Показать все", hint: "Перетаскивайте · Ctrl + колесо — масштаб", hintT: "Двигайте пальцем · щипок — масштаб", noDigest: "Сводки пока нет", footer: "Открытые источники, обновление каждое утро", method: "Методология", repo: "GitHub", types: { model: "Модели", product: "Продукты", people: "Люди", governance: "Управление", finance: "Финансы", policy: "Политика", research: "Исследования", safety: "Безопасность", partnership: "Партнёрства", legal: "Право", infrastructure: "Платформа" } },
+    en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", libN: "in the library", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · Ctrl + wheel to zoom", hintT: "Drag with a finger · pinch to zoom", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
+    uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", libN: "kutubxonada", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Suring · Ctrl + g‘ildirak — masshtab", hintT: "Barmoq bilan suring · chimdish — masshtab", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
   };
   const LANGS = ["ru", "en", "uz"];
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
@@ -26,8 +27,17 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const phone = () => matchMedia("(max-width: 760px)").matches;
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const UZM = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"], UZW = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"];
+  function uzDate(dt, o) {
+    const m = o.month === "short" ? UZM[dt.getUTCMonth()].slice(0, 3) : UZM[dt.getUTCMonth()];
+    let r = o.day ? `${dt.getUTCDate()}-${m}` : m;
+    if (o.year) r = `${dt.getUTCFullYear()}-yil ${r}`;
+    if (o.weekday) r = `${UZW[dt.getUTCDay()]}, ${r}`;
+    return r;
+  }
   function fmtDate(d, opts = { day: "numeric", month: "long", year: "numeric" }) {
     if (!d) return "";
+    if (S.lang === "uz" && /^\d{4}-\d{2}(-\d{2})?$/.test(d)) return uzDate(new Date((d.length === 7 ? d + "-01" : d) + "T12:00:00Z"), d.length === 7 ? { month: "long", year: "numeric" } : opts);
     if (/^\d{4}$/.test(d)) return d;
     if (/^\d{4}-\d{2}$/.test(d)) return new Date(d + "-01T12:00:00Z").toLocaleDateString(locale(), { month: "long", year: "numeric" });
     if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return new Date(d + "T12:00:00Z").toLocaleDateString(locale(), opts);
@@ -35,9 +45,10 @@
   }
   const initials = p => esc(p.initials || p.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase());
   function avatar(p, cls = "") {
-    const img = p.avatar ? `<img src="${esc(p.avatar)}" alt="" loading="lazy" decoding="async" draggable="false" onerror="this.remove()">` : "";
+    const img = p.avatar ? `<img src="${esc(p.avatar)}" alt="" loading="lazy" decoding="async" draggable="false">` : "";
     return `<span class="av ${cls}">${initials(p)}${img}</span>`;
   }
+  const safeUrl = u => (/^https:\/\//i.test(String(u || "")) ? String(u) : "#");
   const glyph = name => esc((name.replace(/^Claude\s+/, "").replace(/[^\p{L}\p{N}]/gu, "") || "··").slice(0, 2));
   const icon = (p, cls = "") => (p.kind === "group" ? `<span class="av ${cls}">${initials(p)}</span>` : "");
   function toast(msg) { const el = $("#toast"); el.textContent = msg; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 1600); }
@@ -45,17 +56,19 @@
   // ---------------------------------------------------------------- data
   let D;
   const IDX = new Map(); // "kind:id" -> entity
-  async function getJSON(path) { const r = await fetch(path, { cache: "no-cache" }); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
+  async function getJSON(path) { const r = await fetch(path); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
+  const normDigest = x => (x && x.date ? { news: [], added: [], updated: [], removed: [], library: [], ...x } : null);
   async function load() {
     const [atlas, events, glossary, modules, digests] = await Promise.all(["/data/atlas.json", "/data/events.json", "/data/glossary.json", "/data/modules.json", "/data/digests/index.json"].map(p => getJSON(p).catch(() => null)));
     if (!atlas) throw new Error("atlas.json");
-    D = { atlas, events: events?.events || [], terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [] };
+    D = { atlas, events: (events?.events || []).filter(e => e && e.id && /^\d{4}-\d{2}/.test(e.date || "") && e.title), terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [] };
     for (const p of atlas.people) IDX.set(`person:${p.id}`, { ...p, kind: p.kind === "group" ? "group" : "person", isPerson: true });
     for (const p of atlas.products) IDX.set(`product:${p.id}`, { kind: "product", ...p });
     for (const e of D.events) IDX.set(`event:${e.id}`, { kind: "event", ...e });
     for (const g of D.terms) IDX.set(`term:${g.id}`, { kind: "term", ...g });
     for (const f of atlas.facts) IDX.set(`fact:${f.id}`, { kind: "fact", ...f });
-    if (D.digests[0]) S.digest = await getJSON(`/data/digests/${D.digests[0].date}.json`).catch(() => null);
+    if (!D.modules.length) throw new Error("modules.json");
+    if (D.digests[0]) S.digest = S.latest = normDigest(await getJSON(`/data/digests/${D.digests[0].date}.json`).catch(() => null));
   }
   const ref = x => (x.isPerson ? "person" : x.kind);
   const byId = id => IDX.get(`person:${id}`) || IDX.get(`product:${id}`) || IDX.get(`event:${id}`) || IDX.get(`term:${id}`) || IDX.get(`fact:${id}`);
@@ -98,15 +111,16 @@
 
   const R = {};
   function leadStory() {
-    const dg = S.digest;
-    if (dg && dg.news.length) return { k: `${t("digestFor")} ${fmtDate(dg.date)}`, h: tx(dg.headline), s: tx(dg.summary) };
-    const evs = [...D.events].sort((a, b) => b.date.localeCompare(a.date));
+    const dg = S.digest, upto = dg?.date || "9999";
+    if (dg && dg.news.length) return { k: `${t("digestFor")} ${fmtDate(dg.date)}`, h: tx(dg.headline), s: tx(dg.summary), ref: dg.news.length === 1 && IDX.has(`event:${dg.news[0]}`) ? `event:${dg.news[0]}` : "" };
+    const evs = D.events.filter(e => e.date <= upto).sort((a, b) => b.date.localeCompare(a.date) || (b.importance || 0) - (a.importance || 0));
     if (!evs.length) return { k: "", h: dg ? tx(dg.headline) : M("tag"), s: dg ? tx(dg.summary) : "" };
-    const lim = new Date(new Date(evs[0].date).getTime() - 7 * 864e5).toISOString().slice(0, 10);
-    const e = evs.filter(x => x.date >= lim).sort((a, b) => (b.importance || 0) - (a.importance || 0) || b.date.localeCompare(a.date))[0];
-    const auto = autoNews().filter(x => x.date > e.date).sort((a, b) => b.date.localeCompare(a.date))[0];
-    if (auto) return { k: `${M("latest")} · ${fmtDate(auto.date, { day: "numeric", month: "long" })}`, h: libT(auto.item), s: libS(auto.item), ref: `lib:${auto.id}`, quiet: !!dg && !(dg.library || []).length };
-    return { k: `${M("latest")} · ${fmtDate(e.date, { day: "numeric", month: "long" })}`, h: tx(e.title), s: tx(e.summary), ref: `event:${e.id}`, quiet: !!dg && !(dg.library || []).length };
+    const e = evs[0];
+    const auto = AN().filter(x => x.date > e.date && x.date <= upto && (S.lang === "en" || LIB.notes[x.id]))[0];
+    const pick = auto ? { date: auto.date, h: libT(auto.item), s: libS(auto.item), ref: `lib:${auto.id}` } : { date: e.date, h: tx(e.title), s: tx(e.summary), ref: `event:${e.id}` };
+    const gap = Math.round((new Date(upto === "9999" ? Date.now() : upto + "T12:00:00Z") - new Date(pick.date + "T12:00:00Z")) / 864e5);
+    const quiet = !!dg && !(dg.library || []).length && gap >= 1;
+    return { k: `${M("latest")} · ${fmtDate(pick.date, { day: "numeric", month: "long" })}`, h: pick.h, s: pick.s, ref: pick.ref, quiet, gap };
   }
 
   R.digest = m => {
@@ -125,10 +139,11 @@
     const el = island(m.id, tx(m.title), { cls: "today notitle", far: `<div class="far-k">${esc(fmtDate(dg.date))}</div><div class="far-h">${esc(tx(dg.headline))}</div>` }, `
       <div class="date">${esc(lead.k)}</div>
       <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
-      <p class="summary">${gloss(lead.s)}</p>${lead.quiet ? `<p class="quiet">${esc(M("quiet"))}</p>` : ""}
+      <p class="summary">${gloss(lead.s)}</p>${lead.quiet ? `<p class="quiet">${esc(lead.gap > 1 ? (MAST[S.lang].daysAgo || MAST.ru.daysAgo)(lead.gap) : M("quiet"))}</p>` : ""}
+      ${phone() ? `<div class="mstats">${D.atlas.facts.slice(0, 4).map(f => `<button data-open="fact:${f.id}"><b class="num">${esc(tx(f.value))}</b><span>${esc(tx(f.label))}</span></button>`).join("")}</div><p class="mtag">${esc(M("tag"))}</p>` : ""}
       <div class="counts">${groups.filter(g => g[1].length).map(([k, items]) => `<button data-g="${k}" aria-expanded="false"><b class="num">${items.length}</b> ${esc(t(k))}</button>`).join("")}</div>
       <div class="collapse dg"><div><ul class="dl"></ul></div></div>
-      ${past.length > 1 ? `<div class="past"><span>${esc(t("earlier"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
+      ${past.length > 1 ? `<div class="past"><span>${esc(M("digests"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
     const panel = $(".dg", el), list = $(".dl", el);
     $$(".counts button", el).forEach(b => b.addEventListener("click", () => {
       const open = b.getAttribute("aria-expanded") === "true";
@@ -147,21 +162,27 @@
 
   // Official posts from anthropic.com/news that no curated event covers yet (by URL), newer than the curated
   // chronicle minus a few days: the chronicle stays current even on days when no one curates it.
+  const normUrl = u => String(u || "").toLowerCase().replace(/^http:/, "https:").replace(/\/\/www\./, "//").replace(/[#?].*$/, "").replace(/\/+$/, "");
+  const words = s => new Set(String(s || "").toLowerCase().match(/[\p{L}\p{N}]{4,}/gu) || []);
+  let AN_CACHE = null;
+  const AN = () => (AN_CACHE ??= autoNews());
   function autoNews() {
-    if (!LIB || !D.events.length) return [];
-    const covered = new Set(D.events.flatMap(e => (e.sources || []).map(s => s.url.replace(/[#?].*$/, "").replace(/\/$/, ""))));
-    const newest = D.events.reduce((m, e) => (e.date > m ? e.date : m), "");
-    const since = new Date(new Date(newest).getTime() - 3 * 864e5).toISOString().slice(0, 10);
-    return LIB.items.filter(i => i.section === "news" && i.date && i.date >= since && !covered.has(i.url.replace(/\/$/, "")))
-      .map(i => ({ auto: true, id: i.id, date: i.date, importance: 2, item: i }));
+    if (!LIB) return [];
+    const covered = new Set(D.events.flatMap(e => (e.sources || []).map(s => normUrl(s.url))));
+    const since = new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10);
+    const near = (a, b) => Math.abs(new Date(a) - new Date(b)) <= 864e5 * 1.5;
+    return LIB.items.filter(i => i.section === "news" && /^\d{4}-\d{2}-\d{2}$/.test(i.date || "") && i.date >= since && /\/news\/[^/]*-[^/]*$/.test(normUrl(i.url)) && !covered.has(normUrl(i.url)))
+      .filter(i => { const w = words(i.title); return !D.events.some(e => near(e.date, i.date) && w.size && [...words(e.title.en)].filter(x => w.has(x)).length / w.size >= .5); })
+      .map(i => ({ auto: true, id: i.id, date: i.date, importance: 1, item: i }))
+      .sort((a, b) => b.date.localeCompare(a.date));
   }
   R.timeline = m => {
-    const all = [...autoNews(), ...D.events].sort((a, b) => b.date.localeCompare(a.date));
+    const all = [...D.events, ...AN()].sort((a, b) => b.date.localeCompare(a.date) || (b.importance || 0) - (a.importance || 0) || (a.auto ? 1 : 0) - (b.auto ? 1 : 0));
     const evs = S.allEvents ? all : all.slice(0, 16);
     const days = [];
     for (const e of evs) { const last = days.at(-1); if (last && last.date === e.date) last.items.push(e); else days.push({ date: e.date, items: [e] }); }
     const thisYear = String(new Date().getFullYear());
-    const el = island(m.id, tx(m.title), { count: String(D.events.length + autoNews().length), lead: tx(m.lead), far: D.events.slice(0, 6).map(e => `<div class="far-l">${esc(tx(e.title))}</div>`).join("") }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => e.auto ? `
+    const el = island(m.id, tx(m.title), { count: String(all.length), lead: tx(m.lead), far: D.events.slice(0, 6).map(e => `<div class="far-l">${esc(tx(e.title))}</div>`).join("") }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => e.auto ? `
       <button class="ev" data-open="lib:${e.id}" data-imp="2"><span class="t">${esc(libT(e.item))}</span><span class="m">${esc(M("official"))}</span></button>` : `
       <button class="ev" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)}</span></button>`).join("")}`).join("") + (S.allEvents || all.length <= 16 ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${all.length}</button>`));
     $("[data-all]", el)?.addEventListener("click", () => { S.allEvents = true; renderAll({ keepCamera: true }); });
@@ -233,6 +254,7 @@
   async function loadLibrary() {
     const [lib, notes] = await Promise.all([getJSON("/data/library.json"), getJSON("/data/library-notes.json").catch(() => null)]);
     const items = (lib.items || []).filter(i => !i.gone);
+    if (!Array.isArray(lib.sections)) lib.sections = [];
     LIB = { sections: lib.sections, who: lib.who || {}, items, notes: notes?.notes || {}, paths: notes?.paths || [] };
     for (const i of items) IDX.set(`lib:${i.id}`, { kind: "lib", ...i });
     for (const s of lib.sections) IDX.set(`shelf:${s.id}`, { kind: "shelf", ...s, name: s.ru });
@@ -289,11 +311,11 @@
   function linksHTML(links) {
     if (!links) return "";
     const ks = ["wikipedia", "official", "docs", "github", "site", "linkedin", "x", "wikidata"].filter(k => links[k]);
-    return ks.length ? `<div class="links">${ks.map(k => `<a href="${esc(links[k])}" target="_blank" rel="noopener">${esc(t(k))}</a>`).join("<i>·</i>")}</div>` : "";
+    return ks.length ? `<div class="links">${ks.map(k => `<a href="${esc(safeUrl(links[k]))}" target="_blank" rel="noopener">${esc(t(k))}</a>`).join("<i>·</i>")}</div>` : "";
   }
   function sourcesHTML(e) {
     if (!e.sources?.length) return "";
-    return `<div class="blk"><h4>${esc(t("sources"))}</h4><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}</div>${e.verifiedAt ? `<div class="verified">${esc(t("verified"))} ${esc(fmtDate(e.verifiedAt))}</div>` : ""}</div>`;
+    return `<div class="blk"><h4>${esc(t("sources"))}</h4><div class="sources">${e.sources.map(s => `<a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}</div>${e.verifiedAt ? `<div class="verified">${esc(t("verified"))} ${esc(fmtDate(e.verifiedAt))}</div>` : ""}</div>`;
   }
   const relEvents = (id, name) => D.events.filter(e => (e.entities || []).includes(id) || (name && name.length > 5 && (tx(e.title) + " " + e.title.en).includes(name))).slice(0, 8);
   const eventsHTML = evs => (evs.length ? `<div class="blk"><h4>${esc(t("events"))}</h4>${evs.map(e => `<button class="ev" data-open="event:${e.id}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(fmtDate(e.date))}</span></button>`).join("")}</div>` : "");
@@ -308,7 +330,7 @@
       return `<div class="hd"><div><div class="cap">${esc(secName(i.section))}${d ? ` · ${esc(fmtDate(d))}` : ""}</div><h3 data-copy style="margin-top:4px">${esc(libT(i))}</h3>${n?.t && n.t !== i.title ? `<div class="sub">${esc(i.title)}</div>` : ""}</div></div>
         ${libS(i) ? `<p class="lead">${gloss(libS(i))}</p>` : ""}
         ${n?.d ? `<div class="todo"><span>${esc(L("todo"))}</span>${esc(n.d)}</div>` : ""}
-        <a class="go" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(L("open"))}<span>${esc(host2(i.url))}</span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 2h6v6M10 2 2 10"/></svg></a>
+        <a class="go" href="${esc(safeUrl(i.url))}" target="_blank" rel="noopener">${esc(L("open"))}<span>${esc(host2(i.url))}</span><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 2h6v6M10 2 2 10"/></svg></a>
         ${kv([[L("who"), esc(libW(i).map(audName).join(", "))]])}
         ${sib.length ? `<div class="blk"><h4>${esc(L("inShelf"))}</h4>${sib.map(x => libRow(x, undefined, /^docs-/.test(x.section) ? "" : shortDate(libDate(x)))).join("")}</div>` : ""}`;
     },
@@ -336,7 +358,7 @@
       return `<div class="hd"><div><div class="cap">${esc(clusterLabel(p.cluster))}</div><h3 data-copy style="margin-top:2px">${esc(p.name)}</h3>${p.status !== "active" ? `<div class="sub"><span class="st ${p.status}">${esc(t(p.status))}</span></div>` : ""}</div></div>
         <p class="lead">${gloss(tx(p.description))}</p>${linksHTML(p.links)}
         ${kv([[t("released"), esc(fmtDate(p.released))], [t("metrics"), p.metrics ? gloss(p.metrics) : ""]])}
-        ${p.children?.length ? `<div class="blk"><h4>${esc(t("children"))}</h4>${p.children.map(c => `<div class="child"><span>${c.docs ? `<a href="${esc(c.docs)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}${c.apiId ? `<br><code>${esc(c.apiId)}</code>` : ""}${c.note ? `<br><span class="cap">${esc(tx(c.note))}</span>` : ""}</span><span class="r">${c.status && c.status !== "active" ? `<span class="st ${c.status}">${esc(t(c.status))}</span><br>` : ""}${esc(fmtDate(c.released, { day: "numeric", month: "long", year: "numeric" }))}</span></div>`).join("")}</div>` : ""}
+        ${p.children?.length ? `<div class="blk"><h4>${esc(t("children"))}</h4>${p.children.map(c => `<div class="child"><span>${c.docs ? `<a href="${esc(safeUrl(c.docs))}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)}${c.apiId ? `<br><code>${esc(c.apiId)}</code>` : ""}${c.note ? `<br><span class="cap">${esc(tx(c.note))}</span>` : ""}</span><span class="r">${c.status && c.status !== "active" ? `<span class="st ${c.status}">${esc(t(c.status))}</span><br>` : ""}${esc(fmtDate(c.released, { day: "numeric", month: "long", year: "numeric" }))}</span></div>`).join("")}</div>` : ""}
         ${owners.length ? `<div class="blk"><h4>${esc(t("owners"))}</h4>${owners.map(x => relRow(x, tx(x.role))).join("")}</div>` : ""}
         ${eventsHTML(relEvents(p.id, p.name.split(/[,&(]/)[0].trim()))}${sourcesHTML(p)}`;
     },
@@ -371,12 +393,16 @@
         const prev = S.stack.length > 1 ? S.stack.at(-2) : null;
     $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
     const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
-    $("#sheet").classList.add("on"); $("#scrim").classList.add("on");
+    const wasOn = $("#sheet").classList.contains("on");
+    $("#sheet").classList.add("on"); $("#scrim").classList.add("on"); $("#sheet").inert = false; $("#sheet").removeAttribute("aria-hidden"); dismissHint();
+    if (!wasOn) { openEntity.ret = document.activeElement; setTimeout(() => $("#x").focus({ preventScroll: true }), 30); }
     S.focus = kind === "person" ? id : null; drawLinks();
-    if (!fromHash) try { history.replaceState(null, "", `#/${kind}/${id}`); } catch {}
+    if (!fromHash) try { history.replaceState(null, "", `#/${kind}/${encodeURIComponent(id)}`); } catch {}
   }
   function closeSheet() {
-    $("#sheet").classList.remove("on"); $("#scrim").classList.remove("on"); S.stack = []; S.focus = null; drawLinks();
+    const wasOn = $("#sheet").classList.contains("on");
+    $("#sheet").classList.remove("on"); $("#scrim").classList.remove("on"); $("#sheet").inert = true; $("#sheet").setAttribute("aria-hidden", "true"); S.stack = []; S.focus = null; drawLinks();
+    if (wasOn && openEntity.ret?.isConnected) openEntity.ret.focus({ preventScroll: true });
     try { history.replaceState(null, "", location.pathname + location.search); } catch {}
   }
   function back() { if (S.stack.length > 1) { S.stack.pop(); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); } else closeSheet(); }
@@ -393,28 +419,27 @@
 
   // ---------------------------------------------------------------- hero (desktop): today in one glance
   const MAST = {
-    ru: { tag: "Компания Anthropic по открытым источникам: люди, власть, продукты, хроника и всё, что она публикует", lib: "Библиотека", method: "Как мы проверяем", latest: "Последнее событие", official: "Anthropic · официально", rss: "RSS", quiet: "За сегодня новых событий нет. Данные перепроверены по первоисточникам.", digests: "Сводки" },
-    en: { tag: "Anthropic from public sources: people, power, products, chronicle and everything it publishes", lib: "Library", method: "How we verify", latest: "Latest event", official: "Anthropic · official", rss: "RSS", quiet: "No new events today. Records were re-checked against primary sources.", digests: "Digests" },
-    uz: { tag: "Anthropic ochiq manbalar asosida: odamlar, hokimiyat, mahsulotlar, xronika va u nashr etgan hamma narsa", lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", official: "Anthropic · rasmiy", rss: "RSS", quiet: "Bugun yangi voqealar yo‘q. Ma’lumotlar birlamchi manbalar bo‘yicha qayta tekshirildi.", digests: "Xulosalar" }
+    ru: { tag: "Ежедневный монитор компании Anthropic по открытым источникам: что происходит, кто принимает решения и что она публикует. Каждый факт со ссылкой на источник.", start: "Новичку: начните с подборки «С чего начать»", ago: "последнее событие", daysAgo: n => `Тихий день · ${new Intl.PluralRules("ru").select(n) === "one" ? `${n} день` : new Intl.PluralRules("ru").select(n) === "few" ? `${n} дня` : `${n} дней`} без новых событий`, lib: "Библиотека", method: "Как мы проверяем", latest: "Последнее событие", official: "Anthropic · официально", rss: "RSS", quiet: "За сегодня новых событий нет.", gone: "Ссылка устарела: такой записи больше нет", digests: "Сводки" },
+    en: { tag: "A daily monitor of Anthropic from public sources: what is happening, who decides and what it publishes. Every fact links to its source.", start: "New here? Start with the “Start here” reading paths", daysAgo: n => `Quiet day · no new events for ${n} day${n === 1 ? "" : "s"}`, lib: "Library", method: "How we verify", latest: "Latest event", official: "Anthropic · official", rss: "RSS", quiet: "No new events today.", gone: "This link is out of date", digests: "Digests" },
+    uz: { tag: "Anthropic haqida ochiq manbalar asosidagi kundalik monitor: nima bo‘lyapti, kim qaror qiladi va u nimalarni nashr etadi. Har bir fakt manbaga havola bilan.", start: "Yangi boshlovchilarga: «Nimadan boshlash» to‘plamidan boshlang", daysAgo: n => `Tinch kun · ${n} kun yangi voqea yo‘q`, lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", official: "Anthropic · rasmiy", rss: "RSS", quiet: "Bugun yangi voqealar yo‘q.", gone: "Havola eskirgan", digests: "Xulosalar" }
   };
   const M = k => MAST[S.lang][k] || MAST.ru[k];
   const METHOD_URL = "https://github.com/SharipovAkhror/anthropic-atlas/blob/main/docs/METHODOLOGY.md";
   function stampText() {
-    const dg = S.digest; if (!dg) return `${t("updated")} ${fmtDate(D.atlas.meta.updatedAt)}`;
+    const dg = S.latest; if (!dg) return `${t("updated")} ${fmtDate(D.atlas.meta.updatedAt)}`;
     const when = new Date(dg.generatedAt), days = Math.floor((Date.now() - when) / 864e5);
     const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
     return `${t("updated")} ${day} ${t("at")} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}`;
   }
   function heroHTML() {
     const dg = S.digest, date = dg?.date || D.atlas.meta.updatedAt;
-    const facts = D.atlas.facts.slice(0, 4), lead = leadStory(), past = D.digests.slice(0, 7);
-    return `<div class="hero-k">${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long" }))}<span>${esc(stampText())}</span></div>
+    const lead = leadStory(), past = D.digests.slice(0, 7), MQ = MAST[S.lang].daysAgo || MAST.ru.daysAgo;
+    return `<p class="hero-d">${esc(M("tag"))}</p><div class="hero-k">${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long" }))}<span>${esc(stampText())}</span></div>
       ${lead.k ? `<div class="hero-e">${esc(lead.k)}</div>` : ""}
       <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
       ${lead.s ? `<p class="hero-s">${gloss(lead.s)}</p>` : ""}
-      ${lead.quiet ? `<p class="quiet">${esc(M("quiet"))}</p>` : ""}
-      ${facts.length ? `<div class="stats">${facts.map(f => `<button class="stat" data-open="fact:${f.id}"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></button>`).join("")}</div>` : ""}
-      <div class="hero-l">${LIB ? `<button data-jump="lib-shelves">${esc(M("lib"))} <span class="num">${LIB.items.length}</span></button>` : ""}<a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(M("method"))}</a><a href="/data/feed.xml" target="_blank" rel="noopener">${esc(M("rss"))}</a>${past.length > 1 ? `<span class="past-h">${esc(M("digests"))}: ${past.map(h => `<button data-d="${h.date}" class="${h.date === dg?.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</span>` : ""}</div>`;
+      ${lead.quiet ? `<p class="quiet">${esc(lead.gap > 1 ? MQ(lead.gap) : M("quiet"))}</p>` : ""}
+      <div class="hero-l">${LIB?.paths.length ? `<button data-jump="lib-start">${esc(M("start"))}</button>` : ""}${LIB ? `<button data-jump="lib-shelves">${esc(M("lib"))} <span class="num">${LIB.items.length}</span></button>` : ""}<a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(M("method"))}</a><a href="/data/feed.xml" target="_blank" rel="noopener">${esc(M("rss"))}</a>${past.length > 1 ? `<span class="past-h">${esc(M("digests"))}: ${past.map(h => `<button data-d="${h.date}" class="${h.date === dg?.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</span>` : ""}</div>`;
   }
 
   // ---------------------------------------------------------------- connections between people (desktop board)
@@ -460,28 +485,32 @@
   // At 100% it reads like a page: the hero, then cards in as many columns as fit the window. Drag, scroll or use
   // the trackpad to move; pinch, Ctrl/⌘ + wheel or + and − to zoom; 0 shows everything, 1 returns home.
   // Zoomed out, the real cards stay in place and each one carries a readable label sized for the screen.
-  let GAP = 24, BW = 0, BH = 0, COLW = 360, HOME = { x: 0, y: 0, s: 1 }, MODE = "page", switching = false;
+  let GAP = 24, BW = 0, BH = 0, COLW = 360, HOME = { x: 0, y: 0, s: 1 }, ZH = 1, MODE = "page", switching = false;
   const cam = { x: 0, y: 0, s: 1 };
   let anim = 0, inertiaRaf = 0;
   const vw = () => $("#view").clientWidth, vh = () => $("#view").clientHeight;
-  const FAR = .52;
+  const FAR = .42;
   function layout() {
     const b = board();
     const slots = $$(".slot", b), hero = $(".hero", b);
     if (phone()) { b.style.height = b.style.width = ""; slots.forEach(s => { s.style.left = s.style.top = s.style.width = ""; }); return; }
     const gut = clamp(vw() * .036, 20, 72);
-    const W = Math.min(1760, vw() - gut * 2);
+    // very wide screens: the page is drawn a little larger instead of in tiny type with empty margins
+    ZH = vw() >= 2000 ? Math.min(1.4, vw() / 1880) : 1;
+    const W = Math.min(1760, vw() / ZH - gut * 2);
     GAP = W >= 1800 ? 32 : W >= 1200 ? 24 : 20;
     const n = clamp(Math.floor((W + GAP) / (330 + GAP)), 1, 6);
     COLW = (W - GAP * (n - 1)) / n;
     b.style.setProperty("--colw", COLW + "px");
+    // map labels: whole words only, so the longest word sets the largest size that still fits the card
+    for (const fb of $$(".flabel b", b)) { const L = Math.max(6, ...fb.textContent.split(/\s+/).map(w => w.length)); fb.style.setProperty("--fmax", Math.min(COLW / 6, (COLW * (1 - 2 / 14) - 4) / (L * .68)).toFixed(1) + "px"); }
     let top = 0;
     if (hero) { hero.style.width = W + "px"; top = hero.offsetHeight; }
     slots.forEach(s => { s.style.width = COLW + "px"; });
     const hs = slots.map(s => s.offsetHeight);
     const pack = k => { const cols = new Array(k).fill(top), pos = hs.map(h => { const c = cols.indexOf(Math.min(...cols)); const p = [c, cols[c]]; cols[c] += h + GAP; return p; }); return { k, pos, W: k * COLW + (k - 1) * GAP, H: Math.max(top, Math.max(...cols) - GAP) }; };
     let L = pack(n);
-    HOME = { s: 1, x: Math.round((vw() - L.W) / 2), y: 0 };
+    HOME = { s: ZH, x: Math.round((vw() - L.W * ZH) / 2), y: 0 };
     if (MODE === "map") { // zoomed out: spread the same cards into a wider grid that fills the screen's shape
       const target = vw() / vh();
       for (let k = n + 1; k <= 14; k++) { const c = pack(k); if (Math.abs(Math.log(c.W / c.H / target)) < Math.abs(Math.log(L.W / L.H / target))) L = c; }
@@ -495,30 +524,33 @@
   function relayoutSoon(ms = 480) { clearTimeout(relayoutT); relayoutT = setTimeout(layout, ms); }
   function boxOf(el) { // board coordinates of any element inside the board
     let x = 0, y = 0, n = el;
-    while (n && n !== board()) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+    while (n && n !== board()) { if (n.classList.contains("slot")) { x += parseFloat(n.style.left) || 0; y += parseFloat(n.style.top) || 0; } else { x += n.offsetLeft; y += n.offsetTop; } n = n.offsetParent; }
     return { x, y, w: el.offsetWidth, h: el.offsetHeight };
   }
-  function setMode(m) {
+  function setMode(m, px, py) {
     if (m === MODE || phone() || switching) return;
     switching = true;
-    const cx = vw() / 2, cy = vh() / 2;
+    const cx = px ?? vw() / 2, cy = py ?? vh() / 2;
     let anchor = null, best = Infinity;
     for (const sl of $$(".slot", board())) { const x = cam.x + (parseFloat(sl.style.left) + sl.offsetWidth / 2) * cam.s, y = cam.y + (parseFloat(sl.style.top) + sl.offsetHeight / 2) * cam.s, d = Math.hypot(x - cx, y - cy); if (d < best) { best = d; anchor = { sl, x: cam.x + parseFloat(sl.style.left) * cam.s, y: cam.y + parseFloat(sl.style.top) * cam.s }; } }
-    MODE = m; layout();
+    MODE = m; const b = board(); b.classList.add("swap"); b.classList.toggle("far", m === "map"); layout(); void b.offsetWidth;
+    requestAnimationFrame(() => requestAnimationFrame(() => b.classList.remove("swap")));
     if (anchor) { cam.x = anchor.x - parseFloat(anchor.sl.style.left) * cam.s; cam.y = anchor.y - parseFloat(anchor.sl.style.top) * cam.s; }
     switching = false;
   }
-  function apply() {
+  let applyRaf = 0;
+  function apply(px, py) {
     if (phone()) return;
-    if (!switching && !tweening) { if (cam.s < FAR && MODE === "page") setMode("map"); else if (cam.s >= FAR + .1 && MODE === "map") setMode("page"); }
-    const w = vw(), h = vh(), m = 120; // some of the board always stays on screen
-    cam.x = clamp(cam.x, Math.min(m - BW * cam.s, (w - BW * cam.s) / 2), Math.max(w - m, (w - BW * cam.s) / 2));
-    cam.y = clamp(cam.y, Math.min(m - BH * cam.s, (h - BH * cam.s) / 2), Math.max(h * .5, (h - BH * cam.s) / 2));
+    if (!switching && !tweening) { if (cam.s < FAR && MODE === "page") setMode("map", px, py); else if (cam.s >= FAR + .12 && MODE === "map") setMode("page", px, py); }
+    const w = vw(), h = vh(), m = 200; // some of the board always stays on screen; a board smaller than the screen sits centred
+    const bw = BW * cam.s, bh = BH * cam.s;
+    cam.x = bw <= w ? (w - bw) / 2 : clamp(cam.x, m - bw, w - m);
+    cam.y = bh <= h ? Math.min((h - bh) / 2, Math.max(24, cam.y)) : clamp(cam.y, m - bh, h * .35);
     const b = board();
     b.style.transform = `translate3d(${cam.x}px, ${cam.y}px, 0) scale(${cam.s})`;
     b.style.setProperty("--inv", 1 / cam.s);
-    b.classList.toggle("far", cam.s < FAR);
-    drawMap();
+    b.classList.toggle("far", MODE === "map");
+    if (!applyRaf) applyRaf = requestAnimationFrame(() => { applyRaf = 0; drawMap(); });
   }
   let tweening = false;
   function tween(to, dur = 560) {
@@ -538,9 +570,10 @@
   const minScale = () => clamp(Math.min(vw() / BW, vh() / BH) * .7, .06, .5);
   function zoomAt(ns, px, py, animate = false) {
     ns = clamp(ns, minScale(), 2.5);
+    if (ns < FAR && MODE === "page") setMode("map", px, py); else if (ns >= FAR + .12 && MODE === "map") setMode("page", px, py);
     const bx = (px - cam.x) / cam.s, by = (py - cam.y) / cam.s;
     const to = { s: ns, x: px - bx * ns, y: py - by * ns };
-    animate ? tween(to, 320) : (Object.assign(cam, to), apply());
+    animate ? tween(to, 320) : (Object.assign(cam, to), apply(px, py));
   }
   const sheetW = () => ($("#sheet").classList.contains("on") ? $("#sheet").offsetWidth + 24 : 0);
   function fitAll(animate = true) {
@@ -564,7 +597,7 @@
   }
   // minimap: appears while you move, fades when you stop
   function drawMap() {
-    const mm = $("#minimap"); if (!mm || !BW || phone()) return;
+    const mm = $("#minimap"); if (!mm || !BW || phone() || (!drawMap.user && !mm.classList.contains("on"))) return;
     const cv = $("canvas", mm), W = 300, k = W / BW, H = Math.round(Math.min(240, BH * k)), kk = Math.min(k, H / BH);
     if (cv.height !== H) { cv.height = H; cv.style.height = H / 2 + "px"; }
     const g = cv.getContext("2d");
@@ -601,11 +634,11 @@
       if (pinch && ptrs.size >= 2) {
         const [a, b] = [...ptrs.values()], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
         cam.s = clamp(pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d, minScale(), 2.5);
-        cam.x = mx - pinch.bx * cam.s; cam.y = my - pinch.by * cam.s; drawMap.user = true; apply(); return;
+        cam.x = mx - pinch.bx * cam.s; cam.y = my - pinch.by * cam.s; drawMap.user = true; dismissHint(); apply(mx, my); return;
       }
       if (!drag) return;
       const dx = p.x - drag.sx, dy = p.y - drag.sy;
-      if (!drag.active && Math.hypot(dx, dy) > 6) { drawMap.user = true; drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
+      if (!drag.active && Math.hypot(dx, dy) > (e.pointerType === "touch" ? 10 : 6)) { dismissHint(); drawMap.user = true; drag.active = moved = true; try { view.setPointerCapture(e.pointerId); } catch {} view.classList.add("panning"); hideTip(); }
       if (drag.active) {
         cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply();
         const now = performance.now(), dt = Math.max(1, now - last.t);
@@ -629,19 +662,21 @@
     // a drag is not a click; when zoomed out, a click on a card flies to it
     view.addEventListener("click", e => {
       if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; return; }
-      if (!phone() && cam.s < FAR) { const sl = e.target.closest(".slot"); if (sl) { e.stopPropagation(); e.preventDefault(); focusIsland(sl); } }
+      if (!phone() && MODE === "map") { const sl = e.target.closest(".slot"); if (sl) { e.stopPropagation(); e.preventDefault(); focusIsland(sl); } }
     }, true);
     view.addEventListener("dblclick", e => {
       if (phone() || e.target.closest("[data-open],a,button,input")) return;
+      getSelection()?.removeAllRanges();
       const sl = e.target.closest(".slot");
-      if (sl) focusIsland(sl); else if (cam.s < .9) goHome(); else fitAll();
+      if (sl) focusIsland(sl); else if (cam.s < ZH * .9) goHome(); else fitAll();
     });
     view.addEventListener("wheel", e => {
       if (phone()) return;
       if (e.target.closest("#sheet, #palette")) return;
       e.preventDefault(); drawMap.user = true; cancelAnimationFrame(anim); cancelAnimationFrame(inertiaRaf); tweening = false; hideTip();
       const p = loc(e);
-      if (e.ctrlKey || e.metaKey) zoomAt(cam.s * Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0085)), p.x, p.y);
+      dismissHint();
+      if (e.ctrlKey || e.metaKey) zoomAt(cam.s * Math.exp(-clamp(e.deltaY * (e.deltaMode ? 16 : 1), -40, 40) * .0085), p.x, p.y);
       else { const k = e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? vh() : 1; cam.x -= (e.shiftKey && !e.deltaX ? e.deltaY : e.deltaX) * k; cam.y -= (e.shiftKey && !e.deltaX ? 0 : e.deltaY) * k; apply(); }
     }, { passive: false });
     let gs = 1; // Safari trackpad pinch
@@ -657,7 +692,7 @@
       const b = e.target.closest("button"); if (!b) return; drawMap.user = true;
       if (b.dataset.z === "in") zoomAt(cam.s * 1.4, vw() / 2, vh() / 2, true);
       else if (b.dataset.z === "out") zoomAt(cam.s / 1.4, vw() / 2, vh() / 2, true);
-      else (cam.s < .9 ? goHome() : fitAll());
+      else (cam.s < ZH * .9 ? goHome() : fitAll());
     });
   }
 
@@ -734,21 +769,43 @@
   // ---------------------------------------------------------------- command palette
   function paletteItems() {
     return [
-      ...D.atlas.people.map(p => ({ k: "person", id: p.id, label: p.name, sub: tx(p.role), hay: `${p.name} ${p.role.ru} ${p.role.en} ${tx(p.bio)}`, pic: p.kind === "group" ? icon(p) : avatar(p) })),
-      ...D.atlas.products.map(p => ({ k: "product", id: p.id, label: p.name, sub: clusterLabel(p.cluster), hay: `${p.name} ${tx(p.description)} ${(p.children || []).map(c => c.name + " " + (c.apiId || "")).join(" ")}`, pic: icon(p) })),
+      ...D.atlas.people.map(p => ({ k: "person", id: p.id, label: p.name, sub: tx(p.role), hay: `${p.name} ${(p.aliases || []).join(" ")} ${p.role.ru} ${p.role.en} ${zoneLabel(p.zone)} ${tx(p.bio)}`, pic: p.kind === "group" ? icon(p) : avatar(p) })),
+      ...D.atlas.products.map(p => ({ k: "product", id: p.id, label: p.name, sub: clusterLabel(p.cluster), hay: `${p.name} ${p.name.replace(/Claude/g, "Клод")} ${tx(p.description)} ${(p.children || []).map(c => c.name + " " + (c.apiId || "")).join(" ")}`, pic: icon(p) })),
+      ...D.atlas.facts.map(f => ({ k: "fact", id: f.id, label: tx(f.label), sub: f.value, hay: `${f.label.ru || ""} ${f.label.en || ""} ${f.value}`, pic: "" })),
       ...D.terms.map(g => ({ k: "term", id: g.id, label: g.term, sub: tx(g.definition).slice(0, 60) + "…", hay: `${g.term} ${(g.aliases || []).join(" ")}`, pic: "" })),
       ...D.events.map(e => ({ k: "event", id: e.id, label: tx(e.title), sub: fmtDate(e.date), hay: `${e.title.ru} ${e.title.en} ${tx(e.summary)}`, pic: "" })),
       ...(LIB ? LIB.sections.map(s => ({ k: "shelf", id: s.id, label: tx(s), sub: L("shelves"), hay: `${s.ru} ${s.en} ${L("shelves")}`, pic: "" })) : []),
       ...(LIB ? LIB.items.map(i => ({ k: "lib", id: i.id, label: libT(i), sub: `${secName(i.section)} · ${host2(i.url)}`, hay: `${libT(i)} ${i.title} ${libS(i)} ${i.desc || ""} ${i.group || ""}`, pic: "" })) : [])
     ];
   }
-  let PI = [], sel = 0, results = [];
-  function openPalette() { PI = paletteItems(); $("#palette").classList.add("on"); $("#pscrim").classList.add("on"); const i = $("#palette input"); i.placeholder = t("search"); i.value = ""; search(""); i.focus(); }
+  const TR = { а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z", и: "i", й: "i", к: "k", л: "l", м: "m", н: "n", о: "o", п: "p", р: "r", с: "s", т: "t", у: "u", ф: "f", х: "h", ц: "ts", ч: "ch", ш: "sh", щ: "sch", ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya" };
+  // one spelling for search: lower case, no accents, Cyrillic written in Latin letters, look-alike letters folded
+  const norm = s => String(s || "").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[а-яё]/g, c => TR[c] ?? c)
+    .replace(/kh/g, "h").replace(/ck/g, "k").replace(/c(?=[eiy])/g, "s").replace(/c/g, "k").replace(/w/g, "v").replace(/x/g, "ks").replace(/q/g, "k").replace(/j/g, "dzh").replace(/ph/g, "f").replace(/(.)\1+/g, "$1").replace(/[^a-z0-9 ]+/g, " ");
+  const BASE = { person: 0, product: .1, shelf: .2, term: .3, fact: .35, event: .6, lib: .8 };
+  let PI = null, sel = 0, results = [];
+  function openPalette() { PI ??= paletteItems().map(it => ({ ...it, hayN: " " + norm(it.label + " " + it.hay) + " ", labelN: norm(it.label) })); $("#palette").classList.add("on"); $("#pscrim").classList.add("on"); const i = $("#palette input"); i.placeholder = t("search"); i.value = ""; search(""); i.focus(); }
   function closePalette() { $("#palette").classList.remove("on"); $("#pscrim").classList.remove("on"); $("#palette input").blur(); }
   function search(q) {
-    const n = s => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
-    const words = n(q).split(/\s+/).filter(Boolean);
-    results = (words.length ? PI.map(it => { const h = n(it.hay), l = n(it.label); if (!words.every(w => h.includes(w))) return null; return [it, (l.startsWith(words[0]) ? 0 : l.includes(words[0]) ? 1 : 2) + (it.k === "event" ? .5 : it.k === "lib" ? .7 : 0)]; }).filter(Boolean).sort((a, b) => a[1] - b[1]).map(x => x[0]) : PI.filter(i => i.k !== "event" && i.k !== "lib").slice(0, 10)).slice(0, 40);
+    const ws = norm(q).split(/\s+/).filter(Boolean);
+    if (!ws.length) results = PI.filter(i => i.k !== "event" && i.k !== "lib").slice(0, 10);
+    else {
+      const scored = [];
+      for (const it of PI) {
+        let sc = BASE[it.k] ?? 1, ok = true;
+        for (const w of ws) {
+          if (it.labelN.startsWith(w)) sc += 0;
+          else if (it.labelN.includes(" " + w)) sc += .4;
+          else if (it.hayN.includes(" " + w)) sc += 1;
+          else if (w.length > 3 && it.hayN.includes(w)) sc += 1.6;
+          else { ok = false; break; }
+        }
+        if (ok) scored.push([it, sc]);
+      }
+      scored.sort((a, b) => a[1] - b[1]);
+      let libN = 0; const seen = new Set();
+      results = scored.map(x => x[0]).filter(it => { const key = it.k + it.labelN; if (seen.has(key)) return false; seen.add(key); return it.k !== "lib" || ++libN <= 25; }).slice(0, 40);
+    }
     sel = 0; drawResults();
   }
   function drawResults() {
@@ -760,7 +817,7 @@
 
   // ---------------------------------------------------------------- page
   function renderBar() {
-    const dg = S.digest, el = $("#stamp");
+    const dg = S.latest, el = $("#stamp");
     $("#lang").textContent = S.lang.toUpperCase();
     $("#find-lbl").textContent = t("find");
     if (!dg) { el.innerHTML = `${esc(t("updated"))} ${esc(fmtDate(D.atlas.meta.updatedAt))}`; return; }
@@ -769,35 +826,42 @@
     el.innerHTML = `${esc(t("updated"))} <b>${esc(day)} ${esc(t("at"))} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}</b> · <a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(t("method"))}</a>`;
   }
   function renderAll({ keepCamera = false } = {}) {
+    AN_CACHE = null; PI = null;
+    board().classList.toggle("far", MODE === "map");
     renderBar();
     const keepPage = tabsIdx;
     board().innerHTML = "";
     if (!phone()) board().insertAdjacentHTML("afterbegin", `<svg class="wires" id="links"></svg><svg class="wires top" id="links-top"></svg><section class="hero" aria-label="Today">${heroHTML()}</section>`);
-    for (const m of D.modules) if (!m.hidden && R[m.renderer]) R[m.renderer](m);
+    for (const m of D.modules) if (!m.hidden && R[m.renderer]) try { R[m.renderer](m); } catch (err) { console.warn(m.id, err); }
     document.documentElement.lang = S.lang;
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
     if (phone()) { renderTabs(); if (keepCamera) goPage(keepPage, false); }
     else { layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
   }
+  function dismissHint() { clearTimeout(dismissHint.t); $("#hint")?.classList.remove("on"); }
   function startCamera() {
     let first = false; try { first = !sessionStorage.getItem("atlas.intro"); sessionStorage.setItem("atlas.intro", "1"); } catch {}
     // the first visit opens on the whole space for a moment, then settles on the page: it shows that the space exists
     if (first && !reduced() && !location.hash) { fitAll(false); setTimeout(() => goHome(), 900); } else goHome(false);
-    if (!store.get("atlas.hint")) { const h = $("#hint"); h.textContent = t("hint"); setTimeout(() => h.classList.add("on"), 2200); setTimeout(() => h.classList.remove("on"), 8000); store.set("atlas.hint", "1"); }
+    if (!store.get("atlas.hint")) { const h = $("#hint"); h.textContent = t(matchMedia("(pointer: coarse)").matches ? "hintT" : "hint"); dismissHint.t = setTimeout(() => h.classList.add("on"), 2200); setTimeout(dismissHint, 6500); store.set("atlas.hint", "1"); }
   }
 
   // ---------------------------------------------------------------- events
   function bind() {
     document.addEventListener("click", e => {
       const o = e.target.closest("[data-open]");
-      if (o) { e.preventDefault(); const [k, ...rest] = o.dataset.open.split(":"); if (!o.closest("#sheet")) S.stack = []; openEntity(k, rest.join(":")); hideTip(); return; }
+      if (o) {
+        e.preventDefault(); const [k, ...rest] = o.dataset.open.split(":"); if (!o.closest("#sheet")) S.stack = []; openEntity(k, rest.join(":")); hideTip();
+        if (!phone() && o.closest("#board")) { const r = o.getBoundingClientRect(), edge = innerWidth - sheetW(); if (r.right > edge - 16) tween({ s: cam.s, x: cam.x - (r.right - edge + 40), y: cam.y }, 420); }
+        return;
+      }
       const g = e.target.closest("abbr.g");
       if (g) { e.preventDefault(); e.stopPropagation(); if (!g.closest("#sheet")) S.stack = []; hideTip(); openEntity("term", g.dataset.term); return; }
       const more = e.target.closest(".more[aria-expanded]");
       if (more) { const c = more.nextElementSibling; const open = !c.classList.contains("open"); c.classList.toggle("open", open); more.setAttribute("aria-expanded", open); relayoutSoon(); return; }
       const cr = e.target.closest("[data-crumb]");
       const dd = e.target.closest("[data-d]");
-      if (dd) { getJSON(`/data/digests/${dd.dataset.d}.json`).then(x => { S.digest = x; renderAll({ keepCamera: true }); }).catch(() => {}); return; }
+      if (dd) { getJSON(`/data/digests/${dd.dataset.d}.json`).then(x => { if (!(x = normDigest(x))) return; S.digest = x; renderAll({ keepCamera: true }); }).catch(() => {}); return; }
       const j = e.target.closest("[data-jump]");
       if (j) { const sl = $(`.slot[data-island="${j.dataset.jump}"]`); if (sl) focusIsland(sl); return; }
       if (cr) { S.stack = S.stack.slice(0, +cr.dataset.crumb + 1); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); return; }
@@ -821,7 +885,7 @@
     $("#open-search").addEventListener("click", openPalette);
     $("#lang").addEventListener("click", cycleLang);
     const input = $("#palette input");
-    input.addEventListener("input", () => search(input.value));
+    let st = 0; input.addEventListener("input", () => { clearTimeout(st); st = setTimeout(() => search(input.value), PI && PI.length > 800 ? 70 : 0); });
     input.addEventListener("keydown", e => {
       if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(results.length - 1, sel + 1); drawResults(); }
       else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(0, sel - 1); drawResults(); }
@@ -862,19 +926,24 @@
   }
   function fromHash() {
     const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf)\/(.+)$/);
-    if (m) { S.stack = []; const id = decodeURIComponent(m[2]); openEntity(m[1], id, { fromHash: true }); setTimeout(() => reveal(m[1], id), 120); }
+    if (!m) return;
+    let id = m[2]; try { id = decodeURIComponent(id); } catch {}
+    if (!IDX.has(`${m[1]}:${id}`)) { if (LIB || !/^(lib|shelf)$/.test(m[1])) toast(M("gone")); return; }
+    S.stack = []; openEntity(m[1], id, { fromHash: true }); setTimeout(() => reveal(m[1], id), 120);
   }
 
   // ---------------------------------------------------------------- boot
-  const qlang = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qlang)) S.lang = qlang;
+  const qlang = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qlang)) { S.lang = qlang; store.set("atlas.lang", qlang); }
+  // a broken avatar falls back to initials (no inline handlers, so the page can run under a strict CSP)
+  document.addEventListener("error", e => { if (e.target.tagName === "IMG" && e.target.closest(".av")) e.target.remove(); }, true);
   // The library is part of the first screen: wait for it briefly, never longer than 2.5 s.
   load().then(async () => {
     buildGloss(); bind(); bindCanvas(); bindPhone();
     const lib = loadLibrary().then(() => true, e => { console.warn("library", e); return false; });
     const early = await Promise.race([lib, new Promise(r => setTimeout(() => r(null), 2500))]);
-    renderAll(); fromHash(); $("#loading").remove();
-    if (early === null) lib.then(ok => { if (!ok) return; const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } });
+    try { renderAll(); fromHash(); } finally { $("#loading")?.remove(); }
+    if (early === null) lib.then(ok => { if (!ok) return; const st = S.stack.slice(); renderAll({ keepCamera: true }); if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false, fromHash: true }); } else fromHash(); });
     document.fonts?.ready.then(() => !phone() && layout());
-  }).catch(err => { $("#loading").textContent = `Не удалось загрузить данные. ${err.message}`; console.error(err); });
+  }).catch(err => { const l = $("#loading"); if (l) l.textContent = `${{ ru: "Не удалось загрузить данные.", en: "Could not load the data.", uz: "Ma’lumotlarni yuklab bo‘lmadi." }[S.lang]} ${err.message}`; console.error(err); });
   window.ATLAS = { get data() { return D; }, openEntity, cam, fitAll, goHome };
 })();
