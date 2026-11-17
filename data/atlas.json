@@ -26,7 +26,7 @@
     {
       "id": "capital",
       "label": {
-        "ru": "Капитал, право и коммуникации",
+        "ru": "Капитал, право и PR",
         "en": "Capital, legal & comms",
         "uz": "Kapital, huquq va kommunikatsiya"
       },
@@ -35,7 +35,7 @@
     {
       "id": "science",
       "label": {
-        "ru": "Наука, архитектура и compute",
+        "ru": "Наука и инфраструктура",
         "en": "Science, architecture & compute",
         "uz": "Ilm-fan, arxitektura va compute"
       },
@@ -44,7 +44,7 @@
     {
       "id": "alignment",
       "label": {
-        "ru": "Alignment, этика и Red Team",
+        "ru": "Безопасность ИИ и этика",
         "en": "Alignment, ethics & red team",
         "uz": "Alignment, etika va Red Team"
       },
@@ -53,7 +53,7 @@
     {
       "id": "labs",
       "label": {
-        "ru": "Продукт, Labs, Claude Code и MCP",
+        "ru": "Продукты и разработка",
         "en": "Product, Labs, Claude Code & MCP",
         "uz": "Mahsulot, Labs, Claude Code va MCP"
       },
@@ -107,7 +107,7 @@
     {
       "id": "ipo_ticker",
       "label": {
-        "ru": "Тикер",
+        "ru": "Биржевой тикер",
         "en": "Ticker",
         "uz": "Tiker"
       },
@@ -128,7 +128,7 @@
     {
       "id": "ipo_price_range",
       "label": {
-        "ru": "Диапазон IPO",
+        "ru": "Цена акции при IPO (диапазон)",
         "en": "IPO range",
         "uz": "IPO diapazoni"
       },
@@ -153,7 +153,7 @@
     {
       "id": "valuation",
       "label": {
-        "ru": "Оценка",
+        "ru": "Оценка компании",
         "en": "Valuation",
         "uz": "Baholash"
       },
@@ -173,7 +173,7 @@
     {
       "id": "run_rate_revenue",
       "label": {
-        "ru": "Run-rate выручка",
+        "ru": "Годовая выручка (по текущему темпу)",
         "en": "Run-rate revenue",
         "uz": "Run-rate tushum"
       },
@@ -194,7 +194,7 @@
     {
       "id": "class_f_votes",
       "label": {
-        "ru": "Голоса Class F",
+        "ru": "Голоса основателей (Class F)",
         "en": "Class F votes",
         "uz": "Class F ovozlari"
       },
@@ -215,7 +215,7 @@
     {
       "id": "ltbt_trustees",
       "label": {
-        "ru": "Попечители LTBT",
+        "ru": "Попечители траста LTBT",
         "en": "LTBT trustees",
         "uz": "LTBT vasiylari"
       },
@@ -235,7 +235,7 @@
     {
       "id": "board_size",
       "label": {
-        "ru": "Совет директоров",
+        "ru": "Директоров в совете",
         "en": "Board of directors",
         "uz": "Direktorlar kengashi"
       },

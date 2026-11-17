@@ -7,8 +7,8 @@
   --fill-2: #e7e6e2;
   --ink: #1d1d1f;
   --ink-2: #424245;
-  --ink-3: #6e6e73;
-  --ink-4: #86868b;
+  --ink-3: #5f5e5a;
+  --ink-4: #73726c;
   --sep: rgba(0, 0, 0, .08);
   --sep-2: rgba(0, 0, 0, .14);
   --blue: #0071e3;
@@ -53,9 +53,11 @@ h1, h2, h3, h4, p { margin: 0; }
 .lang:hover { background: rgba(0, 0, 0, .05); color: var(--ink); }
 
 /* ---------- the page (desktop, tablet): a hero, then cards in as many columns as fit ---------- */
-.view { position: fixed; inset: var(--bar-h) 0 0 0; overflow-y: auto; overflow-x: hidden; padding: 0 var(--gut) 96px; scroll-behavior: auto; overscroll-behavior-y: contain; }
-.hero, .board { max-width: 1760px; margin: 0 auto; }
-.board { position: relative; }
+/* desktop and tablet: an open space. The board is moved and scaled by the camera (app.js). */
+.view { position: fixed; inset: var(--bar-h) 0 0 0; overflow: hidden; touch-action: none; overscroll-behavior: none; }
+.view.panning, .view.panning * { cursor: grabbing !important; }
+.board { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; padding-bottom: 0; }
+.hero { position: absolute; left: 0; top: 0; }
 .slot { position: absolute; left: 0; top: 0; width: 360px; transition: top .45s var(--spring), left .45s var(--spring); }
 .board.intro .slot { animation: card-in .8s var(--spring) both; animation-delay: calc(var(--i, 0) * 45ms + 120ms); }
 @keyframes card-in { from { opacity: 0; transform: translateY(18px); } }
@@ -66,8 +68,30 @@ h1, h2, h3, h4, p { margin: 0; }
 .ih .ic { font-size: 13px; color: var(--ink-4); white-space: nowrap; }
 .lead-txt { padding: 0 var(--pad) 12px; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
 
+/* zoomed out: every card keeps its place, its content fades and a screen-sized label names it */
+.flabel { position: absolute; left: 0; right: 0; top: 0; padding: min(calc(14px * var(--inv, 1)), calc(var(--colw, 360px) / 16)) min(calc(16px * var(--inv, 1)), calc(var(--colw, 360px) / 14)); display: flex; flex-direction: column; gap: calc(4px * var(--inv, 1)); opacity: 0; pointer-events: none; transition: opacity .3s var(--ease); }
+.flabel b { font-size: min(calc(17px * var(--inv, 1)), var(--fmax, 40px)); line-height: 1.12; font-weight: 600; letter-spacing: -.02em; hyphens: manual; overflow-wrap: normal; word-break: normal; display: block; -webkit-line-clamp: unset; -webkit-box-orient: vertical; overflow: hidden; }
+.flabel span { font-size: min(calc(13px * var(--inv, 1)), calc(var(--colw, 360px) / 12)); color: var(--ink-4); }
+.board.far .flabel { opacity: 1; }
+.board.far .island > .ih, .board.far .island > .ib, .board.far .island > .lead-txt { opacity: 0; transition: opacity .3s var(--ease); }
+.board.far .island { cursor: zoom-in; }
+.board.far .island:hover { box-shadow: 0 0 0 calc(2px * var(--inv, 1)) var(--blue); }
+.board.far .hero h1 { opacity: 1; }
+.board.far .wires { opacity: 0; }
+.island > .ih, .island > .ib, .island > .lead-txt { transition: opacity .3s var(--ease); }
+
+/* zoom control, minimap, first-visit hint */
+.zoom { position: fixed; z-index: 40; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 2px; padding: 4px; border-radius: 14px; background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--float-shadow); }
+.zoom button { width: 34px; height: 30px; border-radius: 10px; display: grid; place-items: center; color: var(--ink-2); transition: background .2s var(--ease); }
+.zoom button:hover { background: rgba(0, 0, 0, .06); }
+.minimap { position: fixed; z-index: 40; right: 20px; bottom: 64px; width: 150px; border-radius: 14px; background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); box-shadow: var(--float-shadow); padding: 8px; opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity .4s var(--ease), transform .4s var(--ease); cursor: pointer; }
+.minimap.on { opacity: 1; transform: none; pointer-events: auto; }
+.minimap canvas { display: block; width: 100%; }
+.hint { position: fixed; z-index: 40; left: 50%; bottom: 24px; transform: translate(-50%, 10px); padding: 9px 16px; border-radius: 20px; background: rgba(29, 29, 31, .86); color: #fff; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.hint.on { opacity: 1; transform: translate(-50%, 0); }
+
 /* hero: the date, today's headline, the key numbers */
-.hero { padding: clamp(36px, 6vh, 72px) 0 clamp(28px, 4vh, 44px); animation: card-in .9s var(--spring) both; }
+.hero { padding: clamp(36px, 6vh, 72px) 0 clamp(28px, 4vh, 44px); animation: card-in .9s var(--spring) both; user-select: text; -webkit-user-select: text; }
 .hero-k { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; font-weight: 500; color: var(--ink-3); }
 .hero-k::first-letter { text-transform: uppercase; }
 .hero-k span { font-weight: 400; color: var(--ink-4); }
@@ -281,9 +305,10 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
   .maptoggle { display: grid; place-items: center; position: fixed; z-index: 46; top: var(--bar-h); right: 4px; width: 44px; height: 42px; color: var(--ink-4); transition: color .2s; }
   .maptoggle:active { color: var(--ink); }
   body.overview .maptoggle { z-index: 55; color: var(--blue); top: 0; height: var(--bar-h); right: 84px; }
-  .view { top: calc(var(--bar-h) + 42px); padding: 0; overflow: hidden; touch-action: pan-x pan-y; }
+  .view { top: calc(var(--bar-h) + 42px); overflow: hidden; touch-action: pan-x pan-y; }
+  .zoom, .minimap, .hint, .flabel { display: none !important; }
   .hero { display: none; }
-  .board { max-width: none; margin: 0; }
+  .board { max-width: none; margin: 0; will-change: auto; }
   .board.intro .slot { animation: none; }
   .notitle .ih { display: none; }
   .today .date, .today h1, .today .summary { display: block; }
@@ -322,7 +347,7 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
-@media print { .bar, .sheet, .scrim, .palette, .tabs { display: none !important; } body { overflow: visible; } }
+@media print { .bar, .sheet, .scrim, .palette, .tabs, .zoom, .minimap, .hint { display: none !important; } body { overflow: visible; } }
 
 /* ---------------------------------------------------------------- library */
 .seg[role="tablist"] { display: flex; flex-wrap: wrap; gap: 6px; height: auto; margin: 2px var(--pad) 12px; padding: 0; border-radius: 0; background: none; }
@@ -358,3 +383,55 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
 .seg { max-width: calc(100% - var(--pad) * 2); box-sizing: border-box; }
 .path, .path li { min-width: 0; max-width: 100%; }
 .slot, .slot > .island { min-width: 0; }
+
+/* ---------- round 2: critics' fixes ---------- */
+/* a mode switch re-packs the cards at once; their slide is only for small relayouts */
+.board.swap .slot { transition: none !important; }
+/* zoomed out: tall cards are capped so the map reads as tiles, not a skyline */
+.board.far .island { max-height: calc(var(--colw, 360px) * .8); overflow: hidden; }
+.board.far .hero > :not(h1) { opacity: 0; transition: opacity .3s var(--ease); }
+.flabel .num { white-space: nowrap; }
+/* hero: what this is, in one line */
+.hero-d { max-width: 72ch; margin-bottom: 14px; font-size: 15px; line-height: 1.45; color: var(--ink-3); text-wrap: pretty; }
+.hero-l { margin-top: 26px; padding-top: 16px; border-top: .5px solid var(--sep); max-width: 1100px; }
+.hero { user-select: none; -webkit-user-select: none; }
+/* the sheet reads as a layer above the board */
+@media (min-width: 761px) {
+  .scrim.on { background: rgba(245, 244, 241, .5); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+  .sheet { box-shadow: 0 24px 64px -12px rgba(0, 0, 0, .26), 0 0 0 .5px rgba(0, 0, 0, .06); }
+}
+.bar { z-index: 85; }
+body:has(.sheet.on) .hint { opacity: 0; }
+.hint { max-width: calc(100vw - 220px); white-space: normal; text-align: center; }
+.hd h3 { font-size: 27px; line-height: 1.14; letter-spacing: -.03em; }
+.hd .cap { font-size: 12px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.kv dt { flex: none; white-space: nowrap; } .kv dd { text-wrap: balance; }
+.child { align-items: flex-start; }
+.chips button { background: var(--fill); box-shadow: none; color: var(--ink-2); }
+.sheet .x { position: relative; }
+.sheet .x::after { content: ""; position: absolute; inset: -8px; }
+/* long words never push a card or the sheet sideways */
+.sheet-body, .ev .t, .row .nm, .row .rl, .hd h3, .ih h2, .term b, .term span { overflow-wrap: anywhere; min-width: 0; }
+/* fingers: 44 px targets */
+@media (pointer: coarse) {
+  .zoom button { width: 44px; height: 44px; }
+  .find, .lang { min-height: 40px; min-width: 44px; }
+  .x { width: 40px; height: 40px; }
+  .seg button, .shelf-tools .chips button { min-height: 40px; padding: 0 14px; font-size: 14px; }
+  .past button, .past-h button { padding: 8px 4px; }
+}
+@media (max-width: 760px) {
+  .seg[role="tablist"], .shelf-tools .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: 0; max-width: none; padding-right: var(--pad); }
+  .bar { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .sheet { height: 92vh; height: 92dvh; }
+  .palette ul { max-height: 60vh; max-height: 60dvh; }
+}
+@media (max-width: 760px) and (max-height: 450px) { :root { --bar-h: 40px; } .tabs { height: 36px; } }
+.mstats, .mtag { display: none; }
+@media (max-width: 760px) {
+  .today .mstats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px var(--pad) 4px; }
+  .mstats button { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 14px; background: var(--canvas); text-align: left; min-height: 64px; }
+  .mstats b { font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .mstats span { font-size: 12.5px; line-height: 1.3; color: var(--ink-3); }
+  .today .mtag { display: block; margin: 14px var(--pad) 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
+}

@@ -26,7 +26,13 @@ jobs:
       - name: Install browser
         run: |
           npm i --no-save playwright@1.55.0
-          npx playwright install --with-deps chromium
+          for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
+      - name: Data is fresh (the morning job ran in the last two days)
+        run: |
+          newest=$(curl -fsS https://anthropic-atlas.vercel.app/data/digests/index.json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).digests[0].date))')
+          limit=$(TZ=Asia/Tashkent date -d '2 days ago' +%F)
+          echo "newest digest $newest, limit $limit"
+          if [[ "$newest" < "$limit" ]]; then echo "::error::The site has not been updated since $newest: the morning job or the deploy is stuck."; exit 1; fi
       - name: Check production
         id: check
         timeout-minutes: 10
@@ -46,9 +52,8 @@ jobs:
           if echo "$files" | grep -qvE '^(data/|pipeline/)'; then echo "Latest commit touches code; not reverting automatically."; exit 1; fi
           # Prove the data is the cause: this commit must fail locally and its parent must pass.
           if node scripts/smoke.mjs; then echo "HEAD passes locally; the problem is elsewhere. Not reverting."; exit 1; fi
-          git checkout -q HEAD~1 -- data pipeline
-          if ! node scripts/smoke.mjs; then echo "The previous version fails too. Not reverting."; git checkout -q HEAD -- data pipeline; exit 1; fi
-          git checkout -q HEAD -- data pipeline
+          git worktree add -q /tmp/prev HEAD~1
+          if ! ATLAS_ROOT=/tmp/prev node scripts/smoke.mjs; then echo "The previous version fails too. Not reverting."; exit 1; fi
           git config user.name "atlas-bot"
           git config user.email "atlas-bot@users.noreply.github.com"
           if [ "$(git rev-list --parents -n1 HEAD | wc -w)" -gt 2 ]; then git revert -m 1 --no-edit HEAD; else git revert --no-edit HEAD; fi

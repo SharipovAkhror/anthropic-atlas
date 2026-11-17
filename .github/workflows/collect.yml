@@ -1,19 +1,22 @@
 name: Daily collect
-# 05:40 Asia/Tashkent. Gathers what is new from sources/sources.json into pipeline/inbox/,
-# refreshes portraits/Wikipedia links, and commits. The morning Claude run (07:07 Tashkent) works from this inbox.
+# 05:40 Asia/Tashkent. Gathers what is new from sources/sources.json into pipeline/inbox/, rebuilds the library
+# catalog, refreshes portraits, writes the daily digest and RSS feed, and commits. No model, no paid account.
+# The optional morning Claude run (07:07 Tashkent) works from this inbox.
 on:
   schedule:
     - cron: "40 0 * * *"
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write   # keeps the schedules switched on (GitHub pauses schedules in quiet repositories)
+  issues: write    # a failed morning opens one "ops" issue, so the owner gets an email
 concurrency:
   group: atlas-main-writer
   cancel-in-progress: false
 jobs:
   collect:
     runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,26 +29,66 @@ jobs:
       - name: Library catalog (every public Anthropic page, no model)
         timeout-minutes: 8
         continue-on-error: true
-        run: node scripts/library.mjs || { git checkout -- data/library.json; echo "library failed, keeping the previous catalog"; }
+        run: node scripts/library.mjs || { git checkout -- data/library.json; echo "::warning::library failed, keeping the previous catalog"; }
       - name: Enrich people (Wikipedia links, portraits)
-        run: node scripts/enrich.mjs || echo "enrich failed, continuing"
+        run: node scripts/enrich.mjs || echo "::warning::enrich failed, continuing"
+      - name: Daily digest from the data diff and the new official posts (no model)
+        run: |
+          rm -f pipeline/run/digest.md
+          node scripts/digest.mjs || echo "::warning::digest failed, publishing data without it"
       - name: Validate and nothing lost (a bad catalog is dropped, the rest is kept)
         run: |
+          git status --porcelain data | head -40
           node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD && exit 0
           git checkout -- data/library.json
           node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD
       - name: Browser smoke test
-        timeout-minutes: 8
+        id: smoke
+        continue-on-error: true
+        timeout-minutes: 10
         run: |
           npm i --no-save playwright@1.55.0
-          npx playwright install --with-deps chromium
-          node scripts/smoke.mjs
-      - name: Commit
+          for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
+          node scripts/smoke.mjs || { sleep 10; node scripts/smoke.mjs; }
+      - name: Commit (if the site test failed, only the inbox is kept, the site data stays as it was)
+        id: commit
         run: |
           git config user.name "atlas-bot"
           git config user.email "atlas-bot@users.noreply.github.com"
+          if [ "${{ steps.smoke.outcome }}" != "success" ]; then git checkout -- data assets/people; git clean -fdq data assets/people; fi
           git add pipeline data assets/people
-          git diff --cached --quiet && exit 0
-          git commit -m "collect: inbox $(date -u +%F)"
+          git diff --cached --quiet && { echo "changed=" >> "$GITHUB_OUTPUT"; exit 0; }
+          D=$(TZ=Asia/Tashkent date +%F)
+          if git diff --cached --quiet -- "data/digests/${D}.json"; then echo "changed=" >> "$GITHUB_OUTPUT"; else echo "changed=1" >> "$GITHUB_OUTPUT"; fi
+          git commit -m "collect: ${D} catalog, inbox and digest"
           for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
           exit 1
+      - name: Send the digest to Telegram (only with TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID secrets, only when it changed)
+        if: steps.commit.outputs.changed == '1'
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ] || exit 0
+          [ -s pipeline/run/digest.md ] || exit 0
+          TEXT=$(head -c 3900 pipeline/run/digest.md | iconv -c -f UTF-8 -t UTF-8)
+          curl -fsS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" --data-urlencode "chat_id=${TG_CHAT}" --data-urlencode "text=${TEXT}" --data-urlencode "disable_web_page_preview=true" > /dev/null || echo "::warning::telegram failed"
+      - name: Keep the schedules on
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow enable collect.yml && gh workflow enable health.yml || true
+      - name: The site test failed, so today's data was held back
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
+      - name: Tell the owner (one open "ops" issue, updated each failed morning)
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          N=$(gh issue list --label ops --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          gh label create ops --color B60205 --description "Automation needs attention" 2>/dev/null || true
+          if [ -n "$N" ]; then gh issue comment "$N" --body "Утренний сбор снова не прошёл: $URL"; else gh issue create --label ops --title "Утренний сбор Atlas не прошёл" --body "Сбор данных $(TZ=Asia/Tashkent date +%F) завершился ошибкой. Сайт продолжает работать на вчерашних данных. Журнал: $URL"; fi

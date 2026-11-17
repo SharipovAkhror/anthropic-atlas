@@ -167,6 +167,43 @@ if (digestIndex) {
   for (const f of digestFiles) if (!listed.has(f.slice(0, 10))) err("data/digests/index.json", `digest ${f} missing from index`);
   for (const d of listed) if (!digestFiles.includes(`${d}.json`)) err("data/digests/index.json", `index lists ${d} but file is missing`);
 }
+// digests agree with the data they describe
+{
+  const libIds = new Set((library?.items || []).map(i => i.id));
+  const pools = { person: atlas?.people, product: atlas?.products, fact: [...(atlas?.facts || []), ...(glossary?.terms || [])], event: events?.events };
+  for (const [f, d] of digests) {
+    if (!d) continue;
+    const F = `data/digests/${f}`;
+    if (d.date > TODAY) err(F, "digest dated in the future");
+    if (library) for (const x of d.library || []) if (!libIds.has(x)) err(F, `library id "${x}" not in the catalog`);
+    for (const k of ["added", "updated"]) for (const c of d[k] || []) if (pools[c.kind] && !pools[c.kind].some(p => p.id === c.id)) err(F, `${k}: ${c.kind} "${c.id}" not in the data`);
+    const idx = digestIndex?.digests?.find(x => x.date === d.date);
+    if (idx?.counts && idx.counts.news !== d.news.length) err("data/digests/index.json", `${d.date}: counts differ from the digest file`);
+  }
+}
+// the RSS feed must parse, or every reader drops it
+if (existsSync(join(ROOT, "data/feed.xml"))) {
+  const feed = readFileSync(join(ROOT, "data/feed.xml"), "utf8");
+  if (!/^<\?xml[^>]*\?>\s*<rss[\s\S]*<\/channel><\/rss>\s*$/.test(feed)) err("data/feed.xml", "truncated or not RSS");
+  if (/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(feed)) err("data/feed.xml", "control character (invalid XML)");
+  if (/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-f]+;)/i.test(feed)) err("data/feed.xml", "unescaped &");
+  const open = (feed.match(/<item>/g) || []).length, close = (feed.match(/<\/item>/g) || []).length;
+  if (open !== close) err("data/feed.xml", "unbalanced <item> tags");
+}
+// library links point only at Anthropic's own sites (a broken or hijacked source cannot inject other hosts)
+if (library) {
+  const OK = /^https:\/\/([a-z0-9-]+\.)*(anthropic\.com|claude\.com|claude\.ai|transformer-circuits\.pub|modelcontextprotocol\.io|skilljar\.com|github\.com|youtube\.com|youtu\.be)(\/|$)/i;
+  const bad = library.items.filter(i => !OK.test(i.url));
+  for (const i of bad.slice(0, 10)) err("data/library.json", `${i.id}: url outside Anthropic's sites (${i.url})`);
+  if (bad.length > 10) err("data/library.json", `…and ${bad.length - 10} more urls outside Anthropic's sites`);
+  const today = library.items.filter(i => i.added === TODAY).length;
+  if (today > 400) warn("data/library.json", `${today} items first seen today: check the sources`);
+  if (libNotes) {
+    const live = library.items.filter(i => !i.gone), carded = live.filter(i => libNotes.notes[i.id]).length;
+    if (carded < live.length * .5) warn("data/library-notes.json", `only ${carded} of ${live.length} live items have a Russian card`);
+    for (const p of libNotes.paths) if (p.items.length < 4) err("data/library-notes.json", `path ${p.id} has only ${p.items.length} items`);
+  }
+}
 
 report();
 

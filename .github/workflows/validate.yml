@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
@@ -21,10 +23,16 @@ jobs:
       - run: node scripts/validate.mjs
       - run: node scripts/test.mjs
       - name: Nothing lost
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then node scripts/guard.mjs --base=origin/${{ github.base_ref }}; else node scripts/guard.mjs --base=HEAD~1; fi
+          if [ "$EVENT" = "pull_request" ]; then node scripts/guard.mjs --base="origin/$BASE_REF"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE" 2>/dev/null; then node scripts/guard.mjs --base="$BEFORE"
+          else node scripts/guard.mjs --base=HEAD~1; fi
       - name: Browser smoke test
         run: |
           npm i --no-save playwright@1.55.0
-          npx playwright install --with-deps chromium
+          for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
           node scripts/smoke.mjs
