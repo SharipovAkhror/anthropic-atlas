@@ -4,7 +4,7 @@ Commitments
 Company
 Try Claude
 Anthropic’s Responsible Scaling Policy
-Anticipating and securing against emerging threats that accompany increasingly powerful models
+A voluntary framework for addressing catastrophic risks from advanced AI systems.
 Last updated Aug 14, 2026
 Read Anthropic's Responsible Scaling Policy
 In September 2023, we released the first version of our Responsible Scaling Policy (RSP). We believe that risk governance in this rapidly evolving domain should be proportional, iterative, and exportable. In that spirit, we have continued to refine the RSP over time and will use this page to inform the public of any developments.
@@ -12,6 +12,7 @@ Current and Prior Versions
 Read the current version of the RSP
 See the pdf
 RSP Noncompliance Reporting and Anti-Retaliation Policy
+See the PDF
 Version 3.4 and redline (effective July 8, 2026)
 Version 3.3 and redline (effective May 26, 2026)
 Version 3.2 and redline (effective April 29, 2026)

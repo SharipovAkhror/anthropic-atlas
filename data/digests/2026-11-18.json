@@ -1,6 +1,6 @@
 {
   "date": "2026-11-18",
-  "generatedAt": "2026-11-18T02:11:17.554Z",
+  "generatedAt": "2026-11-18T07:56:00.265Z",
   "auto": false,
   "headline": {
     "ru": "Без существенных новостей",
@@ -11,7 +11,20 @@
     "en": "No new events; the IPO price range ($70–78, 825M Class A shares), the leadership page and the LTBT were re-checked against primary sources."
   },
   "news": [],
-  "library": [],
+  "library": [
+    "5bca67eff5",
+    "830b0396ce",
+    "76c7f78426",
+    "49fa5c519b",
+    "684dc7bdaf",
+    "f7c3442dcd",
+    "ce3e003399",
+    "57d351669b",
+    "172d81008f",
+    "167c040a0d",
+    "379d308ee6",
+    "3574711074"
+  ],
   "added": [],
   "updated": [
     {
@@ -35,7 +48,7 @@
   "stats": {
     "sourcesOk": 18,
     "sourcesFailed": 1,
-    "candidates": 90,
+    "candidates": 102,
     "failedSources": [
       "sec-edgar"
     ]
