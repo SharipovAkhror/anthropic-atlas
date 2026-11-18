@@ -30,3 +30,9 @@ Production: https://anthropic-atlas.vercel.app (Vercel, deploys from `main`).
 - Design: neutral surfaces, one accent, few controls. Interactions are hidden and discoverable (hover reveals,
   click-to-expand, ⌘K search, `L` language, `T` theme, swipe to close). Do not add buttons to the top bar.
 - Local preview: `python3 -m http.server 4173` and open http://localhost:4173.
+
+## Who the page is for (keep every change answering this)
+Russian-speaking readers who act on Anthropic news: API developers (models, prices, deprecations), IPO followers
+(numbers with dates, who controls votes), writers and channel authors (a claim, its date, its primary source, copied in
+one tap). The first screen answers "what changed, by topic, since my last visit". Every sheet has three actions:
+Save (this browser only), Copy with source, Link. Section order and one-line leads live in `data/modules.json`.
