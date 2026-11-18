@@ -8,15 +8,15 @@
 //      then points avatar at the local file so the site never depends on hot-linked images.
 // People without any photo get a monogram icon in the UI; that is expected, not an error.
 // Usage: node scripts/enrich.mjs [--dry] [--force-images]
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { join } from "node:path";
+import { repoRoot, readJson } from "./lib.mjs";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = repoRoot();
 const args = new Set(process.argv.slice(2));
-const UA = JSON.parse(readFileSync(join(ROOT, "sources/sources.json"), "utf8")).userAgent;
+const UA = readJson(join(ROOT, "sources/sources.json")).userAgent;
 const atlasPath = join(ROOT, "data/atlas.json");
-const atlas = JSON.parse(readFileSync(atlasPath, "utf8"));
+const atlas = readJson(atlasPath);
 mkdirSync(join(ROOT, "assets/people"), { recursive: true });
 
 async function json(url) {
@@ -31,7 +31,7 @@ async function bytes(url) {
   if (!type.startsWith("image/")) throw new Error(`not an image (${type})`);
   return Buffer.from(await r.arrayBuffer());
 }
-const overrides = JSON.parse(readFileSync(join(ROOT, "sources/wiki-overrides.json"), "utf8")).people;
+const overrides = readJson(join(ROOT, "sources/wiki-overrides.json")).people;
 const cleanName = n => n.replace(/^(Dr\.|Prof\.)\s*/i, "").replace(/\s*'[^']+'\s*/g, " ").replace(/\s*\([^)]*\)/g, "").replace(/\s+/g, " ").trim();
 
 async function findWiki(person) {

@@ -8,11 +8,11 @@ import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { execSync } from "node:child_process";
-import { join, dirname, extname, normalize } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join, extname, normalize } from "node:path";
+import { repoRoot, parseArgs } from "./lib.mjs";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
 const require = createRequire(import.meta.url);
 let pw;
 try { pw = require("playwright"); } catch { pw = require(join(execSync("npm root -g").toString().trim(), "playwright")); }

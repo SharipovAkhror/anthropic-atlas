@@ -3,14 +3,14 @@
 // Usage: node scripts/validate.mjs [--today=YYYY-MM-DD] [--quiet]
 // Exit code 0 = valid (warnings allowed), 1 = errors. Run it after EVERY data edit.
 import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
+import { repoRoot, parseArgs, tashkentDate } from "./lib.mjs";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
-const TODAY = args.today || [new Date().toISOString().slice(0, 10), new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" })].sort().at(-1); // latest of UTC and Tashkent dates
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
+const TODAY = args.today || [new Date().toISOString().slice(0, 10), tashkentDate()].sort().at(-1); // latest of UTC and Tashkent dates
 const STALE_DAYS = 60;
 
 const errors = [];
