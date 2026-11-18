@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // The only way the morning model touches data/library-notes.json (2000+ cards, too big to edit by hand safely).
-//   node scripts/library-notes.mjs --todo [--limit=40]   prints a TSV of catalog items without a Russian card
+//   node scripts/library-notes.mjs --todo [--limit=40]   prints a TSV of catalog items without a hand-written Russian card
+//                                                        (no card, or a machine card `m` from scripts/translate.mjs)
 //   node scripts/library-notes.mjs --add=/tmp/cards.json  merges {"<id>": {"t","s","w"?,"d"?}} after cleaning
-//   add --replace to overwrite existing cards (fact fixes); without it existing cards are kept. At most 150 cards per run.
+//   add --replace to overwrite existing cards (fact fixes); without it existing hand-written cards are kept, machine cards
+//   are always replaced. A new card drops the old Uzbek version; translate.mjs makes a fresh one. At most 150 cards per run.
 // Cards for unknown ids are dropped, lengths are clipped, audiences outside the allowed list are removed.
 import { readFileSync, writeFileSync, existsSync, renameSync } from "node:fs";
 import { spawnSync } from "node:child_process";
@@ -23,7 +25,7 @@ const NO_ACTION = new Set(["news", "research", "customers", "events", "talks"]);
 const clean = s => String(s || "").replace(/\s*[—–]\s*/g, ", ").replace(/\s+/g, " ").trim();
 
 if (args.todo) {
-  const todo = lib.items.filter(i => !i.gone && !notes.notes[i.id]).sort((a, b) => String(b.date || b.added || "").localeCompare(String(a.date || a.added || ""))).slice(0, +(args.limit || 40));
+  const todo = lib.items.filter(i => !i.gone && (!notes.notes[i.id] || notes.notes[i.id].m)).sort((a, b) => String(b.date || b.added || "").localeCompare(String(a.date || a.added || ""))).slice(0, +(args.limit || 40));
   console.log(todo.length ? "id\tsection\ttitle\tdescription\turl" : "No items without a card.");
   for (const i of todo) console.log([i.id, i.section, i.title, (i.desc || "").replace(/\s+/g, " "), i.url].join("\t"));
 } else if (args.add) {
@@ -35,7 +37,7 @@ if (args.todo) {
     const it = byId.get(id);
     // one bad card is skipped, it does not sink the whole batch: empty after cleaning, hype, or not Russian
     if (!it || !clean(c?.t) || !clean(c?.s) || /!/.test(c.t + c.s) || !/[а-яё]/i.test(c.s)) { skipped++; continue; }
-    if (notes.notes[id] && !args.replace) { kept++; continue; }
+    if (notes.notes[id] && !notes.notes[id].m && !args.replace) { kept++; continue; }
     const card = { t: clean(c.t).slice(0, 140), s: clean(c.s).slice(0, 320) };
     const w = (Array.isArray(c.w) ? c.w : []).filter(x => AUD.has(x)).slice(0, 3); if (w.length) card.w = w;
     if (c.d && !NO_ACTION.has(it.section)) card.d = clean(c.d).slice(0, 140);

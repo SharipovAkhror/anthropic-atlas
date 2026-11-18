@@ -157,7 +157,7 @@
         "en": "Valuation",
         "uz": "Baholash"
       },
-      "value": "до $1.4T",
+      "value": "≤ $1.4T",
       "note": {
         "ru": "fully diluted по верху диапазона; рыночная $0.92–1.02T",
         "en": "fully diluted at top of range; market value $0.92–1.02T"
@@ -2024,7 +2024,7 @@
       "status": "active",
       "label": "Flagship",
       "released": "2026-11-09",
-      "metrics": "$8 / $40 за 1M ток. · 1M ctx",
+      "metrics": "$8 / $40 per 1M tok · 1M ctx",
       "owners": [
         "dario-amodei",
         "jared-kaplan",
@@ -2142,7 +2142,7 @@
       "status": "legacy",
       "label": "ASL-3",
       "released": "2025–2026",
-      "metrics": "Вывод из API 2026",
+      "metrics": "API retirement 2026",
       "owners": [
         "sam-mccandlish",
         "jared-kaplan",
@@ -2513,12 +2513,12 @@
     },
     {
       "id": "prod-enterprise-max",
-      "name": "Тарифы: Pro, Max, Ultra, Team, Enterprise",
+      "name": "Plans: Pro, Max, Ultra, Team, Enterprise",
       "cluster": "workspace",
       "status": "active",
       "label": "B2B Scale",
       "released": "2024–2026",
-      "metrics": "Max $100 · Ultra $200 / мес.",
+      "metrics": "Max $100 · Ultra $200 / mo",
       "owners": [
         "paul-smith",
         "chris-ciauri",

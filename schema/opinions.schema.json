@@ -19,7 +19,7 @@
           "role": { "$ref": "common.schema.json#/definitions/i18n" } } },
         "stance": { "enum": ["bullish", "bearish", "mixed"] },
         "claim": { "$ref": "common.schema.json#/definitions/i18nFull", "description": "A paraphrase in our words, never a copied passage" },
-        "horizon": { "type": ["string", "null"], "maxLength": 60 },
+        "horizon": { "oneOf": [{ "type": "null" }, { "type": "string", "maxLength": 60 }, { "$ref": "common.schema.json#/definitions/i18n" }] },
         "sources": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/definitions/source" } },
         "addedAt": { "$ref": "common.schema.json#/definitions/day" }
       } } }

@@ -33,6 +33,9 @@ const cases = [
   ["event without source", d => edit(d, "data/events.json", j => { j.events[0].sources = []; })],
   ["event missing English title", d => edit(d, "data/events.json", j => { delete j.events[0].title.en; })],
   ["unknown event type", d => edit(d, "data/events.json", j => { j.events[0].type = "rumor"; })],
+  ["Russian text pasted as Uzbek", d => edit(d, "data/events.json", j => { j.events[0].title.uz = j.events[0].title.ru; })],
+  ["Uzbek library card in Cyrillic", d => edit(d, "data/library-notes.json", j => { const k = Object.keys(j.notes)[0]; j.notes[k].u = { t: "Карточка" }; })],
+  ["Russian library card without Russian", d => edit(d, "data/library-notes.json", j => { const k = Object.keys(j.notes)[0]; j.notes[k] = { t: "Only English", m: 1 }; })],
   ["duplicate event id", d => edit(d, "data/events.json", j => { j.events.push({ ...j.events[0] }); })],
   ["unsorted events", d => edit(d, "data/events.json", j => { j.events.reverse(); })],
   ["product owner that does not exist", d => edit(d, "data/atlas.json", j => { j.products[0].owners.push("nobody-here"); })],
@@ -256,6 +259,33 @@ for (const [name, mutate] of cases) {
   ok(lc.length === 1 && lc[0].desc === "How to install" && lc[0].group === "Setup", "library: Claude Code llms.txt line with dash description");
   const sm = L.locs("<urlset><url><loc>https://a.example/x</loc><lastmod>2026-01-02T10:00:00Z</lastmod></url><url><loc>https://a.example/y</loc></url></urlset>");
   ok(sm.length === 2 && sm[0].lastmod === "2026-01-02" && sm[1].lastmod === null, "library: sitemap locs with and without lastmod");
+}
+
+// 12. translation layer (scripts/translate.mjs): checks that keep a bad machine translation off the site
+{
+  const T = await import("./translate.mjs");
+  ok(T.normUz("Yangi model o'quv va g`oya, ma'lumot") === "Yangi model o‘quv va g‘oya, maʼlumot", "translate: Uzbek apostrophes become o‘ g‘ and ʼ");
+  ok(T.reject("Оценка до $1.4T", "Baholash $1.4T gacha", "uz") === null, "translate: a faithful Uzbek line passes");
+  ok(/Cyrillic/.test(T.reject("Новая модель", "Новая model", "uz")), "translate: Cyrillic left in Uzbek is rejected");
+  ok(/number/.test(T.reject("Выручка $567M за квартал", "Chorak daromadi $576M", "uz")), "translate: a changed number is rejected");
+  ok(/name/.test(T.reject("Вышла Claude Opus 4.5", "Yangi Klod Opus 4.5 chiqdi", "uz")), "translate: a transliterated product name is rejected");
+  ok(/not Russian/.test(T.reject("Introduction to agents", "Introduction to agents guide", "ru")), "translate: an English answer for Russian is rejected");
+  ok(/exclamation/.test(T.reject("Новый релиз", "Yangi reliz!", "uz")), "translate: hype is rejected");
+  ok(T.reject("Сводка за 18 ноября 2026: 1 100 участников", "2026-yil 18-noyabr xulosasi: 1,100 ishtirokchi", "uz") === null, "translate: dates and thousands may be written differently");
+  const st = {};
+  ok(T.needs(st, "k", "src", "") && !T.needs(st, "k", "src", "hand-written"), "translate: missing text is made, hand-written text is kept");
+  const { sha } = await import("./lib.mjs");
+  st.k = [sha("old source"), sha("our text")];
+  ok(T.needs(st, "k", "new source", "our text") && !T.needs(st, "k", "new source", "edited by hand") && !T.needs({ k: [sha("src"), sha("our text")] }, "k", "src", "our text"), "translate: our text is redone only when its source changed and nobody edited it");
+  const notes = { notes: { a: { t: "Карточка", s: "Описание" }, b: { t: "Готово", s: "Есть", u: { t: "Tayyor", s: "Bor" } } }, paths: [{ id: "p", ru: "Путь", en: "Path", uz: "Yoʻl", items: [{ id: "a", why: "Причина" }] }] };
+  const files = [["data/x.json", { list: [{ id: "e1", title: { ru: "Заголовок", en: "Title" }, sources: [{ title: "x", url: "https://a" }] }] }]];
+  const jobs = T.buildJobs({ files, lib: { items: [{ id: "a", title: "A" }, { id: "b", title: "B" }, { id: "c", title: "Page C", desc: "About C" }, { id: "d", title: "Gone", gone: true }] }, notes, state: {} });
+  const keys = jobs.map(j => j.key).sort().join(" ");
+  ok(keys === "data/x.json/list/e1/title lib/a/uz lib/c/ru paths/p/a", `translate: jobs cover board text, reading paths, missing Russian cards and Uzbek cards (${keys})`);
+  jobs.find(j => j.key === "lib/c/ru").apply({ t: "Страница C", s: "О C" });
+  jobs.find(j => j.key === "lib/a/uz").apply({ t: "Kartochka", s: "Tavsif" });
+  ok(notes.notes.c.m === 1 && notes.notes.c.t === "Страница C" && notes.notes.a.u.t === "Kartochka" && notes.notes.a.t === "Карточка", "translate: a machine Russian card is marked, an Uzbek card sits beside the Russian one");
+  ok(T.accept({ to: "uz", fields: { t: "Модель Claude" }, max: { t: 140 } }, { t: "Claude modeli" }).out?.t === "Claude modeli" && T.accept({ to: "uz", fields: { t: "Модель" } }, {}).why, "translate: an answer is accepted field by field, a missing field is refused");
 }
 
 console.log(failed ? `\n${failed} test(s) FAILED` : "\nall tests passed");
