@@ -8,10 +8,11 @@ import { readFileSync, writeFileSync, existsSync, renameSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { repoRoot, parseArgs, readJson } from "./lib.mjs";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
-const lib = JSON.parse(readFileSync(join(ROOT, "data/library.json"), "utf8"));
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
+const lib = readJson(join(ROOT, "data/library.json"));
 const P = join(ROOT, "data/library-notes.json");
 const raw = existsSync(P) ? readFileSync(P, "utf8") : null;
 const notes = raw ? JSON.parse(raw) : { notes: {}, paths: [] };
@@ -26,7 +27,7 @@ if (args.todo) {
   console.log(todo.length ? "id\tsection\ttitle\tdescription\turl" : "No items without a card.");
   for (const i of todo) console.log([i.id, i.section, i.title, (i.desc || "").replace(/\s+/g, " "), i.url].join("\t"));
 } else if (args.add) {
-  const add = JSON.parse(readFileSync(args.add, "utf8"));
+  const add = readJson(args.add);
   let n = 0, skipped = 0, kept = 0;
   const entries = Object.entries(add);
   if (entries.length > 150) { console.error(`refusing ${entries.length} cards in one run (limit 150); split the batch`); process.exit(1); }

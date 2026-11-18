@@ -8,17 +8,18 @@
 // Usage: node scripts/digest.mjs [--date=YYYY-MM-DD] [--base=HEAD] [--print-only]
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
+import { repoRoot, parseArgs, tashkentDate, readJson } from "./lib.mjs";
+import { diff as diffRecords, plural, ru, hasRu, feedXml } from "./digest-core.mjs";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
-const DATE = args.date || new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" }); // the board's day is Tashkent's day
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
+const DATE = args.date || tashkentDate();
 const BASE = args.base || "HEAD";
 if (!/^\d{4}-\d{2}-\d{2}$/.test(DATE)) { console.error(`bad --date ${DATE}: use YYYY-MM-DD`); process.exit(1); }
 const SITE = "https://anthropic-atlas.vercel.app";
 
-const readNow = rel => JSON.parse(readFileSync(join(ROOT, rel), "utf8"));
+const readNow = rel => readJson(join(ROOT, rel));
 const readBase = rel => { try { return JSON.parse(execFileSync("git", ["show", `${BASE}:${rel}`], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] })); } catch { return null; } };
 // optional inputs: a broken or missing file means "no input", never "no digest"
 const safe = (rel, dflt) => { try { const p = join(ROOT, rel); return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) ?? dflt : dflt; } catch (e) { console.warn(`ignored ${rel}: ${e.message}`); return dflt; } };
@@ -26,29 +27,12 @@ const notesRaw = safe("pipeline/run/notes.json", {});
 const notes = notesRaw.date === DATE ? notesRaw : {}; // stale notes from a previous day are ignored
 const reasons = notes.reasons || {};
 
-const IGNORED = new Set(["verifiedAt", "avatar", "avatarCredit", "links", "label"]); // enrichment and re-verification are not news
-function diff(kind, before = [], after = [], label) {
-  const B = new Map(before.map(x => [x.id, x])), A = new Map(after.map(x => [x.id, x]));
-  const added = [], updated = [], removed = [], reverified = [];
-  for (const [id, a] of A) {
-    const b = B.get(id);
-    if (!b) { added.push({ kind, id, label: label(a) }); continue; }
-    const fields = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(k => !IGNORED.has(k) && JSON.stringify(a[k]) !== JSON.stringify(b[k]));
-    const retiredNow = a.status && a.status !== b.status && (["former", "retired"].includes(a.status) || (b.status === "active" && a.status === "legacy"));
-    if (retiredNow) { removed.push({ kind, id, label: label(a), reason: reasons[id] || `status → ${a.status}` }); continue; }
-    if (fields.length) updated.push({ kind, id, label: label(a), fields, ...(reasons[id] ? { reason: reasons[id] } : {}) });
-    else if (a.verifiedAt !== b.verifiedAt) reverified.push(id);
-  }
-  for (const [id, b] of B) if (!A.has(id)) removed.push({ kind, id, label: label(b), reason: reasons[id] || "removed" });
-  return { added, updated, removed, reverified };
-}
-
 const atlasNow = readNow("data/atlas.json"), atlasBase = readBase("data/atlas.json") || { people: [], products: [], facts: [] };
 const evNow = readNow("data/events.json").events, evBase = (readBase("data/events.json") || { events: [] }).events;
 const glNow = existsSync(join(ROOT, "data/glossary.json")) ? readNow("data/glossary.json").terms : [];
 const glBase = (readBase("data/glossary.json") || { terms: [] }).terms;
-const ru = o => (typeof o === "string" ? o : o?.ru || o?.en || "");
 
+const diff = (kind, before, after, label) => diffRecords(kind, before, after, label, reasons);
 const parts = [
   diff("person", atlasBase.people, atlasNow.people, p => `${p.name} — ${ru(p.role)}`),
   diff("product", atlasBase.products, atlasNow.products, p => p.name),
@@ -77,7 +61,6 @@ const fresh = libCat.items.filter(i => !i.gone && (i.added === DATE || (i.date =
 const notable = i => !/^(docs|help|support|cookbook)/.test(i.section || "");
 const freshNews = fresh.filter(i => i.section === "news").sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 const topNews = newEvents.map(id => evById.get(id)).sort((a, b) => b.importance - a.importance || b.date.localeCompare(a.date));
-const plural = (n, one, few, many) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? one : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? few : many}`;
 const QUIET_RU = "Без существенных новостей";
 // automatic headline and summary, recomputed from whatever the day holds so far (also on a second run)
 function autoText() {
@@ -98,7 +81,6 @@ function autoText() {
     summary: { ru: `${lib.slice(0, 3).map(libTitle).join("; ")}.`, en: `${lib.slice(0, 3).map(i => i.title).join("; ")}.` } };
   return { headline: { ru: QUIET_RU, en: "No significant news" }, summary: { ru: "Новых событий и публикаций нет.", en: "No new events or publications." } };
 }
-const hasRu = o => !!(o && typeof o === "object" && String(o.ru || "").trim());
 const digest = {
   date: DATE,
   generatedAt: new Date().toISOString(),
@@ -159,28 +141,12 @@ if (!args["print-only"]) {
   mkdirSync(join(ROOT, "pipeline/run"), { recursive: true });
   writeFileSync(join(ROOT, `data/digests/${DATE}.json`), JSON.stringify(digest, null, 2) + "\n");
   const idxPath = join(ROOT, "data/digests/index.json");
-  const idx = existsSync(idxPath) ? JSON.parse(readFileSync(idxPath, "utf8")) : { digests: [] };
+  const idx = existsSync(idxPath) ? readJson(idxPath) : { digests: [] };
   idx.digests = [{ date: DATE, headline: digest.headline, counts: { news: newEvents.length, added: nonEventAdded.length, updated: updated.length, removed: removed.length, library: digest.library.length } }, ...idx.digests.filter(d => d.date !== DATE)].sort((a, b) => b.date.localeCompare(a.date));
   writeFileSync(idxPath, JSON.stringify(idx, null, 2) + "\n");
   atlasNow.meta.updatedAt = DATE;
   writeFileSync(join(ROOT, "data/atlas.json"), JSON.stringify(atlasNow, null, 2) + "\n");
   writeFileSync(join(ROOT, "pipeline/run/digest.md"), text + "\n");
-  writeFeed(idx);
+  writeFileSync(join(ROOT, "data/feed.xml"), feedXml(idx, date => safe(`data/digests/${date}.json`, null), SITE));
 }
 console.log(text);
-
-// RSS feed of the daily digests: anyone can subscribe for free, no account, no bot, no model.
-// Quiet days are not items: a subscriber hears only about days when something happened.
-function feedXml(idx, readDigest) {
-  const x = s => String(s ?? "").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, "").replace(/[<>&'"]/g, c => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" }[c]));
-  const busy = d => Object.values(d.counts || {}).some(n => n > 0);
-  const items = idx.digests.filter(busy).slice(0, 30).map(d => {
-    const dj = readDigest(d.date) || {};
-    const when = dj.generatedAt && !isNaN(new Date(dj.generatedAt)) ? new Date(dj.generatedAt) : new Date(d.date + "T00:40:00Z");
-    return `<item><title>${x(d.date)} · ${x(ru(d.headline))}</title><link>${SITE}/</link><guid isPermaLink="false">atlas-digest-${x(d.date)}</guid><pubDate>${when.toUTCString()}</pubDate><description>${x(ru(dj.summary))}</description></item>`;
-  }).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anthropic Atlas</title><link>${SITE}/</link><atom:link href="${SITE}/data/feed.xml" rel="self" type="application/rss+xml"/><description>Ежедневная сводка об Anthropic по открытым источникам</description><language>ru</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n${items}\n</channel></rss>\n`;
-}
-function writeFeed(idx) {
-  writeFileSync(join(ROOT, "data/feed.xml"), feedXml(idx, date => safe(`data/digests/${date}.json`, null)));
-}

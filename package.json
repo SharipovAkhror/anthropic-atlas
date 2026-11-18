@@ -7,15 +7,17 @@
     "node": ">=20"
   },
   "scripts": {
-    "validate": "node scripts/validate.mjs",
-    "collect": "node scripts/collect.mjs",
-    "digest": "node scripts/digest.mjs",
-    "check": "node scripts/validate.mjs && node scripts/test.mjs && node scripts/guard.mjs",
+    "check": "npm run validate && npm run test && npm run guard",
     "test": "node scripts/test.mjs",
-    "serve": "npx --yes serve@14.2.4 -l 4173 .",
-    "library": "node scripts/library.mjs",
+    "validate": "node scripts/validate.mjs",
+    "guard": "node scripts/guard.mjs",
     "smoke": "node scripts/smoke.mjs",
-    "guard": "node scripts/guard.mjs"
+    "today": "node scripts/today.mjs",
+    "collect": "node scripts/collect.mjs",
+    "library": "node scripts/library.mjs",
+    "digest": "node scripts/digest.mjs",
+    "enrich": "node scripts/enrich.mjs",
+    "serve": "npx --yes serve@14.2.4 -l 4173 ."
   },
   "devDependencies": {
     "ajv": "8.17.1",

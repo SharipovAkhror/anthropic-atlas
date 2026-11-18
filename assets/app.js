@@ -13,6 +13,9 @@
     en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", libN: "in the library", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · Ctrl + wheel to zoom", hintT: "Drag with a finger · pinch to zoom", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
     uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", libN: "kutubxonada", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Suring · Ctrl + g‘ildirak — masshtab", hintT: "Barmoq bilan suring · chimdish — masshtab", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
   };
+  Object.assign(UI.ru, { save: "Сохранить", saved: "Сохранено", copySrc: "Скопировать с источником", quote: "Цитата", copiedSrc: "Скопировано", share: "Ссылка", linkCopied: "Ссылка скопирована", rechecked: "перепроверено", hold: "Удерживайте, чтобы очистить", holding: "Удерживайте…", cleared: "Сохранённое очищено", undo: "Вернуть", all: "Все", isNew: "новое", srcWord: "Источник", on: "на", notChecked: "Сегодня не удалось проверить", mayLag: "Связанные цифры могут отставать.", sinceVisit: (n, d) => `С вашего прошлого визита ${d}: ${n} ${new Intl.PluralRules("ru").select(n) === "one" ? "новое событие" : new Intl.PluralRules("ru").select(n) === "few" ? "новых события" : "новых событий"}`, byTopic: "Последнее по темам", copyId: "Скопировать", notFact: "Мнение автора, а не проверенный факт. Мы пересказываем его своими словами, оригинал по ссылке.", opinionsTag: "Мнения, не факты", kinds: { forecast: "Прогноз", opinion: "Мнение", analysis: "Разбор", market: "Рынок прогнозов" }, stances: { bullish: "Оптимистично", bearish: "Скептически", mixed: "Неоднозначно" }, horizon: "Горизонт", stanceL: "Позиция", author: "Автор" });
+  Object.assign(UI.en, { save: "Save", saved: "Saved", copySrc: "Copy with source", quote: "Quote", copiedSrc: "Copied", share: "Link", linkCopied: "Link copied", rechecked: "re-checked", hold: "Hold to clear", holding: "Keep holding…", cleared: "Saved list cleared", undo: "Undo", all: "All", isNew: "new", srcWord: "Source", on: "as of", notChecked: "Could not check today", mayLag: "Related numbers may lag.", sinceVisit: (n, d) => `Since your last visit ${d}: ${n} new event${n === 1 ? "" : "s"}`, byTopic: "Latest by topic", copyId: "Copy", notFact: "The author's view, not a verified fact. We paraphrase it in our own words; the original is linked.", opinionsTag: "Opinions, not facts", kinds: { forecast: "Forecast", opinion: "Opinion", analysis: "Analysis", market: "Prediction market" }, stances: { bullish: "Optimistic", bearish: "Sceptical", mixed: "Mixed" }, horizon: "Horizon", stanceL: "Stance", author: "Author" });
+  Object.assign(UI.uz, { save: "Saqlash", saved: "Saqlandi", copySrc: "Manba bilan nusxalash", quote: "Iqtibos", copiedSrc: "Nusxalandi", share: "Havola", linkCopied: "Havola nusxalandi", rechecked: "qayta tekshirildi", hold: "Tozalash uchun bosib turing", holding: "Bosib turing…", cleared: "Saqlanganlar tozalandi", undo: "Qaytarish", all: "Hammasi", isNew: "yangi", srcWord: "Manba", on: "sana", notChecked: "Bugun tekshirib bo‘lmadi", mayLag: "Tegishli raqamlar kechikishi mumkin.", sinceVisit: (n, d) => `Oxirgi tashrifingizdan (${d}) beri: ${n} ta yangi voqea`, byTopic: "Mavzular bo‘yicha so‘nggisi", copyId: "Nusxalash", notFact: "Muallif fikri, tasdiqlangan fakt emas. O‘z so‘zlarimiz bilan qayta aytamiz, asl manba havolada.", opinionsTag: "Fikrlar, fakt emas", kinds: { forecast: "Prognoz", opinion: "Fikr", analysis: "Tahlil", market: "Prognoz bozori" }, stances: { bullish: "Optimistik", bearish: "Skeptik", mixed: "Aralash" }, horizon: "Muddat", stanceL: "Pozitsiya", author: "Muallif" });
   const LANGS = ["ru", "en", "uz"];
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
   const S = { lang: LANGS.includes(store.get("atlas.lang")) ? store.get("atlas.lang") : "ru", stack: [], digest: null, allEvents: false };
@@ -49,9 +52,38 @@
     return `<span class="av ${cls}">${initials(p)}${img}</span>`;
   }
   const safeUrl = u => (/^https:\/\//i.test(String(u || "")) ? String(u) : "#");
-  const glyph = name => esc((name.replace(/^Claude\s+/, "").replace(/[^\p{L}\p{N}]/gu, "") || "··").slice(0, 2));
   const icon = (p, cls = "") => (p.kind === "group" ? `<span class="av ${cls}">${initials(p)}</span>` : "");
-  function toast(msg) { const el = $("#toast"); el.textContent = msg; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 1600); }
+  // toast(msg) or toast(msg, { label, run }) for an action such as "Undo"; with an action it stays 5 s
+  function toast(msg, act) {
+    const el = $("#toast"); el.innerHTML = `<span>${esc(msg)}</span>${act ? `<button type="button">${esc(act.label)}</button>` : ""}`;
+    el.classList.toggle("act", !!act); el.classList.add("on"); clearTimeout(toast.t);
+    if (act) $("button", el).onclick = () => { clearTimeout(toast.t); el.classList.remove("on"); act.run(); };
+    toast.t = setTimeout(() => { el.classList.remove("on"); act?.done?.(); }, act ? 5000 : 1600);
+  }
+  // A button that says what just happened in its own label (Copy → Copied), then returns to rest.
+  function morph(btn, text, ms = 1600) {
+    const lbl = $(".ml", btn); if (!lbl) return;
+    const rest = btn.dataset.rest ??= lbl.textContent;
+    btn.classList.add("done"); lbl.textContent = text; clearTimeout(btn._t);
+    btn._t = setTimeout(() => { btn.classList.remove("done"); lbl.textContent = rest; }, ms);
+  }
+  const copyText = s => (navigator.clipboard?.writeText(s) ?? Promise.reject()).catch(() => { const ta = document.createElement("textarea"); ta.value = s; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } finally { ta.remove(); } });
+  // What a reader marked, kept in this browser only ("kind:id" strings, newest first)
+  const SAVED = {
+    all() { try { const v = JSON.parse(store.get("atlas.saved") || "[]"); return Array.isArray(v) ? v.filter(x => typeof x === "string") : []; } catch { return []; } },
+    has(r) { return this.all().includes(r); },
+    set(list) { store.set("atlas.saved", JSON.stringify(list.slice(0, 200))); },
+    toggle(r) { const l = this.all(), on = !l.includes(r); this.set(on ? [r, ...l] : l.filter(x => x !== r)); return on; }
+  };
+  // Event types grouped by the question a reader comes with
+  const TOPICS = [
+    { id: "api", types: ["model", "infrastructure"], ru: "Модели и API", en: "Models and API", uz: "Modellar va API" },
+    { id: "money", types: ["finance", "governance", "legal"], ru: "IPO и деньги", en: "IPO and money", uz: "IPO va pul" },
+    { id: "product", types: ["product", "partnership"], ru: "Продукты", en: "Products", uz: "Mahsulotlar" },
+    { id: "people", types: ["people"], ru: "Люди", en: "People", uz: "Odamlar" },
+    { id: "safety", types: ["safety", "research", "policy"], ru: "Безопасность и политика", en: "Safety and policy", uz: "Xavfsizlik va siyosat" }
+  ];
+  const topicOf = type => TOPICS.find(x => x.types.includes(type))?.id || "product";
 
   // ---------------------------------------------------------------- data
   let D;
@@ -59,9 +91,10 @@
   async function getJSON(path) { const r = await fetch(path); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
   const normDigest = x => (x && x.date ? { news: [], added: [], updated: [], removed: [], library: [], ...x } : null);
   async function load() {
-    const [atlas, events, glossary, modules, digests] = await Promise.all(["/data/atlas.json", "/data/events.json", "/data/glossary.json", "/data/modules.json", "/data/digests/index.json"].map(p => getJSON(p).catch(() => null)));
+    const [atlas, events, glossary, modules, digests, opinions] = await Promise.all(["/data/atlas.json", "/data/events.json", "/data/glossary.json", "/data/modules.json", "/data/digests/index.json", "/data/opinions.json"].map(p => getJSON(p).catch(() => null)));
     if (!atlas) throw new Error("atlas.json");
-    D = { atlas, events: (events?.events || []).filter(e => e && e.id && /^\d{4}-\d{2}/.test(e.date || "") && e.title), terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [] };
+    D = { atlas, events: (events?.events || []).filter(e => e && e.id && /^\d{4}-\d{2}/.test(e.date || "") && e.title), terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [], opinions: (opinions?.opinions || []).filter(o => o && o.id && o.claim && o.who).sort((a, b) => b.date.localeCompare(a.date)) };
+    for (const o of D.opinions) IDX.set(`opinion:${o.id}`, { kind: "opinion", ...o });
     for (const p of atlas.people) IDX.set(`person:${p.id}`, { ...p, kind: p.kind === "group" ? "group" : "person", isPerson: true });
     for (const p of atlas.products) IDX.set(`product:${p.id}`, { kind: "product", ...p });
     for (const e of D.events) IDX.set(`event:${e.id}`, { kind: "event", ...e });
@@ -116,13 +149,45 @@
     const evs = D.events.filter(e => e.date <= upto).sort((a, b) => b.date.localeCompare(a.date) || (b.importance || 0) - (a.importance || 0));
     if (!evs.length) return { k: "", h: dg ? tx(dg.headline) : M("tag"), s: dg ? tx(dg.summary) : "" };
     const e = evs[0];
-    const auto = AN().filter(x => x.date > e.date && x.date <= upto && (S.lang === "en" || LIB.notes[x.id]))[0];
+    // an official post newer than the last checked event leads; without a Russian card it still leads after two
+    // days, in English, so the page keeps moving even if nobody writes cards (no model run, no subscription)
+    const newer = AN().filter(x => x.date > e.date && x.date <= upto);
+    const stale = (new Date(upto === "9999" ? Date.now() : upto + "T12:00:00Z") - new Date(e.date + "T12:00:00Z")) / 864e5 >= 2;
+    const auto = newer.find(x => S.lang === "en" || LIB.notes[x.id]) || (stale ? newer[0] : null);
     const pick = auto ? { date: auto.date, h: libT(auto.item), s: libS(auto.item), ref: `lib:${auto.id}` } : { date: e.date, h: tx(e.title), s: tx(e.summary), ref: `event:${e.id}` };
     const gap = Math.round((new Date(upto === "9999" ? Date.now() : upto + "T12:00:00Z") - new Date(pick.date + "T12:00:00Z")) / 864e5);
     const quiet = !!dg && !(dg.library || []).length && gap >= 1;
     return { k: `${M("latest")} · ${fmtDate(pick.date, { day: "numeric", month: "long" })}`, h: pick.h, s: pick.s, ref: pick.ref, quiet, gap };
   }
 
+  // a change that only refreshed sources is a re-check, not news
+  const srcOnly = a => (a.fields || []).length > 0 && a.fields.every(f => /^(sources|verifiedAt|asOf)$/.test(f)) && !a.reason;
+  // "since your last visit": the baseline is the previous visit at least three hours ago
+  function visitBaseline() {
+    const now = Date.now(), seen = +store.get("atlas.seen") || 0;
+    let base = +store.get("atlas.base") || 0;
+    if (seen && now - seen > 3 * 36e5) { base = seen; store.set("atlas.base", String(base)); }
+    store.set("atlas.seen", String(now));
+    return base ? new Date(base + 5 * 36e5).toISOString().slice(0, 10) : null; // the day in Tashkent
+  }
+  const isNewEv = e => !!S.base && (e.addedAt || e.date) > S.base && e.date >= S.base.slice(0, 7);
+  function sinceHTML() {
+    if (!S.base) return "";
+    const n = D.events.filter(isNewEv).length;
+    return n ? `<p class="since"><button data-jump="feed" data-topic="new">${esc(t("sinceVisit")(n, fmtDate(S.base, { day: "numeric", month: "long" })))}</button></p>` : "";
+  }
+  const SRC_NAMES = { "sec-edgar": "SEC EDGAR", "anthropic-news": "anthropic.com/news", "claude-docs": "Claude docs", "release-notes": "Claude release notes", "status": "status.claude.com" };
+  function healthHTML() {
+    const f = S.digest === S.latest ? S.latest?.stats?.failedSources || [] : [];
+    return f.length ? `<p class="health">${esc(t("notChecked"))}: ${esc(f.map(x => SRC_NAMES[x] || x).join(", "))}. ${esc(t("mayLag"))}</p>` : "";
+  }
+  // the newest event of each topic, so a quiet day still answers "what is the latest on X"
+  function lensHTML() {
+    const upto = S.digest?.date || "9999";
+    const rows = TOPICS.map(tp => ({ tp, e: D.events.filter(e => tp.types.includes(e.type) && e.date <= upto).sort((a, b) => b.date.localeCompare(a.date) || (b.importance || 0) - (a.importance || 0))[0] })).filter(x => x.e);
+    if (!rows.length) return "";
+    return `<div class="lens"><div class="lens-h">${esc(t("byTopic"))}</div>${rows.map(({ tp, e }) => `<button class="lens-r" data-open="event:${esc(e.id)}"><span class="lens-k">${esc(tp[S.lang] || tp.ru)}</span><span class="lens-t">${esc(tx(e.title))}</span><span class="lens-d num">${esc(shortDate(e.date))}</span></button>`).join("")}</div>`;
+  }
   R.digest = m => {
     const dg = S.digest;
     if (!dg) { island(m.id, tx(m.title), {}, `<p class="lead-txt">${esc(t("noDigest"))}</p>`); return; }
@@ -130,20 +195,21 @@
     const groups = [
       ["news", newsEv.map(e => ({ sign: "", text: tx(e.title), ref: `event:${e.id}` }))],
       ["added", dg.added.map(a => ({ sign: "+", text: a.label, ref: `${a.kind}:${a.id}` }))],
-      ["updatedN", dg.updated.map(a => ({ sign: "", text: a.label, why: a.reason || (a.fields || []).join(", "), ref: `${a.kind}:${a.id}` }))],
+      ["updatedN", dg.updated.filter(a => !srcOnly(a)).map(a => ({ sign: "", text: a.label, why: a.reason || (a.fields || []).join(", "), ref: `${a.kind}:${a.id}` }))],
+      ["rechecked", dg.updated.filter(srcOnly).map(a => ({ sign: "", text: a.label, ref: `${a.kind}:${a.id}` }))],
       ["removed", dg.removed.map(a => ({ sign: "−", text: a.label, why: a.reason, ref: `${a.kind}:${a.id}` }))],
       ["libN", LIB ? (dg.library || []).map(id => IDX.get(`lib:${id}`)).filter(Boolean).map(i => ({ sign: "", text: libT(i), why: secName(i.section), ref: `lib:${i.id}` })) : []]
     ];
     const past = D.digests.slice(0, 7), lead = leadStory();
-    if (!phone() && !groups.some(g => g[1].length)) return; // desktop: the hero already says it; an empty card is noise
+    if (!phone() && !groups.some(g => g[0] !== "rechecked" && g[1].length)) return; // desktop: the hero already says it; an empty card is noise
     const el = island(m.id, tx(m.title), { cls: "today notitle", far: `<div class="far-k">${esc(fmtDate(dg.date))}</div><div class="far-h">${esc(tx(dg.headline))}</div>` }, `
       <div class="date">${esc(lead.k)}</div>
       <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
-      <p class="summary">${gloss(lead.s)}</p>${lead.quiet ? `<p class="quiet">${esc(lead.gap > 1 ? (MAST[S.lang].daysAgo || MAST.ru.daysAgo)(lead.gap) : M("quiet"))}</p>` : ""}
-      ${phone() ? `<div class="mstats">${D.atlas.facts.slice(0, 4).map(f => `<button data-open="fact:${f.id}"><b class="num">${esc(tx(f.value))}</b><span>${esc(tx(f.label))}</span></button>`).join("")}</div><p class="mtag">${esc(M("tag"))}</p>` : ""}
+      <p class="summary">${gloss(lead.s)}</p>
+      ${phone() ? `${sinceHTML()}${healthHTML()}${lensHTML()}<p class="mtag">${esc(M("tag"))}</p>` : ""}
       <div class="counts">${groups.filter(g => g[1].length).map(([k, items]) => `<button data-g="${k}" aria-expanded="false"><b class="num">${items.length}</b> ${esc(t(k))}</button>`).join("")}</div>
       <div class="collapse dg"><div><ul class="dl"></ul></div></div>
-      ${past.length > 1 ? `<div class="past"><span>${esc(M("digests"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
+      ${past.length > 1 && phone() ? `<div class="past"><span>${esc(M("digests"))}:</span>${past.map(h => `<button data-d="${h.date}" class="${h.date === dg.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</div>` : ""}`);
     const panel = $(".dg", el), list = $(".dl", el);
     $$(".counts button", el).forEach(b => b.addEventListener("click", () => {
       const open = b.getAttribute("aria-expanded") === "true";
@@ -157,7 +223,7 @@
   };
 
   R.facts = m => {
-    island(m.id, tx(m.title), { far: D.atlas.facts.slice(0, 3).map(f => `<div class="far-v"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></div>`).join("") }, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}</span><span class="v num">${esc(f.value)}</span></button>`).join("")}</div>`);
+    island(m.id, tx(m.title), { lead: tx(m.lead), far: D.atlas.facts.slice(0, 3).map(f => `<div class="far-v"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></div>`).join("") }, `<div class="facts">${D.atlas.facts.map(f => `<button class="fact" data-open="fact:${f.id}"><span class="k">${esc(tx(f.label))}${f.asOf ? `<small>${esc(t("on"))} ${esc(shortDate(f.asOf))}</small>` : ""}</span><span class="v num" data-count>${esc(f.value)}</span></button>`).join("")}</div>`);
   };
 
   // Official posts from anthropic.com/news that no curated event covers yet (by URL), newer than the curated
@@ -178,13 +244,17 @@
   }
   R.timeline = m => {
     const all = [...D.events, ...AN()].sort((a, b) => b.date.localeCompare(a.date) || (b.importance || 0) - (a.importance || 0) || (a.auto ? 1 : 0) - (b.auto ? 1 : 0));
-    const evs = S.allEvents ? all : all.slice(0, 16);
+    const tp = S.topic || "all";
+    const pick = tp === "all" ? all : tp === "new" ? all.filter(e => !e.auto && isNewEv(e)) : all.filter(e => (e.auto ? "product" : topicOf(e.type)) === tp);
+    const evs = S.allEvents ? pick : pick.slice(0, 16);
     const days = [];
     for (const e of evs) { const last = days.at(-1); if (last && last.date === e.date) last.items.push(e); else days.push({ date: e.date, items: [e] }); }
     const thisYear = String(new Date().getFullYear());
-    const el = island(m.id, tx(m.title), { count: String(all.length), lead: tx(m.lead), far: D.events.slice(0, 6).map(e => `<div class="far-l">${esc(tx(e.title))}</div>`).join("") }, days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => e.auto ? `
+    const newN = D.events.filter(isNewEv).length;
+    const chips = `<div class="seg topics" role="tablist">${[["all", t("all")], ...(newN ? [["new", `${t("isNew")} · ${newN}`]] : []), ...TOPICS.map(x => [x.id, x[S.lang] || x.ru])].map(([id, l]) => `<button role="tab" data-topic="${id}" aria-selected="${id === tp}">${esc(l)}</button>`).join("")}</div>`;
+    const el = island(m.id, tx(m.title), { count: String(all.length), lead: tx(m.lead), far: D.events.slice(0, 6).map(e => `<div class="far-l">${esc(tx(e.title))}</div>`).join("") }, chips + days.map(d => `<div class="day-h num">${esc(fmtDate(d.date, { day: "numeric", month: "long", year: d.date.slice(0, 4) === thisYear ? undefined : "numeric" }))}</div>${d.items.map(e => e.auto ? `
       <button class="ev" data-open="lib:${e.id}" data-imp="2"><span class="t">${esc(libT(e.item))}</span><span class="m">${esc(M("official"))}</span></button>` : `
-      <button class="ev" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)}</span></button>`).join("")}`).join("") + (S.allEvents || all.length <= 16 ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${all.length}</button>`));
+      <button class="ev${isNewEv(e) ? " new" : ""}" data-open="event:${e.id}" data-imp="${e.importance}"><span class="t">${esc(tx(e.title))}</span><span class="m">${esc(t("types")[e.type] || e.type)}${isNewEv(e) ? ` · <em>${esc(t("isNew"))}</em>` : ""}</span></button>`).join("")}`).join("") + (S.allEvents || pick.length <= 16 ? "" : `<button class="more" data-all>${esc(t("showAll"))} · ${pick.length}</button>`));
     $("[data-all]", el)?.addEventListener("click", () => { S.allEvents = true; renderAll({ keepCamera: true }); });
   };
 
@@ -216,12 +286,43 @@
   };
 
   const order = { active: 0, preview: 1, legacy: 2, deprecated: 3, retired: 4 };
-  R.products = () => {
-    for (const c of D.atlas.clusters) {
+  const inFilter = (m, p) => { const f = m.filter?.cluster; return !f || (Array.isArray(f) ? f : [f]).includes(p.cluster); };
+  R.products = m => {
+    if (m.filter?.cluster === "models") return R.models(m);
+    for (const c of D.atlas.clusters.filter(c => inFilter(m, { cluster: c.id }))) {
       const ps = D.atlas.products.filter(p => p.cluster === c.id).sort((a, b) => order[a.status] - order[b.status] || String(b.released).localeCompare(String(a.released)));
       if (!ps.length) continue;
       island(`cluster-${c.id}`, tx(c.label), { count: String(ps.length), far: ps.filter(p => p.status !== "retired").slice(0, 5).map(p => `<div class="far-l">${esc(p.name)}</div>`).join("") }, ps.map(p => `<button class="row noav" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span><span class="rl">${esc(tx(p.description))}</span></span><span class="side">${p.status === "active" ? esc(String(p.released || "").slice(0, 4)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`).join(""));
     }
+  };
+
+  // models: what a developer needs at a glance (name, price, context, status); API ids copy from the sheet
+  R.models = m => {
+    const ps = D.atlas.products.filter(p => p.cluster === "models").sort((a, b) => order[a.status] - order[b.status] || String(b.released).localeCompare(String(a.released)));
+    if (!ps.length) return;
+    island("cluster-models", tx(m.title), { count: String(ps.length), lead: tx(m.lead), far: ps.slice(0, 4).map(p => `<div class="far-l">${esc(p.name)}</div>`).join("") },
+      ps.map(p => { const ids = (p.children || []).filter(c => c.apiId && c.status !== "retired").map(c => c.apiId); return `<button class="row noav model" data-open="product:${p.id}"><span class="who"><span class="nm">${esc(p.name)}</span>${p.metrics ? `<span class="price num">${esc(p.metrics)}</span>` : ""}${ids.length ? `<span class="ids">${ids.map(i => `<code>${esc(i)}</code>`).join("")}</span>` : ""}</span><span class="side">${p.status === "active" ? esc(shortDate(p.released)) : `<span class="st ${p.status}">${esc(t(p.status))}</span>`}</span></button>`; }).join(""));
+  };
+
+  // saved: what this reader marked; appears only once something is saved
+  R.saved = m => {
+    const items = SAVED.all().map(r => { const [k, ...rest] = r.split(":"); return { r, k, x: IDX.get(`${k}:${rest.join(":")}`) }; }).filter(x => x.x);
+    if (!items.length) return;
+    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "opinion" ? `${x.who.name}: ${tx(x.claim)}` : x.name || x.term || tx(x.title) || tx(x.label));
+    const sub = (k, x) => k === "opinion" ? `${t("kinds")[x.kind]} · ${shortDate(x.date)}` : (k === "event" ? `${t("types")[x.type] || x.type} · ${shortDate(x.date)}` : k === "lib" ? secName(x.section) : k === "fact" ? x.value : k === "product" ? clusterLabel(x.cluster) : k === "person" ? tx(x.role) : "");
+    island(m.id, tx(m.title), { count: String(items.length), lead: tx(m.lead), far: items.slice(0, 5).map(i => `<div class="far-l">${esc(name(i.x))}</div>`).join("") },
+      items.map(({ r, k, x }) => `<button class="row noav" data-open="${esc(r)}"><span class="who"><span class="nm">${esc(name(x))}</span><span class="rl">${esc(sub(k, x))}</span></span></button>`).join("") + `<button class="hold" type="button"><span class="ml">${esc(t("hold"))}</span></button>`);
+  };
+
+  // opinions and forecasts: a different surface and a standing caption, so a view is never read as a fact
+  const STANCE = { bullish: "↗", bearish: "↘", mixed: "↔" };
+  const opRow = o => `<button class="op" data-open="opinion:${esc(o.id)}"><span class="op-c">${esc(tx(o.claim))}</span><span class="op-w"><b>${esc(o.who.name)}</b>${esc(tx(o.who.role) ? `, ${tx(o.who.role)}` : "")}</span><span class="op-m"><span class="op-s" title="${esc(t("stances")[o.stance])}">${STANCE[o.stance] || ""} ${esc(t("stances")[o.stance])}</span> · ${esc(t("kinds")[o.kind])} · ${esc(shortDate(o.date))}</span></button>`;
+  R.opinions = m => {
+    if (!D.opinions.length) return;
+    const all = D.opinions, shown = S.allOps ? all : all.slice(0, 6);
+    const el = island(m.id, tx(m.title), { cls: "voices", count: String(all.length), lead: tx(m.lead), far: all.slice(0, 4).map(o => `<div class="far-l">${esc(o.who.name)}</div>`).join("") },
+      `<div class="op-tag">${esc(t("opinionsTag"))}</div>${shown.map(opRow).join("")}${all.length > shown.length ? `<button class="more" data-allops>${esc(t("showAll"))} · ${all.length}</button>` : ""}`);
+    $("[data-allops]", el)?.addEventListener("click", () => { S.allOps = true; renderAll({ keepCamera: true }); });
   };
 
   R.glossary = m => {
@@ -375,27 +476,58 @@
         <p class="lead">${esc(tx(g.definition))}</p>${linksHTML(g.links)}
         ${where.length ? `<div class="blk"><h4>${esc(t("seeAlso"))}</h4>${where.map(x => relRow(x, x.isPerson ? tx(x.role) : clusterLabel(x.cluster))).join("")}</div>` : ""}${sourcesHTML(g)}`;
     },
+    opinion(o) {
+      return `<div class="hd"><div><div class="cap">${esc(t("kinds")[o.kind])} · ${esc(fmtDate(o.date))}</div><h3 data-copy style="margin-top:4px">${esc(o.who.name)}</h3><div class="sub">${esc(tx(o.who.role))}</div></div></div>
+        <div class="notfact">${esc(t("notFact"))}</div>
+        <p class="lead op-lead">${gloss(tx(o.claim))}</p>
+        ${kv([[t("stanceL"), `${STANCE[o.stance] || ""} ${esc(t("stances")[o.stance])}`], [t("horizon"), esc(o.horizon || "")]])}${sourcesHTML(o)}`;
+    },
     fact(f) {
       return `<div class="hd"><div><div class="cap">${esc(tx(f.label))}</div><h3 data-copy class="num" style="margin-top:2px;font-size:40px;letter-spacing:-.03em">${esc(f.value)}</h3></div></div>
         <p class="lead">${gloss(tx(f.note))}</p>${kv([[t("asOf"), esc(fmtDate(f.asOf))]])}${sourcesHTML(f)}`;
     }
   };
 
+  // the three things a reader does with any item: keep it, quote it with its source, send the link
+  const IC = {
+    save: `<svg class="ic-save" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.5 1.75h7v10.5L7 9.6l-3.5 2.65z"/></svg>`,
+    copy: `<svg class="ic-a" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="7.5" height="7.5" rx="1.8"/><path d="M9.5 4.5V3.3A1.3 1.3 0 0 0 8.2 2H3.3A1.3 1.3 0 0 0 2 3.3v4.9a1.3 1.3 0 0 0 1.3 1.3h1.2"/></svg>`,
+    link: `<svg class="ic-a" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 8a2.6 2.6 0 0 0 3.7 0l2-2A2.6 2.6 0 0 0 8 2.3l-.8.8M8 6a2.6 2.6 0 0 0-3.7 0l-2 2A2.6 2.6 0 0 0 6 11.7l.8-.8"/></svg>`,
+    check: `<svg class="ic-ok" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.4 5.6 10.3 11.5 3.8"/></svg>`
+  };
+  function actsHTML(kind, id) {
+    const r = `${kind}:${id}`, on = SAVED.has(r);
+    return `<div class="acts"><button class="act save${on ? " on" : ""}" data-save="${esc(r)}" aria-pressed="${on}">${IC.save}<span class="ml">${esc(t(on ? "saved" : "save"))}</span></button><button class="act" data-quote="${esc(r)}">${IC.copy}${IC.check}<span class="ml">${esc(t(phone() ? "quote" : "copySrc"))}</span></button><button class="act" data-link>${IC.link}${IC.check}<span class="ml">${esc(t("share"))}</span></button></div>`;
+  }
+  // a plain-text quote a writer can paste: the claim, its date, the primary source and a link back here
+  function quoteOf(kind, id) {
+    const x = IDX.get(`${kind}:${id}`); if (!x) return "";
+    const src = (x.sources || [])[0]?.url || x.url || "", here = `${location.origin}/#/${kind}/${encodeURIComponent(id)}`;
+    const head = kind === "fact" ? `${tx(x.label)}: ${x.value}${x.asOf ? ` (${t("on")} ${fmtDate(x.asOf)})` : ""}.`
+      : kind === "event" ? `${tx(x.title)} (${fmtDate(x.date)}). ${tx(x.summary)}`
+      : kind === "lib" ? `${libT(x)}. ${libS(x)}`
+      : kind === "person" ? `${x.name}, ${tx(x.role)}. ${tx(x.bio)}`
+      : kind === "term" ? `${x.term}: ${tx(x.definition)}`
+      : kind === "opinion" ? `${t("kinds")[x.kind]}, ${fmtDate(x.date)}. ${x.who.name} (${tx(x.who.role)}): ${tx(x.claim)} [${t("opinionsTag")}]`
+      : `${x.name}. ${tx(x.description)}${x.metrics ? ` ${x.metrics}.` : ""}`;
+    return `${head.replace(/\s+/g, " ").trim()}\n${src ? `${t("srcWord")}: ${src}\n` : ""}Anthropic Atlas: ${here}`;
+  }
   function openEntity(kind, id, { push = true, fromHash = false } = {}) {
     const e = IDX.get(`${kind}:${id}`);
     if (!e) return;
     if (push && (!S.stack.length || S.stack.at(-1).id !== id)) S.stack.push({ kind, id });
     if (kind === "shelf" && push) Object.assign(SH, { q: "", aud: "all", lim: 60 });
     $("#sheet-body").innerHTML = SHEET[kind](e);
+    if (kind !== "shelf") $("#sheet-body .hd")?.insertAdjacentHTML("afterend", actsHTML(kind, id));
     if (kind === "shelf") fillShelf();
     $("#sheet-body").scrollTop = 0;
-    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "shelf" ? tx(x) : x.name || x.term || tx(x.title) || tx(x.label));
+    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "shelf" ? tx(x) : x.kind === "opinion" ? x.who.name : x.name || x.term || tx(x.title) || tx(x.label));
         const prev = S.stack.length > 1 ? S.stack.at(-2) : null;
     $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
     const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
     const wasOn = $("#sheet").classList.contains("on");
     $("#sheet").classList.add("on"); $("#scrim").classList.add("on"); $("#sheet").inert = false; $("#sheet").removeAttribute("aria-hidden"); dismissHint();
-    if (!wasOn) { openEntity.ret = document.activeElement; setTimeout(() => $("#x").focus({ preventScroll: true }), 30); }
+    if (!wasOn) { openEntity.ret = document.activeElement; if (S.kbd) setTimeout(() => $("#x").focus({ preventScroll: true }), 30); }
     S.focus = kind === "person" ? id : null; drawLinks();
     if (!fromHash) try { history.replaceState(null, "", `#/${kind}/${encodeURIComponent(id)}`); } catch {}
   }
@@ -404,6 +536,7 @@
     $("#sheet").classList.remove("on"); $("#scrim").classList.remove("on"); $("#sheet").inert = true; $("#sheet").setAttribute("aria-hidden", "true"); S.stack = []; S.focus = null; drawLinks();
     if (wasOn && openEntity.ret?.isConnected) openEntity.ret.focus({ preventScroll: true });
     try { history.replaceState(null, "", location.pathname + location.search); } catch {}
+    if (S.savedDirty) { S.savedDirty = false; setTimeout(() => renderAll({ keepCamera: true }), 320); }
   }
   function back() { if (S.stack.length > 1) { S.stack.pop(); const s = S.stack.at(-1); openEntity(s.kind, s.id, { push: false }); } else closeSheet(); }
 
@@ -419,9 +552,9 @@
 
   // ---------------------------------------------------------------- hero (desktop): today in one glance
   const MAST = {
-    ru: { tag: "Ежедневный монитор компании Anthropic по открытым источникам: что происходит, кто принимает решения и что она публикует. Каждый факт со ссылкой на источник.", start: "Новичку: начните с подборки «С чего начать»", ago: "последнее событие", daysAgo: n => `Тихий день · ${new Intl.PluralRules("ru").select(n) === "one" ? `${n} день` : new Intl.PluralRules("ru").select(n) === "few" ? `${n} дня` : `${n} дней`} без новых событий`, lib: "Библиотека", method: "Как мы проверяем", latest: "Последнее событие", official: "Anthropic · официально", rss: "RSS", quiet: "За сегодня новых событий нет.", gone: "Ссылка устарела: такой записи больше нет", digests: "Сводки" },
-    en: { tag: "A daily monitor of Anthropic from public sources: what is happening, who decides and what it publishes. Every fact links to its source.", start: "New here? Start with the “Start here” reading paths", daysAgo: n => `Quiet day · no new events for ${n} day${n === 1 ? "" : "s"}`, lib: "Library", method: "How we verify", latest: "Latest event", official: "Anthropic · official", rss: "RSS", quiet: "No new events today.", gone: "This link is out of date", digests: "Digests" },
-    uz: { tag: "Anthropic haqida ochiq manbalar asosidagi kundalik monitor: nima bo‘lyapti, kim qaror qiladi va u nimalarni nashr etadi. Har bir fakt manbaga havola bilan.", start: "Yangi boshlovchilarga: «Nimadan boshlash» to‘plamidan boshlang", daysAgo: n => `Tinch kun · ${n} kun yangi voqea yo‘q`, lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", official: "Anthropic · rasmiy", rss: "RSS", quiet: "Bugun yangi voqealar yo‘q.", gone: "Havola eskirgan", digests: "Xulosalar" }
+    ru: { tag: "Что изменилось у Anthropic: модели, цены, IPO и кто принимает решения. Каждый факт с датой и ссылкой на первоисточник, обновление каждое утро.", start: "Новичку: начните с подборки «С чего начать»", ago: "последнее событие", daysAgo: n => `Тихий день · ${new Intl.PluralRules("ru").select(n) === "one" ? `${n} день` : new Intl.PluralRules("ru").select(n) === "few" ? `${n} дня` : `${n} дней`} без новых событий`, lib: "Библиотека", method: "Как мы проверяем", latest: "Последнее событие", official: "Anthropic · официально", rss: "RSS", gone: "Ссылка устарела: такой записи больше нет", digests: "Сводки" },
+    en: { tag: "What changed at Anthropic: models, prices, the IPO and who decides. Every fact has a date and a primary source, refreshed every morning.", start: "New here? Start with the “Start here” reading paths", lib: "Library", method: "How we verify", latest: "Latest event", official: "Anthropic · official", rss: "RSS", gone: "This link is out of date", digests: "Digests" },
+    uz: { tag: "Anthropic’da nima o‘zgardi: modellar, narxlar, IPO va kim qaror qiladi. Har bir fakt sana va birlamchi manba bilan, har kuni ertalab yangilanadi.", start: "Yangi boshlovchilarga: «Nimadan boshlash» to‘plamidan boshlang", lib: "Kutubxona", method: "Qanday tekshiramiz", latest: "So‘nggi voqea", official: "Anthropic · rasmiy", rss: "RSS", gone: "Havola eskirgan", digests: "Xulosalar" }
   };
   const M = k => MAST[S.lang][k] || MAST.ru[k];
   const METHOD_URL = "https://github.com/SharipovAkhror/anthropic-atlas/blob/main/docs/METHODOLOGY.md";
@@ -431,14 +564,20 @@
     const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
     return `${t("updated")} ${day} ${t("at")} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}`;
   }
+  // the four numbers IPO readers check first, each opening its source; the date says how fresh they are
+  function heroStats() {
+    const fs = D.atlas.facts.slice(0, 3); if (!fs.length) return "";
+    const asOf = fs.map(f => f.asOf).filter(Boolean).sort().at(-1);
+    return `<div class="hstats">${fs.map(f => `<button data-open="fact:${esc(f.id)}"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></button>`).join("")}${asOf ? `<span class="hstats-d">${esc(t("on"))} ${esc(shortDate(asOf))}</span>` : ""}</div>`;
+  }
   function heroHTML() {
     const dg = S.digest, date = dg?.date || D.atlas.meta.updatedAt;
-    const lead = leadStory(), past = D.digests.slice(0, 7), MQ = MAST[S.lang].daysAgo || MAST.ru.daysAgo;
-    return `<p class="hero-d">${esc(M("tag"))}</p><div class="hero-k">${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long" }))}<span>${esc(stampText())}</span></div>
-      ${lead.k ? `<div class="hero-e">${esc(lead.k)}</div>` : ""}
+    const lead = leadStory(), past = D.digests.slice(0, 7);
+    return `<div class="hero-k">${esc(fmtDate(date, { weekday: "long", day: "numeric", month: "long" }))}<span>${esc(stampText())}</span></div><p class="hero-d">${esc(M("tag"))}</p>
+      <div class="hero-top"><div class="hero-main">${lead.k ? `<div class="hero-e">${esc(lead.k)}</div>` : ""}
       <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
       ${lead.s ? `<p class="hero-s">${gloss(lead.s)}</p>` : ""}
-      ${lead.quiet ? `<p class="quiet">${esc(lead.gap > 1 ? MQ(lead.gap) : M("quiet"))}</p>` : ""}
+      ${heroStats()}${sinceHTML()}${healthHTML()}</div>${lensHTML()}</div>
       <div class="hero-l">${LIB?.paths.length ? `<button data-jump="lib-start">${esc(M("start"))}</button>` : ""}${LIB ? `<button data-jump="lib-shelves">${esc(M("lib"))} <span class="num">${LIB.items.length}</span></button>` : ""}<a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(M("method"))}</a><a href="/data/feed.xml" target="_blank" rel="noopener">${esc(M("rss"))}</a>${past.length > 1 ? `<span class="past-h">${esc(M("digests"))}: ${past.map(h => `<button data-d="${h.date}" class="${h.date === dg?.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</span>` : ""}</div>`;
   }
 
@@ -835,8 +974,23 @@
     for (const m of D.modules) if (!m.hidden && R[m.renderer]) try { R[m.renderer](m); } catch (err) { console.warn(m.id, err); }
     document.documentElement.lang = S.lang;
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
+    countUp();
     if (phone()) { renderTabs(); if (keepCamera) goPage(keepPage, false); }
-    else { layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
+    else { if (keepCamera) { board().classList.add("swap"); requestAnimationFrame(() => requestAnimationFrame(() => board().classList.remove("swap"))); } layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
+  }
+  // key figures count up once when they first come into view; ranges, tickers and words just appear
+  function countUp() {
+    if (reduced() || !("IntersectionObserver" in window) || S.counted) return;
+    const els = $$("[data-count]", board()).filter(el => /^\$?\d+(\.\d+)?[%BMKT]?$/.test(el.textContent.trim()));
+    if (!els.length) return;
+    S.counted = true;
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return; io.unobserve(en.target);
+      const el = en.target, txt = el.textContent.trim(), m = txt.match(/^(\$?)(\d+(?:\.(\d+))?)(.*)$/), to = parseFloat(m[2]), dec = (m[3] || "").length, t0 = performance.now();
+      const step = now => { const k = Math.min(1, (now - t0) / 700), e = 1 - Math.pow(1 - k, 4); el.textContent = `${m[1]}${(to * e).toFixed(dec)}${m[4]}`; if (k < 1) requestAnimationFrame(step); else el.textContent = txt; };
+      requestAnimationFrame(step);
+    }), { threshold: .6 });
+    els.forEach(el => io.observe(el));
   }
   function dismissHint() { clearTimeout(dismissHint.t); $("#hint")?.classList.remove("on"); }
   function startCamera() {
@@ -853,6 +1007,24 @@
       if (o) {
         e.preventDefault(); const [k, ...rest] = o.dataset.open.split(":"); if (!o.closest("#sheet")) S.stack = []; openEntity(k, rest.join(":")); hideTip();
         if (!phone() && o.closest("#board")) { const r = o.getBoundingClientRect(), edge = innerWidth - sheetW(); if (r.right > edge - 16) tween({ s: cam.s, x: cam.x - (r.right - edge + 40), y: cam.y }, 420); }
+        return;
+      }
+      const sv = e.target.closest("[data-save]");
+      if (sv) {
+        const on = SAVED.toggle(sv.dataset.save); sv.classList.toggle("on", on); sv.setAttribute("aria-pressed", on);
+        $(".ml", sv).textContent = t(on ? "saved" : "save"); sv.classList.remove("pop"); void sv.offsetWidth; sv.classList.add("pop");
+        S.savedDirty = true; return;
+      }
+      const qt = e.target.closest("[data-quote]");
+      if (qt) { const [k, ...rest] = qt.dataset.quote.split(":"); copyText(quoteOf(k, rest.join(":"))).then(() => morph(qt, t("copiedSrc"))); return; }
+      if (e.target.closest("[data-link]")) { const b = e.target.closest("[data-link]"); copyText(location.href).then(() => morph(b, t("linkCopied"))); return; }
+      const cd = e.target.closest("#sheet code");
+      if (cd) { copyText(cd.textContent).then(() => { cd.classList.add("copied"); setTimeout(() => cd.classList.remove("copied"), 1200); }); return; }
+      const tpc = e.target.closest("[data-topic]");
+      if (tpc) {
+        e.preventDefault(); S.topic = tpc.dataset.topic; S.allEvents = false; renderAll({ keepCamera: true });
+        const sl = $('.slot[data-island="feed"]');
+        if (sl && phone()) goPage($$(".slot", board()).indexOf(sl), false); else if (sl && tpc.dataset.jump) focusIsland(sl);
         return;
       }
       const g = e.target.closest("abbr.g");
@@ -879,6 +1051,20 @@
       const a = e.target.closest("[data-aud]"); if (a) { SH.aud = a.dataset.aud; SH.lim = 60; $$("[data-aud]", $("#sheet-body")).forEach(b => b.setAttribute("aria-pressed", b === a)); fillShelf(); return; }
       if (e.target.closest("[data-lim]")) { SH.lim += 60; fillShelf(); }
     });
+    // hold to clear the saved list: a line fills under the label; letting go early rewinds it; Undo for 5 s
+    let holdT = 0;
+    const holdEnd = () => { clearTimeout(holdT); const h = $(".hold.holding"); if (h) { h.classList.remove("holding"); $(".ml", h).textContent = t("hold"); } };
+    board().addEventListener("pointerdown", e => {
+      const h = e.target.closest(".hold"); if (!h) return;
+      e.preventDefault(); h.classList.add("holding"); $(".ml", h).textContent = t("holding");
+      holdT = setTimeout(() => {
+        const prev = SAVED.all(); SAVED.set([]); h.classList.remove("holding"); renderAll({ keepCamera: true });
+        toast(t("cleared"), { label: t("undo"), run: () => { SAVED.set(prev); renderAll({ keepCamera: true }); } });
+      }, reduced() ? 700 : 900);
+    });
+    addEventListener("pointerup", holdEnd); addEventListener("pointercancel", holdEnd);
+    board().addEventListener("pointerleave", e => { if (e.target.classList?.contains("hold")) holdEnd(); }, true);
+    board().addEventListener("contextmenu", e => { if (e.target.closest(".hold")) e.preventDefault(); });
     $("#scrim").addEventListener("click", closeSheet);
     $("#x").addEventListener("click", closeSheet);
     $("#pscrim").addEventListener("click", closePalette);
@@ -925,7 +1111,7 @@
     if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false }); }
   }
   function fromHash() {
-    const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf)\/(.+)$/);
+    const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf|opinion)\/(.+)$/);
     if (!m) return;
     let id = m[2]; try { id = decodeURIComponent(id); } catch {}
     if (!IDX.has(`${m[1]}:${id}`)) { if (LIB || !/^(lib|shelf)$/.test(m[1])) toast(M("gone")); return; }
@@ -937,6 +1123,9 @@
   // a broken avatar falls back to initials (no inline handlers, so the page can run under a strict CSP)
   document.addEventListener("error", e => { if (e.target.tagName === "IMG" && e.target.closest(".av")) e.target.remove(); }, true);
   // The library is part of the first screen: wait for it briefly, never longer than 2.5 s.
+  S.base = visitBaseline();
+  // focus moves into the sheet only for keyboard users; a tap should not leave a focus ring behind
+  addEventListener("keydown", () => { S.kbd = true; }, true); addEventListener("pointerdown", () => { S.kbd = false; }, true);
   load().then(async () => {
     buildGloss(); bind(); bindCanvas(); bindPhone();
     const lib = loadLibrary().then(() => true, e => { console.warn("library", e); return false; });

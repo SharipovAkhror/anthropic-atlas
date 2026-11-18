@@ -5,21 +5,21 @@
 //   - page changes on watched pages
 //   - the entities due for rolling re-verification today (each entity once a week)
 // Usage: node scripts/today.mjs [--date=YYYY-MM-DD] [--json]
-import { readFileSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { repoRoot, parseArgs, tashkentDate, readJson, isoDay } from "./lib.mjs";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
-const DATE = args.date || new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tashkent" }).format(new Date());
-const read = rel => JSON.parse(readFileSync(join(ROOT, rel), "utf8"));
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
+const DATE = args.date || tashkentDate();
+const read = rel => readJson(join(ROOT, rel));
 const atlas = read("data/atlas.json"), events = read("data/events.json").events;
 const inbox = existsSync(join(ROOT, "pipeline/inbox/latest.json")) ? read("pipeline/inbox/latest.json") : { date: null, sources: [], items: [] };
 const digests = read("data/digests/index.json").digests;
 
 const norm = s => String(s || "").toLowerCase().replace(/[^\p{L}\p{N} ]/gu, " ").replace(/\s+/g, " ").trim();
 const knownUrls = new Set(events.flatMap(e => e.sources.map(s => s.url)));
-const knownTitles = events.filter(e => e.date >= new Date(Date.parse(DATE) - 21 * 864e5).toISOString().slice(0, 10)).map(e => norm(e.title.en));
+const knownTitles = events.filter(e => e.date >= isoDay(Date.parse(DATE) - 21 * 864e5)).map(e => norm(e.title.en));
 const similar = t => { const w = new Set(norm(t).split(" ").filter(x => x.length > 3)); return knownTitles.find(k => { const kw = k.split(" ").filter(x => x.length > 3); const hit = kw.filter(x => w.has(x)).length; return kw.length && hit / kw.length >= 0.6; }); };
 
 const items = inbox.items.map(i => ({ ...i, dupe: i.kind === "page-watch" ? null : knownUrls.has(i.url) ? "url already on board" : similar(i.title) ? `similar to: "${similar(i.title)}"` : null }));
@@ -35,7 +35,7 @@ const out = {
   date: DATE,
   health: {
     inboxDate: inbox.date,
-    inboxIsFresh: inbox.date === DATE || inbox.date === new Date(Date.parse(DATE) - 864e5).toISOString().slice(0, 10),
+    inboxIsFresh: inbox.date === DATE || inbox.date === isoDay(Date.parse(DATE) - 864e5),
     failedSources: inbox.sources.filter(s => !s.ok).map(s => `${s.id} (${s.error})`),
     lastPublishedDigest: digests[0]?.date || null
   },

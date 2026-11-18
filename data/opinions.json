@@ -1,0 +1,333 @@
+{
+  "opinions": [
+    {
+      "id": "polymarket-anthropic-vs-openai-ipo-first",
+      "date": "2026-11-18",
+      "kind": "market",
+      "who": {
+        "name": "Polymarket",
+        "role": {
+          "ru": "рынок предсказаний, вопрос «Will Anthropic or OpenAI IPO first?»",
+          "en": "prediction market, question “Will Anthropic or OpenAI IPO first?”"
+        }
+      },
+      "stance": "bullish",
+      "claim": {
+        "ru": "18 ноября 2026 года участники рынка оценивали примерно в 93–94% вероятность того, что Anthropic выйдет на биржу раньше OpenAI (срок до конца 2027 года). Объём ставок около $336 тыс., около 1100 участников.",
+        "en": "On 18 November 2026 traders priced about a 93–94% chance that Anthropic lists before OpenAI (deadline end of 2027). Volume about $336K across roughly 1,100 traders."
+      },
+      "horizon": "до конца 2027",
+      "sources": [
+        {
+          "title": "Polymarket via struct.to: Will Anthropic or OpenAI IPO first?",
+          "url": "https://explorer.struct.to/markets/will-anthropic-or-openai-ipo-first"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "kunst-pop-then-overpriced",
+      "date": "2026-11-16",
+      "kind": "opinion",
+      "who": {
+        "name": "Sarah Kunst",
+        "role": {
+          "ru": "управляющий директор, Cleo Capital",
+          "en": "managing director, Cleo Capital"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "Kunst ждёт сильного дебюта и затем постепенного роста цены, но считает Anthropic всё ещё переоценённым: даже оптимистичные прогнозы выручки не оправдывают текущих оценок. Она видит риск в том, что выручка зависит от продажи вычислений, а спрос может ослабнуть.",
+        "en": "Kunst expects a strong debut followed by a steady climb, but still sees Anthropic as overpriced: even optimistic revenue projections do not justify current valuations. She flags the risk that revenue depends on selling compute and that demand may soften."
+      },
+      "horizon": "после IPO",
+      "sources": [
+        {
+          "title": "Stocktwits: Anthropic IPO could see large pop and steady price climb, says Cleo Capital's Sarah Kunst",
+          "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-ipo-could-see-large-pop-and-steady-price-climb-says-cleo-capital-s-sarah-kunst-but-they-aren-t-immune-to-burst-bubbles/cNb7FSBR9XD"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "zino-cfra-bellwether",
+      "date": "2026-11-16",
+      "kind": "opinion",
+      "who": {
+        "name": "Angelo Zino",
+        "role": {
+          "ru": "старший вице-президент, руководитель направления технологий, CFRA",
+          "en": "senior vice president and head of technology, CFRA"
+        }
+      },
+      "stance": "bullish",
+      "claim": {
+        "ru": "Zino называет IPO Anthropic важным событием и считает компанию, возможно, лучшим индикатором здоровья ИИ-экосистемы. По его мнению, способность Anthropic монетизировать ИИ может значить для инвесторов не меньше, чем результаты Nvidia.",
+        "en": "Zino calls the Anthropic IPO important and says the company may be the best gauge of AI ecosystem health. He argues its ability to monetize AI could matter to investors as much as Nvidia's performance."
+      },
+      "horizon": null,
+      "sources": [
+        {
+          "title": "Stocktwits: Anthropic IPO could see large pop and steady price climb, says Cleo Capital's Sarah Kunst",
+          "url": "https://stocktwits.com/news-articles/markets/equity/anthropic-ipo-could-see-large-pop-and-steady-price-climb-says-cleo-capital-s-sarah-kunst-but-they-aren-t-immune-to-burst-bubbles/cNb7FSBR9XD"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "kreps-gadinis-public-benefit-test",
+      "date": "2026-11-16",
+      "kind": "opinion",
+      "who": {
+        "name": "Sarah Kreps and Stavros Gadinis",
+        "role": {
+          "ru": "Сара Крепс, директор Tech Policy Institute (Cornell); Ставрос Гадинис, профессор права (UC Berkeley)",
+          "en": "Sarah Kreps, director of Tech Policy Institute at Cornell; Stavros Gadinis, law professor at UC Berkeley"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "Kreps считает, что настоящая проверка наступит, когда общественная польза станет дорогой для компании, и предупреждает, что конкуренция, в том числе от китайских open-source моделей, может ослабить ограничения безопасности. Gadinis полагает, что Long-Term Benefit Trust обеспечивает подотчётность лишь до определённого предела, а прозрачность публичной компании может быть не менее сильным сдерживающим фактором.",
+        "en": "Kreps says the real test comes when public benefit becomes costly, and warns that competition, including from open-source Chinese models, could loosen guardrails. Gadinis says the Long-Term Benefit Trust ensures accountability only up to a point, and that public-company transparency could be as strong a check."
+      },
+      "horizon": "после IPO",
+      "sources": [
+        {
+          "title": "AP via Philadelphia Inquirer: Anthropic IPO filing and the AI benefits question (Barbara Ortutay)",
+          "url": "https://www.inquirer.com/business/technology/anthropic-ipo-filing-artificial-intelligence-benefits-20261116.html"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "moorhead-ipo-priced-to-pop",
+      "date": "2026-11-10",
+      "kind": "opinion",
+      "who": {
+        "name": "Patrick Moorhead",
+        "role": {
+          "ru": "CEO, Moor Insights & Strategy",
+          "en": "CEO, Moor Insights & Strategy"
+        }
+      },
+      "stance": "bullish",
+      "claim": {
+        "ru": "Moorhead оценивает подразумеваемую капитализацию Anthropic в $916 млрд – $1,02 трлн (около $1,2–1,3 трлн с учётом полного разводнения), что заметно ниже обсуждавшихся ранее $2 трлн. Он допускает, что цену занижают намеренно, чтобы в день IPO был резкий рост, но главный вопрос рынка в том, выдержит ли выручка $81 млрд в годовом выражении обязательства на $900,9 млрд на десять лет.",
+        "en": "Moorhead puts Anthropic's implied valuation at $916B to $1.02T (about $1.2T to $1.3T fully diluted), well below the $2T discussed months earlier. He floats that the range is set low on purpose to allow a sharp IPO-day rally, while the key question is whether $81B of annualized revenue can support $900.9B of spending commitments over ten years."
+      },
+      "horizon": "после IPO",
+      "sources": [
+        {
+          "title": "Stocktwits: Analyst views Anthropic's $1.3 trillion IPO valuation as conservative even with $900B spending overhang",
+          "url": "https://stocktwits.com/news-articles/markets/equity/pricing-it-to-go-crazy-on-ipo-day-analyst-views-anthropic-s-1-3-trillion-ipo-valuation-conservative-even-with-900-b-spending-overhang/cNGDaXPR9Jo"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "morningstar-khan-fair-value-1-7t",
+      "date": "2026-11-10",
+      "kind": "forecast",
+      "who": {
+        "name": "Malik Ahmed Khan, CFA",
+        "role": {
+          "ru": "старший аналитик по акциям, Morningstar",
+          "en": "senior equity analyst, Morningstar"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "Morningstar оценивает справедливую стоимость Anthropic в $1,7 трлн в базовом сценарии (около 13x выручки 2027 года) при росте выручки 47% в год в течение пяти лет. Бычий сценарий даёт чуть более $3 трлн, медвежий $500 млрд; рейтинг неопределённости очень высокий, ров узкий.",
+        "en": "Morningstar's base-case fair value for Anthropic is $1.7T (about 13x 2027 sales), assuming 47% annual revenue growth over five years. The bull case is just above $3T and the bear case is $500B; uncertainty rating is Very High and the moat is narrow."
+      },
+      "horizon": "2027–2031",
+      "sources": [
+        {
+          "title": "Morningstar: Why Morningstar thinks Anthropic is worth $1.7 trillion",
+          "url": "https://www.morningstar.com.au/stocks/why-morningstar-thinks-anthropic-is-worth-17-trillion"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "ritter-ipo-history-not-on-side",
+      "date": "2026-11-03",
+      "kind": "analysis",
+      "who": {
+        "name": "Jay Ritter",
+        "role": {
+          "ru": "директор IPO Initiative, Университет Флориды",
+          "en": "director, IPO Initiative, University of Florida"
+        }
+      },
+      "stance": "bearish",
+      "claim": {
+        "ru": "По данным Ritter, оценка выше примерно $1,41 трлн означала бы более $40 выручки за каждый доллар, а такого уровня при IPO достигали лишь 14 из 4110 размещений в 1980–2024 годах; в среднем они отстали от рынка на 15,4% за срок до трёх лет. Для оценки выше $1,4 трлн нужна траектория к $100 млрд годовой прибыли после налогов.",
+        "en": "Ritter notes that a valuation above about $1.41T would mean more than $40 per dollar of trailing revenue, a level reached by only 14 of 4,110 IPOs in 1980 to 2024; they trailed the market by 15.4% on average over up to three years. Justifying more than $1.4T would need a path to $100B of annual after-tax profit."
+      },
+      "horizon": "до 3 лет после IPO",
+      "sources": [
+        {
+          "title": "Fortune: Anthropic's third quarter results mean IPO math and history are not on its side, analysts say",
+          "url": "https://fortune.com/2026/11/03/anthropics-third-quarter-results-mean-ipo-math-and-history-are-not-on-its-side-analysts-say/"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "tunguz-margins-compute",
+      "date": "2026-11-03",
+      "kind": "analysis",
+      "who": {
+        "name": "Tomasz Tunguz",
+        "role": {
+          "ru": "основатель и управляющий партнёр, Theory Ventures",
+          "en": "founder and general partner, Theory Ventures"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "Tunguz считает, что рост затрат на вычисления усилит давление на маржу, но подразумеваемая валовая маржа Anthropic остаётся высокой, около 85%.",
+        "en": "Tunguz says rising compute costs will add pressure on margins, but Anthropic's implied gross margin remains healthy at about 85%."
+      },
+      "horizon": null,
+      "sources": [
+        {
+          "title": "Fortune: Anthropic's third quarter results mean IPO math and history are not on its side, analysts say",
+          "url": "https://fortune.com/2026/11/03/anthropics-third-quarter-results-mean-ipo-math-and-history-are-not-on-its-side-analysts-say/"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "menlo-enterprise-llm-share-2026",
+      "date": "2026-11-03",
+      "kind": "analysis",
+      "who": {
+        "name": "Menlo Ventures (Tim Tully, Joff Redfern, Deedy Das, Derek Xiao)",
+        "role": {
+          "ru": "венчурный фонд Menlo Ventures, авторы отчёта State of Enterprise AI (фонд инвестирует в Anthropic)",
+          "en": "Menlo Ventures, authors of the State of Enterprise AI report (the firm is an Anthropic investor)"
+        }
+      },
+      "stance": "bullish",
+      "claim": {
+        "ru": "По оценке Menlo, доля Anthropic в корпоративных расходах на LLM API выросла с 40% до 55% за год, OpenAI с 27% до 31%, а Google упала с 21% до 9%. Рынок описывается как гонка двух участников, где решают возможности моделей, а не цена.",
+        "en": "Menlo estimates Anthropic's share of enterprise LLM API spend rose from 40% to 55% in a year, OpenAI from 27% to 31%, while Google fell from 21% to 9%. It describes a two-horse race decided by model capability rather than price."
+      },
+      "horizon": "2026",
+      "sources": [
+        {
+          "title": "Menlo Ventures: 2026 The State of Enterprise AI",
+          "url": "https://menlovc.com/wp-content/uploads/2026/11/menlo_ventures_enterprise_ai_report-2026-110326.pdf"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "damodaran-anthropic-1-48t-governance",
+      "date": "2026-10-28",
+      "kind": "analysis",
+      "who": {
+        "name": "Aswath Damodaran",
+        "role": {
+          "ru": "профессор финансов, NYU Stern",
+          "en": "professor of finance, NYU Stern"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "Damodaran оценивает акционерный капитал Anthropic примерно в $1,475 трлн, исходя из выручки около $1 трлн к 2036 году и целевой операционной маржи 27,5%; диапазон от нуля до около $4 трлн. Структуру управления (PBC, Long-Term Benefit Trust, акции с разным числом голосов) он критикует и считает, что она требует заметного дисконта к его оценке.",
+        "en": "Damodaran values Anthropic's equity at about $1.475T, assuming roughly $1T of revenue by 2036 and a 27.5% target operating margin, within a range from zero to about $4T. He criticizes the governance setup (PBC, Long-Term Benefit Trust, dual-class voting) and says it warrants a notable discount to his estimate."
+      },
+      "horizon": "2036",
+      "sources": [
+        {
+          "title": "Aswath Damodaran: Anthropic IPO valuation (blog PDF)",
+          "url": "https://pages.stern.nyu.edu/~adamodar/pdfiles/blog/AnthropicIPO.pdf"
+        },
+        {
+          "title": "Fortune: Anthropic's third quarter results mean IPO math and history are not on its side, analysts say",
+          "url": "https://fortune.com/2026/11/03/anthropics-third-quarter-results-mean-ipo-math-and-history-are-not-on-its-side-analysts-say/"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "new-constructs-most-ridiculous-ipo",
+      "date": "2026-10-06",
+      "kind": "analysis",
+      "who": {
+        "name": "New Constructs",
+        "role": {
+          "ru": "независимая исследовательская фирма по акциям",
+          "en": "independent equity research firm"
+        }
+      },
+      "stance": "bearish",
+      "claim": {
+        "ru": "New Constructs по модели обратного DCF оценивает капитал Anthropic в $144 млрд при самом жёстком сценарии, на 93% ниже заявленных $2 трлн. Чтобы оправдать $2 трлн, нужна операционная маржа 10% после налогов сразу и рост выручки 100% в 2027 году и 56% в год в 2028–2035; фирма не видела закрытый проспект.",
+        "en": "Using a reverse DCF, New Constructs values Anthropic's equity at as little as $144B, 93% below the reported $2T target. Justifying $2T would need a 10% after-tax operating margin immediately, 100% revenue growth in 2027 and 56% a year in 2028 to 2035; the firm had not seen the confidential prospectus."
+      },
+      "horizon": "2035",
+      "sources": [
+        {
+          "title": "The Next Web: Research firm calls Anthropic the 'most ridiculous IPO of 2026', says it may be worth $144bn",
+          "url": "https://thenextweb.com/news/anthropic-ipo-valuation-new-constructs-144bn"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "pitchbook-rolfes-multiple",
+      "date": "2026-10-05",
+      "kind": "analysis",
+      "who": {
+        "name": "Harrison Rolfes",
+        "role": {
+          "ru": "старший аналитик, PitchBook",
+          "en": "senior analyst, PitchBook"
+        }
+      },
+      "stance": "mixed",
+      "claim": {
+        "ru": "По расчётам Rolfes, $2 трлн составляют около 435x выручки 2025 года, но менее 44x от аннуализированной выручки второго квартала и чуть менее 31x от run rate выше $65 млрд. Сильный третий квартал укрепил бы аргументы, но сам по себе $2 трлн не оправдывает.",
+        "en": "Rolfes calculates that $2T is about 435x 2025 revenue, but under 44x annualized Q2 revenue and just under 31x the run rate above $65B. A strong Q3 would strengthen the case but would not justify $2T by itself."
+      },
+      "horizon": "2026",
+      "sources": [
+        {
+          "title": "The Next Web: Research firm calls Anthropic the 'most ridiculous IPO of 2026' (cites PitchBook analysis of Oct 5)",
+          "url": "https://thenextweb.com/news/anthropic-ipo-valuation-new-constructs-144bn"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    },
+    {
+      "id": "orourke-multiple-risk",
+      "date": "2026-08-17",
+      "kind": "opinion",
+      "who": {
+        "name": "Mike O'Rourke",
+        "role": {
+          "ru": "главный рыночный стратег, JonesTrading",
+          "en": "chief market strategist, JonesTrading"
+        }
+      },
+      "stance": "bearish",
+      "claim": {
+        "ru": "O'Rourke высоко оценивает Claude, но говорит, что главный риск в цене: переплата за актив опасна. Он также ждёт избытка предложения, если в 2026 году выйдут SpaceX, Anthropic и OpenAI. Reuters сообщал о цели 40–50x выручки на основе прогноза продаж 2028 года в $190–200 млрд.",
+        "en": "O'Rourke praises Claude but says the main risk is the price: overpaying is dangerous. He also expects a supply glut if SpaceX, Anthropic and OpenAI all list in 2026. Reuters had reported a 40x to 50x revenue multiple target based on a 2028 sales projection of $190B to $200B."
+      },
+      "horizon": "2026",
+      "sources": [
+        {
+          "title": "24/7 Wall St.: Top market strategist warns Anthropic's 40-50x revenue multiple for IPO could be dangerous (CNBC Morning Call Sheet)",
+          "url": "https://247wallst.com/investing/2026/08/17/top-market-strategist-warns-anthropics-40-50x-revenue-multiple-for-ipo-could-be-dangerous/"
+        }
+      ],
+      "addedAt": "2026-11-18"
+    }
+  ]
+}

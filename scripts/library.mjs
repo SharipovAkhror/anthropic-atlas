@@ -11,17 +11,16 @@
 // and the courses repo, the Claude Cookbook registry, the Alignment Science blog, Transformer Circuits, the Help Center.
 // (red.anthropic.com redirects to anthropic.com/research/team/frontier-red-team, already covered by the sitemap.)
 // Usage: node scripts/library.mjs [--max=400] [--dry] [--offline] [--only=help,cookbook]
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { createHash } from "node:crypto";
+import { writeFileSync, existsSync } from "node:fs";
+import { join } from "node:path";
+import { repoRoot, parseArgs, tashkentDate, readJson, isMain, sha, decode, normalizeUrl as norm, fetchText } from "./lib.mjs";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
+const ROOT = repoRoot();
+const args = parseArgs(process.argv.slice(2));
 const MAX_FETCH = +(args.max || 400);
-const TODAY = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" });
+const TODAY = tashkentDate();
 const OUT = join(ROOT, "data/library.json");
-const UA = JSON.parse(readFileSync(join(ROOT, "sources/sources.json"), "utf8")).userAgent;
+const UA = readJson(join(ROOT, "sources/sources.json")).userAgent;
 
 export const SECTIONS = [
   { id: "research", ru: "Исследования", en: "Research", uz: "Tadqiqotlar" },
@@ -50,35 +49,22 @@ export const WHO = {
   courses: ["learners", "developers"], cookbook: ["developers"], help: ["everyone"], "docs-mcp": ["developers"]
 };
 
-const sha = s => createHash("sha1").update(s).digest("hex").slice(0, 10);
-const decode = s => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#(\d+);|&#x([0-9a-f]+);/gi, (_, d, h) => { const n = d ? +d : parseInt(h, 16); return n > 0 && n <= 0x10FFFF && (n < 0xD800 || n > 0xDFFF) ? String.fromCodePoint(n) : ""; })
-  .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "").trim();
-const norm = u => u.replace(/\.md$/, "").replace(/\/$/, "").replace(/^http:/, "https:");
 // Only https links on Anthropic's own hosts (and the anthropics GitHub org) become library items.
 const HOSTS = new Set(["www.anthropic.com", "claude.com", "code.claude.com", "docs.claude.com", "platform.claude.com", "support.claude.com", "academy.claude.com", "anthropic.skilljar.com", "alignment.anthropic.com", "transformer-circuits.pub", "red.anthropic.com", "modelcontextprotocol.io", "assets.claude.com", "www-cdn.anthropic.com", "github.com", "raw.githubusercontent.com"]);
 export const keep = u => { try { const x = new URL(u); return x.protocol === "https:" && !x.username && !x.password && !x.port && HOSTS.has(x.host) && (!/github/.test(x.host) || /^\/anthropics\//.test(x.pathname)); } catch { return false; } };
 const pathOf = u => { try { return new URL(u).pathname.replace(/\/$/, ""); } catch { return null; } };
+const SITE_SUFFIX = /\s*[|\\–—-]\s*(Claude by Anthropic|Anthropic|Claude)\s*$/i;
 // Page titles carry site suffixes ("| Claude by Anthropic"); customer stories end in "<Product> case study".
-export const cleanTitle = t => String(t || "").replace(/\s*[|\\–—-]\s*(Claude by Anthropic|Anthropic|Claude)\s*$/i, "").replace(/\s+Claude(?: Platform \(API\)| [A-Z][\w-]*(?: [A-Z][\w-]*)?)? case study$/, "").trim();
+export const cleanTitle = t => String(t || "").replace(SITE_SUFFIX, "").replace(/\s+Claude(?: Platform \(API\)| [A-Z][\w-]*(?: [A-Z][\w-]*)?)? case study$/, "").trim();
 const GENERIC_DESC = /^Anthropic is an AI safety and research company/i;
 const slugTitle = u => { const s = decodeURIComponent(new URL(u).pathname.split("/").filter(Boolean).pop() || ""); return s.replace(/[-_]+/g, " ").replace(/^./, c => c.toUpperCase()); };
 
-async function get(url, tries = 3) {
-  let last;
-  for (let i = 0; i < tries; i++) {
-    try {
-      const r = await fetch(url, { headers: { "user-agent": UA, accept: "*/*" }, redirect: "follow", signal: AbortSignal.timeout(25000) });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return await r.text();
-    } catch (e) { last = e; await new Promise(r => setTimeout(r, 1200 * (i + 1))); }
-  }
-  throw new Error(`${url}: ${last?.message}`);
-}
-const locs = xml => [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({ loc: decode((m[1].match(/<loc>([\s\S]*?)<\/loc>/) || [])[1]), lastmod: ((m[1].match(/<lastmod>([\s\S]*?)<\/lastmod>/) || [])[1] || "").slice(0, 10) || null }));
+const get = (url, tries = 3) => fetchText(url, { userAgent: UA, tries, backoffMs: 1200 });
+export const locs = xml => [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({ loc: decode((m[1].match(/<loc>([\s\S]*?)<\/loc>/) || [])[1]), lastmod: ((m[1].match(/<lastmod>([\s\S]*?)<\/lastmod>/) || [])[1] || "").slice(0, 10) || null }));
 
 // ---- classifiers: URL → section (null = not a library item)
 const POLICY = /^\/(responsible-scaling-policy|constitution|transparency|system-cards|policy|coordinated-vulnerability-disclosure|responsible-disclosure-policy|threat-intelligence|news\/claudes-constitution)/;
-function classifyAnthropic(path) {
+export function classifyAnthropic(path) {
   if (/^\/research\/team\//.test(path) || path === "/research" || path === "/news" || path === "/engineering") return null;
   const slug = path.split("/").pop();
   if (path.startsWith("/research/")) return /economic-index|labor-market|economic/.test(slug) ? "institute" : "research";
@@ -94,7 +80,7 @@ function classifyAnthropic(path) {
   if (/^\/(claude-(opus|sonnet|haiku|fable)|claude\/[a-z]|features\/)/.test(path)) return "models";
   return null;
 }
-function classifyClaude(path) {
+export function classifyClaude(path) {
   if (/^\/resources\/(articles|guides)\/./.test(path)) return "guides";
   if (/^\/resources\/(webinars|webinar-series)\/./.test(path) || /^\/code-with-claude\/session\/./.test(path)) return "talks";
   if (/^\/customers\/./.test(path)) return "customers";
@@ -337,7 +323,7 @@ export function mcpDocs(txt) {
 }
 // llms.txt: "- [Title](url.md): description" (or " - description"); groups from ### / #### headings.
 // For the API docs only the English part is used and the per-endpoint "API Reference" is skipped.
-function llms(txt, section) {
+export function llms(txt, section) {
   const out = []; let group = "", h2 = "", skip = false;
   for (const line of txt.split("\n")) {
     if (line.startsWith("## ")) { h2 = line.slice(3).trim(); continue; }
@@ -360,7 +346,7 @@ async function meta(url) {
     if (key && content != null && !metas.has(key)) metas.set(key, content);
   }
   const m = n => decode(metas.get(n) || "");
-  const title = (m("og:title") || decode((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1])).replace(/\s*[|\\–—-]\s*(Claude by Anthropic|Anthropic|Claude)\s*$/i, "").slice(0, 220);
+  const title = (m("og:title") || decode((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1])).replace(SITE_SUFFIX, "").slice(0, 220);
   const date = (m("article:published_time") || (html.match(/"datePublished"\s*:\s*"([^"]+)"/) || [])[1] || "").slice(0, 10) || null;
   if (!title) throw new Error("no title");
   const desc = m("og:description") || m("description");
@@ -370,7 +356,7 @@ async function meta(url) {
 async function pool(items, n, fn) { let i = 0; await Promise.all(Array.from({ length: n }, async () => { while (i < items.length) { const k = i++; await fn(items[k], k); } })); }
 
 async function main() {
-  const prev = existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : { items: [] };
+  const prev = existsSync(OUT) ? readJson(OUT) : { items: [] };
   const byUrl = new Map(prev.items.map(it => [it.url, it]));
   const report = { sources: {}, added: [], gone: [], fetched: 0, fetchFailed: 0 };
   const seenNow = new Set();
@@ -428,4 +414,4 @@ async function main() {
   console.log(JSON.stringify({ ...report, added: report.added.length, gone: report.gone.length, total: items.length, live }, null, 1));
   if (!args.dry) writeFileSync(OUT, JSON.stringify(out, null, 0).replace(/},{"id"/g, '},\n{"id"') + "\n");
 }
-if (import.meta.url === `file://${process.argv[1]}`) main().catch(e => { console.error(e); process.exit(1); });
+if (isMain(import.meta.url)) main().catch(e => { console.error(e); process.exit(1); });

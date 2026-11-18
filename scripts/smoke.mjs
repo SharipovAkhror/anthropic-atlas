@@ -8,11 +8,11 @@ import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { execSync } from "node:child_process";
-import { join, dirname, extname, normalize } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join, extname, normalize } from "node:path";
+import { repoRoot, parseArgs } from "./lib.mjs";
 
-const ROOT = process.env.ATLAS_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
-const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, "").split("=")).map(([k, v]) => [k, v ?? true]));
+const ROOT = repoRoot(true);
+const args = parseArgs(process.argv.slice(2));
 const require = createRequire(import.meta.url);
 let pw;
 try { pw = require("playwright"); } catch { pw = require(join(execSync("npm root -g").toString().trim(), "playwright")); }
@@ -64,7 +64,7 @@ try {
   await page.waitForTimeout(600);
   const islands = await page.$$eval(".slot", s => s.map(x => x.dataset.island));
   ok(islands.length >= 10, `laptop: ${islands.length} islands on the board`);
-  ok(islands.includes("today") || await page.$(".hero .quiet") !== null, "laptop: today is on the page (digest card, or the quiet-day note)");
+  ok(islands.includes("today") || await page.$(".hero .lens") !== null, "laptop: today is on the page (digest card, or the latest-by-topic list)");
   ok(islands.includes("lib-shelves") && islands.includes("lib-start"), "laptop: library islands are on the board");
   ok(await page.$(".hero h1") !== null, "laptop: hero headline rendered");
   const clipped = await page.evaluate(() => [...document.querySelectorAll(".slot")].filter(s => { const r = s.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth + 1; }).map(s => s.dataset.island));

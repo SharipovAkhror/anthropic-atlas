@@ -27,7 +27,42 @@ summaries, people and facts, Russian library cards. If it stops, nothing breaks;
 
 ```bash
 npm ci
-node scripts/validate.mjs && node scripts/test.mjs   # quality gates
-node scripts/today.mjs                               # today's worklist
-python3 -m http.server 4173                          # preview
+npm run check                      # validate + regression tests + mass-deletion guard (the one gate)
+npm test                           # only the regression tests (scripts/test.mjs)
+npm run smoke                      # real-browser test, serves this checkout on a free port (needs Playwright)
+npm run today                      # today's worklist
+python3 -m http.server 4173        # preview
 ```
+
+| `npm run` | What |
+|---|---|
+| `check` | `validate`, then `test`, then `guard`. CI and the Claude Code edit hook run the same steps. |
+| `test` | `scripts/test.mjs`: validator rejections, digest, guard, collector and library parsers, shared helpers. |
+| `validate` / `guard` | schema and editorial rules / nothing lost compared with `origin/main`. |
+| `smoke` | Chromium on a laptop and a phone; `-- --url=https://anthropic-atlas.vercel.app` tests production. |
+| `collect` `library` `digest` `enrich` `today` | the daily steps, each runnable by hand; `collect`, `library` and `digest` take `--dry` or `--print-only`. |
+| `serve` | static preview on port 4173 via `npx serve`. |
+
+## Если подписка Claude закончится
+
+Сайт не зависит от подписки Claude. Ни один workflow не использует секрет Anthropic или Claude; единственные
+необязательные секреты относятся к Telegram.
+
+**Продолжит работать без изменений**
+- `collect.yml`: ежедневно в 05:40 по Ташкенту собирает новые материалы, каталог библиотеки, портреты, дайджест и RSS.
+- `health.yml`: ежечасная проверка продакшена, откат сломанного коммита с данными.
+- `validate.yml`: проверка схем, тестов и защиты от потери данных на каждом пуше.
+- Деплой на Vercel из ветки `main`.
+- RSS-лента `/data/feed.xml`.
+- Сообщение в Telegram, если заданы секреты `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (необязательно).
+
+**Остановится**
+- Необязательный запуск Claude в 07:07: вручную проверенные события с русскими сводками.
+- Русские карточки библиотеки для новых страниц.
+
+Новые страницы библиотеки показывают английские заголовки и описания, пока для них нет русской карточки.
+Если проверенных событий нет больше двух дней, главным на странице становится свежий официальный пост Anthropic
+(на английском), а «Последнее по темам» и цифры продолжают показывать последнее проверенное с датами, так что
+устаревание видно читателю. Запланированная задача Claude при паузе подписки просто приостанавливается и сама
+возобновится, когда подписка вернётся; ничего отключать или чинить не нужно.
+Всё уже написанное остаётся на сайте. Подробный перечень зависимостей и запасных вариантов: [docs/INDEPENDENCE.md](docs/INDEPENDENCE.md).

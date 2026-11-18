@@ -10,13 +10,49 @@
       }
     },
     {
+      "id": "saved",
+      "renderer": "saved",
+      "title": {
+        "ru": "Сохранённое",
+        "en": "Saved",
+        "uz": "Saqlanganlar"
+      },
+      "lead": {
+        "ru": "То, что вы отметили. Хранится только в этом браузере.",
+        "en": "What you marked. Kept only in this browser.",
+        "uz": "Siz belgilaganlar. Faqat shu brauzerda saqlanadi."
+      }
+    },
+    {
       "id": "facts",
       "renderer": "facts",
       "source": "atlas.json#facts",
       "title": {
-        "ru": "Ключевые цифры",
-        "en": "Key numbers",
-        "uz": "Asosiy raqamlar"
+        "ru": "Цифры IPO",
+        "en": "IPO numbers",
+        "uz": "IPO raqamlari"
+      },
+      "lead": {
+        "ru": "Цена, оценка, выручка и голоса. У каждой цифры своя дата и первоисточник.",
+        "en": "Price, valuation, revenue and votes. Every number has its own date and primary source.",
+        "uz": "Narx, baho, daromad va ovozlar. Har bir raqamning sanasi va manbasi bor."
+      }
+    },
+    {
+      "id": "models",
+      "renderer": "products",
+      "filter": {
+        "cluster": "models"
+      },
+      "title": {
+        "ru": "Модели и цены",
+        "en": "Models and prices",
+        "uz": "Modellar va narxlar"
+      },
+      "lead": {
+        "ru": "Какие модели Claude доступны в API, сколько стоят и какие уже уходят.",
+        "en": "Which Claude models are in the API, what they cost and which are on the way out.",
+        "uz": "API’da qaysi Claude modellari bor, narxi qancha va qaysilari eskirmoqda."
       }
     },
     {
@@ -27,15 +63,26 @@
         "ru": "Хроника",
         "en": "Timeline",
         "uz": "Xronika"
+      },
+      "lead": {
+        "ru": "Все события по порядку. Выберите тему, нажмите на событие, чтобы увидеть источник.",
+        "en": "Every event in order. Pick a topic, open an event to see its source.",
+        "uz": "Barcha voqealar tartib bilan. Mavzuni tanlang, manbani ko‘rish uchun voqeani oching."
       }
     },
     {
-      "id": "library",
-      "renderer": "library",
+      "id": "opinions",
+      "renderer": "opinions",
+      "source": "opinions.json#opinions",
       "title": {
-        "ru": "Библиотека",
-        "en": "Library",
-        "uz": "Kutubxona"
+        "ru": "Мнения и прогнозы",
+        "en": "Opinions and forecasts",
+        "uz": "Fikrlar va prognozlar"
+      },
+      "lead": {
+        "ru": "Что думают аналитики, инвесторы и исследователи. Это взгляды авторов, а не проверенные факты: у каждого есть имя и ссылка на оригинал.",
+        "en": "What analysts, investors and researchers think. These are the authors' views, not verified facts: each has a name and a link to the original.",
+        "uz": "Tahlilchilar, investorlar va tadqiqotchilar fikri. Bu mualliflar qarashi, tasdiqlangan fakt emas: har birida ism va asl manba havolasi bor."
       }
     },
     {
@@ -43,9 +90,14 @@
       "renderer": "governance",
       "source": "atlas.json#shareClasses",
       "title": {
-        "ru": "Управление",
-        "en": "Power",
-        "uz": "Hokimiyat"
+        "ru": "Кто контролирует",
+        "en": "Who is in control",
+        "uz": "Kim nazorat qiladi"
+      },
+      "lead": {
+        "ru": "Кто на самом деле принимает решения: классы акций, совет директоров и Long-Term Benefit Trust.",
+        "en": "Who actually decides: share classes, the board and the Long-Term Benefit Trust.",
+        "uz": "Qarorlarni aslida kim qabul qiladi: aksiya sinflari, kengash va Long-Term Benefit Trust."
       }
     },
     {
@@ -61,11 +113,26 @@
     {
       "id": "products",
       "renderer": "products",
-      "source": "atlas.json#products",
+      "filter": {
+        "cluster": [
+          "agentic",
+          "workspace",
+          "safety"
+        ]
+      },
       "title": {
         "ru": "Продукты",
         "en": "Products",
         "uz": "Mahsulotlar"
+      }
+    },
+    {
+      "id": "library",
+      "renderer": "library",
+      "title": {
+        "ru": "Библиотека",
+        "en": "Library",
+        "uz": "Kutubxona"
       }
     },
     {
@@ -76,6 +143,11 @@
         "ru": "Термины",
         "en": "Glossary",
         "uz": "Atamalar"
+      },
+      "lead": {
+        "ru": "ASL, Class F, RSP и другие слова простым языком.",
+        "en": "ASL, Class F, RSP and other terms in plain words.",
+        "uz": "ASL, Class F, RSP va boshqa atamalar oddiy tilda."
       }
     }
   ]
