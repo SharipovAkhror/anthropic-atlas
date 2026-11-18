@@ -4,51 +4,19 @@
 // Usage: node scripts/smoke.mjs                 (serves this checkout on a free port)
 //        node scripts/smoke.mjs --url=https://anthropic-atlas.vercel.app
 //        node scripts/smoke.mjs --shots=/tmp/dir (also saves screenshots)
-import { createServer } from "node:http";
-import { readFile } from "node:fs/promises";
-import { createRequire } from "node:module";
-import { execSync } from "node:child_process";
-import { join, extname, normalize } from "node:path";
+import { join } from "node:path";
 import { repoRoot, parseArgs } from "./lib.mjs";
+import { playwright, serve, launch, prep, reporter } from "./webtest.mjs";
 
 const ROOT = repoRoot(true);
 const args = parseArgs(process.argv.slice(2));
-const require = createRequire(import.meta.url);
-let pw;
-try { pw = require("playwright"); } catch { pw = require(join(execSync("npm root -g").toString().trim(), "playwright")); }
-
-// the local server sends the production Content-Security-Policy, so a page the CSP would break fails here first
-let CSP = "";
-try { CSP = JSON.parse(await readFile(join(ROOT, "vercel.json"), "utf8")).headers.flatMap(h => h.headers).find(h => h.key === "Content-Security-Policy")?.value || ""; } catch {}
-const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp" };
-async function serve() {
-  const srv = createServer(async (req, res) => {
-    let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
-    if (p.endsWith("/")) p += "index.html";
-    const file = normalize(join(ROOT, p));
-    if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
-    try { const b = await readFile(file); res.writeHead(200, { "content-type": TYPES[extname(file)] || "application/octet-stream", ...(CSP ? { "content-security-policy": CSP } : {}) }).end(b); }
-    catch { res.writeHead(404).end("not found"); }
-  });
-  await new Promise(r => srv.listen(0, "127.0.0.1", r));
-  return { srv, url: `http://127.0.0.1:${srv.address().port}` };
-}
-
-let failed = 0;
-const ok = (cond, name) => { console.log(`${cond ? "pass" : "FAIL"}  ${name}`); if (!cond) failed++; };
+const pw = playwright();
+const R = reporter(), ok = R.ok;
 
 setTimeout(() => { console.log("FAIL  smoke run took longer than 3 minutes"); process.exit(2); }, 180000).unref();
-const local = !args.url && (await serve());
+const local = !args.url && (await serve(ROOT));
 const BASE = args.url || local.url;
-const browser = await pw.chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
-const prep = async page => {
-  const errs = [];
-  page.on("pageerror", e => errs.push(e.message));
-  page.on("console", m => { if (m.type() === "error" && !/fonts\.(googleapis|gstatic)|favicon|ERR_FAILED|net::/.test(m.text())) errs.push(m.text()); });
-  await page.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
-  await page.addInitScript(() => { try { sessionStorage.setItem("atlas.intro", "1"); localStorage.setItem("atlas.hint", "1"); } catch {} });
-  return errs;
-};
+const browser = await launch(pw);
 const shot = async (page, name) => args.shots && page.screenshot({ path: join(args.shots, `${name}.png`) });
 
 try {
@@ -110,7 +78,7 @@ try {
   await shot(ph, "phone-home");
   ok(perrs.length === 0, `phone: no page errors${perrs.length ? ": " + perrs.slice(0, 3).join(" | ") : ""}`);
 } catch (e) { ok(false, `smoke run crashed: ${e.message}`); }
-finally { await browser.close(); if (local) local.srv.close(); }
+finally { await browser.close(); if (local) await local.close(); }
 
-console.log(failed ? `\n${failed} smoke check(s) FAILED on ${BASE}` : `\nall smoke checks passed on ${BASE}`);
-process.exit(failed ? 1 : 0);
+console.log(R.failed ? `\n${R.failed} smoke check(s) FAILED on ${BASE}` : `\nall smoke checks passed on ${BASE}`);
+process.exit(R.failed ? 1 : 0);

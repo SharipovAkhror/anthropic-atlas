@@ -46,11 +46,18 @@ const cases = [
   ["library duplicate url", d => edit(d, "data/library.json", j => { j.items[1].url = j.items[0].url; })],
   ["library emptied by a broken source", d => edit(d, "data/library.json", j => { j.items = j.items.slice(0, 50); })],
   ["library card with an unknown audience", d => edit(d, "data/library-notes.json", j => { const k = Object.keys(j.notes)[0]; j.notes[k].w = ["aliens"]; })],
-  ["reading path pointing at a missing item", d => edit(d, "data/library-notes.json", j => { j.paths[0].items[0].id = "0000000000"; })]
+  ["reading path pointing at a missing item", d => edit(d, "data/library-notes.json", j => { j.paths[0].items[0].id = "0000000000"; })],
+  ["a date that is not on the calendar", d => edit(d, "data/atlas.json", j => { j.facts[0].asOf = "2026-02-31"; })],
+  ["Russian text that is only spaces", d => edit(d, "data/events.json", j => { j.events[0].summary.ru = "   "; })],
+  ["two people with the same name", d => edit(d, "data/atlas.json", j => { j.people[1].name = j.people[0].name; })],
+  ["a person who left before joining", d => edit(d, "data/atlas.json", j => { const p = j.people.find(x => x.status === "former" && x.since); p.until = "1999"; })],
+  ["digest index out of order", d => edit(d, "data/digests/index.json", j => { j.digests.reverse(); })],
+  ["digest index count that disagrees with the digest", d => edit(d, "data/digests/index.json", j => { j.digests[0].counts.library += 5; })],
+  ["events.json with the wrong shape (no crash, an error)", d => writeFileSync(join(d, "data/events.json"), "[]")]
 ];
 for (const [name, mutate] of cases) {
   const d = sandbox();
-  try { mutate(d); ok(node("validate.mjs", d, ["--quiet"]).status === 1, `validator rejects: ${name}`); } finally { rmSync(d, { recursive: true, force: true }); }
+  try { mutate(d); const r = node("validate.mjs", d, ["--quiet"]); ok(r.status === 1 && /FAILED/.test(r.stdout), `validator rejects: ${name}`); } finally { rmSync(d, { recursive: true, force: true }); }
 }
 
 // 3. digest from diff
@@ -76,6 +83,21 @@ for (const [name, mutate] of cases) {
     node("digest.mjs", d, [`--date=${today}`]);
     const dg2 = JSON.parse(readFileSync(join(d, `data/digests/${today}.json`), "utf8"));
     ok(dg2.news.length === 2 && dg2.removed.length === 1 && dg2.updated.length === 1, "same-day re-run keeps earlier findings and adds new ones");
+    ok(node("validate.mjs", d, ["--quiet"]).status === 0, "after a re-run the digest index counts match the digest");
+    const raw2 = readFileSync(join(d, `data/digests/${today}.json`), "utf8");
+    node("digest.mjs", d, [`--date=${today}`]);
+    ok(readFileSync(join(d, `data/digests/${today}.json`), "utf8") === raw2, "a re-run with nothing new leaves the digest file identical (no second Telegram message)");
+    // library cards: one bad card is skipped, the good one in the same batch is kept
+    const libIds = JSON.parse(readFileSync(join(d, "data/library.json"), "utf8")).items.filter(i => !i.gone).map(i => i.id);
+    const notesNow = JSON.parse(readFileSync(join(d, "data/library-notes.json"), "utf8")).notes;
+    const free = libIds.filter(id => !notesNow[id]).slice(0, 3);
+    if (free.length === 3) {
+      const cardsFile = join(d, "cards.json");
+      writeFileSync(cardsFile, JSON.stringify({ [free[0]]: { t: "Обзор", s: "Короткое описание материала." }, [free[1]]: { t: "  ", s: "Пустой заголовок." }, [free[2]]: { t: "Great news!", s: "Totally amazing release!!!" } }));
+      const rc = node("library-notes.mjs", d, [`--add=${cardsFile}`]);
+      const after = JSON.parse(readFileSync(join(d, "data/library-notes.json"), "utf8")).notes;
+      ok(rc.status === 0 && after[free[0]] && !after[free[1]] && !after[free[2]], "library cards: a blank or hype card is skipped, the good one in the batch is kept");
+    }
   } finally { rmSync(d, { recursive: true, force: true }); }
 }
 
@@ -198,12 +220,27 @@ for (const [name, mutate] of cases) {
   ok(G.liveDropped({ items: Array(10).fill({}) }, { items: Array(8).fill({}) })?.to === 8 && G.liveDropped({ items: Array(10).fill({}) }, { items: [...Array(9).fill({}), { gone: "x" }] }) === null, "guard: more than 10% fewer live library items is flagged; `gone` items do not count as live");
   ok(G.shrankPercent({ a: "x".repeat(100) }, { a: "x".repeat(70) }) > 0 && G.shrankPercent({ a: "x".repeat(100) }, { a: "x".repeat(90) }) === 0, "guard: a file shrinking by more than 20% is flagged");
   const mk = ids => ({ events: ids.map(id => ({ id })) });
-  const files = { old: { "data/events.json": mk(["1", "2", "3", "4", "5", "6"]) }, cur: { "data/events.json": mk(["5", "6"]), "data/archive.json": { items: [{ id: "1" }] } } };
-  const run = (cur, maxRemoved) => G.runGuard({ old: r => files.old[r] || null, cur: r => cur[r] || null, base: "B", maxRemoved });
-  const res = run(files.cur, 2);
-  ok(res.compared === 1 && res.errors.some(e => /^data\/events\.json: 3 events removed without archiving/.test(e)), "guard: events removed beyond the limit fail (archived ones are excused)");
-  ok(run(files.cur, 3).errors.every(e => !/removed without archiving/.test(e)), "guard: removals within the limit pass");
-  ok(run({}, 3).errors.some(e => /was deleted/.test(e)), "guard: a deleted data file fails");
+  const snap = id => ({ kind: "event", id, snapshot: { id, title: { ru: "x" } } });
+  const run = (old, cur, maxRemoved = 3) => G.runGuard({ old: r => old[r] || null, cur: r => cur[r] || null, base: "B", maxRemoved });
+  const ev6 = { "data/events.json": mk(["1", "2", "3", "4", "5", "6"]) };
+  const r1 = run(ev6, { "data/events.json": mk(["2", "3", "4", "5", "6"]) });
+  ok(r1.compared === 1 && r1.errors.some(e => /^data\/events\.json: 1 events removed without archiving \(limit 0\)/.test(e)), "guard: even one event removed without archiving fails");
+  ok(run(ev6, { "data/events.json": mk(["2", "3", "4", "5", "6"]), "data/archive.json": { items: [snap("1")] } }).errors.length === 0, "guard: a removal with a real archive snapshot passes");
+  ok(run(ev6, { "data/events.json": mk(["2", "3", "4", "5", "6"]), "data/archive.json": { items: [{ kind: "event", id: "1", snapshot: {} }] } }).errors.length === 1, "guard: an empty archive stub does not excuse a removal");
+  ok(run({ ...ev6, "data/archive.json": { items: [snap("9")] } }, { ...ev6, "data/archive.json": { items: [] } }).errors.some(e => /append-only/.test(e)), "guard: deleting an archive entry fails");
+  ok(run({ "data/opinions.json": { opinions: [{ id: "a" }, { id: "b" }] } }, { "data/opinions.json": { opinions: [{ id: "a" }] } }).errors.length > 0, "guard: opinions are protected too");
+  const cards = n => ({ notes: Object.fromEntries([...Array(n)].map((_, i) => [`c${i}`, { t: "x" }])), paths: [] });
+  ok(run({ "data/library-notes.json": cards(40) }, { "data/library-notes.json": cards(38) }).errors.length === 0, "guard: a few library cards may go (pages move)");
+  ok(run(ev6, {}).errors.some(e => /was deleted/.test(e)), "guard: a deleted data file fails");
+}
+
+// 10b. source link checker: only real disappearance counts as dead
+{
+  const K = await import("./links.mjs");
+  ok(K.verdict(404) === "dead" && K.verdict(410) === "dead" && K.verdict(0, "ENOTFOUND") === "dead", "links: 404, 410 and an unknown host are dead");
+  ok(K.verdict(403) === "unsure" && K.verdict(429) === "unsure" && K.verdict(503) === "unsure" && K.verdict(0, "ETIMEDOUT") === "unsure" && K.verdict(200) === "ok" && K.verdict(301) === "ok", "links: robots refusals, outages and timeouts are only unsure");
+  const m = K.collectSources({ atlas: { people: [{ id: "p", sources: [{ url: "https://a.example/x" }] }], products: [], facts: [{ id: "f", sources: [{ url: "https://a.example/x" }, { url: "mailto:x" }] }] }, events: { events: [{ id: "e", sources: [{ url: "https://b.example" }] }] } });
+  ok(m.size === 2 && m.get("https://a.example/x").join() === "person/p,fact/f", "links: each url is checked once and remembers every place it is cited");
 }
 
 // 11. library classification

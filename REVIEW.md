@@ -9,9 +9,11 @@ The hard rules are also enforced by code (CI, hooks, scripts), because written r
    *Enforced:* `scripts/validate.mjs` (sources present, blocked domains).
 2. **Data disappeared.** People, products, facts, events, terms or library items vanished without an entry in
    `data/archive.json`, or a data file shrank by more than 20%.
+   Even one record of a guarded set needs an archive entry with a real snapshot; the archive only grows.
    *Enforced:* `scripts/guard.mjs` in CI, in the publish workflow and in the Claude Code edit hook.
 3. **The site breaks.** Any page error, a missing core island, horizontal scroll on a phone.
-   *Enforced:* `scripts/smoke.mjs` (real Chromium, laptop + iPhone) in CI and every hour against production.
+   *Enforced:* `scripts/smoke.mjs` (real Chromium, laptop + iPhone) in CI and every hour against production;
+   `scripts/e2e.mjs` (the full suite, docs/TESTING.md) in CI and every night against production.
 4. **The daily job touched code.** Commits starting `atlas-daily:` may change only `data/` and `pipeline/`.
    *Enforced:* `publish-daily.yml`.
 5. **Hand-edited generated files.** `data/digests/*` come only from `scripts/digest.mjs`; `data/library.json`
@@ -34,4 +36,5 @@ The hard rules are also enforced by code (CI, hooks, scripts), because written r
 npm run check        # schema + integrity + regression tests
 node scripts/guard.mjs --base=origin/main
 node scripts/smoke.mjs
+node scripts/e2e.mjs   # site changes
 ```

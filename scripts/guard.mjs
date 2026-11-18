@@ -9,18 +9,24 @@ import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { repoRoot, parseArgs, isMain } from "./lib.mjs";
 
-// What the guard checks, per data file: which ids must not vanish silently.
+// What the guard checks, per data file: which ids must not vanish silently. `strict` record sets allow no removal
+// at all without an archive entry (REVIEW.md rule 2); the generated library sets tolerate a few (pages do move).
 export const RULES = [
-  ["data/atlas.json", j => j.people.map(p => p.id), "people"],
-  ["data/atlas.json", j => j.products.map(p => p.id), "products"],
-  ["data/atlas.json", j => j.facts.map(f => f.id), "facts"],
-  ["data/events.json", j => j.events.map(e => e.id), "events"],
-  ["data/glossary.json", j => j.terms.map(t => t.id), "terms"],
+  ["data/atlas.json", j => j.people.map(p => p.id), "people", true],
+  ["data/atlas.json", j => j.products.map(p => p.id), "products", true],
+  ["data/atlas.json", j => j.facts.map(f => f.id), "facts", true],
+  ["data/events.json", j => j.events.map(e => e.id), "events", true],
+  ["data/glossary.json", j => j.terms.map(t => t.id), "terms", true],
+  ["data/opinions.json", j => (j.opinions || []).map(o => o.id), "opinions", true],
+  ["data/modules.json", j => (j.modules || []).map(m => m.id), "sections", true],
+  ["data/digests/index.json", j => (j.digests || []).map(d => d.date), "digests", true],
   ["data/library.json", j => j.items.map(i => i.id), "library items"],
   ["data/library-notes.json", j => Object.keys(j.notes || {}), "library cards"],
   ["data/library-notes.json", j => (j.paths || []).map(p => p.id), "reading paths"]
 ];
-const SIZE_FILES = ["data/atlas.json", "data/events.json", "data/glossary.json", "data/library.json", "data/library-notes.json"];
+const SIZE_FILES = ["data/atlas.json", "data/events.json", "data/glossary.json", "data/opinions.json", "data/library.json", "data/library-notes.json"];
+/** Archive entries that really hold the removed record: a snapshot of it, not an empty stub. */
+export const archivedIds = archive => new Set((archive?.items || []).filter(a => a.snapshot && Object.keys(a.snapshot).length >= 2 && (a.snapshot.id ?? a.id) === a.id).map(a => a.id));
 
 // ---- pure checks (exported for tests)
 /** Ids present before, absent now, and not recorded in the archive. */
@@ -36,15 +42,19 @@ export const shrankPercent = (before, after) => { const b = JSON.stringify(befor
 /** Runs every rule; `old(rel)` and `cur(rel)` return parsed JSON or null. Returns { errors, compared }. */
 export function runGuard({ old, cur, base, maxRemoved = 3 }) {
   const errors = [];
-  const archived = new Set((cur("data/archive.json")?.items || []).map(a => a.id));
+  const archived = archivedIds(cur("data/archive.json"));
+  // the archive only grows: an entry that disappears would hide the record it stood for
+  const archBefore = old("data/archive.json"), archNow = cur("data/archive.json");
+  if (archBefore) { const lost = lostIds((archBefore.items || []).map(a => `${a.kind}:${a.id}`), (archNow?.items || []).map(a => `${a.kind}:${a.id}`), new Set()); if (lost.length) errors.push(`data/archive.json: ${lost.length} archive entr${lost.length === 1 ? "y" : "ies"} removed (${lost.slice(0, 5).join(", ")}); the archive is append-only`); }
   let compared = 0;
-  for (const [rel, ids, label] of RULES) {
+  for (const [rel, ids, label, strict] of RULES) {
     const a = old(rel), b = cur(rel);
     if (!a) continue; // new file or no base: nothing to compare
     if (!b) { errors.push(`${rel} was deleted`); continue; }
     compared++;
     const lost = lostIds(ids(a), ids(b), archived);
-    if (lost.length > maxRemoved) errors.push(`${rel}: ${lost.length} ${label} removed without archiving (limit ${maxRemoved}): ${lost.slice(0, 8).join(", ")}${lost.length > 8 ? "…" : ""}`);
+    const limit = strict ? 0 : maxRemoved;
+    if (lost.length > limit) errors.push(`${rel}: ${lost.length} ${label} removed without archiving (limit ${limit}): ${lost.slice(0, 8).join(", ")}${lost.length > 8 ? "…" : ""}`);
   }
   // The library marks vanished items as `gone` instead of deleting them; a sudden wave of `gone` means a source broke.
   const la = old("data/library.json"), lb = cur("data/library.json");

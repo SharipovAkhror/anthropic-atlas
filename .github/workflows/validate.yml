@@ -1,6 +1,6 @@
 name: Validate
 # Every push to main and every pull request: schema + integrity, regression tests, mass-deletion guard,
-# and a real browser opening the site on a laptop and a phone.
+# a real browser opening the site on a laptop and a phone, the full browser suite, and a lint of the workflows.
 on:
   push:
     branches: [main]
@@ -36,3 +36,14 @@ jobs:
           npm i --no-save playwright@1.55.0
           for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
           node scripts/smoke.mjs
+      - name: Full browser suite (screens, phones, touch, zoom, every card, missing data)
+        timeout-minutes: 12
+        run: node scripts/e2e.mjs
+  workflows:
+    # a typo in a workflow fails silently at 05:40 the next morning; this catches it on the pull request
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint GitHub workflows (actionlint, official image)
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.7 -color -shellcheck= -pyflakes=

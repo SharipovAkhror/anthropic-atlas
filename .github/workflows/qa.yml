@@ -1,0 +1,83 @@
+name: Nightly QA
+# The testing team that never sleeps. Free GitHub Actions, no model, no Claude subscription.
+#   every night (03:10 Tashkent): the full browser suite (scripts/e2e.mjs, about 200 checks on 7 screens, phones,
+#                                 a tablet, touch, zoom, every card in three languages, missing data) against production;
+#                                 a source the morning collector has not reached for 3 days in a row
+#   every Sunday:                 every cited source link is opened (scripts/links.mjs); gone pages are listed
+# Anything wrong opens one "qa" issue (updated, never duplicated), so the owner gets an email.
+on:
+  schedule:
+    - cron: "10 22 * * *"
+  workflow_dispatch:
+    inputs:
+      links:
+        description: "Also check every source link"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  issues: write
+jobs:
+  qa:
+    runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install browser
+        run: |
+          npm i --no-save playwright@1.55.0
+          for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
+      - name: Full browser suite against production
+        id: e2e
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          node scripts/e2e.mjs --url=https://anthropic-atlas.vercel.app > e2e.log 2>&1 && exit 0
+          # one retry: a slow CDN edge is not a bug
+          sleep 60; node scripts/e2e.mjs --url=https://anthropic-atlas.vercel.app > e2e.log 2>&1
+      - name: Sources the collector cannot reach
+        id: sources
+        continue-on-error: true
+        run: |
+          node -e '
+            const s = require("./pipeline/state.json"), f = s.fails || {};
+            const bad = Object.entries(f).filter(([, v]) => v.days >= 3);
+            for (const [id, v] of bad) console.log(`- ${id}: ${v.days} дн. подряд, с ${v.since}`);
+            process.exit(bad.length ? 1 : 0);
+          ' > sources.log 2>&1
+      - name: Source links (Sundays, or on request)
+        id: links
+        if: github.event_name == 'schedule' || inputs.links
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(TZ=Asia/Tashkent date +%u)" != "7" ]; then echo "not Sunday"; exit 0; fi
+          node scripts/links.mjs --out=links.md
+      - name: Report
+        if: always()
+        run: |
+          grep -E "^(FAIL|all |[0-9]+ of)" e2e.log || true
+          cat sources.log 2>/dev/null || true
+          cat links.md 2>/dev/null | head -40 || true
+      - name: Open or update the "qa" issue
+        if: steps.e2e.outcome == 'failure' || steps.sources.outcome == 'failure' || steps.links.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          {
+            echo "Ночная проверка $(TZ=Asia/Tashkent date +%F) нашла проблемы. Журнал: $URL"
+            if [ "${{ steps.e2e.outcome }}" = "failure" ]; then echo; echo "**Сайт (браузерные тесты):**"; echo '```'; grep -E "^(FAIL|[0-9]+ of)" e2e.log | head -30; echo '```'; fi
+            if [ "${{ steps.sources.outcome }}" = "failure" ]; then echo; echo "**Источники, которые утренний сбор не может открыть:**"; cat sources.log; fi
+            if [ "${{ steps.links.outcome }}" = "failure" ]; then echo; sed -n '1,60p' links.md; fi
+          } > body.md
+          gh label create qa --color FBCA04 --description "Nightly QA found a problem" 2>/dev/null || true
+          N=$(gh issue list --label qa --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$N" ]; then gh issue comment "$N" --body-file body.md; else gh issue create --label qa --title "Ночная проверка Atlas нашла проблемы" --body-file body.md; fi
+          exit 1

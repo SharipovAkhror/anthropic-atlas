@@ -33,7 +33,8 @@ if (args.todo) {
   if (entries.length > 150) { console.error(`refusing ${entries.length} cards in one run (limit 150); split the batch`); process.exit(1); }
   for (const [id, c] of entries) {
     const it = byId.get(id);
-    if (!it || !c?.t || !c?.s) { skipped++; continue; }
+    // one bad card is skipped, it does not sink the whole batch: empty after cleaning, hype, or not Russian
+    if (!it || !clean(c?.t) || !clean(c?.s) || /!/.test(c.t + c.s) || !/[а-яё]/i.test(c.s)) { skipped++; continue; }
     if (notes.notes[id] && !args.replace) { kept++; continue; }
     const card = { t: clean(c.t).slice(0, 140), s: clean(c.s).slice(0, 320) };
     const w = (Array.isArray(c.w) ? c.w : []).filter(x => AUD.has(x)).slice(0, 3); if (w.length) card.w = w;
