@@ -541,3 +541,19 @@ body:has(.sheet.on) .hint { opacity: 0; }
 .hstats-d { font-size: 12.5px; color: var(--ink-4); align-self: flex-end; padding-bottom: 1px; }
 .board.far .hero-main > .hstats { opacity: 0; }
 @media (max-width: 760px) { body.overview .maptoggle { z-index: 60; } }
+
+/* ---------- opinions and forecasts: another surface, so a view never reads as a fact ---------- */
+.island.voices { background: #efede8; box-shadow: inset 0 0 0 .5px rgba(0, 0, 0, .06); }
+.voices .ih h2 { font-weight: 600; }
+.op-tag { margin: 0 var(--pad) 8px; font-size: 12px; font-weight: 600; letter-spacing: .02em; color: var(--ink-4); }
+.op { display: block; width: 100%; padding: 12px var(--pad); text-align: left; border-top: .5px solid rgba(0, 0, 0, .07); transition: background .15s var(--ease); }
+.op:hover { background: rgba(0, 0, 0, .025); }
+.op:active { background: rgba(0, 0, 0, .05); }
+.op-c { display: block; font-size: 15px; line-height: 1.45; color: var(--ink-2); letter-spacing: -.008em; }
+.op .op-c { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.op-w { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-3); }
+.op-w b { font-weight: 600; color: var(--ink); }
+.op-m { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-4); }
+.op-s { color: var(--ink-3); }
+.notfact { margin: 0 var(--pad) 16px; padding: 10px 14px; border-radius: 12px; background: #efede8; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
+@media (max-width: 760px) { .island.voices { background: #efede8; } }

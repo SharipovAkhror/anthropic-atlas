@@ -93,6 +93,13 @@ node scripts/library-notes.mjs --add=/tmp/cards.json
 Never edit `data/library.json` or `data/library-notes.json` directly. If you skip this step, the site shows the
 original English description; nothing breaks.
 
+## 6c. Opinions and forecasts (optional) → `data/opinions.json`
+At most 2 a day. Only a named professional (analyst, investor, researcher, economist) or a prediction market, in a
+page you opened today from a tier 1–2 outlet or the author's own page. Paraphrase in your own Russian words, never copy;
+keep the numbers and the horizon. Set `kind` (forecast, opinion, analysis, market), `stance` (bullish, bearish,
+mixed), `addedAt` = today. Never move an opinion into `events.json` or `atlas.json`: views are not facts.
+Keep the mix balanced: if the last three added share a stance, prefer the other side. Skip the step on a quiet day.
+
 ## 7. Check and build (must all pass)
 ```bash
 node scripts/validate.mjs      # fix every ERROR and run again until "OK"

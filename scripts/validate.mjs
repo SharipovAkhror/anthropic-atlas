@@ -44,6 +44,7 @@ const events = check("data/events.json", "events.schema.json");
 const archive = check("data/archive.json", "archive.schema.json");
 const glossary = check("data/glossary.json", "glossary.schema.json");
 const modules = check("data/modules.json", "modules.schema.json");
+const opinions = existsSync(join(ROOT, "data/opinions.json")) ? check("data/opinions.json", "opinions.schema.json") : null;
 const library = existsSync(join(ROOT, "data/library.json")) ? check("data/library.json", "library.schema.json") : null;
 const libNotes = existsSync(join(ROOT, "data/library-notes.json")) ? check("data/library-notes.json", "library-notes.schema.json") : null;
 const sourcesReg = load("sources/sources.json");
@@ -65,6 +66,17 @@ function checkSources(file, where, list) {
     const h = host(s.url);
     if (!h) err(file, `${where}: bad url ${s.url}`);
     else if ([...blocked].some(b => h === b || h.endsWith("." + b))) err(file, `${where}: source domain ${h} is on the blocked list (sources/sources.json)`);
+  }
+}
+
+// Opinions: named author, a real source, no duplicates, not from the future. They are never shown as facts.
+if (opinions) {
+  const F = "data/opinions.json";
+  for (const d of new Set(dupes(opinions.opinions.map(o => o.id)))) err(F, `duplicate opinion id "${d}"`);
+  for (const o of opinions.opinions) {
+    checkSources(F, o.id, o.sources);
+    if (o.date > TODAY) err(F, `${o.id}: date ${o.date} is in the future`);
+    if (/[!—]/.test(o.claim.ru)) warn(F, `${o.id}: Russian claim has an exclamation mark or em dash`);
   }
 }
 

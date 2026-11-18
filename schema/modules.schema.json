@@ -11,7 +11,7 @@
       "required": ["id", "renderer", "title"],
       "properties": {
         "id": { "$ref": "common.schema.json#/definitions/id" },
-        "renderer": { "enum": ["digest", "facts", "timeline", "governance", "people", "products", "glossary", "cards", "library", "saved"], "description": "Which built-in renderer draws the module" },
+        "renderer": { "enum": ["digest", "facts", "timeline", "governance", "people", "products", "glossary", "cards", "library", "saved", "opinions"], "description": "Which built-in renderer draws the module" },
         "title": { "$ref": "common.schema.json#/definitions/i18nFull" },
         "lead": { "$ref": "common.schema.json#/definitions/i18n" },
         "source": { "type": "string", "description": "Dataset path inside the data folder, e.g. atlas.json#people or topics/compute.json" },

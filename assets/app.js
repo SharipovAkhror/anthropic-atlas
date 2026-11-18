@@ -13,9 +13,9 @@
     en: { updated: "Updated", today: "today", yesterday: "yesterday", at: "at", news: "news", added: "added", updatedN: "updated", libN: "in the library", removed: "removed", find: "Search", search: "People, products, events, terms", nothing: "Nothing found", former: "Former", trust: "Long-Term Benefit Trust", board: "Board of directors", votes: "Shareholder votes", status: "Status", since: "Since", until: "Until", zone: "Area", released: "Released", metrics: "Key figure", owners: "Owners", children: "Includes", related: "Connections", events: "Events", sources: "Sources", verified: "Verified", wikipedia: "Wikipedia", official: "Official", docs: "Docs", wikidata: "Wikidata", github: "GitHub", site: "Website", linkedin: "LinkedIn", x: "X", reports: "Reports to", manages: "Manages", oversees: "Oversight of", oversightBy: "Oversight: board or trust", products: "Products", active: "active", preview: "preview", legacy: "previous", retired: "retired", deprecated: "deprecated", formerS: "former", activeP: "current", copied: "Link copied", asOf: "As of", digestFor: "Digest for", aliases: "Also", seeAlso: "Mentioned in", newBadge: "new", earlier: "Earlier", showAll: "Show all", hint: "Drag to move · Ctrl + wheel to zoom", hintT: "Drag with a finger · pinch to zoom", noDigest: "No digest yet", footer: "Public sources, refreshed every morning", method: "Methodology", repo: "GitHub", types: { model: "Models", product: "Products", people: "People", governance: "Governance", finance: "Finance", policy: "Policy", research: "Research", safety: "Safety", partnership: "Partnerships", legal: "Legal", infrastructure: "Platform" } },
     uz: { updated: "Yangilandi", today: "bugun", yesterday: "kecha", at: "soat", news: "yangilik", added: "qo'shildi", updatedN: "o'zgardi", libN: "kutubxonada", removed: "olib tashlandi", find: "Qidiruv", search: "Odamlar, mahsulotlar, voqealar, atamalar", nothing: "Hech narsa topilmadi", former: "Sobiq", trust: "LTBT trasti", board: "Direktorlar kengashi", votes: "Aksiyadorlar ovozi", status: "Holat", since: "Kompaniyada", until: "Gacha", zone: "Yo'nalish", released: "Chiqarilgan", metrics: "Asosiy", owners: "Mas'ullar", children: "Tarkib", related: "Aloqalar", events: "Voqealar", sources: "Manbalar", verified: "Tekshirilgan", wikipedia: "Vikipediya", official: "Rasmiy", docs: "Hujjatlar", wikidata: "Wikidata", github: "GitHub", site: "Sayt", linkedin: "LinkedIn", x: "X", reports: "Bo'ysunadi", manages: "Boshqaradi", oversees: "Nazorat qiladi", oversightBy: "Nazorat: kengash yoki trast", products: "Mahsulotlar", active: "faol", preview: "sinov", legacy: "oldingi", retired: "to'xtatilgan", deprecated: "eskirgan", formerS: "sobiq", activeP: "kompaniyada", copied: "Havola nusxalandi", asOf: "Sana", digestFor: "Xulosa", aliases: "Shuningdek", seeAlso: "Qayerda uchraydi", newBadge: "yangi", earlier: "Avvalroq", showAll: "Hammasini ko'rsatish", hint: "Suring · Ctrl + g‘ildirak — masshtab", hintT: "Barmoq bilan suring · chimdish — masshtab", noDigest: "Xulosa hali yo'q", footer: "Ochiq manbalar, har kuni ertalab", method: "Metodologiya", repo: "GitHub", types: { model: "Modellar", product: "Mahsulotlar", people: "Odamlar", governance: "Boshqaruv", finance: "Moliya", policy: "Siyosat", research: "Tadqiqot", safety: "Xavfsizlik", partnership: "Hamkorlik", legal: "Huquq", infrastructure: "Platforma" } }
   };
-  Object.assign(UI.ru, { save: "Сохранить", saved: "Сохранено", copySrc: "Скопировать с источником", quote: "Цитата", copiedSrc: "Скопировано", share: "Ссылка", linkCopied: "Ссылка скопирована", rechecked: "перепроверено", hold: "Удерживайте, чтобы очистить", holding: "Удерживайте…", cleared: "Сохранённое очищено", undo: "Вернуть", all: "Все", isNew: "новое", srcWord: "Источник", on: "на", notChecked: "Сегодня не удалось проверить", mayLag: "Связанные цифры могут отставать.", sinceVisit: (n, d) => `С вашего прошлого визита ${d}: ${n} ${new Intl.PluralRules("ru").select(n) === "one" ? "новое событие" : new Intl.PluralRules("ru").select(n) === "few" ? "новых события" : "новых событий"}`, byTopic: "Последнее по темам", copyId: "Скопировать" });
-  Object.assign(UI.en, { save: "Save", saved: "Saved", copySrc: "Copy with source", quote: "Quote", copiedSrc: "Copied", share: "Link", linkCopied: "Link copied", rechecked: "re-checked", hold: "Hold to clear", holding: "Keep holding…", cleared: "Saved list cleared", undo: "Undo", all: "All", isNew: "new", srcWord: "Source", on: "as of", notChecked: "Could not check today", mayLag: "Related numbers may lag.", sinceVisit: (n, d) => `Since your last visit ${d}: ${n} new event${n === 1 ? "" : "s"}`, byTopic: "Latest by topic", copyId: "Copy" });
-  Object.assign(UI.uz, { save: "Saqlash", saved: "Saqlandi", copySrc: "Manba bilan nusxalash", quote: "Iqtibos", copiedSrc: "Nusxalandi", share: "Havola", linkCopied: "Havola nusxalandi", rechecked: "qayta tekshirildi", hold: "Tozalash uchun bosib turing", holding: "Bosib turing…", cleared: "Saqlanganlar tozalandi", undo: "Qaytarish", all: "Hammasi", isNew: "yangi", srcWord: "Manba", on: "sana", notChecked: "Bugun tekshirib bo‘lmadi", mayLag: "Tegishli raqamlar kechikishi mumkin.", sinceVisit: (n, d) => `Oxirgi tashrifingizdan (${d}) beri: ${n} ta yangi voqea`, byTopic: "Mavzular bo‘yicha so‘nggisi", copyId: "Nusxalash" });
+  Object.assign(UI.ru, { save: "Сохранить", saved: "Сохранено", copySrc: "Скопировать с источником", quote: "Цитата", copiedSrc: "Скопировано", share: "Ссылка", linkCopied: "Ссылка скопирована", rechecked: "перепроверено", hold: "Удерживайте, чтобы очистить", holding: "Удерживайте…", cleared: "Сохранённое очищено", undo: "Вернуть", all: "Все", isNew: "новое", srcWord: "Источник", on: "на", notChecked: "Сегодня не удалось проверить", mayLag: "Связанные цифры могут отставать.", sinceVisit: (n, d) => `С вашего прошлого визита ${d}: ${n} ${new Intl.PluralRules("ru").select(n) === "one" ? "новое событие" : new Intl.PluralRules("ru").select(n) === "few" ? "новых события" : "новых событий"}`, byTopic: "Последнее по темам", copyId: "Скопировать", notFact: "Мнение автора, а не проверенный факт. Мы пересказываем его своими словами, оригинал по ссылке.", opinionsTag: "Мнения, не факты", kinds: { forecast: "Прогноз", opinion: "Мнение", analysis: "Разбор", market: "Рынок прогнозов" }, stances: { bullish: "Оптимистично", bearish: "Скептически", mixed: "Неоднозначно" }, horizon: "Горизонт", stanceL: "Позиция", author: "Автор" });
+  Object.assign(UI.en, { save: "Save", saved: "Saved", copySrc: "Copy with source", quote: "Quote", copiedSrc: "Copied", share: "Link", linkCopied: "Link copied", rechecked: "re-checked", hold: "Hold to clear", holding: "Keep holding…", cleared: "Saved list cleared", undo: "Undo", all: "All", isNew: "new", srcWord: "Source", on: "as of", notChecked: "Could not check today", mayLag: "Related numbers may lag.", sinceVisit: (n, d) => `Since your last visit ${d}: ${n} new event${n === 1 ? "" : "s"}`, byTopic: "Latest by topic", copyId: "Copy", notFact: "The author's view, not a verified fact. We paraphrase it in our own words; the original is linked.", opinionsTag: "Opinions, not facts", kinds: { forecast: "Forecast", opinion: "Opinion", analysis: "Analysis", market: "Prediction market" }, stances: { bullish: "Optimistic", bearish: "Sceptical", mixed: "Mixed" }, horizon: "Horizon", stanceL: "Stance", author: "Author" });
+  Object.assign(UI.uz, { save: "Saqlash", saved: "Saqlandi", copySrc: "Manba bilan nusxalash", quote: "Iqtibos", copiedSrc: "Nusxalandi", share: "Havola", linkCopied: "Havola nusxalandi", rechecked: "qayta tekshirildi", hold: "Tozalash uchun bosib turing", holding: "Bosib turing…", cleared: "Saqlanganlar tozalandi", undo: "Qaytarish", all: "Hammasi", isNew: "yangi", srcWord: "Manba", on: "sana", notChecked: "Bugun tekshirib bo‘lmadi", mayLag: "Tegishli raqamlar kechikishi mumkin.", sinceVisit: (n, d) => `Oxirgi tashrifingizdan (${d}) beri: ${n} ta yangi voqea`, byTopic: "Mavzular bo‘yicha so‘nggisi", copyId: "Nusxalash", notFact: "Muallif fikri, tasdiqlangan fakt emas. O‘z so‘zlarimiz bilan qayta aytamiz, asl manba havolada.", opinionsTag: "Fikrlar, fakt emas", kinds: { forecast: "Prognoz", opinion: "Fikr", analysis: "Tahlil", market: "Prognoz bozori" }, stances: { bullish: "Optimistik", bearish: "Skeptik", mixed: "Aralash" }, horizon: "Muddat", stanceL: "Pozitsiya", author: "Muallif" });
   const LANGS = ["ru", "en", "uz"];
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
   const S = { lang: LANGS.includes(store.get("atlas.lang")) ? store.get("atlas.lang") : "ru", stack: [], digest: null, allEvents: false };
@@ -91,9 +91,10 @@
   async function getJSON(path) { const r = await fetch(path); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
   const normDigest = x => (x && x.date ? { news: [], added: [], updated: [], removed: [], library: [], ...x } : null);
   async function load() {
-    const [atlas, events, glossary, modules, digests] = await Promise.all(["/data/atlas.json", "/data/events.json", "/data/glossary.json", "/data/modules.json", "/data/digests/index.json"].map(p => getJSON(p).catch(() => null)));
+    const [atlas, events, glossary, modules, digests, opinions] = await Promise.all(["/data/atlas.json", "/data/events.json", "/data/glossary.json", "/data/modules.json", "/data/digests/index.json", "/data/opinions.json"].map(p => getJSON(p).catch(() => null)));
     if (!atlas) throw new Error("atlas.json");
-    D = { atlas, events: (events?.events || []).filter(e => e && e.id && /^\d{4}-\d{2}/.test(e.date || "") && e.title), terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [] };
+    D = { atlas, events: (events?.events || []).filter(e => e && e.id && /^\d{4}-\d{2}/.test(e.date || "") && e.title), terms: glossary?.terms || [], modules: modules?.modules || [], digests: digests?.digests || [], opinions: (opinions?.opinions || []).filter(o => o && o.id && o.claim && o.who).sort((a, b) => b.date.localeCompare(a.date)) };
+    for (const o of D.opinions) IDX.set(`opinion:${o.id}`, { kind: "opinion", ...o });
     for (const p of atlas.people) IDX.set(`person:${p.id}`, { ...p, kind: p.kind === "group" ? "group" : "person", isPerson: true });
     for (const p of atlas.products) IDX.set(`product:${p.id}`, { kind: "product", ...p });
     for (const e of D.events) IDX.set(`event:${e.id}`, { kind: "event", ...e });
@@ -307,10 +308,21 @@
   R.saved = m => {
     const items = SAVED.all().map(r => { const [k, ...rest] = r.split(":"); return { r, k, x: IDX.get(`${k}:${rest.join(":")}`) }; }).filter(x => x.x);
     if (!items.length) return;
-    const name = x => (x.kind === "lib" ? libT(x) : x.name || x.term || tx(x.title) || tx(x.label));
-    const sub = (k, x) => (k === "event" ? `${t("types")[x.type] || x.type} · ${shortDate(x.date)}` : k === "lib" ? secName(x.section) : k === "fact" ? x.value : k === "product" ? clusterLabel(x.cluster) : k === "person" ? tx(x.role) : "");
+    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "opinion" ? `${x.who.name}: ${tx(x.claim)}` : x.name || x.term || tx(x.title) || tx(x.label));
+    const sub = (k, x) => k === "opinion" ? `${t("kinds")[x.kind]} · ${shortDate(x.date)}` : (k === "event" ? `${t("types")[x.type] || x.type} · ${shortDate(x.date)}` : k === "lib" ? secName(x.section) : k === "fact" ? x.value : k === "product" ? clusterLabel(x.cluster) : k === "person" ? tx(x.role) : "");
     island(m.id, tx(m.title), { count: String(items.length), lead: tx(m.lead), far: items.slice(0, 5).map(i => `<div class="far-l">${esc(name(i.x))}</div>`).join("") },
       items.map(({ r, k, x }) => `<button class="row noav" data-open="${esc(r)}"><span class="who"><span class="nm">${esc(name(x))}</span><span class="rl">${esc(sub(k, x))}</span></span></button>`).join("") + `<button class="hold" type="button"><span class="ml">${esc(t("hold"))}</span></button>`);
+  };
+
+  // opinions and forecasts: a different surface and a standing caption, so a view is never read as a fact
+  const STANCE = { bullish: "↗", bearish: "↘", mixed: "↔" };
+  const opRow = o => `<button class="op" data-open="opinion:${esc(o.id)}"><span class="op-c">${esc(tx(o.claim))}</span><span class="op-w"><b>${esc(o.who.name)}</b>${esc(tx(o.who.role) ? `, ${tx(o.who.role)}` : "")}</span><span class="op-m"><span class="op-s" title="${esc(t("stances")[o.stance])}">${STANCE[o.stance] || ""} ${esc(t("stances")[o.stance])}</span> · ${esc(t("kinds")[o.kind])} · ${esc(shortDate(o.date))}</span></button>`;
+  R.opinions = m => {
+    if (!D.opinions.length) return;
+    const all = D.opinions, shown = S.allOps ? all : all.slice(0, 6);
+    const el = island(m.id, tx(m.title), { cls: "voices", count: String(all.length), lead: tx(m.lead), far: all.slice(0, 4).map(o => `<div class="far-l">${esc(o.who.name)}</div>`).join("") },
+      `<div class="op-tag">${esc(t("opinionsTag"))}</div>${shown.map(opRow).join("")}${all.length > shown.length ? `<button class="more" data-allops>${esc(t("showAll"))} · ${all.length}</button>` : ""}`);
+    $("[data-allops]", el)?.addEventListener("click", () => { S.allOps = true; renderAll({ keepCamera: true }); });
   };
 
   R.glossary = m => {
@@ -464,6 +476,12 @@
         <p class="lead">${esc(tx(g.definition))}</p>${linksHTML(g.links)}
         ${where.length ? `<div class="blk"><h4>${esc(t("seeAlso"))}</h4>${where.map(x => relRow(x, x.isPerson ? tx(x.role) : clusterLabel(x.cluster))).join("")}</div>` : ""}${sourcesHTML(g)}`;
     },
+    opinion(o) {
+      return `<div class="hd"><div><div class="cap">${esc(t("kinds")[o.kind])} · ${esc(fmtDate(o.date))}</div><h3 data-copy style="margin-top:4px">${esc(o.who.name)}</h3><div class="sub">${esc(tx(o.who.role))}</div></div></div>
+        <div class="notfact">${esc(t("notFact"))}</div>
+        <p class="lead op-lead">${gloss(tx(o.claim))}</p>
+        ${kv([[t("stanceL"), `${STANCE[o.stance] || ""} ${esc(t("stances")[o.stance])}`], [t("horizon"), esc(o.horizon || "")]])}${sourcesHTML(o)}`;
+    },
     fact(f) {
       return `<div class="hd"><div><div class="cap">${esc(tx(f.label))}</div><h3 data-copy class="num" style="margin-top:2px;font-size:40px;letter-spacing:-.03em">${esc(f.value)}</h3></div></div>
         <p class="lead">${gloss(tx(f.note))}</p>${kv([[t("asOf"), esc(fmtDate(f.asOf))]])}${sourcesHTML(f)}`;
@@ -490,6 +508,7 @@
       : kind === "lib" ? `${libT(x)}. ${libS(x)}`
       : kind === "person" ? `${x.name}, ${tx(x.role)}. ${tx(x.bio)}`
       : kind === "term" ? `${x.term}: ${tx(x.definition)}`
+      : kind === "opinion" ? `${t("kinds")[x.kind]}, ${fmtDate(x.date)}. ${x.who.name} (${tx(x.who.role)}): ${tx(x.claim)} [${t("opinionsTag")}]`
       : `${x.name}. ${tx(x.description)}${x.metrics ? ` ${x.metrics}.` : ""}`;
     return `${head.replace(/\s+/g, " ").trim()}\n${src ? `${t("srcWord")}: ${src}\n` : ""}Anthropic Atlas: ${here}`;
   }
@@ -502,7 +521,7 @@
     if (kind !== "shelf") $("#sheet-body .hd")?.insertAdjacentHTML("afterend", actsHTML(kind, id));
     if (kind === "shelf") fillShelf();
     $("#sheet-body").scrollTop = 0;
-    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "shelf" ? tx(x) : x.name || x.term || tx(x.title) || tx(x.label));
+    const name = x => (x.kind === "lib" ? libT(x) : x.kind === "shelf" ? tx(x) : x.kind === "opinion" ? x.who.name : x.name || x.term || tx(x.title) || tx(x.label));
         const prev = S.stack.length > 1 ? S.stack.at(-2) : null;
     $("#crumbs").innerHTML = prev ? `<button data-crumb="${S.stack.length - 2}"><svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 1.5 1.5 7.5l6 6"/></svg>${esc(name(IDX.get(`${prev.kind}:${prev.id}`)))}</button>` : "";
     const body = $("#sheet-body"); body.classList.remove("push"); if (prev && push) { void body.offsetWidth; body.classList.add("push"); }
@@ -1092,7 +1111,7 @@
     if (st.length) { S.stack = st; const s = st.at(-1); openEntity(s.kind, s.id, { push: false }); }
   }
   function fromHash() {
-    const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf)\/(.+)$/);
+    const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf|opinion)\/(.+)$/);
     if (!m) return;
     let id = m[2]; try { id = decodeURIComponent(id); } catch {}
     if (!IDX.has(`${m[1]}:${id}`)) { if (LIB || !/^(lib|shelf)$/.test(m[1])) toast(M("gone")); return; }
