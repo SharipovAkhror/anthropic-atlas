@@ -1,0 +1,82 @@
+name: Translate
+# Russian and Uzbek without a paid model. Fills the missing Uzbek text (board, digests, every library card) and the
+# Russian cards of library pages that have none, through GitHub Models on its free tier with this workflow's own
+# token (no secret, no paid account). Each answer is checked (script, numbers, names, length) before it is saved;
+# what is not done today shows the Russian text and is tried on the next run. Three runs a day: after the 05:40
+# collect, after the optional 07:07 Claude run, and in the afternoon. A pull request that changes the translator
+# runs a small dry sample instead, so its output can be read in the log.
+on:
+  schedule:
+    - cron: "25 1 * * *"   # 06:25 Tashkent
+    - cron: "40 3 * * *"   # 08:40 Tashkent
+    - cron: "0 10 * * *"   # 15:00 Tashkent
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "At most this many model requests"
+        default: "140"
+  pull_request:
+    paths:
+      - scripts/translate.mjs
+      - .github/workflows/translate.yml
+permissions:
+  contents: write
+  models: read
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('translate-{0}', github.ref) || 'atlas-main-writer' }}
+  cancel-in-progress: false
+jobs:
+  sample:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Dry sample (nothing is written)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/translate.mjs --sample=4 --budget=6
+  translate:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04  # pinned: the browser test needs an OS Playwright supports
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Translate what is missing
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BUDGET: ${{ inputs.budget || '140' }}
+        run: node scripts/translate.mjs --budget="$BUDGET"
+      - name: Validate and nothing lost (a bad result is dropped, yesterday's text stays)
+        run: |
+          git status --porcelain data | head -20
+          node scripts/validate.mjs --quiet && node scripts/guard.mjs --base=HEAD && exit 0
+          echo "::warning::translations failed validation and were dropped"
+          git checkout -- data pipeline/translate
+      - name: Browser smoke test
+        id: smoke
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          git diff --quiet -- data && exit 0
+          npm i --no-save playwright@1.55.0
+          for i in 1 2 3; do npx playwright install --with-deps chromium && break; sleep 20; done
+          node scripts/smoke.mjs || { sleep 10; node scripts/smoke.mjs; }
+      - name: Commit
+        run: |
+          git config user.name "atlas-bot"
+          git config user.email "atlas-bot@users.noreply.github.com"
+          if [ "${{ steps.smoke.outcome }}" != "success" ]; then git checkout -- data pipeline/translate; fi
+          git add data pipeline/translate
+          git diff --cached --quiet && exit 0
+          git commit -m "translate: $(TZ=Asia/Tashkent date +%F) Uzbek and Russian texts"
+          for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0; sleep 5; done
+          exit 1

@@ -215,6 +215,14 @@ if (library) {
     const live = library.items.filter(i => !i.gone), carded = live.filter(i => libNotes.notes[i.id]).length;
     if (carded < live.length * .5) warn("data/library-notes.json", `only ${carded} of ${live.length} live items have a Russian card`);
     for (const p of libNotes.paths) if (p.items.length < 4) err("data/library-notes.json", `path ${p.id} has only ${p.items.length} items`);
+    // Russian cards are Russian, Uzbek cards are Latin-script Uzbek (scripts/translate.mjs checks the same before saving)
+    let badRu = 0, badUz = 0;
+    for (const [id, n] of Object.entries(libNotes.notes)) {
+      if (!/[\u0400-\u04FF]/.test(n.t + (n.s || ""))) { if (badRu++ < 5) err("data/library-notes.json", `${id}: the Russian card has no Russian text`); }
+      if (n.u && /[\u0400-\u04FF]/.test(n.u.t + (n.u.s || "") + (n.u.d || ""))) { if (badUz++ < 5) err("data/library-notes.json", `${id}: Cyrillic in the Uzbek card`); }
+    }
+    const uz = live.filter(i => libNotes.notes[i.id]?.u).length;
+    if (uz < live.length * .9) warn("data/library-notes.json", `Uzbek cards: ${uz} of ${live.length} live items (scripts/translate.mjs fills the rest on its next runs)`);
   }
 }
 
@@ -234,6 +242,8 @@ for (const [F, d] of texts) {
     if (/^\d{4}-\d{2}-\d{2}$/.test(v) && !realDay(v)) err(F, `${path}: ${v} is not a real date`);
     if (/(^|\.)(ru|en)$/.test(path) && !/\S/.test(v)) err(F, `${path}: empty text`);
     if (/(^|\.)ru$/.test(path)) { if (v.includes("—")) dash++; if (/!(\s|$)/.test(v)) bang++; }
+    // each language stands on its own: Uzbek is Latin script, never a Russian text pasted in its place
+    if (/(^|\.)uz$/.test(path) && /[\u0400-\u04FF]/.test(v)) err(F, `${path}: Cyrillic in the Uzbek text`);
   });
   if (dash || bang) warn(F, `Russian text has ${dash} em dash(es) and ${bang} exclamation mark(s) (REVIEW.md: avoid both)`);
 }

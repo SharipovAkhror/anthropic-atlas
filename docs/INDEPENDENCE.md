@@ -10,8 +10,21 @@ the optional `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` (`collect.yml`); everyt
 `github.token`. The daily data (collect, library catalog, portraits, digest, RSS) is produced by plain Node scripts.
 
 The optional 07:07 Tashkent Claude run (see `RUNBOOK.md`) adds hand-checked events with Russian summaries, people and
-facts, and Russian library cards. Without it: no new hand-checked events, new library pages show English titles and
-descriptions until a card exists, and the digest uses its automatic headline built from new official posts.
+facts, and hand-written Russian library cards. Without it: no new hand-checked events, new library pages get a
+machine-translated Russian card (marked «автоперевод») from `translate.yml`, and the digest uses its automatic
+headline built from new official posts.
+
+## Russian and Uzbek on their own
+
+`translate.yml` (06:25, 08:40 and 15:00 Tashkent) runs `scripts/translate.mjs`: Uzbek (Latin script) for every Russian
+text on the board, the digests and every library card, and Russian cards for library pages that have none. It uses
+GitHub Models on the free tier with the workflow's own `GITHUB_TOKEN` (`permissions: models: read`), so there is no
+secret to set and nothing to pay. Every answer is checked before it is saved (Uzbek has no Cyrillic, Russian is
+Russian, every number and Latin product name survives, sane length, no exclamation marks), and the validator repeats
+the script checks. A text we translated is redone when its Russian source changes; a hand-written `uz` is never
+overwritten. If GitHub Models is unavailable or the daily limit is reached, the run stops cleanly: the site shows the
+Russian text for what is missing and the next run continues. Models are tried in order (`TRANSLATE_MODELS`), and the
+endpoint can be pointed at any OpenAI-compatible service with `TRANSLATE_ENDPOINT`.
 Everything already on the site stays. `publish-daily.yml` then simply never triggers (it reacts to `claude/**` branches).
 
 ## Dependencies
@@ -25,6 +38,7 @@ Everything already on the site stays. `publish-daily.yml` then simply never trig
 | Google Fonts | web fonts in the page (being removed by the frontend work) | text falls back to system fonts; smoke test already blocks the font hosts and passes | Once removed there is no dependency. Until then the CSS font stack must keep a system fallback. |
 | Wikipedia / Wikimedia (REST API, Commons images) | `enrich.mjs`: reference links and portraits for people | no new links or portraits; `enrich` failure is a warning, the workflow continues | Portraits are saved into `assets/people/` and `avatar` points at the local file, so existing pictures never depend on Wikimedia. People without a photo show a monogram. Add links by hand in `data/atlas.json` (`links`). |
 | Public Anthropic sources (anthropic.com, claude.com, docs, help center, GitHub `anthropics`, MCP site, Skilljar) | the collector and library catalog | a failing source is reported in the inbox, a library source that shrinks suddenly is ignored and its items are kept (`gone` is never set from a broken fetch) | `library.mjs` keeps the previous catalog; see `docs/METHODOLOGY.md` for source tiers. |
+| GitHub Models (free tier, `translate.yml`) | Uzbek text and machine Russian library cards | no new translations; what exists stays, missing Uzbek shows Russian, new library pages show English | Set `TRANSLATE_ENDPOINT` and `TRANSLATE_MODELS` to any OpenAI-compatible service (a self-hosted open model works), or let the optional Claude run write cards. |
 | Telegram Bot API (optional) | morning digest message | no message; nothing else changes | Subscribe to the RSS feed `/data/feed.xml` in any reader. The step is skipped when the secrets are not set. |
 | `images.weserv.nl` (optional, `enrich.mjs`) | resize fallback for a person's existing external avatar | that fallback photo is skipped, the monogram is used | Wikipedia lead image is tried first; external avatars are never hot-linked. |
 

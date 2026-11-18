@@ -16,9 +16,9 @@ Production: https://anthropic-atlas.vercel.app (Vercel, deploys from `main`).
 | `schema/` | JSON Schemas for every data file |
 | `sources/sources.json` | source registry (tiers, trusted press, blocked domains) |
 | `sources/wiki-overrides.json` | curated Wikipedia candidates for portraits/links |
-| `scripts/` | `collect` (sources → inbox), `library` (catalog, no model), `library-notes` (add cards), `today` (worklist), `validate`, `guard` (no data loss), `smoke` (real browser, quick), `e2e` (full browser suite: screens, phones, touch, every card, missing data), `links` (source link health), `webtest` (shared browser helpers), `digest` (+ `digest-core`, its pure logic), `enrich` (photos, Wikipedia), `lib` (shared helpers: args, Tashkent date, JSON, decode, fetch), `test`, `hooks/` (Claude Code hooks) |
+| `scripts/` | `collect` (sources → inbox), `library` (catalog, no model), `library-notes` (add cards), `today` (worklist), `validate`, `guard` (no data loss), `smoke` (real browser, quick), `e2e` (full browser suite: screens, phones, touch, every card, missing data), `links` (source link health), `webtest` (shared browser helpers), `digest` (+ `digest-core`, its pure logic), `translate` (Uzbek for everything, Russian cards for new library pages; free GitHub Models, checked), `enrich` (photos, Wikipedia), `lib` (shared helpers: args, Tashkent date, JSON, decode, fetch), `test`, `hooks/` (Claude Code hooks) |
 | `pipeline/` | collector state, inbox, watched-page snapshots, run notes (not deployed) |
-| `.github/workflows/` | `collect.yml` (05:40 Tashkent: news inbox + library catalog), `publish-daily.yml` (merge daily branch), `validate.yml` (CI), `health.yml` (hourly production check, auto-revert of a broken data commit), `qa.yml` (nightly full browser suite on production, collector streaks, Sunday link check; opens a `qa` issue) |
+| `.github/workflows/` | `collect.yml` (05:40 Tashkent: news inbox + library catalog), `publish-daily.yml` (merge daily branch), `validate.yml` (CI), `health.yml` (hourly production check, auto-revert of a broken data commit), `qa.yml` (nightly full browser suite on production, collector streaks, Sunday link check; opens a `qa` issue), `translate.yml` (06:25, 08:40, 15:00 Tashkent: missing Uzbek and Russian texts) |
 | `.claude/agents/` | `atlas-daily`, ten `researcher-*` roles (Haiku), three `qa-*` testers (see docs/TESTING.md) |
 
 ## Rules
@@ -27,7 +27,9 @@ Production: https://anthropic-atlas.vercel.app (Vercel, deploys from `main`).
 - Run `npm run check` (validate + tests + guard) and `npm run smoke` after any change, and `npm run e2e` after any change to the site; CI runs them all. A fixed bug gets a check in `e2e.mjs` or `test.mjs`. `npm test` alone runs only the regression suite.
 - Scripts export their pure functions (guarded by `isMain` from `scripts/lib.mjs`) so `scripts/test.mjs` can test them without network or git. Put a helper used by two scripts into `scripts/lib.mjs`.
 - Do not hand-edit `data/digests/*`; `scripts/digest.mjs` generates them from the data diff.
-- Text fields: `ru` required, `en` required for titles/roles/labels, `uz` optional (falls back to ru).
+- Text fields: `ru` required, `en` required for titles/roles/labels, `uz` optional: `scripts/translate.mjs` fills it
+  (falls back to ru until then). Never write Cyrillic into `uz`. Write a hand-made `uz` only if you are sure of it;
+  the translator never overwrites one. Library cards: `u` is the Uzbek card, `m: 1` marks a machine Russian card.
 - Design: neutral surfaces, one accent, few controls. Interactions are hidden and discoverable (hover reveals,
   click-to-expand, ⌘K search, `L` language, `T` theme, swipe to close). Do not add buttons to the top bar.
 - Local preview: `python3 -m http.server 4173` and open http://localhost:4173.

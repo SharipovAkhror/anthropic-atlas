@@ -81,7 +81,9 @@ If nothing happened: headline "Без существенных новостей"
 
 ## 6b. Library cards (Russian summaries for new public materials)
 The 05:40 job keeps `data/library.json` (every public Anthropic page: research, engineering, news, guides, docs…)
-up to date by itself. Your only job here is to write short Russian cards for items that have none yet:
+up to date by itself, and `translate.yml` gives every page without a card a machine Russian card (`m: 1`, shown as
+«автоперевод») and an Uzbek card. Your job here is to write better Russian cards for items that have no hand-written
+card yet (the list includes machine cards; yours replace them, and the Uzbek card is redone from yours):
 ```bash
 node scripts/library-notes.mjs --todo --limit=40      # TSV: id, section, title, description, url
 ```
@@ -90,8 +92,8 @@ Write `/tmp/cards.json` as `{"<id>": {"t": "Русский заголовок", 
 ```bash
 node scripts/library-notes.mjs --add=/tmp/cards.json
 ```
-Never edit `data/library.json` or `data/library-notes.json` directly. If you skip this step, the site shows the
-original English description; nothing breaks.
+Never edit `data/library.json` or `data/library-notes.json` directly. If you skip this step, the machine card stays;
+nothing breaks. Do not write Uzbek text yourself: the translator does it from your Russian.
 
 ## 6c. Opinions and forecasts (optional) → `data/opinions.json`
 At most 2 a day. Only a named professional (analyst, investor, researcher, economist) or a prediction market, in a
