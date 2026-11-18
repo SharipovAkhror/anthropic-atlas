@@ -1082,13 +1082,15 @@
     $("#palette ul").addEventListener("mousemove", e => { const li = e.target.closest("li"); if (li && +li.dataset.i !== sel) { sel = +li.dataset.i; $$("#palette li").forEach((x, i) => x.classList.toggle("sel", i === sel)); } });
     document.addEventListener("keydown", e => {
       const typing = /INPUT|TEXTAREA/.test(document.activeElement?.tagName);
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); $("#palette").classList.contains("on") ? closePalette() : openPalette(); return; }
+      if ((e.metaKey || e.ctrlKey) && (e.code === "KeyK" || e.key.toLowerCase() === "k")) { e.preventDefault(); $("#palette").classList.contains("on") ? closePalette() : openPalette(); return; }
       if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+      // Space and Enter on a focused button press that button; they must not move the board
+      if ((e.key === " " || e.key === "Enter") && document.activeElement?.closest("button, a[href], summary, [role=tab]")) return;
       const sheetOn = $("#sheet").classList.contains("on");
-      if (e.key === "/") { e.preventDefault(); openPalette(); }
+      if (e.key === "/" || e.code === "Slash") { e.preventDefault(); openPalette(); }
       else if (e.key === "Escape") { if (sheetOn) back(); else if (document.body.classList.contains("overview")) leaveMap(tabsIdx); }
       else if (e.key === "Backspace" && sheetOn) { e.preventDefault(); back(); }
-      else if (e.key.toLowerCase() === "l") cycleLang();
+      else if (e.code === "KeyL" || e.key.toLowerCase() === "l") cycleLang(); // e.code: works on a Russian layout too
       else if (!phone() && e.key === "0") { drawMap.user = true; fitAll(); }
       else if (!phone() && e.key === "1") goHome();
       else if (!phone() && (e.key === "+" || e.key === "=")) zoomAt(cam.s * 1.3, vw() / 2, vh() / 2, true);
@@ -1098,12 +1100,17 @@
     });
     addEventListener("hashchange", fromHash);
     let wasPhone = phone();
-    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) { layout(); apply(); } });
+    addEventListener("resize", () => { const p = phone(); if (p !== wasPhone) { wasPhone = p; document.body.classList.remove("overview"); renderAll(); } else if (!p) { const atHome = MODE === "page" && Math.abs(cam.s - HOME.s) < .01 && Math.abs(cam.y - HOME.y) < 2; layout(); atHome ? goHome(false) : apply(); } });
     // swipe the sheet away (down on phones, right elsewhere)
     const sh = $("#sheet"); let sx = 0, sy = 0, dx = 0, dy = 0, dragging = false;
     sh.addEventListener("touchstart", e => { if ($("#sheet-body").scrollTop > 0 && phone()) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; dragging = true; dx = dy = 0; }, { passive: true });
-    sh.addEventListener("touchmove", e => { if (!dragging) return; dx = e.touches[0].clientX - sx; dy = e.touches[0].clientY - sy; const d = phone() ? Math.max(0, dy) : Math.max(0, dx); if (d > 6) { sh.style.transition = "none"; sh.style.transform = phone() ? `translateY(${d}px)` : `translateX(${d}px)`; } }, { passive: true });
-    sh.addEventListener("touchend", () => { if (!dragging) return; dragging = false; sh.style.transition = ""; sh.style.transform = ""; if ((phone() ? dy : dx) > 90) closeSheet(); });
+    // a pull closes the sheet only while its content is at the top: once the content scrolls, the gesture is a scroll
+    const reset = () => { dragging = false; dx = dy = 0; sh.style.transition = ""; sh.style.transform = ""; };
+    sh.addEventListener("touchmove", e => { if (!dragging) return; if (phone() && $("#sheet-body").scrollTop > 0) { reset(); return; } dx = e.touches[0].clientX - sx; dy = e.touches[0].clientY - sy; const d = phone() ? Math.max(0, dy) : Math.max(0, dx); if (d > 6) { sh.style.transition = "none"; sh.style.transform = phone() ? `translateY(${d}px)` : `translateX(${d}px)`; } }, { passive: true });
+    sh.addEventListener("touchend", () => { if (!dragging) return; const d = phone() ? dy : dx; reset(); if (d > 90) closeSheet(); });
+    sh.addEventListener("touchcancel", reset, { passive: true });
+    // on a phone the bar covers most of the dimmed strip above the sheet: a tap on its empty part closes the sheet too
+    $("#bar").addEventListener("click", e => { if (phone() && $("#sheet").classList.contains("on") && !e.target.closest("button, a")) closeSheet(); });
   }
   function cycleLang() {
     S.lang = LANGS[(LANGS.indexOf(S.lang) + 1) % LANGS.length]; store.set("atlas.lang", S.lang);
@@ -1112,7 +1119,7 @@
   }
   function fromHash() {
     const m = location.hash.match(/^#\/(person|product|event|term|fact|lib|shelf|opinion)\/(.+)$/);
-    if (!m) return;
+    if (!m) { if (/^#\//.test(location.hash)) toast(M("gone")); return; }
     let id = m[2]; try { id = decodeURIComponent(id); } catch {}
     if (!IDX.has(`${m[1]}:${id}`)) { if (LIB || !/^(lib|shelf)$/.test(m[1])) toast(M("gone")); return; }
     S.stack = []; openEntity(m[1], id, { fromHash: true }); setTimeout(() => reveal(m[1], id), 120);

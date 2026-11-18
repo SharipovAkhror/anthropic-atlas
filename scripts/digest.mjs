@@ -139,10 +139,12 @@ const text = md.join("\n");
 if (!args["print-only"]) {
   mkdirSync(join(ROOT, "data/digests"), { recursive: true });
   mkdirSync(join(ROOT, "pipeline/run"), { recursive: true });
+  // a re-run that changes nothing keeps the old timestamp, so the file stays identical and no second Telegram message goes out
+  if (prevRaw?.generatedAt) { const same = JSON.stringify({ ...digest, generatedAt: 0 }) === JSON.stringify({ ...prevRaw, generatedAt: 0 }); if (same) digest.generatedAt = prevRaw.generatedAt; }
   writeFileSync(join(ROOT, `data/digests/${DATE}.json`), JSON.stringify(digest, null, 2) + "\n");
   const idxPath = join(ROOT, "data/digests/index.json");
   const idx = existsSync(idxPath) ? readJson(idxPath) : { digests: [] };
-  idx.digests = [{ date: DATE, headline: digest.headline, counts: { news: newEvents.length, added: nonEventAdded.length, updated: updated.length, removed: removed.length, library: digest.library.length } }, ...idx.digests.filter(d => d.date !== DATE)].sort((a, b) => b.date.localeCompare(a.date));
+  idx.digests = [{ date: DATE, headline: digest.headline, counts: { news: digest.news.length, added: digest.added.length, updated: digest.updated.length, removed: digest.removed.length, library: digest.library.length } }, ...idx.digests.filter(d => d.date !== DATE)].sort((a, b) => b.date.localeCompare(a.date));
   writeFileSync(idxPath, JSON.stringify(idx, null, 2) + "\n");
   atlasNow.meta.updatedAt = DATE;
   writeFileSync(join(ROOT, "data/atlas.json"), JSON.stringify(atlasNow, null, 2) + "\n");

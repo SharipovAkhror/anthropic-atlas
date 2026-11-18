@@ -12,11 +12,14 @@
     "validate": "node scripts/validate.mjs",
     "guard": "node scripts/guard.mjs",
     "smoke": "node scripts/smoke.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "qa": "npm run check && npm run smoke && npm run e2e",
     "today": "node scripts/today.mjs",
     "collect": "node scripts/collect.mjs",
     "library": "node scripts/library.mjs",
     "digest": "node scripts/digest.mjs",
     "enrich": "node scripts/enrich.mjs",
+    "links": "node scripts/links.mjs",
     "serve": "npx --yes serve@14.2.4 -l 4173 ."
   },
   "devDependencies": {

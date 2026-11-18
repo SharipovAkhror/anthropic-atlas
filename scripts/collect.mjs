@@ -48,7 +48,7 @@ export const pageLines = html => strip(html).filter(l => l.length > 2 && l.lengt
 export function diffLines(prev, lines) { const P = new Set(prev), N = new Set(lines); return { added: lines.filter(l => !P.has(l)), removed: prev.filter(l => l && !N.has(l)) }; }
 
 // ---- run state (set up in main)
-let DATE, NOW, state, UA;
+let DATE, NOW, state, UA, DRY = false;
 const get = (url, tries = 3) => fetchText(url, { userAgent: UA, tries, backoffMs: 1500 });
 
 async function pageMeta(url) {
@@ -69,7 +69,8 @@ const handlers = {
     const urls = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => ({ loc: tag(m[1], "loc"), lastmod: tag(m[1], "lastmod") }))
       .filter(u => !src.include || src.include.some(p => new URL(u.loc).pathname.startsWith(p)));
     const fresh = urls.filter(u => !state.seen[sha(u.loc)]);
-    fresh.forEach(u => (state.seen[sha(u.loc)] = DATE));
+    // only what is reported today counts as seen; the rest waits for tomorrow instead of being lost
+    (baseline ? fresh : fresh.slice(0, 25)).forEach(u => (state.seen[sha(u.loc)] = DATE));
     if (baseline) return [];
     const out = [];
     for (const u of fresh.slice(0, 25)) out.push({ url: u.loc, lastmod: u.lastmod || null, ...(await pageMeta(u.loc)) });
@@ -78,8 +79,9 @@ const handlers = {
   async rss(src, baseline) {
     const items = parseFeed(await get(src.url), NOW, src.maxAgeDays || 3);
     const fresh = items.filter(i => !state.seen[sha(i.url)] && !state.seen[sha(i.title)]);
-    fresh.forEach(i => { state.seen[sha(i.url)] = DATE; state.seen[sha(i.title)] = DATE; });
-    return baseline ? [] : fresh.slice(0, src.max || 40);
+    const out = baseline ? fresh : fresh.slice(0, src.max || 40);
+    out.forEach(i => { state.seen[sha(i.url)] = DATE; state.seen[sha(i.title)] = DATE; });
+    return baseline ? [] : out;
   },
   async "dated-headings"(src, baseline) {
     const sections = parseDatedHeadings(strip(await get(src.url)));
@@ -102,7 +104,7 @@ const handlers = {
     const lines = pageLines(await get(src.url));
     const file = join(ROOT, "pipeline/pages", `${src.id}.txt`);
     const prev = existsSync(file) ? readFileSync(file, "utf8").split("\n") : null;
-    writeFileSync(file, lines.join("\n") + "\n");
+    if (!DRY) writeFileSync(file, lines.join("\n") + "\n"); // a dry run must not move the baseline
     if (!prev) return [];
     const { added, removed } = diffLines(prev, lines);
     if (!added.length && !removed.length) return [];
@@ -112,14 +114,14 @@ const handlers = {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  DATE = args.date || tashkentDate();
+  DATE = args.date || tashkentDate(); DRY = !!args.dry;
   NOW = Date.now();
   const reg = readJson(join(ROOT, "sources/sources.json"));
   UA = reg.userAgent;
   const only = args.only ? new Set(String(args.only).split(",")) : null;
   const statePath = join(ROOT, "pipeline/state.json");
   state = readJsonOr(statePath, { seen: {}, cursors: {} });
-  state.seen ||= {}; state.cursors ||= {};
+  state.seen ||= {}; state.cursors ||= {}; state.fails ||= {};
   mkdirSync(join(ROOT, "pipeline/pages"), { recursive: true });
   mkdirSync(join(ROOT, "pipeline/inbox"), { recursive: true });
 
@@ -132,11 +134,14 @@ async function main() {
       if (!handler) throw new Error(`unknown source kind "${src.kind}"`);
       const items = await handler(src, baseline);
       state.cursors[`init:${src.id}`] = state.cursors[`init:${src.id}`] || DATE;
-      report.sources.push({ id: src.id, ok: true, baseline, count: items.length });
+      report.sources.push({ id: src.id, ok: true, baseline, count: items.length }); delete state.fails[src.id];
       for (const it of items) report.items.push({ id: sha(it.url + (it.title || "")), source: src.id, tier: src.tier, kind: src.kind, ...it });
       console.log(`ok    ${src.id}${baseline ? " (baseline)" : ""}: ${items.length} new`);
     } catch (e) {
-      report.sources.push({ id: src.id, ok: false, error: String(e.message || e).slice(0, 200) });
+      // count failed days in a row: one bad morning is noise, three in a row means the source is blind
+      const f = state.fails[src.id] = { since: state.fails[src.id]?.since || DATE, days: (state.fails[src.id]?.last === DATE ? 0 : 1) + (state.fails[src.id]?.days || 0), last: DATE };
+      report.sources.push({ id: src.id, ok: false, failingDays: f.days, error: String(e.message || e).slice(0, 200) });
+      if (f.days >= 3) console.log(`::warning::${src.id} has failed ${f.days} days in a row (since ${f.since})`);
       console.log(`FAIL  ${src.id}: ${e.message}`);
     }
   }

@@ -35,6 +35,7 @@ function check(rel, schemaId) {
   const validate = ajv.getSchema(schemaId);
   if (!validate(data)) {
     for (const e of validate.errors.slice(0, 40)) err(rel, `${e.instancePath || "/"} ${e.message}${e.params?.additionalProperty ? ` (${e.params.additionalProperty})` : ""}${e.params?.allowedValues ? ` ${JSON.stringify(e.params.allowedValues)}` : ""}`);
+    return null; // wrong shape: the integrity rules below would only crash on it
   }
   return data;
 }
@@ -215,6 +216,50 @@ if (library) {
     if (carded < live.length * .5) warn("data/library-notes.json", `only ${carded} of ${live.length} live items have a Russian card`);
     for (const p of libNotes.paths) if (p.items.length < 4) err("data/library-notes.json", `path ${p.id} has only ${p.items.length} items`);
   }
+}
+
+// ---------- 3. Rules the testers asked for (QA round, 2026-11-18) ----------
+const realDay = d => { const t = Date.parse(d + "T00:00:00Z"); return !Number.isNaN(t) && new Date(t).toISOString().slice(0, 10) === d; };
+function walk(x, fn, path = "") {
+  if (typeof x === "string") fn(x, path);
+  else if (Array.isArray(x)) x.forEach((v, i) => walk(v, fn, `${path}[${i}]`));
+  else if (x && typeof x === "object") for (const [k, v] of Object.entries(x)) walk(v, fn, path ? `${path}.${k}` : k);
+}
+const texts = [["data/atlas.json", atlas], ["data/events.json", events], ["data/glossary.json", glossary], ["data/opinions.json", opinions], ["data/modules.json", modules], ...digests.map(([f, d]) => [`data/digests/${f}`, d])];
+for (const [F, d] of texts) {
+  if (!d) continue;
+  let dash = 0, bang = 0;
+  walk(d, (v, path) => {
+    // a date that only looks like one: 2026-02-31 passes the format check but not the calendar
+    if (/^\d{4}-\d{2}-\d{2}$/.test(v) && !realDay(v)) err(F, `${path}: ${v} is not a real date`);
+    if (/(^|\.)(ru|en)$/.test(path) && !/\S/.test(v)) err(F, `${path}: empty text`);
+    if (/(^|\.)ru$/.test(path)) { if (v.includes("—")) dash++; if (/!(\s|$)/.test(v)) bang++; }
+  });
+  if (dash || bang) warn(F, `Russian text has ${dash} em dash(es) and ${bang} exclamation mark(s) (REVIEW.md: avoid both)`);
+}
+if (atlas) {
+  const F = "data/atlas.json";
+  for (const p of atlas.people) if (p.since && p.until && String(p.until) < String(p.since).slice(0, String(p.until).length)) err(F, `people/${p.id}: until ${p.until} is before since ${p.since}`);
+  for (const p of atlas.people) if (p.since && String(p.since) > TODAY) err(F, `people/${p.id}: since ${p.since} is in the future`);
+  for (const d of new Set(dupes(atlas.people.map(p => p.name.trim().toLowerCase())))) err(F, `two people share the name "${d}"`);
+  for (const d of new Set(dupes(atlas.products.map(p => p.name.trim().toLowerCase())))) err(F, `two products share the name "${d}"`);
+  const apiIds = atlas.products.flatMap(p => (p.children || []).map(c => c.apiId).filter(Boolean));
+  for (const d of new Set(dupes(apiIds))) err(F, `API id "${d}" appears twice`);
+}
+if (glossary) for (const d of new Set(dupes(glossary.terms.map(t => t.term.trim().toLowerCase())))) err("data/glossary.json", `term "${d}" appears twice`);
+if (modules) for (const d of new Set(dupes(modules.modules.map(m => m.id)))) err("data/modules.json", `duplicate module id "${d}"`);
+if (digestIndex?.digests) {
+  const I = "data/digests/index.json", list = digestIndex.digests;
+  // health.yml and the site read digests[0] as the newest: the order is part of the contract
+  list.forEach((x, i) => { if (i && list[i - 1].date <= x.date) err(I, `${x.date}: index must be sorted newest first, without repeats`); });
+  for (const [f, d] of digests) {
+    const x = d && list.find(y => y.date === d.date); if (!x) continue;
+    for (const k of ["news", "added", "updated", "removed", "library"]) if (x.counts && k in x.counts && Array.isArray(d[k]) && x.counts[k] !== d[k].length) err(I, `${d.date}: counts.${k} is ${x.counts[k]}, the digest has ${d[k].length}`);
+    if (x.headline?.ru && d.headline?.ru && x.headline.ru !== d.headline.ru) err(I, `${d.date}: headline differs from the digest file`);
+  }
+  const newest = digests.map(([, d]) => d).filter(Boolean).sort((a, b) => b.date.localeCompare(a.date))[0];
+  // a collector that reached no source at all looks like a quiet day unless someone says so
+  if (newest?.stats && newest.stats.sourcesOk === 0) warn(`data/digests/${newest.date}.json`, "no source was reachable: this is an outage, not a quiet day");
 }
 
 report();

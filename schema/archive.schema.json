@@ -10,7 +10,7 @@
       "type": "object",
       "required": ["kind", "id", "label", "removedAt", "reason", "snapshot"],
       "properties": {
-        "kind": { "enum": ["person", "product", "fact", "event"] },
+        "kind": { "enum": ["person", "product", "fact", "event", "term", "opinion"] },
         "id": { "type": "string" },
         "label": { "type": "string" },
         "removedAt": { "$ref": "common.schema.json#/definitions/day" },
