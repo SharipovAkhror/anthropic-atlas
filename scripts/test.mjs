@@ -2,12 +2,14 @@
 // Regression tests for the pipeline guarantees. Run: node scripts/test.mjs
 //  1. the real data passes validation;
 //  2. the validator rejects typical mistakes a model could make;
-//  3. the digest is computed from the data diff (added / updated / removed) and never invents changes.
+//  3. the digest is computed from the data diff (added / updated / removed) and never invents changes;
+//  4. pure logic of lib / collect / digest / guard / library on fixed inputs (no network, no git).
 import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { tashkentDate, parseArgs, decode, normalizeUrl, sha, isoDay } from "./lib.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 let failed = 0;
@@ -20,7 +22,7 @@ function sandbox() {
   return dir;
 }
 const edit = (dir, rel, fn) => { const p = join(dir, rel); const j = JSON.parse(readFileSync(p, "utf8")); fn(j); writeFileSync(p, JSON.stringify(j, null, 2)); };
-const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tashkent" });
+const today = tashkentDate();
 
 // 1. real data
 ok(node("validate.mjs", ROOT, ["--quiet"]).status === 0, "repository data is valid");
@@ -106,7 +108,7 @@ for (const [name, mutate] of cases) {
   } finally { rmSync(d, { recursive: true, force: true }); }
 }
 
-// 5. library parsers for sources that may be unreachable from a dev sandbox (checked on fixed sample markup)
+// 6. library parsers for sources that may be unreachable from a dev sandbox (checked on fixed sample markup)
 {
   const L = await import("./library.mjs");
   const idx = `<h2>November 2026</h2><a class="note" href="/2026/worse-together/"><h3>Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams</h3><div class="byline">Doe et al., 2026</div><div class="description">We study what happens when several users' agents share a resource.</div></a>
@@ -133,6 +135,90 @@ for (const [name, mutate] of cases) {
   ok(L.cleanTitle("Adalat AI Claude Platform (API) case study") === "Adalat AI" && L.cleanTitle("Pricing | Claude by Anthropic") === "Pricing", "library: site suffixes are stripped from titles");
   ok(L.monthIndex(`<h2>May 2025</h2><a href="/2025/x/"><h3>T &#99999999; &#55296; ok</h3></a>`, "https://alignment.anthropic.com/", { section: "research" })[0]?.title === "T ok", "library: bad numeric entities do not crash decoding");
   ok(hc.length === 1 && hc[0].title === "What are some things I can use Claude for?" && hc[0].group === "Claude" && hc[0].lastmod === "2026-03-12", "library: help center keeps English articles with collection groups");
+}
+
+// 7. shared helpers
+{
+  ok(JSON.stringify(parseArgs(["--date=2026-01-02", "--dry", "--only=a,b"])) === JSON.stringify({ date: "2026-01-02", dry: true, only: "a,b" }), "lib: parseArgs reads --key=value and bare flags");
+  ok(tashkentDate(new Date("2026-03-01T20:30:00Z")) === "2026-03-02" && tashkentDate(new Date("2026-03-01T18:59:00Z")) === "2026-03-01", "lib: tashkentDate rolls over at 19:00 UTC");
+  ok(isoDay(Date.parse("2026-03-10T23:59:59Z") - 864e5) === "2026-03-09", "lib: isoDay");
+  ok(decode("<![CDATA[A &amp; B]]> &#8211; &#x41; &#99999999; &#55296; &quot;q&quot;") === 'A & B – A   "q"', "lib: decode handles CDATA, entities and invalid code points");
+  ok(normalizeUrl("http://x.com/a/b.md") === "https://x.com/a/b" && normalizeUrl("https://x.com/a/") === "https://x.com/a", "lib: normalizeUrl strips .md, trailing slash, http");
+  ok(sha("a").length === 10 && sha("a", 12).length === 12 && sha("a") === sha("a") && sha("a") !== sha("b"), "lib: sha length and determinism");
+}
+
+// 8. collector parsers
+{
+  const C = await import("./collect.mjs");
+  const now = Date.parse("2026-11-18T00:00:00Z");
+  const rss = `<rss><channel><item><title>Fresh &amp; new</title><link>https://a.example/1</link><pubDate>Tue, 17 Nov 2026 10:00:00 GMT</pubDate><description><![CDATA[<p>Hello <b>world</b></p>]]></description><source url="x">Outlet</source></item>
+    <item><title>Old</title><link>https://a.example/2</link><pubDate>Mon, 02 Nov 2026 10:00:00 GMT</pubDate></item><item><title>No link</title></item>
+    <item><title>Undated</title><link>https://a.example/3</link></item></channel></rss>`;
+  const f = C.parseFeed(rss, now, 3);
+  ok(f.length === 2 && f[0].title === "Fresh & new" && f[0].snippet === "Hello world" && f[0].outlet === "Outlet" && f[1].published === null, "collect: RSS keeps fresh and undated items, drops old ones and items without a link");
+  const atom = C.parseFeed(`<feed><entry><title>T</title><link href="https://b.example/x"/><updated>2026-11-17T10:00:00Z</updated><summary>S</summary></entry></feed>`, now, 3);
+  ok(atom.length === 1 && atom[0].url === "https://b.example/x" && atom[0].snippet === "S", "collect: Atom entries are read (link href, updated, summary)");
+  const lines = C.strip("<h2>November 5, 2026</h2><p>Added thing</p><p>Added thing</p><h2>October 30, 2026</h2><li>Older</li><script>x()</script>");
+  ok(JSON.stringify(lines) === JSON.stringify(["November 5, 2026", "Added thing", "Added thing", "October 30, 2026", "Older"]), "collect: strip splits blocks into lines and drops scripts");
+  const secs = C.parseDatedHeadings(lines);
+  ok(secs.length === 2 && secs[0].date === "2026-11-05" && secs[0].text.length === 1 && secs[1].text[0] === "Older", "collect: dated headings group lines and de-duplicate repeats");
+  const parts = C.parseChangelog("# Changelog\n## 2.0.3\n- c\nnote\n## 2.0.2\n- b\n## 2.0.1\n- a\n");
+  ok(parts.length === 3 && parts[0].version === "2.0.3" && parts[0].body === "- c", "collect: changelog parser keeps only bullet lines");
+  ok(C.newerVersions(parts, "2.0.2").length === 1 && C.newerVersions(parts, "9.9.9").length === 3 && C.newerVersions(parts, "2.0.3").length === 0, "collect: newer versions after the cursor (unknown cursor caps at five)");
+  const pl = C.pageLines("<p>Accept all cookies</p><p>Real headline here</p><p>ab</p><p>© 2026 Anthropic</p>");
+  ok(pl.length === 1 && pl[0] === "Real headline here", "collect: page-watch ignores banners, copyright and tiny lines");
+  const dl = C.diffLines(["a", "b", ""], ["b", "c"]);
+  ok(dl.added.join() === "c" && dl.removed.join() === "a", "collect: page diff lists added and removed lines");
+}
+
+// 9. digest logic
+{
+  const D = await import("./digest-core.mjs");
+  const lab = x => x.id;
+  const before = [{ id: "a", status: "active", v: 1, verifiedAt: "2026-01-01" }, { id: "b", status: "active" }, { id: "c", status: "active" }, { id: "d", status: "active", verifiedAt: "2026-01-01" }, { id: "e", status: "active", links: {} }];
+  const after = [{ id: "a", status: "active", v: 2, verifiedAt: "2026-02-01" }, { id: "b", status: "former" }, { id: "d", status: "active", verifiedAt: "2026-02-02" }, { id: "e", status: "active", links: { wikipedia: "x" } }, { id: "n", status: "active" }];
+  const r = D.diff("person", before, after, lab, { c: "left the company" });
+  ok(r.added.map(x => x.id).join() === "n", "digest: new ids are additions");
+  ok(r.updated.length === 1 && r.updated[0].id === "a" && r.updated[0].fields.join() === "v", "digest: a changed field is an update; re-verification date alone is not");
+  ok(r.removed.map(x => x.id).sort().join() === "b,c" && r.removed.find(x => x.id === "c").reason === "left the company" && r.removed.find(x => x.id === "b").reason === "status → former", "digest: retired status and vanished ids are removals with a reason");
+  ok(r.reverified.join() === "d", "digest: only a verifiedAt change counts as re-verified; enrichment links are ignored");
+  ok(D.diff("x", undefined, [{ id: "z" }], lab).added.length === 1, "digest: missing base list means everything is new");
+  ok(D.plural(1, "а", "б", "в") === "1 а" && D.plural(2, "а", "б", "в") === "2 б" && D.plural(5, "а", "б", "в") === "5 в" && D.plural(11, "а", "б", "в") === "11 в" && D.plural(21, "а", "б", "в") === "21 а" && D.plural(112, "а", "б", "в") === "112 в", "digest: Russian plural forms");
+  ok(D.ru({ ru: "р", en: "e" }) === "р" && D.ru({ en: "e" }) === "e" && D.ru("s") === "s" && D.ru(null) === "" && D.hasRu({ ru: " " }) === false && D.hasRu({ ru: "x" }) === true, "digest: ru() fallback and hasRu()");
+  const idx = { digests: [{ date: "2026-11-18", headline: { ru: "A <b> & \u0001" }, counts: { news: 1 } }, { date: "2026-11-17", headline: { ru: "quiet" }, counts: { news: 0, added: 0 } }] };
+  const xml = D.feedXml(idx, d => (d === "2026-11-18" ? { summary: { ru: "S" }, generatedAt: "2026-11-18T01:00:00Z" } : null), "https://s.example", new Date("2026-11-18T02:00:00Z"));
+  ok((xml.match(/<item>/g) || []).length === 1 && xml.includes("A &lt;b&gt; &amp; ") && !xml.includes("\u0001") && xml.includes("<description>S</description>") && xml.includes("https://s.example/data/feed.xml"), "digest: feed lists only busy days and escapes XML");
+}
+
+// 10. guard logic
+{
+  const G = await import("./guard.mjs");
+  const arch = new Set(["x"]);
+  ok(G.lostIds(["a", "b", "x"], ["a"], arch).join() === "b", "guard: archived ids are not counted as lost");
+  ok(G.liveDropped({ items: Array(10).fill({}) }, { items: Array(8).fill({}) })?.to === 8 && G.liveDropped({ items: Array(10).fill({}) }, { items: [...Array(9).fill({}), { gone: "x" }] }) === null, "guard: more than 10% fewer live library items is flagged; `gone` items do not count as live");
+  ok(G.shrankPercent({ a: "x".repeat(100) }, { a: "x".repeat(70) }) > 0 && G.shrankPercent({ a: "x".repeat(100) }, { a: "x".repeat(90) }) === 0, "guard: a file shrinking by more than 20% is flagged");
+  const mk = ids => ({ events: ids.map(id => ({ id })) });
+  const files = { old: { "data/events.json": mk(["1", "2", "3", "4", "5", "6"]) }, cur: { "data/events.json": mk(["5", "6"]), "data/archive.json": { items: [{ id: "1" }] } } };
+  const run = (cur, maxRemoved) => G.runGuard({ old: r => files.old[r] || null, cur: r => cur[r] || null, base: "B", maxRemoved });
+  const res = run(files.cur, 2);
+  ok(res.compared === 1 && res.errors.some(e => /^data\/events\.json: 3 events removed without archiving/.test(e)), "guard: events removed beyond the limit fail (archived ones are excused)");
+  ok(run(files.cur, 3).errors.every(e => !/removed without archiving/.test(e)), "guard: removals within the limit pass");
+  ok(run({}, 3).errors.some(e => /was deleted/.test(e)), "guard: a deleted data file fails");
+}
+
+// 11. library classification
+{
+  const L = await import("./library.mjs");
+  ok(L.classifyAnthropic("/news/claude-opus-5") === "models" && L.classifyAnthropic("/news/anthropic-raises") === "news" && L.classifyAnthropic("/news/updated-usage-policy") === "policy", "library: /news posts are classified into models / news / policy");
+  ok(L.classifyAnthropic("/research/economic-index-x") === "institute" && L.classifyAnthropic("/research/alignment-faking") === "research" && L.classifyAnthropic("/research/team/alignment") === null && L.classifyAnthropic("/research") === null, "library: research posts, team pages and indexes");
+  ok(L.classifyAnthropic("/legal/aup") === "legal" && L.classifyAnthropic("/events/x") === "events" && L.classifyAnthropic("/careers") === null, "library: legal, events and unknown paths");
+  ok(L.classifyClaude("/resources/articles/x") === "guides" && L.classifyClaude("/customers/acme") === "customers" && L.classifyClaude("/product/claude-code") === "models" && L.classifyClaude("/pricing") === null, "library: claude.com sections");
+  const l = L.llms("## English\n### Guides\n- [Intro](https://docs.claude.com/en/intro.md): First\n- [German](https://docs.claude.com/de/intro.md)\n### API Reference\n- [Ep](https://docs.claude.com/en/api/ep.md)\n## Deutsch\n### Guides\n- [X](https://docs.claude.com/en/x.md)\n", "docs-api");
+  ok(l.length === 1 && l[0].url === "https://docs.claude.com/en/intro" && l[0].group === "Guides" && l[0].desc === "First", "library: API llms.txt keeps English guides, skips reference and other languages");
+  const lc = L.llms("### Setup\n- [Install](https://code.claude.com/docs/en/setup.md) - How to install\n", "docs-code");
+  ok(lc.length === 1 && lc[0].desc === "How to install" && lc[0].group === "Setup", "library: Claude Code llms.txt line with dash description");
+  const sm = L.locs("<urlset><url><loc>https://a.example/x</loc><lastmod>2026-01-02T10:00:00Z</lastmod></url><url><loc>https://a.example/y</loc></url></urlset>");
+  ok(sm.length === 2 && sm[0].lastmod === "2026-01-02" && sm[1].lastmod === null, "library: sitemap locs with and without lastmod");
 }
 
 console.log(failed ? `\n${failed} test(s) FAILED` : "\nall tests passed");
