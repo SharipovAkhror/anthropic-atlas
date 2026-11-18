@@ -525,3 +525,19 @@ body:has(.sheet.on) .hint { opacity: 0; }
 .health { font-size: 13px; color: var(--ink-4); }
 .today .health { font-size: 13px; }
 @media (max-width: 760px) { body.overview .maptoggle { right: 112px; } }
+/* round two */
+.ev.new::before { display: none; }
+.hero-l a, .hero-l button { color: var(--ink-2); }
+.hero-l > button:first-child { color: var(--blue-ink); }
+@media (min-width: 1100px) { .hero-top { align-items: start; } .hero-top .lens { padding-top: 26px; } }
+.hero-top .lens-r { grid-template-columns: 150px 1fr auto; }
+.hero-top .lens-t { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.35; }
+.since button { text-decoration-color: rgba(0, 0, 0, .25); }
+.hstats { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 32px; margin-top: 20px; }
+.hstats button { display: flex; flex-direction: column; gap: 1px; text-align: left; }
+.hstats b { font-size: 22px; font-weight: 600; letter-spacing: -.02em; transition: color .2s var(--ease); }
+.hstats span { font-size: 12.5px; color: var(--ink-4); }
+.hstats button:hover b { color: var(--blue-ink); }
+.hstats-d { font-size: 12.5px; color: var(--ink-4); align-self: flex-end; padding-bottom: 1px; }
+.board.far .hero-main > .hstats { opacity: 0; }
+@media (max-width: 760px) { body.overview .maptoggle { z-index: 60; } }

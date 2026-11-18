@@ -545,6 +545,12 @@
     const day = days < 1 && new Date().toDateString() === when.toDateString() ? t("today") : days < 2 ? t("yesterday") : when.toLocaleDateString(locale(), { day: "numeric", month: "long" });
     return `${t("updated")} ${day} ${t("at")} ${when.toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit" })}`;
   }
+  // the four numbers IPO readers check first, each opening its source; the date says how fresh they are
+  function heroStats() {
+    const fs = D.atlas.facts.slice(0, 3); if (!fs.length) return "";
+    const asOf = fs.map(f => f.asOf).filter(Boolean).sort().at(-1);
+    return `<div class="hstats">${fs.map(f => `<button data-open="fact:${esc(f.id)}"><b class="num">${esc(f.value)}</b><span>${esc(tx(f.label))}</span></button>`).join("")}${asOf ? `<span class="hstats-d">${esc(t("on"))} ${esc(shortDate(asOf))}</span>` : ""}</div>`;
+  }
   function heroHTML() {
     const dg = S.digest, date = dg?.date || D.atlas.meta.updatedAt;
     const lead = leadStory(), past = D.digests.slice(0, 7);
@@ -552,7 +558,7 @@
       <div class="hero-top"><div class="hero-main">${lead.k ? `<div class="hero-e">${esc(lead.k)}</div>` : ""}
       <h1>${lead.ref ? `<a href="#" data-open="${esc(lead.ref)}">${esc(lead.h)}</a>` : esc(lead.h)}</h1>
       ${lead.s ? `<p class="hero-s">${gloss(lead.s)}</p>` : ""}
-      ${sinceHTML()}${healthHTML()}</div>${lensHTML()}</div>
+      ${heroStats()}${sinceHTML()}${healthHTML()}</div>${lensHTML()}</div>
       <div class="hero-l">${LIB?.paths.length ? `<button data-jump="lib-start">${esc(M("start"))}</button>` : ""}${LIB ? `<button data-jump="lib-shelves">${esc(M("lib"))} <span class="num">${LIB.items.length}</span></button>` : ""}<a href="${METHOD_URL}" target="_blank" rel="noopener">${esc(M("method"))}</a><a href="/data/feed.xml" target="_blank" rel="noopener">${esc(M("rss"))}</a>${past.length > 1 ? `<span class="past-h">${esc(M("digests"))}: ${past.map(h => `<button data-d="${h.date}" class="${h.date === dg?.date ? "on" : ""}">${esc(fmtDate(h.date, { day: "numeric", month: "short" }))}</button>`).join("")}</span>` : ""}</div>`;
   }
 
@@ -951,7 +957,7 @@
     $$("img", board()).forEach(img => img.addEventListener("load", relayoutSoon, { once: true }));
     countUp();
     if (phone()) { renderTabs(); if (keepCamera) goPage(keepPage, false); }
-    else { layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
+    else { if (keepCamera) { board().classList.add("swap"); requestAnimationFrame(() => requestAnimationFrame(() => board().classList.remove("swap"))); } layout(); if (!keepCamera) startCamera(); else apply(); if (!keepCamera && !reduced()) { $$(".slot", board()).forEach((s, i) => s.style.setProperty("--i", Math.min(i, 12))); board().classList.add("intro"); setTimeout(() => board().classList.remove("intro"), 1600); } }
   }
   // key figures count up once when they first come into view; ranges, tickers and words just appear
   function countUp() {
