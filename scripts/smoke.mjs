@@ -64,7 +64,7 @@ try {
   await page.waitForTimeout(600);
   const islands = await page.$$eval(".slot", s => s.map(x => x.dataset.island));
   ok(islands.length >= 10, `laptop: ${islands.length} islands on the board`);
-  ok(islands.includes("today") || await page.$(".hero .quiet") !== null, "laptop: today is on the page (digest card, or the quiet-day note)");
+  ok(islands.includes("today") || await page.$(".hero .lens") !== null, "laptop: today is on the page (digest card, or the latest-by-topic list)");
   ok(islands.includes("lib-shelves") && islands.includes("lib-start"), "laptop: library islands are on the board");
   ok(await page.$(".hero h1") !== null, "laptop: hero headline rendered");
   const clipped = await page.evaluate(() => [...document.querySelectorAll(".slot")].filter(s => { const r = s.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth + 1; }).map(s => s.dataset.island));

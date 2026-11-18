@@ -389,11 +389,11 @@ abbr.g:hover { color: var(--blue-ink); text-decoration-color: var(--blue-ink); }
 .board.swap .slot { transition: none !important; }
 /* zoomed out: tall cards are capped so the map reads as tiles, not a skyline */
 .board.far .island { max-height: calc(var(--colw, 360px) * .8); overflow: hidden; }
-.board.far .hero > :not(h1) { opacity: 0; transition: opacity .3s var(--ease); }
+.board.far .hero > :not(.hero-top), .board.far .hero-main > :not(h1), .board.far .hero-top > .lens { opacity: 0; transition: opacity .3s var(--ease); }
 .flabel .num { white-space: nowrap; }
 /* hero: what this is, in one line */
 .hero-d { max-width: 72ch; margin-bottom: 14px; font-size: 15px; line-height: 1.45; color: var(--ink-3); text-wrap: pretty; }
-.hero-l { margin-top: 26px; padding-top: 16px; border-top: .5px solid var(--sep); max-width: 1100px; }
+.hero-l { margin-top: 26px; padding-top: 16px; border-top: .5px solid var(--sep); }
 .hero { user-select: none; -webkit-user-select: none; }
 /* the sheet reads as a layer above the board */
 @media (min-width: 761px) {
@@ -435,3 +435,93 @@ body:has(.sheet.on) .hint { opacity: 0; }
   .mstats span { font-size: 12.5px; line-height: 1.3; color: var(--ink-3); }
   .today .mtag { display: block; margin: 14px var(--pad) 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-3); }
 }
+
+/* ---------- what changed, by topic (hero on desktop, Today card on phone) ---------- */
+.lens { margin-top: 26px; max-width: 880px; }
+.lens-h { font-size: 12px; font-weight: 600; letter-spacing: .02em; color: var(--ink-4); margin-bottom: 6px; }
+.lens-r { display: grid; grid-template-columns: minmax(130px, 190px) 1fr auto; gap: 16px; align-items: baseline; width: 100%; padding: 9px 0; border-top: .5px solid var(--sep); text-align: left; transition: color .2s var(--ease); }
+.lens-r:first-of-type { border-top: 0; }
+.lens-k { font-size: 13px; color: var(--ink-3); }
+.lens-t { font-size: 15px; font-weight: 500; letter-spacing: -.012em; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lens-d { font-size: 13px; color: var(--ink-4); }
+.lens-r:hover .lens-t { color: var(--blue-ink); }
+.lens-r:active { opacity: .6; }
+.since, .health { margin-top: 14px; font-size: 14px; color: var(--ink-3); max-width: 72ch; }
+.since button { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--sep-2); text-underline-offset: 4px; transition: text-decoration-color .2s; }
+.since button:hover { text-decoration-color: currentColor; }
+.health { color: var(--ink-3); }
+.today .since, .today .health { margin: 4px var(--pad) 10px; }
+.today .lens { margin: 14px var(--pad) 4px; }
+.today .lens-r { grid-template-columns: 1fr auto; gap: 2px 12px; padding: 11px 0; }
+.today .lens-k { grid-column: 1; font-size: 12px; }
+.today .lens-d { grid-column: 2; grid-row: 1; }
+.today .lens-t { grid-column: 1 / -1; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+/* ---------- key figures: the date each number is true for ---------- */
+.fact .k small { display: block; margin-top: 1px; font-size: 12px; color: var(--ink-4); }
+.fact { align-items: center; }
+
+/* ---------- models and prices ---------- */
+.row.model { align-items: flex-start; padding-top: 11px; padding-bottom: 11px; }
+.row.model .price { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-2); }
+.row.model .ids { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.row.model code { font: 11.5px var(--mono); color: var(--ink-3); background: var(--fill); padding: 2px 6px; border-radius: 6px; }
+.row.model .side { align-self: flex-start; padding-top: 2px; }
+#sheet code { cursor: copy; transition: background .25s var(--ease), color .25s var(--ease); border-radius: 5px; }
+#sheet code:hover { background: var(--fill); }
+#sheet code.copied { background: var(--ink); color: #fff; }
+
+/* ---------- timeline: topics and what is new since the last visit ---------- */
+.seg.topics { margin-top: 0; }
+.ev.new .t { font-weight: 600; }
+.ev .m em { font-style: normal; color: var(--ink); font-weight: 500; }
+.ev.new::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: var(--ink); }
+
+/* ---------- sheet actions: save, quote with source, link. The label says what happened. ---------- */
+.acts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 var(--pad) 18px; }
+.act { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 13px 0 11px; border-radius: 16px; background: var(--fill); color: var(--ink-2); font-size: 13px; font-weight: 500; white-space: nowrap; transition: background .2s var(--ease), color .2s var(--ease), transform .25s var(--spring); -webkit-user-select: none; user-select: none; }
+.act:hover { background: var(--fill-2); }
+.act:active { transform: scale(.96); }
+.act svg { flex: none; transition: transform .3s var(--spring), opacity .2s var(--ease); }
+.act .ic-ok { display: none; }
+.act.done { background: var(--ink); color: #fff; }
+.act.done .ic-a { display: none; }
+.act.done .ic-ok { display: block; animation: draw .32s var(--ease) both; stroke-dasharray: 14; }
+@keyframes draw { from { stroke-dashoffset: 14; } to { stroke-dashoffset: 0; } }
+.act .ml { display: inline-block; animation: none; }
+.act.done .ml, .act.pop .ml { animation: label-in .26s var(--spring); }
+@keyframes label-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.act.save.on { background: var(--ink); color: #fff; }
+.act.save.on .ic-save { fill: currentColor; }
+.act.save.pop .ic-save { animation: pop .38s var(--spring); }
+@keyframes pop { 0% { transform: scale(1); } 35% { transform: scale(.82); } 70% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@media (pointer: coarse) { .act { height: 40px; padding: 0 16px 0 14px; font-size: 14px; } }
+
+/* ---------- saved: hold to clear ---------- */
+.hold { position: relative; display: block; margin: 10px var(--pad) 4px; padding: 8px 0; font-size: 13px; color: var(--ink-4); -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
+.hold::after { content: ""; position: absolute; left: 0; bottom: 4px; height: 1.5px; width: 100%; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .2s var(--ease); }
+.hold.holding { color: var(--ink); }
+.hold.holding::after { transform: scaleX(1); transition: transform .9s linear; }
+
+/* ---------- toast with an action (Undo) ---------- */
+.toast { display: flex; align-items: center; gap: 14px; }
+.toast.act { pointer-events: auto; padding-right: 8px; }
+.toast button { color: #fff; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: rgba(255, 255, 255, .14); }
+.toast button:hover { background: rgba(255, 255, 255, .24); }
+
+/* ---------- calmer details from the design review ---------- */
+.palette li.sel { background: rgba(0, 0, 0, .05); }
+.palette li.sel span { color: inherit; }
+.x:focus:not(:focus-visible) { outline: none; }
+.hint { bottom: 84px; }
+@media (prefers-reduced-motion: reduce) { .act, .act svg, .act .ml, .hold::after { animation: none !important; transition: none !important; } }
+/* wide enough: the headline on the left, the latest by topic on the right, so the cards start higher */
+@media (min-width: 1100px) {
+  .hero-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr); gap: clamp(40px, 4vw, 88px); align-items: end; }
+  .hero-top .lens { margin-top: 0; max-width: none; }
+  .hero-top h1 { font-size: clamp(34px, 3vw, 54px); }
+}
+.hero-d { margin-top: 6px; }
+.health { font-size: 13px; color: var(--ink-4); }
+.today .health { font-size: 13px; }
+@media (max-width: 760px) { body.overview .maptoggle { right: 112px; } }
