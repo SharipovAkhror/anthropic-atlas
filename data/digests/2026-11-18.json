@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-18",
+  "generatedAt": "2026-11-18T02:11:17.554Z",
+  "auto": false,
+  "headline": {
+    "ru": "Без существенных новостей",
+    "en": "No significant news"
+  },
+  "summary": {
+    "ru": "Новых событий нет; диапазон цены IPO ($70–78, 825 млн акций Class A), состав руководства и траст LTBT перепроверены по первоисточникам.",
+    "en": "No new events; the IPO price range ($70–78, 825M Class A shares), the leadership page and the LTBT were re-checked against primary sources."
+  },
+  "news": [],
+  "library": [],
+  "added": [],
+  "updated": [
+    {
+      "kind": "product",
+      "id": "prod-sae-circuits",
+      "label": "Sparse Autoencoders & Circuits",
+      "fields": [
+        "sources"
+      ]
+    },
+    {
+      "kind": "fact",
+      "id": "valuation",
+      "label": "Оценка компании: до $1.4T",
+      "fields": [
+        "sources"
+      ]
+    }
+  ],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 90,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "meta": {
     "company": "Anthropic, PBC",
     "schemaVersion": 2,
-    "updatedAt": "2026-11-17"
+    "updatedAt": "2026-11-18"
   },
   "zones": [
     {
@@ -167,6 +167,10 @@
         {
           "title": "Decrypt",
           "url": "https://decrypt.co/382939/anthropic-sets-ipo-price-range-at-70-to-78-valuing-company-at-up-to-1-4-trillion"
+        },
+        {
+          "title": "ABC News: Anthropic seeks $70 to $78 a share in new IPO filing",
+          "url": "https://abc7news.com/story/anthropic-seeks-70-78-share-new-ipo-filing-values-13-trillion/20029820/"
         }
       ]
     },
@@ -512,7 +516,7 @@
           "url": "https://www.anthropic.com/news/the-long-term-benefit-trust"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "official": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust",
         "wikipedia": "https://en.wikipedia.org/wiki/Christopher_Stubbs",
@@ -767,7 +771,7 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Daniela_Amodei",
         "wikidata": "https://www.wikidata.org/wiki/Q119721378",
@@ -1011,7 +1015,7 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Jared_Kaplan",
         "wikidata": "https://www.wikidata.org/wiki/Q102649624",
@@ -1260,7 +1264,7 @@
           "url": "https://logangraham.xyz/"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "avatarCredit": "thumbnails.assets.alphaxiv.org",
       "links": {
         "site": "https://logangraham.xyz/"
@@ -1507,7 +1511,7 @@
           "url": "https://github.com/bcherny"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "avatarCredit": "avatars.githubusercontent.com",
       "links": {
         "github": "https://github.com/bcherny",
@@ -1762,7 +1766,7 @@
           "url": "https://www.anthropic.com/company/leadership"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "official": "https://www.anthropic.com/company/leadership"
       }
@@ -1982,7 +1986,7 @@
       "kind": "person",
       "status": "active",
       "influence": 55,
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "id": "john-jumper",
       "name": "John Jumper",
       "zone": "science",
@@ -2259,11 +2263,11 @@
       },
       "sources": [
         {
-          "title": "arXiv",
-          "url": "https://arxiv.org/html/2501.16496v1"
+          "title": "Anthropic: Interpretability team",
+          "url": "https://www.anthropic.com/research/team/interpretability"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "official": "https://www.anthropic.com/research/team/interpretability"
       }
@@ -2470,7 +2474,7 @@
           "url": "https://support.claude.com/en/articles/12138966-release-notes"
         }
       ],
-      "verifiedAt": "2026-11-16",
+      "verifiedAt": "2026-11-18",
       "links": {
         "official": "https://claude.com/product/cowork"
       }
