@@ -10,7 +10,7 @@ Claude API skill
 Release notes
  API reference
  English 
- Search Ctrl K
+ Search ⌘ K Ctrl K
 Models
 Models overview Claude Fable 5.2
 Claude Opus 5.5

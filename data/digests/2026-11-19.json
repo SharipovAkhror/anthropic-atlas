@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-19",
+  "generatedAt": "2026-11-19T07:54:59.067Z",
+  "auto": true,
+  "headline": {
+    "ru": "Anthropic prices initial public offering",
+    "en": "Anthropic prices initial public offering"
+  },
+  "summary": {
+    "ru": "Today Anthropic, PBC priced its initial public offering of its Class A common stock. Всего новых материалов за день: 7.",
+    "en": "Today Anthropic, PBC priced its initial public offering of its Class A common stock. New materials today: 7."
+  },
+  "news": [],
+  "library": [
+    "144cfe236f",
+    "a3705a127d",
+    "fbfaa93955",
+    "e5b5d52ad1",
+    "4f2a48361d",
+    "909b75797c",
+    "122be7cf5d"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 110,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}

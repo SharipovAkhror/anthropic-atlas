@@ -1,23 +1,15 @@
-Anthropic Atlas · 2026-11-18
-**Без существенных новостей**
-Новых событий нет; диапазон цены IPO ($70–78, 825 млн акций Class A), состав руководства и траст LTBT перепроверены по первоисточникам.
+Anthropic Atlas · 2026-11-19
+**Anthropic prices initial public offering**
+Today Anthropic, PBC priced its initial public offering of its Class A common stock. Всего новых материалов за день: 7.
 
-Обновлено:
-• Sparse Autoencoders & Circuits (sources)
-• Оценка компании: до $1.4T (sources)
-
-Новое в библиотеке (12):
-• Linked Billing Beta Terms — https://www.anthropic.com/legal/linked-billing-terms
-• Linked billing on the Claude Platform — https://claude.com/resources/articles/linked-billing-on-claude-platform
-• App testing and review — https://platform.claude.com/docs/en/manage-claude/oauth-apps/app-review
-• Branding samples — https://platform.claude.com/docs/en/manage-claude/oauth-apps/branding-samples
-• OAuth reference — https://platform.claude.com/docs/en/manage-claude/oauth-apps/oauth-reference
-• Linked billing — https://platform.claude.com/docs/en/manage-claude/oauth-apps/organization-billing-connections
-• Overview — https://platform.claude.com/docs/en/manage-claude/oauth-apps/overview
-• Use the cloud browser in Claude — https://support.claude.com/en/articles/18442783-use-the-cloud-browser-in-claude
-• Move Claude Code CLI users — https://support.claude.com/en/articles/18466061-move-claude-code-cli-users
-• Plan identity and sign-in — https://support.claude.com/en/articles/18466091-plan-identity-and-sign-in
-…и ещё 2 — на доске.
+Новое в библиотеке (7):
+• Best Practices for Government: IT Modernization with Claude — https://claude.com/resources/webinars/best-practices-for-government-it-modernization-with-claude
+• Anthropic prices initial public offering — https://www.anthropic.com/news/anthropic-prices-initial-public-offering
+• Claude Fable 5.2 solves two open problems in the physics of black holes — https://www.anthropic.com/research/claude-black-hole-physics
+• Load testing — https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/load-testing
+• Sandbox per session — https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-per-session
+• Offer linked billing in your platform — https://support.claude.com/en/articles/18467110-offer-linked-billing-in-your-platform
+• Use your Claude Platform account in a third-party app — https://support.claude.com/en/articles/18467148-use-your-claude-platform-account-in-a-third-party-app
 
 Автоматическая проверка источников: доступны 18, недоступны: sec-edgar.
 Доска: https://anthropic-atlas.vercel.app

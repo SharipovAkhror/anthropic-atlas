@@ -1,6 +1,20 @@
 {
   "digests": [
     {
+      "date": "2026-11-19",
+      "headline": {
+        "ru": "Anthropic prices initial public offering",
+        "en": "Anthropic prices initial public offering"
+      },
+      "counts": {
+        "news": 0,
+        "added": 0,
+        "updated": 0,
+        "removed": 0,
+        "library": 7
+      }
+    },
+    {
       "date": "2026-11-18",
       "headline": {
         "ru": "Без существенных новостей",
