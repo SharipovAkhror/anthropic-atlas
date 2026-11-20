@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-20",
+  "generatedAt": "2026-11-20T07:43:50.337Z",
+  "sources": [
+    {
+      "id": "anthropic-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-alignment",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "api-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "apps-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-code-changelog",
+      "ok": true,
+      "baseline": false,
+      "count": 1
+    },
+    {
+      "id": "sec-edgar",
+      "ok": false,
+      "failingDays": 2,
+      "error": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic&type=&dateb=&owner=include&count=40&output=atom: HTTP 403"
+    },
+    {
+      "id": "status",
+      "ok": true,
+      "baseline": false,
+      "count": 1
+    },
+    {
+      "id": "gnews-anthropic",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-claude",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=%22Claude%22+Anthropic+model+OR+launch+OR+release+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-people",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+(joins+OR+leaves+OR+hires+OR+appoints+OR+board)+when:3d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-ipo",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+(IPO+OR+Nasdaq+OR+ANT+OR+shares+OR+valuation)+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-ru",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=ru&gl=RU&ceid=RU:ru: HTTP 503"
+    },
+    {
+      "id": "watch-leadership",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-ltbt",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-models",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-deprecations",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-pricing",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-rsp",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    }
+  ],
+  "items": [
+    {
+      "id": "67819f524a4a",
+      "source": "claude-code-changelog",
+      "tier": 1,
+      "kind": "changelog-md",
+      "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+      "title": "Claude Code 2.1.329 → 2.1.329",
+      "published": "2026-11-20",
+      "snippet": "2.1.329\n- Added a trust dialog warning that says where a folder's hooks are declared\n- Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load\n- Added this session's scheduled tasks, `/loop` wakeups, the goal and this conversation's forks to `/tasks`; x stops one after asking\n- Added a \"Server message\" row to a server's page in `/mcp` that shows the JSON-RPC error message of a remote HTTP MCP server that refuses the connection\n- Added a \"Marketplace auto-update\" row to `/status` that names managed marketplaces that get no automatic updates, and why\n- Added support for turning on Code Mode while OpenTelemetry events and metrics are enabled; each tool call the code makes sends its events; tracing still keeps it off\n- Fixed `~/.claude.json` sometimes being reset to defaults when a network stall or file lock made it unreadable and cleared during a save\n- Fixed repeated sign-outs on macOS when Claude Code could read the Keychain but not save to it. That session now stops at expiry and says why, and other sessions stay signed in"
+    },
+    {
+      "id": "3cd97a471e7d",
+      "source": "status",
+      "tier": 1,
+      "kind": "rss",
+      "url": "https://status.claude.com/incidents/c1kmrkmv5f3d",
+      "title": "Elevated errors for Claude Mythos 5.2 and Claude Fable 5.2",
+      "snippet": "Nov 19 , 09:33 UTC Resolved - The issue affecting claude.ai, the Claude API, Claude Code, and Claude Cowork has been resolved. Impact occurred from 00:56 PT / 08:56 UTC to 01:11 PT / 09:11 UTC. Nov 19 , 09:22 UTC Monitoring - A fix has been deployed for other Claude models and we are monitoring for recovery. Nov 19 , 09:10 UTC Investigating - We are investigating elevated errors on requests to Cla",
+      "published": "2026-11-19T09:33:18.000Z",
+      "outlet": null
+    }
+  ]
+}

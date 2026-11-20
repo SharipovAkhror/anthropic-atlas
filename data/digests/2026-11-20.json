@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-20",
+  "generatedAt": "2026-11-20T07:47:02.151Z",
+  "auto": true,
+  "headline": {
+    "ru": "Новое у Anthropic: 2 публикации",
+    "en": "New from Anthropic: 2 publications"
+  },
+  "summary": {
+    "ru": "Bristol Myers Squib Case Study; Salesforce Case Study. Обновлений документации и справки: 1.",
+    "en": "Bristol Myers Squib Case Study; Salesforce Case Study."
+  },
+  "news": [],
+  "library": [
+    "7ddbb66c83",
+    "d916c61e15",
+    "b78718c504"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 13,
+    "sourcesFailed": 6,
+    "candidates": 2,
+    "failedSources": [
+      "sec-edgar",
+      "gnews-anthropic",
+      "gnews-claude",
+      "gnews-people",
+      "gnews-ipo",
+      "gnews-ru"
+    ]
+  }
+}
