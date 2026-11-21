@@ -1,11 +1,11 @@
-Anthropic Atlas · 2026-11-20
-**Новое у Anthropic: 2 публикации**
-Bristol Myers Squib Case Study; Salesforce Case Study. Обновлений документации и справки: 1.
+Anthropic Atlas · 2026-11-21
+**Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement**
+Today Anthropic, PBC announced the closing of its initial public offering of an aggregate of 1,127,000,000 shares of its Class A common stock at a public offering price of $83.00 per share, including the full exercise by the underwriters of their option to purchase an additional 147,000,000 shares of Class A common stock from Anthropic at the initial public offering price. Всего новых материалов за день: 3.
 
 Новое в библиотеке (3):
-• Bristol Myers Squib Case Study — https://claude.com/customers/bristol-myers-squibb
-• Salesforce Case Study — https://claude.com/customers/salesforce
-• SEP-3415: Events Extension — https://modelcontextprotocol.io/seps/3415-events-extension
+• Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement — https://www.anthropic.com/news/ipo-close
+• Events — https://modelcontextprotocol.io/extensions/events/overview
+• Set up computer use for Team and Enterprise plans — https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans
 
-Автоматическая проверка источников: доступны 13, недоступны: sec-edgar, gnews-anthropic, gnews-claude, gnews-people, gnews-ipo, gnews-ru.
+Автоматическая проверка источников: доступны 18, недоступны: sec-edgar.
 Доска: https://anthropic-atlas.vercel.app

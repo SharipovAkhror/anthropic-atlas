@@ -1,6 +1,20 @@
 {
   "digests": [
     {
+      "date": "2026-11-21",
+      "headline": {
+        "ru": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement",
+        "en": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement"
+      },
+      "counts": {
+        "news": 0,
+        "added": 0,
+        "updated": 0,
+        "removed": 0,
+        "library": 3
+      }
+    },
+    {
       "date": "2026-11-20",
       "headline": {
         "ru": "Новое у Anthropic: 2 публикации",

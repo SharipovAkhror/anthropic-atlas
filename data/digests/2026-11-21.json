@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-21",
+  "generatedAt": "2026-11-21T07:41:10.002Z",
+  "auto": true,
+  "headline": {
+    "ru": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement",
+    "en": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase additional shares, and closing of concurrent private placement"
+  },
+  "summary": {
+    "ru": "Today Anthropic, PBC announced the closing of its initial public offering of an aggregate of 1,127,000,000 shares of its Class A common stock at a public offering price of $83.00 per share, including the full exercise by the underwriters of their option to purchase an additional 147,000,000 shares of Class A common stock from Anthropic at the initial public offering price. Всего новых материалов за день: 3.",
+    "en": "Today Anthropic, PBC announced the closing of its initial public offering of an aggregate of 1,127,000,000 shares of its Class A common stock at a public offering price of $83.00 per share, including the full exercise by the underwriters of their option to purchase an additional 147,000,000 shares of Class A common stock from Anthropic at the initial public offering price. New materials today: 3."
+  },
+  "news": [],
+  "library": [
+    "70953f4723",
+    "94da844e0d",
+    "9afed0143c"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 123,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}

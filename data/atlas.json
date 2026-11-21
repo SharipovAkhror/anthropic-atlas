@@ -2,7 +2,7 @@
   "meta": {
     "company": "Anthropic, PBC",
     "schemaVersion": 2,
-    "updatedAt": "2026-11-20"
+    "updatedAt": "2026-11-21"
   },
   "zones": [
     {
@@ -1088,7 +1088,8 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/company/leadership"
+        "official": "https://www.anthropic.com/company/leadership",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Brown_(AI)"
       }
     },
     {
