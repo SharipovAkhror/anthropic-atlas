@@ -1,0 +1,1321 @@
+{
+  "date": "2026-11-22",
+  "generatedAt": "2026-11-22T07:25:47.258Z",
+  "sources": [
+    {
+      "id": "anthropic-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-alignment",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "api-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "apps-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-code-changelog",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "sec-edgar",
+      "ok": false,
+      "failingDays": 4,
+      "error": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic&type=&dateb=&owner=include&count=40&output=atom: HTTP 403"
+    },
+    {
+      "id": "status",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "gnews-anthropic",
+      "ok": true,
+      "baseline": false,
+      "count": 40
+    },
+    {
+      "id": "gnews-claude",
+      "ok": true,
+      "baseline": false,
+      "count": 14
+    },
+    {
+      "id": "gnews-people",
+      "ok": true,
+      "baseline": false,
+      "count": 20
+    },
+    {
+      "id": "gnews-ipo",
+      "ok": true,
+      "baseline": false,
+      "count": 20
+    },
+    {
+      "id": "gnews-ru",
+      "ok": true,
+      "baseline": false,
+      "count": 15
+    },
+    {
+      "id": "watch-leadership",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-ltbt",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-models",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-deprecations",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-pricing",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-rsp",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    }
+  ],
+  "items": [
+    {
+      "id": "0aae9851967d",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxORzBDN3JMY1l3Q2dKa0tuZ2tVSm52Sl9YQWNucjl3dk1zd1hGZFZUZFppdFVhUjZ0dEphRFUzc1B4R0VZdzd5UGotcHM2NGZrd0FubTF4cFpkTHpEZDVHWUN5QTk1T0kxemtMaDl1d2FkQnVDVnJoWVkyNVdhcENYTlBWLXYtYWs4Nm5EQ3J4eHpjU0ctTWxsV0RMODh4SVhEM1ZxeHYzYzlkR19BV2VBeElrSU92RFU?oc=5",
+      "title": "Why Anthropic Is Hiring a $400,000-a-Year Natural-Gas Supply Manager ? Climate & Energy for Nov. 19 - WSJ",
+      "snippet": "Why Anthropic Is Hiring a $400,000-a-Year Natural-Gas Supply Manager ? Climate & Energy for Nov. 19 WSJ",
+      "published": "2026-11-22T04:28:31.000Z",
+      "outlet": "WSJ"
+    },
+    {
+      "id": "744cd0a1ee50",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPV2V3ZXdQR0YwNzAxYlNJal9fdmZmbklSWUZ6QVVzc05PRFhuVjhVM3dRM1BXdnhmOWdwOXA4MnNncDZwUmNpTENMUFRTSVlIckNZZXNLbWIzZDYyUS1mMkhscGY0bFRrdC1kclpvNU5SWlI1SDA2VHprWERuOGRYdE51R21WbkhrNTZuMlA5Z1RUYnk1?oc=5",
+      "title": "$1,000 in Anthropic Stock or XRP: Which Could Be Worth More in 5 Years? - Yahoo Finance",
+      "snippet": "$1,000 in Anthropic Stock or XRP: Which Could Be Worth More in 5 Years? Yahoo Finance",
+      "published": "2026-11-21T20:11:31.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "5a3ebfb64c40",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOb3UwVjJjanJYWGIwb3l2UEo4aHo3dFdDeVFyb1BBODlfbF9hU0N2cERseWxxU3QxNlZPRUZBQWFhQ0dJN1V3MEd4LW9XbnFYZTJuMmJvcVFtODM2alVmWXQ2bjBaSVZBWUQ4alpsaTJuOHlGaFROdzh4NTFBQWNUY1BmVnYyeGF5a1Y2cE9NMlBrOWlJUWo4X0dxNzlKSGs0YVhTXw?oc=5",
+      "title": "AI stocks lose their shine as Anthropic debuts | CNN Business - CNN",
+      "snippet": "AI stocks lose their shine as Anthropic debuts | CNN Business CNN",
+      "published": "2026-11-21T17:13:00.000Z",
+      "outlet": "CNN"
+    },
+    {
+      "id": "fd7aa19db25f",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBuZ3QwZ1Qzd0FwWVhzOWhhbWZ5YWEzNTI0anpyemhZQXF6LVM1d202X3VSVGthTFNUaE13UlNfWUx5VkNhTEduOHctbWZtVlloME45dGFBMDA3OGpWdDhXdTUxNFVhSFpya21aMnpGVHHSAXZBVV95cUxORlNoeVVtbW1fLU1EY01EellhNHg0VldaY0Y5R3Y5enVEaTdZZTZENDJMWFNrblBqTEtORGZFRlZacjBwOWQ2ZXNjSF9KZFNsNkQ4WEtTallYdnVHMm5JRVBMYWl5bHhlb19QUzlIcUZOTXh2U1hB?oc=5",
+      "title": "Anthropic’s record IPO collides with tech’s worst week on Wall Street since 2020 - CNBC",
+      "snippet": "Anthropic’s record IPO collides with tech’s worst week on Wall Street since 2020 CNBC",
+      "published": "2026-11-21T13:00:01.000Z",
+      "outlet": "CNBC"
+    },
+    {
+      "id": "c1023c1ed293",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNZmMtUzhlenBfVUNUY0J6eXhPMjdXS2VvLWpmZ19sWTQxenVWYmFOOElYWjFjMTJGcWdzalJlTmFPYVhnbk9xS21wN2hWeGkzUGNnUGR6Szg5VWZIMFNncVU2MHhWRjIxT1Q5U21UTFJHMUx4X2F0NTdDXzhjUHR5UUpjTFE4LWxiYkpiRk96bnR5U3VlN0RVZS1TaGxuQzBKLVBzNkRLMU5jU0s5aFlpX3NGUEhkMHpGSHNKTTVCUWpNb2RKdTQ1NTQtdk8tZnVVQTRnaHhLc1NIZmNCSEs0Q2ZzSVJUMHVCZ3JxLTVhTEo?oc=5",
+      "title": "Here's How Much Cash Anthropic Has After Its IPO, and Why It Could Be the Most Important Number for Investors to Know - The Motley Fool",
+      "snippet": "Here's How Much Cash Anthropic Has After Its IPO, and Why It Could Be the Most Important Number for Investors to Know The Motley Fool",
+      "published": "2026-11-21T15:26:01.000Z",
+      "outlet": "The Motley Fool"
+    },
+    {
+      "id": "c92b02eca32b",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNc0o1TFlNT1Y2ZDZDdFBTcHBjX3g3bFRxaDZLdTNvdFlTdTdKbG9fUFBkeUdpMXJJcWRhWkF5dlVraGZIZDlSd2lhWnlKZ09Uckp1ZDRRdllKNnBiR2dvZW9pOWQxd0UtUkVSeDV4Mkg2YjBkNE5TeksyNnpfWHBaVm1Ka0Nnc3RuNkFaQUd0OEo0MnRfRmVweDlZQW95YVYxRFE?oc=5",
+      "title": "Anthropic stock slides with rest of market after big-ticker IPO - Washington Examiner",
+      "snippet": "Anthropic stock slides with rest of market after big-ticker IPO Washington Examiner",
+      "published": "2026-11-22T04:01:03.000Z",
+      "outlet": "Washington Examiner"
+    },
+    {
+      "id": "5bb81e85ae64",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPMDhCN093ZTBxUmJKdExUcWo3TldsOGN6T0tKa0s2UmVNN2pUNTNrTzEtSkhHUW1aRGwxMjYyUGRDYVdRcmV3VVlWV3Z5dnZaWkhqNFZIWVlDa3kwZW1LOF9nVElPQW9wY3pnVDNnMlJ3Mks2dEQ3ang1dzZlUDNLSVBOdzJsREtiSnJQTGVHdkd0MExRMktscnFpN3lkd0pLZFg2RlhuaF9zZG56SUtwMGRYZVVoTmhs?oc=5",
+      "title": "After Blockbuster Anthropic IPO, Dario Amodei Heads To Puglia - Forbes",
+      "snippet": "After Blockbuster Anthropic IPO, Dario Amodei Heads To Puglia Forbes",
+      "published": "2026-11-21T17:41:21.000Z",
+      "outlet": "Forbes"
+    },
+    {
+      "id": "b2b174609987",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQVWZST3piU2NqZVJlVFlPQU9BY1F3eXNMR3VQdVd3OTRTcUF0b0FHSmp3MFZpZHFYaWNrOE9zRnl5LXBlNDlwaXQxaHhKY0VDVjQyVHhiT2ZQZHA0c2pwWFJ2VkItZEtmMHFfSmg3VU44dHgta0VnUHNVZy1sZGhRT0V3?oc=5",
+      "title": "Anthropic says it will put humanity first. Will its IPO change that? - NPR",
+      "snippet": "Anthropic says it will put humanity first. Will its IPO change that? NPR",
+      "published": "2026-11-21T10:00:00.000Z",
+      "outlet": "NPR"
+    },
+    {
+      "id": "b1275be464df",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOLTF6X0Z0VmU4eFBNWGh4NlhDX2VzODFSNXZtZVJHWEZ3NTI0ejYzamFWNDZSV240ZHhIVDhKdEVGakVpYUYxWFA4d19KYkZfQmM3RVBJR1hUajZpQTdLY1BaQ0Q0b29BYm5YUzd4RmhqdXVCRzBUQnIwa1FxNm1LeWgySWM5Q05rd2wzcVpYSWZWdU4zME9zMzRvMHZXQmlXU1RJWi1ab0lMNGN0VWNmcnVIQzFWaE0?oc=5",
+      "title": "Ross Gerber Tells Investors to 'Be Patient' on Anthropic Stock After Post-IPO Slide: ‘That Would Be a Gift’ - Benzinga",
+      "snippet": "Ross Gerber Tells Investors to 'Be Patient' on Anthropic Stock After Post-IPO Slide: ‘That Would Be a Gift’ Benzinga",
+      "published": "2026-11-22T07:07:47.000Z",
+      "outlet": "Benzinga"
+    },
+    {
+      "id": "dc13f9e96989",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNFU4TlJJeDdpQlY3UzJzaUg2eDZyY3VxeWtzX1hheDZvazM3VHNoMEYtSUt3SW9vUURDQ3FPbUJhVHAwM0t0UGpuUkNlZXFUYXFRTWhNVTZ1US1scEs4cFpCdzVOQmZTODNoR1hRdGFpSUNwLXhrb09ycDBTU3I0c2UyWm1SXzgtUFpQTkpsRnktVjVVN0VIZFpR?oc=5",
+      "title": "Tristan Thompson Anthropic Stake: What Is Confirmed - shattered.io",
+      "snippet": "Tristan Thompson Anthropic Stake: What Is Confirmed shattered.io",
+      "published": "2026-11-22T05:19:23.000Z",
+      "outlet": "shattered.io"
+    },
+    {
+      "id": "c1189067addd",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNbGZqY3FoUjhCTGtSbnJQMmlMMlNQWGxuQ1UyR09vYVpCY2xHcU5la0pPb0FGbnkzZ3AwRThVNXdMcXk4cEZ4elRxd1VKVHRqTEdxUGtHeUZNS1RPQkVKdUpXeVJscjg1Qm1zUHpjMDlzYUQ5UUE0X3FVTzRqRC1FWVRGU0NXWUI0Rk1FWERnVWxkWEtRbTJNc3Nldms4emVsSF9yMU4xaDU4SWh6TDgydjJWa3ZYQ2pFaUp2TFhmdUh6cFU?oc=5",
+      "title": "Dow Jones Futures: After Nvidia, Anthropic Fuel Worst Week Since Covid, Look For These 'Absolute Losers' - Investor's Business Daily",
+      "snippet": "Dow Jones Futures: After Nvidia, Anthropic Fuel Worst Week Since Covid, Look For These 'Absolute Losers' Investor's Business Daily",
+      "published": "2026-11-22T04:10:00.000Z",
+      "outlet": "Investor's Business Daily"
+    },
+    {
+      "id": "d7788c498497",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQblIyVE0zWk05bS10dVpXOW1PcnN6XzdNZmtBS0pEY2NvTzkweVR6TnR2eTJSeVh5TlpRWmxfOUY1VjJTb1RLRkRRTW84ZC1XSUVXdkduN2pGcmphNWVRdjhpd0l2dHBBQ2V1LXZWTWlHMTFESDhPanljM0NvWTJNV2FoTkUwbVhKSEhEQkJrQnRVa3RSRG5iRXRvR1loSExxZVA2SlRuWmJsek5HLWJSbjdKT0VRN3hF?oc=5",
+      "title": "Prediction: Some Anthropic Investors Are About to Learn an Expensive Lesson - The Motley Fool",
+      "snippet": "Prediction: Some Anthropic Investors Are About to Learn an Expensive Lesson The Motley Fool",
+      "published": "2026-11-22T00:41:00.000Z",
+      "outlet": "The Motley Fool"
+    },
+    {
+      "id": "f07bafd53918",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNLVlNQjYzc20yWmlZWTNzdTJoV3JST2lrUWFpdGtDc2Z1TlFGc2RucXJ3U1ZzdG02R2thQk5nNUhuRlU5Vk4xUzlVYU5nNUhTdG5xbVhfUmlBcWk2dzFRbmNPdmdfLUVEMjRaMTJrbk16bzBnLWRxdjJIUkJnMHpZS3U3WFR0MXRwZzNCWlNhdGk4QVFUYVdsdVozSG5Qampsa2Z0ZEFtUExuWVRiTUtlUA?oc=5",
+      "title": "Prediction: Some Anthropic Investors Are About to Learn an Expensive Lesson - Yahoo Finance",
+      "snippet": "Prediction: Some Anthropic Investors Are About to Learn an Expensive Lesson Yahoo Finance",
+      "published": "2026-11-22T01:01:00.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "54ffa9992bc5",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPcmtPV2l5SllyQlNBS004dC1MNlpJcG9ZcGtYcjFMZE0yMnNEZGkyX2xzczB4VkNkTXRCSFNaOXVPTnE0Z3NOaEhCdHpjSzd3ZjNETjV5WnRoWWczMWlBa09BendIRWZXRGhqdXNnZTdUS2Uxai02d3RROGFNdlN2MF8zMUh4Qms?oc=5",
+      "title": "Better Recent IPO: SpaceX or Anthropic? - The Motley Fool",
+      "snippet": "Better Recent IPO: SpaceX or Anthropic? The Motley Fool",
+      "published": "2026-11-21T19:15:02.000Z",
+      "outlet": "The Motley Fool"
+    },
+    {
+      "id": "25b6b579c8e5",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPal9RU1JBdFN4ZDIteWhOQ29nSVBSY3pYZ3Y3VW1kRS16UVVfb1Nlb2d6b1NrOTgyMHdDUlc1X3VuQ05XMEJ2TExqNVowVDJtZUxEU19nQ0k2a3FPRi1FY3FZbFpqN1VkLTdIcDMzNUFmODY5WjJSaENvT3ljWWZVQjZqM0xfYnEyNnMwNG9rMjl2Y05Hb1ZXVXhFdXlHaUFzTXc?oc=5",
+      "title": "Should You Really Buy Anthropic Stock After Its Historic IPO? History Offers a Clear Answer. - Yahoo Finance",
+      "snippet": "Should You Really Buy Anthropic Stock After Its Historic IPO? History Offers a Clear Answer. Yahoo Finance",
+      "published": "2026-11-21T09:44:02.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "a4c006512fc7",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPVWlTaHN2enY3UjZ6cUs4VVFkTE9id0FSbTB0UGJHdUl4MUFEQWF2cEQ1d3RZSHk1MGN5bjJVajlpLXM2cktiTXg3S3JDVDh5RFlZTklNbW5ZUXZjdlg0eE5yRGJDOVZ1RVc4N2sxcXIteDg5T2lSdElUNlZSbWd1cl9xREJud0RJRW5pU0dUM1JnRG1vdXJsYXJxR1Q?oc=5",
+      "title": "Anthropic IPO Buzz Builds as Crypto Bettors Raise the Stakes on ANT Valuation - Yahoo Finance",
+      "snippet": "Anthropic IPO Buzz Builds as Crypto Bettors Raise the Stakes on ANT Valuation Yahoo Finance",
+      "published": "2026-11-22T04:30:00.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "5fa4164f3f0f",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPZHJCVThaVWVtUkpteGlHSWR3MDRPd0lsVjJ6dTlEaGhVX1hsWVFhRW45WEdDTlNTS05iUGs3TzVrTTY4QTI3aVBrVG5CbU40Yi1sWFNYN0JPUXY0RE1TUGJ1WndpanJVbUZiOVNiV2JXbUhicno2eGludENWRmFlU3RVR0hLemhoYkVLd05PMDZzSGc1dVhHNEJYWUpvMmdyTmh0TXUzWW1icGhDRGhRZTBkN2ctSlA3ei1nMEJxRnRSYlhSRlpnMC10Zm8tODhIQjkzdjl3VEZNODNVaHJCR2plZ3drajg?oc=5",
+      "title": "Anthropic engineer's warning about Claude Code explains why tech outages could get much worse - Yahoo Finance",
+      "snippet": "Anthropic engineer's warning about Claude Code explains why tech outages could get much worse Yahoo Finance",
+      "published": "2026-11-21T11:00:00.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "c2a9823b107f",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZjl5ODZTYXRNU2pfRmhEdnR0ckVzdE9iVVhrX3ZmZzZTMl9acTJENHAyUUFJazdRNGw1a2pES2pjWEpuTG1qTmtfNjBCd1NTQkxXb0c0X2pwSzZtNDJpWS1HbUR6aU5PUC1Gc1N0cXNEZEV5cTd2ZnYtWk9oWU95d3lERkRUOHdSQXRFSTY2OUllVktJenpTODQzU2g?oc=5",
+      "title": "Two groups verify mathematician’s claim that Claude helped prove mathematics problem - The Guardian",
+      "snippet": "Two groups verify mathematician’s claim that Claude helped prove mathematics problem The Guardian",
+      "published": "2026-11-21T16:39:00.000Z",
+      "outlet": "The Guardian"
+    },
+    {
+      "id": "c2014f5e5d06",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZk5DTlk1MG9TUTMyOThsVVFKNFc3SG56QS1WMm5mdDZJWk1pTWRJWk1sVnlqSzREdDByVFVXd3JDdkxUR3FFWjNFZFMzNGJqZlZ3UlVsZ1JienhzTVdCVVVLZEFTd05hNGxzbGhidHhvLTRDWFFXSGpNUmVHd0tTQV9DUEJ2NFVuNmJ5d3d3?oc=5",
+      "title": "Anthropic's $2 Trillion IPO Questions AI Returns - 조선일보",
+      "snippet": "Anthropic's $2 Trillion IPO Questions AI Returns 조선일보",
+      "published": "2026-11-22T01:39:45.000Z",
+      "outlet": "조선일보"
+    },
+    {
+      "id": "6c7e7c46c309",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE55YjU4NWNqRl9xMlk5bVYxaVpjRHdWeVhPT2lfejBQNzI0Z25McV95QWxqa2pFZFRXVWc5UHR6UTlXaFhCcXlCSzZIX2NQeWZGRUxtSHR2WmJPWGNVUEVXcU5qUG5abnc?oc=5",
+      "title": "\"I would not be surprised if Anthropic's market cap reached $5 trillion in the not-too-distant future\" - CTech",
+      "snippet": "\"I would not be surprised if Anthropic's market cap reached $5 trillion in the not-too-distant future\" CTech",
+      "published": "2026-11-22T07:10:00.000Z",
+      "outlet": "CTech"
+    },
+    {
+      "id": "7ee8a8348937",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNRUNzUmtsUWhKN2IzdUJaanlRd19nUmZ5aWxzMWtBVW9ERjhNb0JHVlR1cGx4cU11MzJ5cV9nY0NJRXRnMHRsVG1EcWZHRE9uS1ZQSWRiWHhDWm1qXzFGd3RZbzlFSkI0N1MzcHdDVEo4Ny1meXJkRThRc01iMWxYZ0FRTkJKU21TZjlJQ19R?oc=5",
+      "title": "Anthropic Singapore Office: 5th in Asia-Pacific After Tokyo - shattered.io",
+      "snippet": "Anthropic Singapore Office: 5th in Asia-Pacific After Tokyo shattered.io",
+      "published": "2026-11-22T05:17:37.000Z",
+      "outlet": "shattered.io"
+    },
+    {
+      "id": "2877a155e34b",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSVpRUnlwbWF4cmpjRkg1N1ZnRU9Dc1ZIRFFQU3pyMHNac0tJSXlINUg5YUdLRl9mMUEzQTRkZTdQWHJwRkhJbmYyWV9VYkt4dDVTSGRib3VzbVVENWd1WWllZkhzR2E5SGhrNm5xOUM1QzBfdFFqZlNvNmJDUHFNeU1IdnRMclVkRmdsNTRxTWVZY0hQYWJHN05EZ2xxZTFORDZ0V1g2eWZEWnBGRnVEVVNROURGMVFCTzkwbA?oc=5",
+      "title": "Anthropic's IPO bank closed position meant to stabilize stock, removing source of support - Reuters",
+      "snippet": "Anthropic's IPO bank closed position meant to stabilize stock, removing source of support Reuters",
+      "published": "2026-11-20T17:10:35.000Z",
+      "outlet": "Reuters"
+    },
+    {
+      "id": "70a152de57f1",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUnA1cXB0NjhBTjNiX0FZT1UxUl9lZVpLSmlhWUZLMDRyMkkwazFrdmswZkpvNC1CdDVBYjIxU085UUhNUW0wT2xJcTE5Snk5WlduUmQtU1RPY0t4MDFFeHg5UndKVHBnZkYwNUJWMjROZGlqU19fN1lDQ09WUUZGZzgtNDh2Q3J0aU9TaU1ENm1iaURVYUE?oc=5",
+      "title": "Anthropic’s Debut Shows the Disconnect Between Wall Street and Silicon Valley - The New York Times",
+      "snippet": "Anthropic’s Debut Shows the Disconnect Between Wall Street and Silicon Valley The New York Times",
+      "published": "2026-11-21T10:03:45.000Z",
+      "outlet": "The New York Times"
+    },
+    {
+      "id": "a212bfb7d966",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQMkU0N25PUzUwTWlsM1NUeFFaZXphS19wdDBNbWNFNjBmRzNheDRKRkxRb1N1ajBSeDdSeGVISmNUbHV3WThYZEF2ZEVwb2ZoMzlfNGJHQVhVX051Q1dIMk5ycTFoRUIwMTZ1Z2FPbE1lRENRWHU4cFlVeGphM2ljYWpaaUhNR0xDT0paZmJQMXFTZVFBcWw3cFQzbjZJcXM?oc=5",
+      "title": "Elon Musk Says Anthropic 'Extremely Likely' to Expand SpaceX Compute Deal, Could Seek 10 Gigawatts More: 'That’s a Big Number' - Yahoo Finance",
+      "snippet": "Elon Musk Says Anthropic 'Extremely Likely' to Expand SpaceX Compute Deal, Could Seek 10 Gigawatts More: 'That’s a Big Number' Yahoo Finance",
+      "published": "2026-11-22T02:30:00.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "a4da7a9f2527",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNMjVQWHNJMWw0Y21HYTVDN0lhX0ZYQS1FdzFCLV9nbVRzS09jNFN5UXRaanhHM2tXbGJkVGtlZVdMMnlTa2RTR29MUU1KbXVkekg1X19VeU5ISGJCbG9FRU5nSkNrZG1MWFJBaVZWY3pGUm5vUmZUWl96aWl6TVNDcUFCOXFxRmlYTFhRLTlqdTQ2S2FWTjJ4RWNBbnlVS2dtemlUSF9nOVlpZFpONElOdUhB0gG3AUFVX3lxTFBNVVBhQ1VSV2VIc0Z5OTJfSU1FUmc2UVFZNDJPX19TSjgteXV4QWxmbDZQWGQwa0M3S0tLUTY1V3ZTRXhUTmVNLTNBSk15QTRuQ1ZzSDY5VkFVT3laUl9XemZJVWZBVG9TU21UaW1US3JvWGZ3dGpiakppUDJobkQ2NW5lVGxEZUdCTlBnaGhEVWNvRE43ZTEySTBZaDJ6VzFuY08xN2FJRkFWUzI1Rkg0eEljUHl0OA?oc=5",
+      "title": "Anthropic IPO signals ‘beginning of a gold rush’ for small businesses, biz tech CEO says - Fox Business",
+      "snippet": "Anthropic IPO signals ‘beginning of a gold rush’ for small businesses, biz tech CEO says Fox Business",
+      "published": "2026-11-21T17:54:21.000Z",
+      "outlet": "Fox Business"
+    },
+    {
+      "id": "df3731a6fd43",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTGVJTzVZSXNfcjJkMVc0TjdqQW51SEVaWGs4U0tQcVlJdmJnb3FGaVVHTmVUbndXWE5KdGRlSC0waFFyVmswR3FEd0I2VmREbUFkRXo1U3psSTJxUGw1ZEVWQ0t6a28wQ0RYelZkRWw2TmNoZHlBZkhxd2E3TmhNNWxEZ0FicVFsaEpKcFZR?oc=5",
+      "title": "Anthropic’s IPO Reveals the AI Boom’s Biggest Problem - InvestorPlace",
+      "snippet": "Anthropic’s IPO Reveals the AI Boom’s Biggest Problem InvestorPlace",
+      "published": "2026-11-21T18:00:32.000Z",
+      "outlet": "InvestorPlace"
+    },
+    {
+      "id": "9074fe1e0014",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPRF8yQTc1b0FUQnZEWlB5emsxSkpSLUJzVU9pcXc0U2tMWkhMSURqQUR4T1FQLVVCdU9TT0ZtQ2lBOXF5ZHc5anQwaFVVX1BQbUhjN25CYmg0WW5HaTZQNnBSZ1Uxd2NmMEJSTjBZWWoxTm9SbEg1dExBTmdlc2hQLTVNT2NTZ3BsWmx1R09DUnQyNW1xZG82ek9xWUExTm45dXk1OGlDcW1BMXBZcDI1ZlpzbFBzYlVfWWlvWFNfeXV3MUdtTHlkWUY4elhGVjhpVjF6NnhJb0ZwQQ?oc=5",
+      "title": "Aswath Damodaran Valued Anthropic At $77 A Share — Its IPO Price Of $83 ‘Terrifies’ Him - TradingView",
+      "snippet": "Aswath Damodaran Valued Anthropic At $77 A Share — Its IPO Price Of $83 ‘Terrifies’ Him TradingView",
+      "published": "2026-11-22T06:07:00.000Z",
+      "outlet": "TradingView"
+    },
+    {
+      "id": "0435643e1f98",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNcWFRMHVMWFROREx5em8wYWdDZ2pvUk9nLV9OZS10bjZCVVE4Nmd3bEt3ZFZhZUFsdjU3S3RwMThTZzVsSUY5TEd4RlYwbGp0dVRZX3dTOGVjTVlVNWgxeGo5b0I2aG92ZTNmTTB3SzFfX2s5anZDTFZtbGpteDdnY2JTakFKTHdD?oc=5",
+      "title": "Anthropic’s I.P.O. Turns Tech Researchers Into Overnight Millionaires - The New York Times",
+      "snippet": "Anthropic’s I.P.O. Turns Tech Researchers Into Overnight Millionaires The New York Times",
+      "published": "2026-11-20T17:11:00.000Z",
+      "outlet": "The New York Times"
+    },
+    {
+      "id": "b3b6e2d24d80",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQTnNHR0dfbHcwcHZjcDl3RVVYbzl4UVdEeFFnZDFOS0Y2UDMtTFV6d1RwdHp5ZUhlTlpYbUowM0JoR3hiUEVGbG1XUGdyMkh4cG5xTkdWcVJPZ0tBYW1feHNIN1Z3YmtmcGJGc29vRHpYY3lUR2pYX2lMa0pqbmdfTTM5a3lveW1XbGhZbVlmTEo5cTN2UDVHajVMTEtyd2VBbUtlWHd2UEYtT015RktBQ0hqUl9rWnZaRkE?oc=5",
+      "title": "This Early Investor Sees 27-Fold Return In Anthropic IPO - Forbes Middle East",
+      "snippet": "This Early Investor Sees 27-Fold Return In Anthropic IPO Forbes Middle East",
+      "published": "2026-11-22T07:01:03.000Z",
+      "outlet": "Forbes Middle East"
+    },
+    {
+      "id": "c7decbf281d6",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzTGM2MWk2M2dvcEhRNnd0VkZuVm9hcWdudzJQYWlyV1kyUFFPTkIxaEdwVUNyWV9KeUdkMVp6Y2VLTGxtbVUxdVdMa0tSM29FVnU5Z2diai1KcklGZ25JWEhsT2x3NFBFc0xKSnltelRvMnM1cy03clo5RQ?oc=5",
+      "title": "Anthropic Stock Falls Sharply After Record IPO. Why AI Anxiety Is Rising. - Investor's Business Daily",
+      "snippet": "Anthropic Stock Falls Sharply After Record IPO. Why AI Anxiety Is Rising. Investor's Business Daily",
+      "published": "2026-11-20T17:21:00.000Z",
+      "outlet": "Investor's Business Daily"
+    },
+    {
+      "id": "00d3df7ca7e0",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQQ1ZiZkpfQVpiV0szMFJjUk1vN2hYdHVULWNFbkVQMDFBd1lnM3g0aUFUQjVUNlFXTnpxYV8tcDN6ZFZfQnVJclFpOVJqc25WSE9ZT2xJMUVwMklvWXF5dW9CNXZ0OWNWVkhoTmN6OGFqRFozbUs4WjllRVRtWWdOcjNOVG5Gc21PQnA0WHRHTl92MmxDcms1Q3RuRXhSSWFITnlBdG51eVQyS0MxOXY2T0FKdlB6di11TlNUNlUxMnl1VkZsS1VkS3ZVNVJ0RXoxaHZoQUdTbWlaSmQwa0Z4NQ?oc=5",
+      "title": "Anthropic stock slips after record IPO. Should you hold, sell, or buy more? - Yahoo Finance",
+      "snippet": "Anthropic stock slips after record IPO. Should you hold, sell, or buy more? Yahoo Finance",
+      "published": "2026-11-20T16:37:50.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "a0707be2b431",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZ1ZRM1BXMkItVU9WdFVsc0dJOFVrRjlIbVVPOGxRendaRXc5QUlFQ3FYU0tQSXZRY1N5cjNRWXFJcmluLW9tLW5IaElvX0hJUHNiYWJKWVpha3FqSzBqRElZY2hBTnhsZzhoSEJKbzZMZ25vYU9Wc1J4QXpxZ0MyTVJob19lZFVnYjMyUmF5cVRaQTRBOHBz?oc=5",
+      "title": "Scale AI cofounder says she passed on an Anthropic investment to support her ex's lifestyle: 'Lost a billion' - Business Insider",
+      "snippet": "Scale AI cofounder says she passed on an Anthropic investment to support her ex's lifestyle: 'Lost a billion' Business Insider",
+      "published": "2026-11-21T12:00:00.000Z",
+      "outlet": "Business Insider"
+    },
+    {
+      "id": "5c8565218d9e",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPdXVvVTBfMERnRGNhVjJLTnBsOXZWTnVEUk1CeXYxNFBhdkFQRlFMMnIxSkNEZmhwVW96amNFdlE3akZGWS1MNFRzeFBmdnFkRFdUV3JtYXRQa2p1TnNza0JaREtrQ0RtbThxV2lBdU9qOXVBZU5rcU5TZF8yUFE0UkU4VFRkcmJmSWNTdEVB?oc=5",
+      "title": "Seohak Ants Buy 220 Billion Won in Anthropic Shares - 조선일보",
+      "snippet": "Seohak Ants Buy 220 Billion Won in Anthropic Shares 조선일보",
+      "published": "2026-11-22T04:24:57.000Z",
+      "outlet": "조선일보"
+    },
+    {
+      "id": "930da224d44c",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE50ekFnLVFhdTZHVm1qOUxTY3VrY2NfZXl3Qklobl9Hb1VQN0JfZEpMdm1wY294WlpDNm9YR2NZMzVzUTJsTFMyYi0zbjZTbE9mbE03LTdyY0t2Vnlic2RkT25tQkpuQzk4NFdvQkUyanNWUWVxd3c?oc=5",
+      "title": "Anthropic Sheds approximately $109 Billion in Market Value Two Days After Nasdaq Debut; Nasdaq Wipes Out $4 Trillion - BigGo Finance",
+      "snippet": "Anthropic Sheds approximately $109 Billion in Market Value Two Days After Nasdaq Debut; Nasdaq Wipes Out $4 Trillion BigGo Finance",
+      "published": "2026-11-22T02:56:00.000Z",
+      "outlet": "BigGo Finance"
+    },
+    {
+      "id": "14d28f70c8b5",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOOFJpUjVWU3pVeHNvZ0RudnJRN09mekVLTGZUT3BZeHg1OXNvdTBoak1YUFQ5TkY2anFNR2FfdmtoMnNoek5iZGI3TnJWcVBfMTY5N19TNXlSS3MxWUFLZ2d5YWdORTU3djV6UHUyR0JGelNlWlZlUzdLdEZZTjh6dDNFdHcxSUtoQnFtWENwOXpTRGRJZ0pwOHVYMEVmTWUtU3ZUM0NoOWJmRUxMWW11SHgzZFk3UENqTTFaWDMzTTFNTDNUM2hkSnVtUk1QUDdwQmRuZ1NB?oc=5",
+      "title": "Rivals Bleed As Apple (NASDAQ: AAPL) AI Agent Leak Rattles Anthropic (ANT) And Meta (NASDAQ: META) - Foreign Policy Journal",
+      "snippet": "Rivals Bleed As Apple (NASDAQ: AAPL) AI Agent Leak Rattles Anthropic (ANT) And Meta (NASDAQ: META) Foreign Policy Journal",
+      "published": "2026-11-22T03:40:00.000Z",
+      "outlet": "Foreign Policy Journal"
+    },
+    {
+      "id": "b8bb19521502",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZl83aFlGaHFEUVczbnRQYTJCbmhiWUFic2RBN0JLeVJrUy1GOG5TZDRtSzVDQ3JzT1otb3dqZlQ0X1JXc0I3Wm1CMzB2Ul9MZGlGbFVvOHEyVlo4V1NxUU5sQ0FoMTNkTUJkaXlCSFYwcE5rZGtyb2hwTkNYcVNJcGtMSzdqRFlQejUzTjFuei1PX2ZPcU5ZRw?oc=5",
+      "title": "Anthropic worker claims to have solved a Holy Grail of math problems with the help of AI - AP News",
+      "snippet": "Anthropic worker claims to have solved a Holy Grail of math problems with the help of AI AP News",
+      "published": "2026-11-21T04:55:00.000Z",
+      "outlet": "AP News"
+    },
+    {
+      "id": "40ebc14640af",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOWjNwWTF0NG0yY3lRZGg5dFhIUXZJTGRvTWN2U2dnWnc1NGdDMm5iTGtuQjNHTEFCdzZJb05TUkdfZjRlZDh4S3JqUmVZUXctUUtsbGUyMk9wT21wN3pxczFLNmRSTHpqV01wNjF4SmthdThIU1J5NHpwZlc5R0ZCX1NQc3FjZTd0T2lmNVVxX3hWZw?oc=5",
+      "title": "Watch Anthropic Fails to Calm AI Jitters, Ditching the Kitchen for Thanksgiving - Bloomberg",
+      "snippet": "Watch Anthropic Fails to Calm AI Jitters, Ditching the Kitchen for Thanksgiving Bloomberg",
+      "published": "2026-11-21T17:58:28.000Z",
+      "outlet": "Bloomberg"
+    },
+    {
+      "id": "3948329d7ffc",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBhTXJKVE1ITTY5cVFSeHExNm5BREJkYVFQdlF6VFdneUJwXzdQM0VFcFA3U196aFBGZWhZSnhfQXRibkVrbG1FandOV25SRFZwZE4tVUJ1VXZaYzBRbGJlMUtza3dLU0U?oc=5",
+      "title": "Anthropic’s IPO Makes AI Safety a Business Test - WeRSM",
+      "snippet": "Anthropic’s IPO Makes AI Safety a Business Test WeRSM",
+      "published": "2026-11-22T00:58:45.000Z",
+      "outlet": "WeRSM"
+    },
+    {
+      "id": "5463141aff01",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBmVi1paHdkZ0p0US1LNDM0UFlQb3gzVC1MaUtxTi1iQkFfUWVqajlKVVEyemk0OGtlNGJKVGZwWVdhSDNfTjJRMFVuRG12R2s?oc=5",
+      "title": "250,000-Page Math Slop: Why Anthropic Didn’t Solve the Riemann Hypothesis - Emerald Book",
+      "snippet": "250,000-Page Math Slop: Why Anthropic Didn’t Solve the Riemann Hypothesis Emerald Book",
+      "published": "2026-11-21T17:57:06.000Z",
+      "outlet": "Emerald Book"
+    },
+    {
+      "id": "4d609b0d42fd",
+      "source": "gnews-anthropic",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPSDVRTGR3S1JJUE9pNWZPUDVuSzR2VXdZQjEteWJKdVZldEFEQlVhaUNzQXJieDV6cU5XcXlEWEtybG12NmxIQnVKQzJZZWs0SkxLSmhacWtTaXE4SXJld21GNkE0RW9qRmZ6NGczbHJwUFlfY0RmVUJvT2NOeHAwQzhwenpWTG5SQ3o2Q2ZETDF3MmFxQVZITnRlektzb181WU11dUxidmF1LXBvUUtYRjRfOFBQTU1aQWZHZ0JB?oc=5",
+      "title": "These Are the Top 10 Largest IPOs Following Anthropic's Historic Market Debut - Barchart.com",
+      "snippet": "These Are the Top 10 Largest IPOs Following Anthropic's Historic Market Debut Barchart.com",
+      "published": "2026-11-21T21:00:03.000Z",
+      "outlet": "Barchart.com"
+    },
+    {
+      "id": "d2430a69d730",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONlA3YmE1SENKMHdqY2MwSEVFRFQ3eW9URjRhTW83QjNCN0U3SUhweC1vTGhfYml6SG9Sc19wVHVhY1VobG9NLVM4V29Ca2QzMnByUjh0clFFOGhFSE9XcVVfNUxlVTdnRTE3ak5oYzd0alQ4QkV3NUYydFIxYXBOWEhtblhQM25NRDY4czBDMHE5VUQxc1B6N3Q3eXNoazk0TE9PbG13?oc=5",
+      "title": "Lean groups certify Claude-assisted Riemann hypothesis proof from Anthropic - Startup Fortune",
+      "snippet": "Lean groups certify Claude-assisted Riemann hypothesis proof from Anthropic Startup Fortune",
+      "published": "2026-11-21T22:23:08.000Z",
+      "outlet": "Startup Fortune"
+    },
+    {
+      "id": "cbd6ef458bf1",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQUGJqSjZWaXNISk8tTE9CM0d4czdubmlPOW4zQjNBTG51X0drbzlBSGl2Mkx4NHdCS0RtWmhNSERHdm4yMkk1bGJZZnhlMzZRMVMzaGZMZTlMekJaVFNQdkpDUDMyUERoQWhhWW9QSVJIQk53eFVUa1EwdUpQUFZTSFVuemIwcWFmWlRyRl8xdm5KUDd6V2Qza3ZPM1IzbHVTRl91TFNDNDNxUnhzdXZXWk1teGcyN2RORU5xTTdHYzJZUkZLaE1ySEpraWljMFlJQV9ZR2JXcDU?oc=5",
+      "title": "Hours after Anthropic claims a Claude proof of the Riemann hypothesis, Stanford releases an all-human competing draft - The Decoder",
+      "snippet": "Hours after Anthropic claims a Claude proof of the Riemann hypothesis, Stanford releases an all-human competing draft The Decoder",
+      "published": "2026-11-21T11:19:49.000Z",
+      "outlet": "The Decoder"
+    },
+    {
+      "id": "632a73f8d2b9",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPUGRUZ1ZGZE5YMkdkX2VqSnJEUTNDN1ZsTFotM2FON3RpX2hRTVJvVlJfWUFCdEhHamdpdFl1X2hqOF9xWmx1Y1Fvd2V5MS1EUWpoTmlUdGpaWjF1OWtfYXFxVDRQdnRVc3BkQXhQRml2RkUtTXhDbVkxdHhrSkwwc1Z0dw?oc=5",
+      "title": "Riemann Hypothesis: New Claude Proof Claim, 167-Year Problem - Quantum Zeitgeist",
+      "snippet": "Riemann Hypothesis: New Claude Proof Claim, 167-Year Problem Quantum Zeitgeist",
+      "published": "2026-11-20T20:34:08.000Z",
+      "outlet": "Quantum Zeitgeist"
+    },
+    {
+      "id": "a831a46f11bb",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPaFZuXzhtWU5HSGhlQkZTQlR6VWlrT2w0UUl4ZU4zaTlaOVNBSUgzYUI0VnNXRzB1VU1JREFLTGY3bUFLZ1lKcmY0Z3pQRFMxSTBha3RlNjlTNzVScWRFcnRKYTJOVDhmTEcwVWk5QlZQdDhsdW1jZXc0b1RhdHFDV2I3TmdSMmRmTW9VSnNOcEQwYkVjN1JNN25QZ3VLakVRQ0M4?oc=5",
+      "title": "Anthropic official claims Claude AI solved Riemann hypothesis after 167 years - Peoples Gazette Nigeria",
+      "snippet": "Anthropic official claims Claude AI solved Riemann hypothesis after 167 years Peoples Gazette Nigeria",
+      "published": "2026-11-21T15:13:44.000Z",
+      "outlet": "Peoples Gazette Nigeria"
+    },
+    {
+      "id": "b7476484c1e9",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOTGpvMEtmYWxvbXFTZlczSVdvVEtab3JhNzRDLTZlQWRHSHdQbk93d1JLSnpOR1Uxa1lseFRmeE5yX25ZM1lhcFAtbTdLQW9Ob0M3R3M0MlEtVDBmT044NHNTRGRGQkYtakxxWHkzVkhlYlkyVFlaandBQUJrc1VHMS1lUnZudHk4aWtpLURyQ3h6RVRnM0lOZXpwZWwzWFY4VWI4NmFYQUZIQUxLYmV0X1NqelZxaVN6TGZrNTk1OEs?oc=5",
+      "title": "Anthropic mathematician Levent Alpöge posts a claimed proof of the Riemann hypothesis made with Claude - MLQ.ai",
+      "snippet": "Anthropic mathematician Levent Alpöge posts a claimed proof of the Riemann hypothesis made with Claude MLQ.ai",
+      "published": "2026-11-21T03:34:00.000Z",
+      "outlet": "MLQ.ai"
+    },
+    {
+      "id": "9cc18a356a6b",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORU8tTGZRVUdPeDI5aTE0YV9SOHNkOU9QVDA3TzVlaUxWWjZaOHM0SUVQaW94NVRkNnFKVTNPRk5ISDM3VHhrXzAxSG1HQ1U4ZXJpQ2hmTHQyMmxaaVpFbjF0RHNic1RCcDVHZ3J5UmJCZ0JvNTNJTEFseUdPVm9XTm9sWmhYR1JhYjVPM05FbkRza01WQW9DR0h2X3M?oc=5",
+      "title": "Claude solves two black hole problems, and what is actually proven - Pasquale Pillitteri",
+      "snippet": "Claude solves two black hole problems, and what is actually proven Pasquale Pillitteri",
+      "published": "2026-11-20T11:52:03.000Z",
+      "outlet": "Pasquale Pillitteri"
+    },
+    {
+      "id": "a4c0f4157b78",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5BcUpoNWJPdGpzVUl6bXA1TW0zMFdycGxueDM3aEd1c2c4TmFWeGNHMzh5TGtHVkE1RGw0UXZZd2NiUmZUN2htVVZncHlZbFZ6OFV3c2lYUUdyQmlIbnVmbWtreHB3LTB6WFp5dFk4OVFmX1l1Z1IxMGp2RlNRZw?oc=5",
+      "title": "Claude Claims Historic Math Breakthrough One Day After Anthropic IPO - Decrypt",
+      "snippet": "Claude Claims Historic Math Breakthrough One Day After Anthropic IPO Decrypt",
+      "published": "2026-11-20T21:36:02.000Z",
+      "outlet": "Decrypt"
+    },
+    {
+      "id": "127bb3e019e4",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNeGZvLWpjMG9KbERUUllfWlQ5TG9nak8yVGFkSjFVOG5WbnFaOTFzWVlRMUlmQUZZbGJVUjhCbnp6TXJScndZR2dLdGxJa0RlVm1aVEMzZS11ekx4R3ZrZE5EOTJpU180LXhWUFRpTWwtWFhkU2VBNGt3cHVDaVRPZGRfSy0?oc=5",
+      "title": "Anthropic staffer claims solution to mathematics’ Riemann hypothesis - Financial Times",
+      "snippet": "Anthropic staffer claims solution to mathematics’ Riemann hypothesis Financial Times",
+      "published": "2026-11-20T18:11:30.000Z",
+      "outlet": "Financial Times"
+    },
+    {
+      "id": "7a4da578cad6",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE82YVY2eVByZUZlVFl5WW04NDVzLXNBcUVvbkpKc2p6bWdrOGpGM0Fqc2ZoLXpiRGVvVGdUNGhGQUcxWFo3X0lMbHROVjJYdnJ6ZnZhTHJjWHUxaEhpS2FyRUdBNDRaZk10NkR5bmhQS25vN0Ffdmc?oc=5",
+      "title": "Anthropic Mathematician Says He and Claude Cracked the Riemann Hypothesis; Proof Released Only as Lean Code, Pending Verification - BigGo Finance",
+      "snippet": "Anthropic Mathematician Says He and Claude Cracked the Riemann Hypothesis; Proof Released Only as Lean Code, Pending Verification BigGo Finance",
+      "published": "2026-11-20T16:55:00.000Z",
+      "outlet": "BigGo Finance"
+    },
+    {
+      "id": "d3c045846e73",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQNEZrc1Fzdzc3ME5ob3hDVDZ3R1dRLXAxZ0RjWFJoYzYyazJYT0N2RmpPWUc3MGlZdTRadnoyZjY2VE9jajZoZXJ1U213OUtQNllzQk1UVFh4b2dxQzF1NG8wSGJQLWZEOXF3YmNZOXA5U1NRcmQwNU5lckxCOEtRQlhSR00tMm5HV2ZKQWRrX2pXZ3FROVZwYlppVUZmSHhJNTZXYkxBWmp1LVNBWklDMzVuXzZKUW9OTGdVQXRsQUREOFE5bm15dWdNTkRTS1ZBWnJjc0hXZU10WVpNUjQ5aUxvZE9aVkVYbVlSTlpIeVhiNnRNdmfSAfsBQVVfeXFMT1pvWFppMU55S3JIOWlkMm1OVEtvX0R4cHAwU3MxT3JGWGhoSW4wamFaZGdrM2w1ZlJDaVZ4dWxPaEN3TTItcWI0eFBPT3JvaERRbVE4YXU0OVhqS0tIUDI5V0dHN3FXSGV6WjV5TGltRWc1Y2dXbkM0RHNFcnlNYWUtZ1RwWVJzN0w5NEVtYlFuM3QxdHlHeEtlVmdzdW53NVVBbmZ0MVM2Tk1BMWdhbFNtOXdpWGFsVDZzS1NuUzRPOFRoUkE1bmZwUlIzSG9TZjMyYzlfQ0ZibmZOVmF0MDBZbVI5d1dXVkJnM0hrRS1qSlpYTlFhR1ZVNFU?oc=5",
+      "title": "Anthropic Mathematician Claims Claude Helped Him Solve Riemann Hypothesis - ETV Bharat",
+      "snippet": "Anthropic Mathematician Claims Claude Helped Him Solve Riemann Hypothesis ETV Bharat",
+      "published": "2026-11-21T15:17:21.000Z",
+      "outlet": "ETV Bharat"
+    },
+    {
+      "id": "49df2525bb6d",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZVVDT0otZ3dUdTlDTk5mRnVjamtZUDNoaW1EVVhwRG84eVhJUGpZN0RzWWtTVFZKUXV1LUFZcWVQVXZBUEMyZjJJa0lLVHBmc0xQYmJFeEFHaU8tT2l2SnRKNTV0X09mWG1fcC1xRE1OSEhBbVlvdWsxN3VrNllSYW9JaGk5WjRYZlk1SDg1WnVwQTJrQ0ViN3NkX1BQdnBBa255WnNn?oc=5",
+      "title": "Anthropic Mathematician Claims Claude Helped Prove Riemann Hypothesis - https://streamlinefeed.co.ke/",
+      "snippet": "Anthropic Mathematician Claims Claude Helped Prove Riemann Hypothesis https://streamlinefeed.co.ke/",
+      "published": "2026-11-21T12:56:00.000Z",
+      "outlet": "https://streamlinefeed.co.ke/"
+    },
+    {
+      "id": "5d2f76b5872e",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNX3pEREtNR2RmQkl1SzYyS01USVZuMGpRdjN3ZnlfSG5CanFHWHA2ZlU5QVVHNHRQMnUwaG81cFFFSWh6akM3eV9VR05Rd3BMd2RmS210V0swak9qa1BUeFp3YjNCNm15RjZTdDE4T2tULUpVbENPb2NCanBWUDg4d2U0NkJLUE1yM1ZacEYzaENpYWN4VHZFdTZXZHJnbzI5UVdHamtzenNKRjNwTzBwYXdDbVo0R3J0SmhCYTlhLW9fQk1MakJBNTdEZ19pR3o0dW8wYldFUVJ1c2lE?oc=5",
+      "title": "Claude's Math Claim Cuts Both Ways as Anthropic Finds Its Public Footing - ad-hoc-news.de",
+      "snippet": "Claude's Math Claim Cuts Both Ways as Anthropic Finds Its Public Footing ad-hoc-news.de",
+      "published": "2026-11-21T16:02:27.000Z",
+      "outlet": "ad-hoc-news.de"
+    },
+    {
+      "id": "ae589d7e55ef",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOQ09rU0tKVXpmTE0xYTNYc1Q4TXF3VnFEZ0pLa1VPUFNRRVlWekhVeThuWXg1V1VrNXMzRHpzMTQwZEYybng5LVQtemxDdl9xUVgza3JwSmk2WERQamxoejIxeHBkTWpRcE9ISlVIdldMQlc3VTdvUkhWWXlBbnl1Z0IyUS00dkloci1kcFZheGxXd2dySUg3eUpKNlltbE4tNzNqRENUUVFpSExZSEZWWW1LLVR0QUFNWVNkS185VXZkWUtDdlJNbGlLTHU2cmRFOS1hVDAxMXFkQdIB4AFBVV95cUxQOWlwT25rZzM4bDRkNXlzOWNzNUxSTHBNd19TRzlpVUxYVl9WTEZxc25laVpEZEpUWjdWeEUzdk04aU9FQk9EZUxxQnpyMXRNRlBheWpQOUdkLUhTcVFLNUxOTWFxaWVTY2llNzNpWEdWTGFscjhWVEVpVEJKTTN2c0JrVzNPd21ubW9wTWtIYW5WazZpLWlHTThCTHpwYWhlNGk5VTM2MTFoX2F2UEhIUG1PRWxsNTQ2SThBVXJjVklMb1VlMTAtZE9yZVl6STQ1ZmtNSVIyMk5oM0pjY3RRTA?oc=5",
+      "title": "‘Riemann Hypothesis’: Did Anthropic mathematician and Claude solve 167-year-old problem? - The Financial Express",
+      "snippet": "‘Riemann Hypothesis’: Did Anthropic mathematician and Claude solve 167-year-old problem? The Financial Express",
+      "published": "2026-11-21T12:31:44.000Z",
+      "outlet": "The Financial Express"
+    },
+    {
+      "id": "699937c038a9",
+      "source": "gnews-claude",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPSDN0ZUxSalFwNWpEcGlnZC1NLUpwN0tCNnUtSXgxdnhIYUVDWTNhT0hYR1RoTkkwRzZsTXJ3eXB4ZGFCSWl0ejhzVExQSkxXY0t5U3BpZUhpZGtWTEJMQXluaEhiMnhrOEVVbXhya191REZHbks3U0l0WEVjTWV2VVA3SllhWVBUaTlKOE1BWWF1amJ3VjNjbkRVOE1IYnV4QjBxMjY1VFR4cGZZcVM5SlZ1QnNDX0JUZDM1NU1UZ3l5QlppSUxBZkZ2c0E5Sk5NYlR0b004Y05JcW1RaDA1REJB0gHnAUFVX3lxTFA5X1NZNXFWZkp5b0FFOEdSV2o3MG52T0w2SmlmWWliRDhoaXE5R2NDdUI2UDY0V2NldWFtSTRUbkpsMnQxQ2pGTGY4UTl6QTVyUGdCQkFYVl93ZjNabTNxaWpRWjRHcEg0RXJwSUEtQ2RUV1RVYTF5eEJuUjh1Q01GejhpSFJ0aUhPNUdEQ293ZlFKQ3ZKQ20zM3BhQzA3NnVVcEdnYnlzZXd4MnU3aXpycHJ2V3pqNUktRzVaOEI1Nk0xdVBYX3J2a3lldXJQM3dObExOdUdZZkRNakFMRHJaS3ZfalpzZw?oc=5",
+      "title": "Protesters slam Claude creator Anthropic after eye-popping IPO: \"We don't want to die\" - TAG24 NEWS USA INC",
+      "snippet": "Protesters slam Claude creator Anthropic after eye-popping IPO: \"We don't want to die\" TAG24 NEWS USA INC",
+      "published": "2026-11-20T16:47:38.000Z",
+      "outlet": "TAG24 NEWS USA INC"
+    },
+    {
+      "id": "9f283ec1485d",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTVFxRFc2ZFBiVVUtTV9VbE9UTXhXOTYxMW04a1R4NUhJNXlpR3NYTTVGRldxM2Q3SGxHWHR5NjNpMG9JaEJTaThmZXFPU2Q2SjllMlJDalc3akwxdG02dUxuLWFYc2dBSllHeWdwQXQ0NTNhMlhKVGZPOEpWNGs2RkZOaXI0UVNHRHl5Qg?oc=5",
+      "title": "Anthropic co-founder Tom Brown to donate to Trump Accounts - MoneyWise.com",
+      "snippet": "Anthropic co-founder Tom Brown to donate to Trump Accounts MoneyWise.com",
+      "published": "2026-11-21T13:00:16.000Z",
+      "outlet": "MoneyWise.com"
+    },
+    {
+      "id": "7a2dba405843",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNUWRHVFk4N0NhbHQ1Rm5CanhIQzhXV19jMnpGTVB3bG1ONi0xaDZweXlQQk1lSHhCTkZSR3hRRlc0Zzd3OGI5N1ExX20wbVVFdmJ2OXhDNElRcFJmWmRHSzlsQkdZTjZLRXRlTXc1ak1TbEQ0NkVmZmFMTkFaX0ZzbVRpVV9wOGVDLXIwS1pSTW80OEJSa05UUU9aN1B0cTU3a3c?oc=5",
+      "title": "Anthropic's Valuation Leaves High Bar For Future Growth, Analyst Says – Warns AI Competition May Pressure Margins - Yahoo Finance",
+      "snippet": "Anthropic's Valuation Leaves High Bar For Future Growth, Analyst Says – Warns AI Competition May Pressure Margins Yahoo Finance",
+      "published": "2026-11-20T15:04:44.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "9c2db3277f6a",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9fcTBFY3J2cEQzbm00a2xORmEwMVJaUkhBRGpFSTE5MkpMakJxZkM2N0J5YnMxYk9qRHhHS1FTOVduRl9zR3ZPdDl2NA?oc=5",
+      "title": "Anthropic soars in Wall Street as broader market tumbles - AFP.com",
+      "snippet": "Anthropic soars in Wall Street as broader market tumbles AFP.com",
+      "published": "2026-11-19T22:28:28.000Z",
+      "outlet": "AFP.com"
+    },
+    {
+      "id": "e9d04f9904d5",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbFhxdHJHeFJ6bmdGbnhIMmdRVm43YWlyLVNVcTRId3hfdDl2RnNwY2xXb19ZS0dQeUV0bGZYYXFiVTVtbko3NWx1ZFJrNEVVYXdmNEdzS0F2QTBIRTdVRDcxYU5CNldmN3Fxc2Zwb0pQUi1OTjcyZXRlRWJqY3FYcmc3VEZQbmNqWFYzY19HLVRFQm8?oc=5",
+      "title": "Anthropic's founders kept a kind of control Jensen Huang never had. Here's how they did it. - Business Insider",
+      "snippet": "Anthropic's founders kept a kind of control Jensen Huang never had. Here's how they did it. Business Insider",
+      "published": "2026-11-20T15:11:00.000Z",
+      "outlet": "Business Insider"
+    },
+    {
+      "id": "4666d4ad3d1c",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOdkxLdVJkaklkUlhNeWRDeXZINDhTbkF3UWJtdWdhYk5nOGxqSERnMlZsM2syQXNHUWtGcTM2N0JUR0Q2V0FaSW0wQnA3VGV3c1M1ZHRhMEQ0M1FBcHozbGJwNHFKdE1iWWhaSVFGTnlYMmItVmdzTnZWTnJxLTRJeVJxcWs5RERyamRUOHBYeTBISjRR?oc=5",
+      "title": "Broadcom Stocks Rise 4.21% as Chip Supplier Joins Anthropic's $26 Billion Placement - Yahoo Finance",
+      "snippet": "Broadcom Stocks Rise 4.21% as Chip Supplier Joins Anthropic's $26 Billion Placement Yahoo Finance",
+      "published": "2026-11-19T17:30:26.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "543c0771afa1",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOUWtQRGk2ZU51Q1VaTW5hYjA5RkNBYkxRWjR2TjVIQk4tcTM0QkN0ckdZVWpmeXNIOVhacW1nWXZ5YVZiS3loYnFMN0FPSGx0Z3lTSzFZTDBFMHJrTm9KOE1xZl9uMEFJLU84cUJNdjJWbDFNYlFSeHIta0dRX2FJN21wc3RPUQ?oc=5",
+      "title": "Anthropic’s IPO leaves more than half of institutional bidders without shares - Yahoo Finance Singapore",
+      "snippet": "Anthropic’s IPO leaves more than half of institutional bidders without shares Yahoo Finance Singapore",
+      "published": "2026-11-19T15:29:14.000Z",
+      "outlet": "Yahoo Finance Singapore"
+    },
+    {
+      "id": "463b915bd4d7",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQNUdOSHBVM2ZJNkI3ZWpBOEZRWVRnZkhtRVM5dGJyQXJpUlBsR2xHX2hzN0JaMDUxNEtnd1pheFVsRGFNRnk1V3BqTUZhc0poZVQzWUZvZXVZckdXc2NfRmpnai1jZHdQZ3A4R3ByNk5yNU5VS2I2MzhlZ19yR2wyeFJid1NaeVZhTVptRXRtMWFGZGwxVXIyQzNSeXZTWVVhRHhEcGxfSzdCZ2FuU2FPamY3RlAya1J6alZfVmJOMA?oc=5",
+      "title": "Anthropic Joins Trillion-Dollar Club in Nasdaq Debut After Record IPO - marketscreener.com",
+      "snippet": "Anthropic Joins Trillion-Dollar Club in Nasdaq Debut After Record IPO marketscreener.com",
+      "published": "2026-11-19T17:53:16.000Z",
+      "outlet": "marketscreener.com"
+    },
+    {
+      "id": "56cba916d5c7",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPRzBjanRRcTFCYVM4ek93amo2bGRoTlMxLXJFcS1YSUVLX1NUclBPdWpDZTg3eFJlUy1waVNiOUpIRFd3eVVEMHZQQnhQcXNqcVBxSjNrOUFIdjc5WVRrQjBZTDFwUWNadkpWQkd3Y2I0TU5ZeDlFMWlKNUU0bjJ5OUhmdGVhVXE0Z0taZnpFOU9Zdw?oc=5",
+      "title": "Anthropic IPO Leaves Many Institutions Empty-Handed - Briefs Finance",
+      "snippet": "Anthropic IPO Leaves Many Institutions Empty-Handed Briefs Finance",
+      "published": "2026-11-19T23:05:22.000Z",
+      "outlet": "Briefs Finance"
+    },
+    {
+      "id": "4c81b5f7889e",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdl9DMU0tVWp6NjVuaXZPRHJucjluOHVPSDhfRmZ1di0tYnN3QmpXTmhaQzk4UDJ6Q25qRi1reTJaQV92OFdOUFdxVlFnMmYzX2ZFRGhlRWJobllZNm9wclpMai16VFZRX2xKNDRVQlFaOHUxb3R5VEZ2TnNEUUt1ajJZa2NvTGRiMGdBUHlFb1U3QWdlVHlQdnc4VHBPTmpMeWwyeEY5dkR3M2RZQXRjbUpGa3NLQjVOSFlYQXpnR2trdw?oc=5",
+      "title": "Anthropic's $2 trillion debut puts key executives and board in spotlight - marketscreener.com",
+      "snippet": "Anthropic's $2 trillion debut puts key executives and board in spotlight marketscreener.com",
+      "published": "2026-11-19T18:59:34.000Z",
+      "outlet": "marketscreener.com"
+    },
+    {
+      "id": "64198ace6015",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPS1YySU5GRzQtc1o0elBJX3Y5SUU5bmtRQ3FEeFBlcXVPQmYyMWFZNWcxMGVtVUNpWkZ3bjA2ZEhvX1QtWGg5N3NTQWpnbEtsQU04dkZmbVlTbWRuNkZBRFA0VDFaOVdKUXAxc0FZR0FpRWdEcHJYcDA4ZWwtV3ZIME85MGwyQ013ejA5cC14Qk9FSjZ5Q0s1c014S3NwLWVQME9EbE5JcU1Yc3Bx?oc=5",
+      "title": "With the biggest IPO of all time, Anthropic’s ‘good guy’ reputation is on the line - The Verge",
+      "snippet": "With the biggest IPO of all time, Anthropic’s ‘good guy’ reputation is on the line The Verge",
+      "published": "2026-11-19T14:25:37.000Z",
+      "outlet": "The Verge"
+    },
+    {
+      "id": "08c59464d8b2",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPZ0VYbzJkdk9jTk5RaHVSSldNaGNONmp2dk9oVDFDUmJUVTh1cnJLUldpZVpmODJmN2NBNkhhVi1zdFRnZnA4NGpkTGdNZkw1QkFWU0ZJTGJnSkJZUWhVUWhFRDZyRjVSbnpHdERiVEZnaE5ubmZhVnhQLWtOeVlkSjNEZllGdw?oc=5",
+      "title": "One of Anthropic’s Biggest I.P.O. Winners Feels a Bit Uneasy About the Whole Thing - The New York Times",
+      "snippet": "One of Anthropic’s Biggest I.P.O. Winners Feels a Bit Uneasy About the Whole Thing The New York Times",
+      "published": "2026-11-19T10:03:03.000Z",
+      "outlet": "The New York Times"
+    },
+    {
+      "id": "782352ad0f46",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRDE0aGNfbWwyMnZQVzRhT3RiVUJDMTMtQUhFLXpwMVluUEpLVU9FOWUxUVFtYl9jUVNmU1FYdDlRcVhXaHRTSVF6UUduRWhjSG5JQWllZE9uZktJVFRMLWYwcUNfQ3o1dzZVc0dGeTl6dUJ6RG5scmp4RlVTenhBbjRKQ2ZEOFMxTzBsUWJ5Y254QVdM?oc=5",
+      "title": "Anthropic hires former Disney CCO Kristina Schake - PR Week UK",
+      "snippet": "Anthropic hires former Disney CCO Kristina Schake PR Week UK",
+      "published": "2026-11-19T16:40:12.000Z",
+      "outlet": "PR Week UK"
+    },
+    {
+      "id": "559958acd672",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNbWNRcUpTOFJHakRtQUJwQW1JbnVNN19fcmtzTndkalNyNndTdmZEZFdrVGZpYm1ELWxBSFpjM1drYzY2M0RBRmdsZ1BRN0lJR2VzSHNXS3ZEa3dZbXhleUxLcEdYeE1KX29YLTVFcmpEc2JXZm1jOVRaMDdSd2JyMm5ROTZudGtNOVZUMWpoX2kwVmNES2w2V3RmVDFLcUw5aUtHOA?oc=5",
+      "title": "Anthropic's seven co-founders: two siblings, three physicists, a former journalist and a college dropout - Nacionale",
+      "snippet": "Anthropic's seven co-founders: two siblings, three physicists, a former journalist and a college dropout Nacionale",
+      "published": "2026-11-19T16:39:51.000Z",
+      "outlet": "Nacionale"
+    },
+    {
+      "id": "2b68e8c490ad",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNYTZBRUtIcVFodjF5bmNSTFJINnpVb0JfX0IyNERjQmFSVFhtQUM0RHFnRlZEdlRnMEVkUkNPMU1qZmpvVnQxZXR3bmNlOXZUeTVuRGRCdm9FVVY5c0pady16UDBQem4wLXVKQ2k5Mjd3dnpsS3NqZjNuZFVwWGNEOVd5WVRGa2NRQTdaeGgyOUFPR3RTSWc?oc=5",
+      "title": "Anthropic’s Record IPO Leaves Opening-Price Buyers Nursing A Loss - 2oceansvibe News",
+      "snippet": "Anthropic’s Record IPO Leaves Opening-Price Buyers Nursing A Loss 2oceansvibe News",
+      "published": "2026-11-20T05:56:13.000Z",
+      "outlet": "2oceansvibe News"
+    },
+    {
+      "id": "0e108b936187",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWGtlQ2J1LTV0eWZrTHJSYkpUWGVfQ2dzb2w5ZkQwUWtfNDlkNWlCM2FWQ28xY1Y5dWwzQ08ycXUyaTd4TEFtMHpsNHdhQkZRNXh2azVHMF85cFNrSFVaZVYybzAtcUMxT2NydTN0eUkweHlVaFNTVWpYYWctVWlTV2dHY0MwRDBldF92UWpkUWY3akJWbzJRVDc3WjFiNncwRDA2Vg?oc=5",
+      "title": "Stock Market Rally Fails As Dow Tumbles 1,101 Points; Anthropic's IPO Leaves AI Trade Cold - Investor's Business Daily",
+      "snippet": "Stock Market Rally Fails As Dow Tumbles 1,101 Points; Anthropic's IPO Leaves AI Trade Cold Investor's Business Daily",
+      "published": "2026-11-19T23:08:00.000Z",
+      "outlet": "Investor's Business Daily"
+    },
+    {
+      "id": "af1a3ac0cd21",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOcVItWng3dENwb1BodmdRMWFidURXZ2E2dEhhb2djVUFEUnUyTGR4WnhpVnoxd0ZwaE5FM3NqeEVJMWhaeUZDTndkWEMtRGFNWU1MaUtSaTJ4Y2tsaWRUUDZocjJNV01tVVhtRHI2T0UyVW5jZVVfaWN3dXFTdEIyWjBGVy1zc0NqdDFPMkNzMkdzMG5kVlpKVzRkWktrMVZ6Z3ZZVExPX0FUVnN0dWhITW8zZWpvc3QxWlhUbkVVRmNXNWpfVGlDSg?oc=5",
+      "title": "Factbox-Anthropic’s $2 trillion debut puts key executives and board in spotlight By Reuters - Investing.com",
+      "snippet": "Factbox-Anthropic’s $2 trillion debut puts key executives and board in spotlight By Reuters Investing.com",
+      "published": "2026-11-19T17:25:40.000Z",
+      "outlet": "Investing.com"
+    },
+    {
+      "id": "209184f44905",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSE94cjgwZEt6MnZQRnpNbjZoOFJTOFJVRlp4a0drQ0YyU1V6RlBfSDU0SnJFUXFGN09GeV9UcWtuTzZzWmxWcDBQQWc4dnQ4TDFIT3ZHeVo1M3pKa0MwX01lOHNUaFlDcWNsRVFMemwtd09zMkc1Z0hPRVNTSFVtTVBMMXZEbGhNdE9CbU53NzluTF95T05GWW83ZGVWalNRR09OVlJRdEg?oc=5",
+      "title": "Anthropic IPO Delivers Billions in Potential Gains for Venture Capital Investors - Tekedia",
+      "snippet": "Anthropic IPO Delivers Billions in Potential Gains for Venture Capital Investors Tekedia",
+      "published": "2026-11-21T12:24:12.000Z",
+      "outlet": "Tekedia"
+    },
+    {
+      "id": "116bd2719e0d",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPR1IxaG83Z1RNYXh1czI4OWRLOERJeERUX1M0UV84MU0xdVktZVQtM25wczdUcmtITHpfcDlKdEtrTFRrSGMzQ3AzLUxCU2ZJbUtQQms5TTgwdFhaVFBCZUxneWN6Sk1pcTRURFlWNGh4eE9XcTBrWllRcmFfTzRGeWxjMUNYZGxvR3VPZG5mck9Ob3VnSGRxS1drOXdPSHpIelNLRdIBqgFBVV95cUxPdlBwdks1NnpSN1JtdDY1LUE3TzFnODFabzRreV9nM2lZVjk0SDc4Mk5NSkhrZk9scV9TYmpteWVhQVA1dFhpRVN6U3lELUlfZkd3Z1lLMERrWmNJWjQ0X2V0ZzZ3bV9CbTBfMUpYanV1OURrQnVFVUZTaUxKc0F4Mnp2ZmpiT3pGMklBS2RLRkx4TWZNU3hfY1RrYWJOU2NDdkNXS3h0c251QQ?oc=5",
+      "title": "Ashton Kutcher, the venture capitalist. Actor joins the billionaire club after Anthropic IPO - ThePrint",
+      "snippet": "Ashton Kutcher, the venture capitalist. Actor joins the billionaire club after Anthropic IPO ThePrint",
+      "published": "2026-11-20T13:58:12.000Z",
+      "outlet": "ThePrint"
+    },
+    {
+      "id": "c23ed2d1752e",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOcUJSTk4wbmxVWFlmcVhhRkR0V3B2SlpyQWVET2RNQS1nWjQxR2dVZ211V1NiZjBrd21iUUJJSjRTbi1QdEtTUjNueFQ2bk9xbHZOYnV3bGJ2cm0zQ1k1NXVfLVhHcmxGNTRySnNpbWJ6R2pVNU5DWDE0VEN1cGJKcURmTW5NR2lWOXc?oc=5",
+      "title": "Claude's maker lists its shares, and a one-share trust will pick most of its board - Stock Titan",
+      "snippet": "Claude's maker lists its shares, and a one-share trust will pick most of its board Stock Titan",
+      "published": "2026-11-19T17:04:03.000Z",
+      "outlet": "Stock Titan"
+    },
+    {
+      "id": "114d4250266d",
+      "source": "gnews-people",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcW5oSUtmYXNTV2k2TldJbEdUMGtzelhadFVNT0tVMnpra1ZRQTJNc0FEeHMyYXllRGpMOF9OWl9GLVNyMkZWa0NNTWtoUm9CTUF0dXdiMmtTTko4WG5vYkJWSS1WenhvdldHaU13X1MyV19MaWlEWlhXV0tPRlBidkJEVFVCVnQxeHFwaDZ5VGdkU0pWaU5WcHJB?oc=5",
+      "title": "Aahana Dhar joins Anthropic as communications lead for India - Indian Television Dot Com",
+      "snippet": "Aahana Dhar joins Anthropic as communications lead for India Indian Television Dot Com",
+      "published": "2026-11-21T08:06:53.000Z",
+      "outlet": "Indian Television Dot Com"
+    },
+    {
+      "id": "b0feafd91cd9",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPckx2b2tGYjRHR01ZSjFVN1dzNlFsTHlST1Fidjh2V1ZsVzFwWGl1R3pZUl9Zc2JKOTFvTjA4OGNaQ3VXNFNNZ0JKNXJIWHM4Zk5wcHJQckpzQWtmTVEtUWxjclZ1S0tUSGhJTmZVQkN1ZVRGWGRuVmxLbUpjd1A3RXl3?oc=5",
+      "title": "Anthropic IPO details: Price, valuation, stock ticker, more - Mashable",
+      "snippet": "Anthropic IPO details: Price, valuation, stock ticker, more Mashable",
+      "published": "2026-11-21T12:21:38.000Z",
+      "outlet": "Mashable"
+    },
+    {
+      "id": "171d6125d867",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNS3FPem5vX0lZRzBlVnN0UGR3UkFUSmZXek1yY3ZmOVlIX0lOVy1kR0dWcVZoenFHSGdRS1R6MHRtenpxX2ZOVnE3UkNmOWdteXpQZUhFTHFMSTZFcG16d0hPMm9SaVlMTDdLVVpHMDljMmg3S0ZyM1hmTXotZ2w3cGhMaGNjOWFILWV4UjQ2dGxreVRGUEVrQXdSWFFMWThHLUtwVEFrWHJVLVQyQmlWdFoyX2pRRElfRm1NTnNqTnlENmQtSXNvdjZFVQ?oc=5",
+      "title": "Anthropic worker claims to have solved a Holy Grail of math problems with the help of AI - NPR",
+      "snippet": "Anthropic worker claims to have solved a Holy Grail of math problems with the help of AI NPR",
+      "published": "2026-11-21T12:30:16.000Z",
+      "outlet": "NPR"
+    },
+    {
+      "id": "d141bb057593",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUGFVS1hiSUJzbjY4b1VONUM3dmVWLW1QcEloM19BSElzbXZJYXl6WVlWMzQ0MERJY0pYQ2lTUkZJUHB0MVYyU1B4b2pfMnpCNElzX1p6c1Riek50SjJBQWZwaThhTWZxYmpselAyY200bHc4T0UyT0hsdGZxdkc3TFUwMWNJdHNmZlRwY3FuZWJRc1h1cE00a3paSlctRUxuZ3NGT2J4TWpUY3RzT213N0g2NWQ?oc=5",
+      "title": "Anthropic IPO: Amazon, Google And The Art Of The AI Cloud Deal - Forbes",
+      "snippet": "Anthropic IPO: Amazon, Google And The Art Of The AI Cloud Deal Forbes",
+      "published": "2026-11-21T11:08:30.000Z",
+      "outlet": "Forbes"
+    },
+    {
+      "id": "d6bb91ce599f",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNZTBzZTRoVTdqRmJnR3NHc2MzVld1R2ZKYnpWREpNVnZfTDIxNFBxYUlZcTNySXJSWklON2syb0Q0M2pKb0tEOFpnWmVBZW5EeTFqSGRLU2lfUWFVMnFmLTBGTGU2a3dPMkxleXFFWHRCR0lLMFljWnhoRWctcnlNWE8zeGlsZktlR1hZcFJReVNpbUl3dlRFaG9R?oc=5",
+      "title": "Here's How Much Cash Anthropic Has After Its IPO, and Why It Could Be the Most Important Number for Investors to Know - Yahoo Finance",
+      "snippet": "Here's How Much Cash Anthropic Has After Its IPO, and Why It Could Be the Most Important Number for Investors to Know Yahoo Finance",
+      "published": "2026-11-21T15:46:01.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "5a59b49608cb",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPb0FwaFl3Ql91UlRsSWJEWGhfRndsWWtseUYySjhXdUFHLXpERllJUnNBQjZfcFQxNFQ0a1BOblF5a3dxMU1vQUhBQ1FjNGYxZ1JHSGZEQTZFOVlJY21TVzVkdkFJaTBNXzlaOG5BLUtaTXoyMHExdWtrc3BDN3k5X3pZa0NtYlNTZDNLRHpFMWx2LVVBcFhTallvdHg?oc=5",
+      "title": "Anthropic IPO Date: Investor Timeline, Valuation and Expectations - SmartAsset",
+      "snippet": "Anthropic IPO Date: Investor Timeline, Valuation and Expectations SmartAsset",
+      "published": "2026-11-20T08:00:00.000Z",
+      "outlet": "SmartAsset"
+    },
+    {
+      "id": "b3d4781d7493",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPNFlsb093Q1ZzQzZIc3VJVWdzUThXbE1UdEVvUzctRkczNDlFdWZEdEJVM0lCRldKaXp2NktnQkNrMi02Z2xqdmNycjBkRFdObVdnLW4ybE9lMXRSZEtUNVp2U0UyUU5YOEV2dlhOakIwQkxpaHI0YWJaSU94ajJjMnYyemRFV0JWY1NuQzVKZ2xBZXhQ?oc=5",
+      "title": "Anthropic's IPO Premium Shrinks as Banks Draw Blame - The Defiant",
+      "snippet": "Anthropic's IPO Premium Shrinks as Banks Draw Blame The Defiant",
+      "published": "2026-11-21T16:00:11.000Z",
+      "outlet": "The Defiant"
+    },
+    {
+      "id": "ee80e01158aa",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB5YzhtQzBCZUJMdFh6eXJCaFNlTlpvenBOS25EbWRsN1IxYWZmTmFfTXRnNlZaQUtQVEZmU0pmbWtCUmRtcU4tcnFCMFFpa1dvRHd6dGRvR3pfZw?oc=5",
+      "title": "Anthropic IPO: Expected Valuation, Timeline and Investment Options - SmartAsset",
+      "snippet": "Anthropic IPO: Expected Valuation, Timeline and Investment Options SmartAsset",
+      "published": "2026-11-20T08:00:00.000Z",
+      "outlet": "SmartAsset"
+    },
+    {
+      "id": "1f899f1661bc",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOX3B5Sm5YTGJzQ282Q1hoanBtLUJhOWZUQnRHa1ZGTVVQZG1KRUFiSGI3QlFORDZwQTdESXNvZVZtd3ZKVGstSy1OSGdINV9iTW5qT21ELVRwVHdUZTlQd3FVTG5ZTEVsSTNBTXZFbk93OEo0ZHhNZjZpYXc4TzZkdjQyV2w2VE16SXFDeGdHeWY0ak42NU9qYzN1WQ?oc=5",
+      "title": "Cathie Wood Sold Nvidia and Bought $78 Million of Anthropic at IPO - Yahoo Finance",
+      "snippet": "Cathie Wood Sold Nvidia and Bought $78 Million of Anthropic at IPO Yahoo Finance",
+      "published": "2026-11-20T14:52:42.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "184cd5a24621",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQNFhrcnhQUm42ZU41TFlMRFNZNTZhY0RiS3lzZkQ4OU9UNjdnZGRXNTM2V0hyYmpkNDZfMkFncUJRTWZBTW5aTk5KdlJSZTVlSWkwTUF2T0doR0xKNERibXF0RlBmcGk1UmtMdmZ2NU5tUHRhcmpOdWZQbUdCNFppRFo4VlF4VENINk1JNWpzc0k?oc=5",
+      "title": "Anthropic: IPO Priced To Pop, Use Caution Though (NASDAQ:ANT) - Seeking Alpha",
+      "snippet": "Anthropic: IPO Priced To Pop, Use Caution Though (NASDAQ:ANT) Seeking Alpha",
+      "published": "2026-11-21T15:00:36.000Z",
+      "outlet": "Seeking Alpha"
+    },
+    {
+      "id": "48d94a68422d",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNcGZTRVdJcGNQbEdjRlRQUnN1YjBzTXlaYzFDb0swSDlCNTVsLVo2SGtQTGxsUGxzVmE0SkFPbHB0dFBXbWhGQVZUdmFQZ21zeDBwcW5OSjJmOUtmQjB4U3lNVkptMzYybHpmR1hkTUZESVlQU1VtWFhsSzNGWUlmWHNUa3FCd0t6NjNFR0xkTzBxdjYySFFtSTRQbTFwTDd0TXlfVEY4dnZCNmxrVnZFWVlSR0U?oc=5",
+      "title": "Wall Street Asks What Can Save AI Trade After Anthropic Wipeout - Bloomberg",
+      "snippet": "Wall Street Asks What Can Save AI Trade After Anthropic Wipeout Bloomberg",
+      "published": "2026-11-21T13:00:00.000Z",
+      "outlet": "Bloomberg"
+    },
+    {
+      "id": "2ea312605f65",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4yMmx1bjd2N1FFSVNKYmhSaXp1NU9BRE5JMUlfTmtBZE02OHQ4dXJwWklTMDBqa2ItR0s1YnhGMk1oOGVobjE1UnNGc0ZUX3kxN0RFdjNIMHBrT29IYXViZTV2bm0?oc=5",
+      "title": "Who Is Ashton Kutcher? His Fund’s $7 Billion Anthropic Stake - The Profile | Polina Pompliano",
+      "snippet": "Who Is Ashton Kutcher? His Fund’s $7 Billion Anthropic Stake The Profile | Polina Pompliano",
+      "published": "2026-11-22T01:28:34.000Z",
+      "outlet": "The Profile | Polina Pompliano"
+    },
+    {
+      "id": "c1f1ceecd77d",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNS0FKVGVRemxJOXp2eEYyc1RaNFZkRjNQMGswY3JWZjVQYW9kMlVTQzltaWk4cTZRMFA4QUVpUXJFZ0tBS0s2UXFUQzVTWmZReUh2YUxJVkUyVzMtSlQ3RWUtRWl3cThhUDcyZzJ2UXBJX1JtTDFaZk1pUmJnRGhtMkxEQmhSRy1fanJjMVVwdmlPSEozMWVjV3BQTQ?oc=5",
+      "title": "Anthropic’s IPO could flood NYC’s luxury market - The Real Deal",
+      "snippet": "Anthropic’s IPO could flood NYC’s luxury market The Real Deal",
+      "published": "2026-11-21T13:00:00.000Z",
+      "outlet": "The Real Deal"
+    },
+    {
+      "id": "207d61cae36d",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVW4zcHJXc2lQY2ZZNmVMbGZNWHRsZnByUkNreFEwRnQxMWx1TW9udVV3ODRhUGZyek9yUnNjQUQxYUREYUNDRjFqM2c1MlBjQ1gyQmdHVFBlM1ZhaTk3bVRNZnlydlptcWxKdlhqTXJlbElNNXZXZDZNeHpSVmZ4OXBYNHFibWJHSVdFMlp3dlNlS0ZXUFFPN0ZRbw?oc=5",
+      "title": "Nasdaq plunges 5% a day after Anthropic debut, but investors still believe in AI - Yahoo Finance",
+      "snippet": "Nasdaq plunges 5% a day after Anthropic debut, but investors still believe in AI Yahoo Finance",
+      "published": "2026-11-20T21:17:24.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "c9941b5759f7",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPckw4dk5ZSGNJYTdJZTRJSExpalJqd2tiZWFsRG5NYzdVd0NLMnVFM2paNnAtUFZRd3V0S0tKdXJOU09OUVA0UnJiYzlMaDM5Vjl0b181alp5WEstV3luaVVyYWNlRU9LUXJ2ck16a1RDcGkzTGZsdkI2TG9weHdwdU02OE9HNDVWOVFuZ2kyREVVbGFGbEVhQ0pYUQ?oc=5",
+      "title": "Ripple’s CEO Says Investors Sold XRP and Bitcoin to Buy Anthropic Shares - Yahoo Finance",
+      "snippet": "Ripple’s CEO Says Investors Sold XRP and Bitcoin to Buy Anthropic Shares Yahoo Finance",
+      "published": "2026-11-20T19:01:03.000Z",
+      "outlet": "Yahoo Finance"
+    },
+    {
+      "id": "bcf2699d85fb",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPdUMtMW1vc0VVa2FIUW1IdkJCQmJKS0plZDdFZmtzanVreWtXWUFFRTBBS0U1VEVDbFY5Z29qbGdCd1h1SU1Gc29SRGNONUtqSml2UkN0NU9UZDlsVkZuT1l0bzU1ZFpZQ1FjMTljUHlnRHJJbWhJb292V2FBZHVCRnA5TjZGRFR4WGRSbnVrSnF3RlRBVDluODd6UWlOMHI5ZjNv?oc=5",
+      "title": "A developer selling a $30 million LA mansion explains why he would accept payment in Anthropic shares - Business Insider",
+      "snippet": "A developer selling a $30 million LA mansion explains why he would accept payment in Anthropic shares Business Insider",
+      "published": "2026-11-21T14:00:00.000Z",
+      "outlet": "Business Insider"
+    },
+    {
+      "id": "b1070465d0e0",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOZlZtUnI3ZlBCbXZCQng0emxmZVNIeVFRVjlCOG9iYUF1c1Z2OTZ2M3JrbmpsMnNsVFpEekFINTQ4bXByX1ZBZHRFU1NoSlVSSUtDdTAxRXhSSkk5N1E5NXJrRVJCTzJ1VjlBQzdOcmlEZU9hRi1qVlMwbUVOYjVKTzB3V2dSRG01Zm5nWVBOc0dia1o3WUJyc0FRdDl1WWZaMjAyelFOdkhfbVB3cERuQmpyeDYtTjdQekNIQVVCdDgtbks4UWtrX0lLaHMtMko0a1NfRGUybHlaNGVxVnpVN05IaC1aeUpTVWVMOXhldGhhSnFpWE5yWXM1ZGNNR1NycEtEdGxvQ25UQlFQ?oc=5",
+      "title": "How to Go 2x Long Anthropic (ANT): Leverage Shares by Themes Explains ANUU, the 2x Leveraged Anthropic ETF Launching Monday - TradingView",
+      "snippet": "How to Go 2x Long Anthropic (ANT): Leverage Shares by Themes Explains ANUU, the 2x Leveraged Anthropic ETF Launching Monday TradingView",
+      "published": "2026-11-21T19:00:00.000Z",
+      "outlet": "TradingView"
+    },
+    {
+      "id": "9812bd92b84d",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5kOTJfVXNqSU5jV3N2SkhmeHZiWDBJd0U5eV9IOWVKSG9pZ1NNb05iTG5wM1Z1U0I3ZW9PalVyOC1sRjI3Yk9WRkdRYUZPMkROTGZRdzN1dnloVGNld0t0OEpQQTBLbklxNkRZSFNldTROODJSRkE?oc=5",
+      "title": "South Korean Retail Investors Buy approximately $164 Million of Anthropic on IPO Day — One-Fifth of SpaceX's Debut Haul - BigGo Finance",
+      "snippet": "South Korean Retail Investors Buy approximately $164 Million of Anthropic on IPO Day — One-Fifth of SpaceX's Debut Haul BigGo Finance",
+      "published": "2026-11-22T05:05:00.000Z",
+      "outlet": "BigGo Finance"
+    },
+    {
+      "id": "cf336f8635b8",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQZDdheTJqOC1UemVwS240R3NSYTRuRTlDNU1oZTdiTXJWVHpTWERBX0NuSEt2TldXdzVyeFVKZ3Y5YUdXOHNxUzRtZllia3RNb1JDS3ZQM3RkeTdDMDZfVmk1bVhLdHEyWThOY2hJNS1SZGl5cFlEdktSN190WFptZNIBlAFBVV95cUxNWkk5aVBXbzJRX3JQWGhNUTh1aThGamQxZnYyTmtWNmVQZWVkNnNTLXVVX3ljOUk4eVFlanhUSVdZNWRqV3VYazhQLTE2djBSTnRMOWRXSUR3dXNIRWlMdkxwbUZjZjcya21ZZDZPV1RaTWdPdmZyNzR1azdRODdKVndVRFZwMWdPYWg1RWZTUV9qVEMx?oc=5",
+      "title": "Anthropic's second-day share drop sparks debate over IPO decisions - Chosunbiz",
+      "snippet": "Anthropic's second-day share drop sparks debate over IPO decisions Chosunbiz",
+      "published": "2026-11-22T06:18:00.000Z",
+      "outlet": "Chosunbiz"
+    },
+    {
+      "id": "b187d2727a47",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQa3U2SjhqNnZ3MG5UXzZIcmZGWjNXWjZHZks1SjRKYUF6enYxeWhxMml1SV9qTU50UVhFUExNQlRyeGlIdVRmaEN4ZEtjbkxuSXB5ZnhsLU40WEJpYTB6UVBIMzNhLW81aU5zemo1Q2l6RkJ6MHQwUFdTS3hRQ3JNXzJaS2Y3MHplYlZFdlRLYm13emY5UzluMDVrQlFQdVkz?oc=5",
+      "title": "Investor Focus: Anthropic’s Record-Breaking IPO, Nvidia’s Earnings, and an Undervalued UK Defense Stock - Morningstar",
+      "snippet": "Investor Focus: Anthropic’s Record-Breaking IPO, Nvidia’s Earnings, and an Undervalued UK Defense Stock Morningstar",
+      "published": "2026-11-21T08:16:08.000Z",
+      "outlet": "Morningstar"
+    },
+    {
+      "id": "1470b7f77759",
+      "source": "gnews-ipo",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONVNIT3FUbks5VUMtaG1ZYlFLQ2tBLWlQZTY0SnhYV2IxaHQtcGVVYWFKU2o5Z3Nuc1VYSEhKcDdxNTU4eWNueWw1QktkVTJSOUg3VzdGTjhnaGJvek1DMi1yOXhIWWpLSWdPZHZfTVMzTlEycnpTVXk1anR5YjIxa0JlTU43YlZsQlVTdWxFM0JzS1RsNU1SUkpjZk1uWXhNdjEwbl9xZmRYeTQ?oc=5",
+      "title": "Anthropic’s IPO caps explosive growth period for the AI startup - Jamaica Gleaner",
+      "snippet": "Anthropic’s IPO caps explosive growth period for the AI startup Jamaica Gleaner",
+      "published": "2026-11-22T06:10:11.000Z",
+      "outlet": "Jamaica Gleaner"
+    },
+    {
+      "id": "525a0fe7fac1",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNa1NpeTd2ME5CZW43WVV1REc5ZUhhUXRidXBCeTRjZDRZMEw2eDJERW43dnNtVDZhSDc4azY5OEVxTXVHcFpjbk9ZdUZubkNpanh3blR0Ynh1RXVMVXlfcTdYRHg5TllBeno5LXFJTERhczZoblNwaDVuZFJ4U3FoRHpoUTNlS1Fac3pWNC1BYV9BRzB3aWNVa0MzcHliNGJXZDlmTUsyMA?oc=5",
+      "title": "«Все станут безработными»: сотрудник Anthropic предупредил о будущем человечества - dev.by",
+      "snippet": "«Все станут безработными»: сотрудник Anthropic предупредил о будущем человечества dev.by",
+      "published": "2026-11-21T09:05:00.000Z",
+      "outlet": "dev.by"
+    },
+    {
+      "id": "72647f67bc26",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1xWVVSZ0hGTG1ZUzBzMk1Mc01BSE9IN2NvdlREVDlWRHd4aVdiX05rV1NoakFXaE5PbkZsVzE2ZFNxTGtKSWcwdktR?oc=5",
+      "title": "Anthropic готовится к IPO: сколько компания зарабатывает и на что тратит миллиарды - Т—Ж",
+      "snippet": "Anthropic готовится к IPO: сколько компания зарабатывает и на что тратит миллиарды Т—Ж",
+      "published": "2026-11-20T13:53:21.000Z",
+      "outlet": "Т—Ж"
+    },
+    {
+      "id": "2280b3fd0f07",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQa0twQW1hNTlHYUM0SUxnbXhic2YweW1sUW82Q2pVeHh6YWIzU0Jmd09BYUlNRTh0Yk9uU3hReVNSZG0wZGlJOHEzWFMyNHpoSG91WmpjdnRqMVZfZmJiMEpvNGlGeTFPRkhjRTctanZJVXA5aXlyUlpRdDQ1cWtZUG4ycjJIU1hhcHhOUUFSSVpqQ1JnZ3ZWeWlvY2hfQQ?oc=5",
+      "title": "Anthropic привлекла рекордный капитал, но за два дня торгов почти растеряла стартовый рост - ProFinance",
+      "snippet": "Anthropic привлекла рекордный капитал, но за два дня торгов почти растеряла стартовый рост ProFinance",
+      "published": "2026-11-21T18:22:49.000Z",
+      "outlet": "ProFinance"
+    },
+    {
+      "id": "6b2050f89acb",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPNzJzQmg5MS1PQ055b1lDa05XSzYyNWdDT0E2cENFcXpHMG5wejFpc2pwOGlQZkZmRk0wcnpUOF9HcDBMdm44Z3dFbjl0VW5IVVV0WXBzSzl0MThTUFpIdVM0WkppTE1ZRW1TS0xsTl9adUotX21jZXlGN2tMLTVTZk9xWlBVZHRuWDJBV3VpZGtlQ2M0Q3lXT2xTTkh0anprUXNSVi1OM2h0LVJYOGI3T2sxUVRnRGJmWGEwWG81YzZGZw?oc=5",
+      "title": "Конкурент Anthropic предложил бизнесу замнить дорогие нейросети специализированными ИИ-моделями - Inc. Russia",
+      "snippet": "Конкурент Anthropic предложил бизнесу замнить дорогие нейросети специализированными ИИ-моделями Inc. Russia",
+      "published": "2026-11-21T13:02:50.000Z",
+      "outlet": "Inc. Russia"
+    },
+    {
+      "id": "0fdeab45df98",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB2ZktQc1c4LXJDX0dKd1RwX1lsS1UyRTlITlVBNXEzSERhVS1UeE1SQU81SEtxOWxYSl94eWVDRlpMbGNEemdPUmM0ZkNvLUw2ZUlrQmxHUXLSAVNBVV95cUxNNEluelhaampTS0kwZXRXUHJfRzUwWHJMRzFnYm9nbU5MaDFuQkNSTU9KaXpFTTEyQnJ3dlpEMkpVaU5Fa1RnQVpneGQ5aFpaZHUxUQ?oc=5",
+      "title": "Александр Виноградов: «Бабла привлекли достаточно, чтобы считать размещение историческим» - БИЗНЕС Online — Новости Казани",
+      "snippet": "Александр Виноградов: «Бабла привлекли достаточно, чтобы считать размещение историческим» БИЗНЕС Online — Новости Казани",
+      "published": "2026-11-22T05:20:00.000Z",
+      "outlet": "БИЗНЕС Online — Новости Казани"
+    },
+    {
+      "id": "c858a1d8f3e2",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNWVNXQnhna2NoWEdrbnJ3VTJiTmt6ZWtiX25RQ0VKYzlvcGhuWk1Nc2lISWR3eExtUEY1azhfWnNQbTItZ1FPM2dqVWxGdFZMSF9KSWRQcUdLNXI4VDBIUTN4aE5DdjdnSXNWWXlyX0VrQm1GSFJJVkp3b250RWFySnNHUTF5bFR3MDkzbWZlSC01WFJpT09lZ05FclZ4VHBEaEMxNmZvUlVrNW1JWlZ2ZlV4NDBwbGtTNzNrd3V6ZEp2c2s?oc=5",
+      "title": "ИИ и одна из величайших загадок математики: заявлено о доказательстве гипотезы Римана - Euronews.com",
+      "snippet": "ИИ и одна из величайших загадок математики: заявлено о доказательстве гипотезы Римана Euronews.com",
+      "published": "2026-11-21T10:18:58.000Z",
+      "outlet": "Euronews.com"
+    },
+    {
+      "id": "7f70df92752f",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA0RzZsVDVfTXJybDVQdU0zUE9qVzhmTWFnOUJlYThVdG1wRHdXZDU1OFA0VHEzT0RRWE9fczBwY2NqVG0wZ0VuUXp2NWpwenBHVFB2SjJDVVlXMVdBV2NUa0Nwdl9Hc2Y3TEF2bw?oc=5",
+      "title": "Anthropic (Robinhood) (ANT) Цена, Графики, Рыночная капитализация - CoinMarketCap",
+      "snippet": "Anthropic (Robinhood) (ANT) Цена, Графики, Рыночная капитализация CoinMarketCap",
+      "published": "2026-11-21T13:23:47.000Z",
+      "outlet": "CoinMarketCap"
+    },
+    {
+      "id": "b21821af17b9",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPbFNoYXExNEFJeXZlclByQmhkcWhXSW5EWWN6RzBfWjJFMEwtejRheXFjdUVkT3dqNU9nTnYtbXhDcm1UMU02SDlyMFdua2dhRHJTWGQyRC05N0lpTmlJQm0wZ0QtaGxHdVZfaC0tejRBZE1EOUhhT1dMZ09aSUI3UUdUR0dRbjBBdHRtaGVqdDhCMFJwLVRibXBYTU96c3gzVnA5OWZvUVdWRGo0eGJhZDhVeERoSk9TV2hXdUQwTm5NQ3ByeTFldjNaNA?oc=5",
+      "title": "Anthropic (EQX Tokenized Stock) (EQANT/USD): курс онлайн, график и капитализация - CoinGecko",
+      "snippet": "Anthropic (EQX Tokenized Stock) (EQANT/USD): курс онлайн, график и капитализация CoinGecko",
+      "published": "2026-11-21T18:43:20.000Z",
+      "outlet": "CoinGecko"
+    },
+    {
+      "id": "e6458d5a642b",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOcFJ2WTVJekdZaUNXM2tPNXpEbnFYX3dENXlMQnFfazh5bFhyc1h1MWpOeFBlb3E4bVoxNlNlNE8wQmU2UEM4c1FjZkdlc09kWi1vMXRuY2kxcVhWM29oOGpCNlRidGsyZ2ZuZmVIbTg3SkNpdEF6ZWFRUXo2N292cDFiMlpHVFF4M2dlMWZzdXhtRUwtczJIdUZGcGp0ZV8zNXZaQnctTFp0U1ExMGFiVmNR0gG3AUFVX3lxTE5ySDR6cWNrYzI2MTk5WVNxWHlCYzBkQlZkMFZEeXNwc1h4ZkpMeHRLQkxGbzhMamZISFZTWEFoSjRuNlAtSjVfZFJoekUwLUU1YjRGNzNNbmdGZkgwelNtLUp3b2JsX1Brenh2QlU2eDk5R040MVpLTElIdjRuNmtaNXZmSGhqWFhId2ZLZWJHR0tKdlBmTnc1SjFJYmI2Zi1XTFUxeUlNSUJGR0dhUExRSWlpZG8zOA?oc=5",
+      "title": "Акции Anthropic рухнули на 13% на следующий день после рекордного IPO - iXBT.com",
+      "snippet": "Акции Anthropic рухнули на 13% на следующий день после рекордного IPO iXBT.com",
+      "published": "2026-11-21T10:05:00.000Z",
+      "outlet": "iXBT.com"
+    },
+    {
+      "id": "864909fe6df5",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5mVy01UUY2dGdVSzQyOHkzWWFSYzkwbEFqTEpPYmxocE5YeEJjM3FZNGxtRnpjcTdzdXd0TEtCUVhBaUdmRVloNjl4SFNQVkdQXzcyeEh4aEcxTWZrNmc?oc=5",
+      "title": "Anthropic правда забанит за «косвенные» связи с Беларусью и Россией? Как это? Попытка разбора - dev.by",
+      "snippet": "Anthropic правда забанит за «косвенные» связи с Беларусью и Россией? Как это? Попытка разбора dev.by",
+      "published": "2026-11-22T01:16:39.000Z",
+      "outlet": "dev.by"
+    },
+    {
+      "id": "092079a0c5d2",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNZUE2elotelZVYzZpY2lycWN3N050bzN5YjVxcjFVZzhQRXppRjRtbGduWDc5UmIxYS05czB4RzZXU1UwVjJzTjBJcHc2RlFLQ1JJRjRjdXZUdjF1bVRYdWVDaU81UkNtYncwYWRtcE53Y3hTRFBlM2pndUVjaXlSVlQxU1RNUFBnOVZFQlI4bUgxZmthY0hIc1Z4N1pZc2tMTktrai1ZaXhOZ1ZHelE?oc=5",
+      "title": "Оценка Anthropic в первый день торгов достигла $1,27 трлн - Финам",
+      "snippet": "Оценка Anthropic в первый день торгов достигла $1,27 трлн Финам",
+      "published": "2026-11-20T08:35:00.000Z",
+      "outlet": "Финам"
+    },
+    {
+      "id": "283b3e31ef7a",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOQ0xyYW81QmFoSktCbWRWcUUzVVZjUmJ5cXVJUVQ3R0hFVUFVSUVJVmdXMHB3V1dIdFV3Mnk0RWZjcHBsbFlZekRlNDFrWW0wZzFwVVByRDZYQ1dQMFpoMW9ON2g1X0FXNXJyY0RHbjNCQjJyRXN1ZjVSWVhfRGwwR2NZMGd0dG0weTVZcnRn0gGOAUFVX3lxTE5DTHJhbzVCYWhKS0JtZFZxRTNVVmNSYnlxdUlRVDdHSEVVQVVJRUlWZ1cwcHdXV0h0VXcyeTRFZmNwcGxsWVl6RGU0MWtZbTBnMXBVUHJENlhDV1AwWmgxb043aDVfQVc1cnJjREduM0JCMnJFc3VmNVJZWF9EbDBHY1kwZ3R0bTB5NVlydGc?oc=5",
+      "title": "Как прошло IPO Anthropic? Показываем в цифрах - Meduza",
+      "snippet": "Как прошло IPO Anthropic? Показываем в цифрах Meduza",
+      "published": "2026-11-20T14:02:00.000Z",
+      "outlet": "Meduza"
+    },
+    {
+      "id": "eb5c35a27331",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNYUZJX3QxazNDX01fMVdfYVU1SFl5ODExMGI1RjdLdlFIZjk1WkJCcXN0b2hscUMwZ1dLQko0NnNqWHU4NzgteWh5bmZBRnY1NXh3XzNPek1TZENBM2FWaW0tRzRIMkdUUTlsVUtrc0MwaFlnV0ZJSHNka1RJVUVWVmZ5RXZlSXpTUkRUUngyVlJLTWVxaFBUZzY3am1VbXAzLXlv?oc=5",
+      "title": "IPO Anthropic - главные победители и проигравшие - Финам",
+      "snippet": "IPO Anthropic - главные победители и проигравшие Финам",
+      "published": "2026-11-20T12:34:00.000Z",
+      "outlet": "Финам"
+    },
+    {
+      "id": "4fc61c8c6a8d",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNNXE2VXhhV2hfSi04UlZTcXN2Tk1GWjJjX3RtMU1hb29SMENJalZaU1hzNFdpVUl6RlNxRERQWmF6NDEzRDdUQ2lFcFZqbG5TY25fb2xLVTlyWlVrTXl3ZjUtUFhTSDhHZmluMDR4R3BNdGR6N0wwaWwtX3NsNGdqNVZzbWR4bzF0cDZOTDlDYnl4TnNZVjBBNVFXQTBJLWFkY3lFTmdZUFFUbU5mSTdaaUctZ1UtUmk0VEVVMk5uQUFmM2JDc3c0?oc=5",
+      "title": "Рынок РУХНУЛ на геополитике! Anthropic провела историческое IPO! Что дальше? - БКС Экспресс",
+      "snippet": "Рынок РУХНУЛ на геополитике! Anthropic провела историческое IPO! Что дальше? БКС Экспресс",
+      "published": "2026-11-21T09:11:12.000Z",
+      "outlet": "БКС Экспресс"
+    },
+    {
+      "id": "b75a3cfd2697",
+      "source": "gnews-ru",
+      "tier": 3,
+      "kind": "rss",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbDFvU1dVbmVEV0ZubkJ1bXNMa09ZZTU1WWVOMEVOTGxfM20wYXY1b05LUFJGYlNOQmtubm15MnVCdGY0akdrSUJWdXpYZ2NZV0ZmdGxuTXhWZkE5SjJSSzl6M0Y1NjFGWkpVZzlzQkVrdzJudl9nWXRxcW80WkJaVk9PLXplOW1QV2hDbGdudGdFVkRBMGJHVUs0WFFVR2ZzcDRRTVRodEg0MlVaMmFuVk42blJlUHc?oc=5",
+      "title": "Акции Anthropic упали на 6% на премаркете после рекордного IPO - Финам",
+      "snippet": "Акции Anthropic упали на 6% на премаркете после рекордного IPO Финам",
+      "published": "2026-11-20T10:55:00.000Z",
+      "outlet": "Финам"
+    }
+  ]
+}
