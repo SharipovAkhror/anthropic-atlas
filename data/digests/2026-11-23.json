@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-23",
+  "generatedAt": "2026-11-23T08:12:09.408Z",
+  "auto": true,
+  "headline": {
+    "ru": "Без существенных новостей",
+    "en": "No significant news"
+  },
+  "summary": {
+    "ru": "Новых событий и публикаций нет.",
+    "en": "No new events or publications."
+  },
+  "news": [],
+  "library": [],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 103,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}
