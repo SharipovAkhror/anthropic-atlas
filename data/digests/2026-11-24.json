@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-24",
+  "generatedAt": "2026-11-24T10:25:46.085Z",
+  "auto": true,
+  "headline": {
+    "ru": "Новое у Anthropic: 8 публикаций",
+    "en": "New from Anthropic: 8 publications"
+  },
+  "summary": {
+    "ru": "Claude Ship | Automate pull requests review and fixes; The enterprise guide to securing coding agents; Introducing Claude Ship. Обновлений документации и справки: 33.",
+    "en": "Claude Ship | Automate pull requests review and fixes; The enterprise guide to securing coding agents; Introducing Claude Ship."
+  },
+  "news": [],
+  "library": [
+    "84cb877c47",
+    "d42805a220",
+    "ace402beb5",
+    "e7d70c79bf",
+    "28a25d582f",
+    "d1bbe30112",
+    "da0eec3d4c",
+    "da7ebf8d2c",
+    "7f4cae6bf2",
+    "f75cbddf1f",
+    "56bc32cde6",
+    "d8be7e72b3",
+    "3015feb71c",
+    "8708dd2b94",
+    "dcd00e176e",
+    "6a7774a409",
+    "26a6b4fcdd",
+    "32a2b6876d",
+    "77ee34f1b1",
+    "5858cfa70c",
+    "fb169772be",
+    "589e193194",
+    "82e474cdf0",
+    "b2410ffb67",
+    "786d60192c",
+    "aa171ad0ca",
+    "20d4b3d558",
+    "23e3b9adc5",
+    "388354cdd5",
+    "11d0ef894c",
+    "0c3cabde76",
+    "64da1deee8",
+    "e0def74a84",
+    "c6b0eb2ad5",
+    "89fabf4c99",
+    "e277391e1a",
+    "ac09a7197c",
+    "7f47a49321",
+    "07b4e95a07",
+    "5b6c0ed2a9",
+    "48a4e5b02b"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 126,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}

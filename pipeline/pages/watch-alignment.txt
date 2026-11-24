@@ -2,6 +2,13 @@ Alignment Science Blog
 Alignment Science Blog
 Articles
 November 2026
+Returning to the Neuron Basis for Interpretability, Part 2: Using Neurons For Safety Applications
+With no extra training, a model's own neurons beat SAEs and text search at
+detection, steer like trained vectors, and show how finetuning and unlearning
+work.
+Returning to the Neuron Basis for Interpretability, Part 1: Answering Three Objections
+Neurons are more interpretable than the field assumes: three standard objections
+to reading a model through its neurons turn out weaker than thought.
 Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams
 When several users each delegate to their own agent and those agents
 share a resource, group outcomes are worse than when one agent serves everyone, and the agents

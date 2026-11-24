@@ -32,6 +32,7 @@ Developers
 Build with
 Claude Code
 Claude Platform
+Claude Ship
 Code Review
 Managed Agents
 For developers
@@ -45,6 +46,7 @@ Enterprise
 Overview
 Claude Code for Enterprise
 Claude Platform
+Claude Ship
 Use Cases
 AI Agents
 Coding
@@ -62,6 +64,7 @@ Healthcare
 Higher education
 K-12 teachers
 Life sciences
+Manufacturing
 Nonprofits
 Browse marketplace
 Customers
@@ -935,6 +938,7 @@ Claude Duet
 Claude Tag
 Claude Science
 Claude Security
+Claude Ship
 Code Review
 Download app
 Pricing
@@ -969,6 +973,7 @@ Healthcare
 Higher education
 K-12 teachers
 Life sciences
+Manufacturing
 Nonprofits
 Small business
 Programs
@@ -1032,6 +1037,7 @@ Claude Duet
 Claude Tag
 Claude Science
 Claude Security
+Claude Ship
 Code Review
 Download app
 Pricing
@@ -1066,6 +1072,7 @@ Healthcare
 Higher education
 K-12 teachers
 Life sciences
+Manufacturing
 Nonprofits
 Small business
 Programs
