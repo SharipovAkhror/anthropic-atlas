@@ -1,6 +1,20 @@
 {
   "digests": [
     {
+      "date": "2026-11-25",
+      "headline": {
+        "ru": "Новое у Anthropic: 2 публикации",
+        "en": "New from Anthropic: 2 publications"
+      },
+      "counts": {
+        "news": 0,
+        "added": 0,
+        "updated": 0,
+        "removed": 0,
+        "library": 14
+      }
+    },
+    {
       "date": "2026-11-24",
       "headline": {
         "ru": "Новое у Anthropic: 8 публикаций",

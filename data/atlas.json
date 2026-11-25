@@ -2,7 +2,7 @@
   "meta": {
     "company": "Anthropic, PBC",
     "schemaVersion": 2,
-    "updatedAt": "2026-11-24"
+    "updatedAt": "2026-11-25"
   },
   "zones": [
     {
@@ -591,8 +591,12 @@
       ],
       "verifiedAt": "2026-11-16",
       "links": {
-        "official": "https://www.anthropic.com/news/narasimhan-board"
-      }
+        "official": "https://www.anthropic.com/news/narasimhan-board",
+        "wikipedia": "https://en.wikipedia.org/wiki/Vasant_Narasimhan",
+        "wikidata": "https://www.wikidata.org/wiki/Q38589106"
+      },
+      "avatar": "/assets/people/vas-narasimhan.jpg",
+      "avatarCredit": "Wikimedia Commons"
     },
     {
       "id": "chris-liddell",

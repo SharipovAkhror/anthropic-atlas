@@ -1,19 +1,19 @@
-Anthropic Atlas · 2026-11-24
-**Новое у Anthropic: 8 публикаций**
-Claude Ship | Automate pull requests review and fixes; The enterprise guide to securing coding agents; Introducing Claude Ship. Обновлений документации и справки: 33.
+Anthropic Atlas · 2026-11-25
+**Новое у Anthropic: 2 публикации**
+Turn artifacts into Mac and Windows apps; MCP servers can now ship skills, run tasks, and more with Claude. Обновлений документации и справки: 12.
 
-Новое в библиотеке (41):
-• Claude Ship | Automate pull requests review and fixes — https://claude.com/product/claude-ship
-• The enterprise guide to securing coding agents — https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents
-• Introducing Claude Ship — https://claude.com/resources/articles/introducing-claude-ship
-• KPMG's Todd Lohr on AI when your data is also your clients' data — https://claude.com/resources/articles/kpmg-todd-lohr-on-ai-when-your-data-is-also-your-clients-data
-• Zero data retention with Enterprise Frontier Safeguards is now in beta — https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards
-• Working with AI — https://www.anthropic.com/research/working-with-ai
-• Returning to the Neuron Basis for Interpretability, Part 2: Using Neurons For Safety Applications — https://alignment.anthropic.com/2026/neuron-basis-applications
-• Returning to the Neuron Basis for Interpretability, Part 1: Answering Three Objections — https://alignment.anthropic.com/2026/neuron-basis-theory
-• Claude Approvals — https://code.claude.com/docs/en/approvals
-• Claude Approvals classifiers — https://code.claude.com/docs/en/approvals-classifiers
-…и ещё 31 — на доске.
+Новое в библиотеке (14):
+• Turn artifacts into Mac and Windows apps — https://claude.com/resources/articles/install-as-app
+• MCP servers can now ship skills, run tasks, and more with Claude — https://claude.com/resources/articles/skills-over-mcp-tasks-and-more
+• Handle errors — https://platform.claude.com/docs/en/api/handle-errors
+• Endpoints and parameters — https://platform.claude.com/docs/en/manage-claude/oauth-apps/endpoints-and-parameters
+• Overview — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing
+• Per-customer credentials — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing/credential-for-each-customer
+• Errors — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing/errors
+• Link and bill a customer — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing/link-and-bill-a-customer
+• Link button — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing/link-button
+• Manage customers — https://platform.claude.com/docs/en/manage-claude/oauth-apps/linked-billing/manage-customers
+…и ещё 4 — на доске.
 
 Автоматическая проверка источников: доступны 18, недоступны: sec-edgar.
 Доска: https://anthropic-atlas.vercel.app

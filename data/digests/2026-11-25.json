@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-25",
+  "generatedAt": "2026-11-25T09:08:21.054Z",
+  "auto": true,
+  "headline": {
+    "ru": "Новое у Anthropic: 2 публикации",
+    "en": "New from Anthropic: 2 publications"
+  },
+  "summary": {
+    "ru": "Turn artifacts into Mac and Windows apps; MCP servers can now ship skills, run tasks, and more with Claude. Обновлений документации и справки: 12.",
+    "en": "Turn artifacts into Mac and Windows apps; MCP servers can now ship skills, run tasks, and more with Claude."
+  },
+  "news": [],
+  "library": [
+    "aba48df5dc",
+    "99f7beeb37",
+    "cc0c2779cd",
+    "181867a570",
+    "921f0715eb",
+    "52ed9d275b",
+    "2bf75c185c",
+    "2c83a2dc64",
+    "349ae588be",
+    "01841114f4",
+    "6b0466e1b0",
+    "4627f0fb11",
+    "38f3d822d5",
+    "44f76c8bfa"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 124,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}
