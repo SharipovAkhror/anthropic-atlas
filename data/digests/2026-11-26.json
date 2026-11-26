@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-26",
+  "generatedAt": "2026-11-26T08:53:28.868Z",
+  "auto": true,
+  "headline": {
+    "ru": "Новое у Anthropic: 3 публикации",
+    "en": "New from Anthropic: 3 publications"
+  },
+  "summary": {
+    "ru": "Engineers, agents, and Black Friday: what Shopify learned at peak; How Anthropic secures its agents; Migrating our Messages API to Rust. Обновлений документации и справки: 4.",
+    "en": "Engineers, agents, and Black Friday: what Shopify learned at peak; How Anthropic secures its agents; Migrating our Messages API to Rust."
+  },
+  "news": [],
+  "library": [
+    "2b1d0b07cf",
+    "477e02dd99",
+    "4ed7965301",
+    "2dce448b27",
+    "599cad9c58",
+    "463506893c",
+    "9e640d54cb"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 109,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}
