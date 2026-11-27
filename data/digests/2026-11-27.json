@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-27",
+  "generatedAt": "2026-11-27T09:04:16.478Z",
+  "auto": true,
+  "headline": {
+    "ru": "Обновления документации: 1 страница",
+    "en": "Documentation updates: 1 page"
+  },
+  "summary": {
+    "ru": "Release Cycle.",
+    "en": "Release Cycle."
+  },
+  "news": [],
+  "library": [
+    "4b4354e207"
+  ],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 18,
+    "sourcesFailed": 1,
+    "candidates": 120,
+    "failedSources": [
+      "sec-edgar"
+    ]
+  }
+}
