@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-28",
+  "generatedAt": "2026-11-28T08:25:49.745Z",
+  "sources": [
+    {
+      "id": "anthropic-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-sitemap",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-alignment",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "api-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "apps-release-notes",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "claude-code-changelog",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "sec-edgar",
+      "ok": false,
+      "failingDays": 10,
+      "error": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic&type=&dateb=&owner=include&count=40&output=atom: HTTP 403"
+    },
+    {
+      "id": "status",
+      "ok": true,
+      "baseline": false,
+      "count": 1
+    },
+    {
+      "id": "gnews-anthropic",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-claude",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=%22Claude%22+Anthropic+model+OR+launch+OR+release+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-people",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+(joins+OR+leaves+OR+hires+OR+appoints+OR+board)+when:3d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-ipo",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+(IPO+OR+Nasdaq+OR+ANT+OR+shares+OR+valuation)+when:2d&hl=en-US&gl=US&ceid=US:en: HTTP 503"
+    },
+    {
+      "id": "gnews-ru",
+      "ok": false,
+      "failingDays": 1,
+      "error": "https://news.google.com/rss/search?q=Anthropic+when:2d&hl=ru&gl=RU&ceid=RU:ru: HTTP 503"
+    },
+    {
+      "id": "watch-leadership",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-ltbt",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-models",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-deprecations",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-pricing",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    },
+    {
+      "id": "watch-rsp",
+      "ok": true,
+      "baseline": false,
+      "count": 0
+    }
+  ],
+  "items": [
+    {
+      "id": "f6668514cfc0",
+      "source": "status",
+      "tier": 1,
+      "kind": "rss",
+      "url": "https://status.claude.com/incidents/0x1yvzkfmmxj",
+      "title": "Degraded performance for Claude Fable 5.2",
+      "snippet": "Nov 27 , 10:49 UTC Resolved - The issue affecting claude.ai has been resolved. Impact occurred from 02:20 PT / 10:20 UTC to 02:40 PT / 10:40 UTC. Nov 27 , 10:40 UTC Monitoring - A fix has been deployed for the issue affecting Claude services and we are monitoring for recovery. Nov 27 , 10:34 UTC Update - We have identified the cause of elevated errors on requests to Claude Fable 5.2 and are workin",
+      "published": "2026-11-27T10:49:33.000Z",
+      "outlet": null
+    }
+  ]
+}

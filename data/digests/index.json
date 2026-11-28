@@ -1,6 +1,20 @@
 {
   "digests": [
     {
+      "date": "2026-11-28",
+      "headline": {
+        "ru": "Без существенных новостей",
+        "en": "No significant news"
+      },
+      "counts": {
+        "news": 0,
+        "added": 0,
+        "updated": 0,
+        "removed": 0,
+        "library": 0
+      }
+    },
+    {
       "date": "2026-11-27",
       "headline": {
         "ru": "Обновления документации: 1 страница",

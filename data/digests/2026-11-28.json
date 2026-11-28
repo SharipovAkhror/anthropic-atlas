@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-28",
+  "generatedAt": "2026-11-28T08:28:47.841Z",
+  "auto": true,
+  "headline": {
+    "ru": "Без существенных новостей",
+    "en": "No significant news"
+  },
+  "summary": {
+    "ru": "Новых событий и публикаций нет.",
+    "en": "No new events or publications."
+  },
+  "news": [],
+  "library": [],
+  "added": [],
+  "updated": [],
+  "removed": [],
+  "stats": {
+    "sourcesOk": 13,
+    "sourcesFailed": 6,
+    "candidates": 1,
+    "failedSources": [
+      "sec-edgar",
+      "gnews-anthropic",
+      "gnews-claude",
+      "gnews-people",
+      "gnews-ipo",
+      "gnews-ru"
+    ]
+  }
+}
